@@ -1,0 +1,149 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masterpage.Master" AutoEventWireup="true" CodeBehind="Entity-info.aspx.cs" Inherits="AnomaERP.BackOffice.Entity.Entity_info" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="FromPlaceHolder" runat="server">   
+                <!-- Layout content -->
+                <div class="layout-content">
+                    <!-- Content -->
+                    <div class="container-fluid flex-grow-1 container-p-y">
+
+                        <h4 class="font-weight-bold py-3 mb-2">
+                            Entity Management
+                            <div class="text-muted text-tiny mt-1">
+                                <small class="font-weight-normal text-uppercase">
+                                    <a href="#" class="mr-1">Entity List</a>/
+                                    Create Entity
+                                </small>
+                            </div>
+                        </h4>
+                        <!-- 
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <a href="visitor-form.html" class="btn btn-success mb-3 mr-2">+ Create Visitor Form</a>
+                            </div>
+                        </div> -->
+
+                        <!-- Statistics -->
+                        <div class="card mb-3">
+                            <h4 class="card-header with-elements">
+                                <div class="card-header-title"><strong>Nursing Home Setup</strong></div>
+                            </h4>
+                            <div class="row no-gutters row-bordered">
+                                <div class="col-md-12 col-lg-12 col-xl-12">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-lg-3 col-xl-3">
+                                                <div class="form-group">
+                                                    <label class="form-label form-label-sm text-uppercase">Nursing Home
+                                                        Name: </label>                                                 
+                                                    <asp:TextBox ID="txtEntityName" runat="server"  class="form-control form-control-sm" placeholder="Nursing Home Name"></asp:TextBox>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-xl-3">
+                                                <div class="form-group">
+                                                    <label class="form-label w-100">Logo Upload</label>
+                                                    <asp:FileUpload ID="fileImage" runat="server" />
+                                                    <small class="form-text text-muted">.png, .jpg</small>
+                                                  </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6 col-xl-6">
+                                                <div class="form-group">
+                                                    <label class="form-label form-label-sm text-uppercase">Address:
+                                                    </label>
+                                                    <asp:TextBox ID="txtAddress" runat="server" TextMode="MultiLine" rows="3"  class="form-control form-control-sm" placeholder="Address"></asp:TextBox>                                                   
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6 col-xl-6">
+                                                <div class="form-group">
+                                                    <label class="form-label form-label-sm text-uppercase">Register
+                                                        Address: </label>
+                                                    <asp:TextBox ID="txtRegisAddress" runat="server" TextMode="MultiLine" rows="3"  class="form-control form-control-sm" placeholder="Register Address"></asp:TextBox>                                                   
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-3 col-xl-3">
+                                                <div class="form-group">
+                                                    <label class="form-label form-label-sm text-uppercase">Tax ID:
+                                                    </label>
+                                                     <asp:TextBox ID="txtTaxID" runat="server"  class="form-control form-control-sm" placeholder="Tax ID"></asp:TextBox>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-xl-3">
+                                                <div class="form-group">
+                                                    <label class="form-label form-label-sm text-uppercase">Prefix (3
+                                                        Character): </label>
+                                                    <asp:TextBox ID="txtPrefix" runat="server"  class="form-control form-control-sm" placeholder="Prefix"></asp:TextBox>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr class="mb-0">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-xl-12">
+                                                <h5 class="mt-4"><strong>Administrator Information</strong></h5>
+                                            </div>
+                                            <div class="col-lg-3 col-xl-3">
+                                                <div class="form-group">
+                                                    <label class="form-label form-label-sm text-uppercase">Username:
+                                                    </label>
+                                                    <asp:TextBox ID="txtUserName" runat="server"  class="form-control form-control-sm" placeholder="Username"></asp:TextBox>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="form-label form-label-sm text-uppercase">Password:
+                                                    </label>
+                                                    <asp:TextBox ID="txtPassword" runat="server"  class="form-control form-control-sm" placeholder="Password"></asp:TextBox>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-xl-3">
+                                                <div class="form-group">
+                                                    <label class="form-label form-label-sm text-uppercase">Email:</label>
+                                                    <asp:TextBox ID="TextBox1" runat="server"  class="form-control form-control-sm" placeholder="Email"></asp:TextBox>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="form-label form-label-sm text-uppercase">Phone:</label>
+                                                    <asp:TextBox ID="TextBox2" runat="server"  class="form-control form-control-sm" placeholder="Phone"></asp:TextBox>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr class="mb-0">
+                                        <%--<div class="row">
+                                            <div class="col-lg-12 col-xl-12">
+                                                <h5 class="mt-4"><strong>Setup Organization Structure</strong></h5>
+                                            </div>
+                                        </div>
+                                        <hr class="mb-0">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-xl-12">
+                                                <h5 class="mt-4"><strong>Setup Bed Type Master Data</strong></h5>
+                                            </div>
+                                        </div>--%>
+                                    </div>
+                                    <div class="card-footer">
+                                        <a href="/BackOffice/Entity/entity-list.aspx" class="btn btn-lg btn-secondary">Back</a>                                      
+                                        <asp:LinkButton ID="lbnSave" OnClick="lbnSave_Click"  class="btn btn-lg btn-success" runat="server" ClientIDMode="AutoID">Save</asp:LinkButton>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- / Statistics -->
+                    </div>
+                    <!-- / Content -->
+
+                    <!-- Layout footer -->
+                 
+                    <!-- / Layout footer -->
+
+                </div>
+                <!-- Layout content -->
+
+            <!-- / Layout container -->
+
+        <!-- Overlay -->
+        <div class="layout-overlay layout-sidenav-toggle"></div>
+
+    <!-- / Layout wrapper -->
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ModalPlaceHolder" runat="server">
+</asp:Content>

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Entity
 {
-    public class Branch
+    public class BranchEntity
     {
         public Int32 branch_id { get; set; }
         public Int32 entity_id { get; set; }
