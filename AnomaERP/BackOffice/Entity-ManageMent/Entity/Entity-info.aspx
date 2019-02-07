@@ -99,11 +99,11 @@
                                             <div class="col-lg-3 col-xl-3">
                                                 <div class="form-group">
                                                     <label class="form-label form-label-sm text-uppercase">Email:</label>
-                                                    <asp:TextBox ID="TextBox1" runat="server"  class="form-control form-control-sm" placeholder="Email"></asp:TextBox>
+                                                    <asp:TextBox ID="txtEmail" runat="server"  class="form-control form-control-sm" placeholder="Email"></asp:TextBox>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="form-label form-label-sm text-uppercase">Phone:</label>
-                                                    <asp:TextBox ID="TextBox2" runat="server"  class="form-control form-control-sm" placeholder="Phone"></asp:TextBox>
+                                                    <asp:TextBox ID="txtPhone" runat="server"  class="form-control form-control-sm" placeholder="Phone"></asp:TextBox>
                                                 </div>
                                             </div>
                                         </div>

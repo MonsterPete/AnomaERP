@@ -22,8 +22,24 @@ namespace AnomaERP.BackOffice.Entity
 
             EntityEntity entityEntity = new EntityEntity();           
             EntityService entityService = new EntityService();
+         
 
             entityEntity.entity_name = txtEntityName.Text;
+            entityEntity.logo = fileImage.FileName;
+            entityEntity.address = txtAddress.Text;
+            entityEntity.register_address = txtRegisAddress.Text;
+            entityEntity.tax_id = txtTaxID.Text;
+            entityEntity.perfix = txtPrefix.Text;
+            entityEntity.phone = txtPhone.Text;
+            entityEntity.email = txtEmail.Text;
+            entityEntity.username = txtUserName.Text;
+            entityEntity.password = txtPassword.Text;
+            entityEntity.create_date = DateTime.UtcNow;
+            entityEntity.modify_date = DateTime.UtcNow;
+            entityEntity.is_active = true;
+            entityEntity.is_delete = true;
+
+            success = entityService.InsertData(entityEntity);
         }       
     }
 }
