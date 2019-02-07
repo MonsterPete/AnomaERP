@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 using Entity;
+using DAO.Entity;
 
 namespace Service.Entity
 {
     public class EntityService : IServiceRepository<EntityEntity>
     {
+        EntityDAO entityDAO = new EntityDAO();
+
         public List<EntityEntity> GetDataAll()
         {
             throw new NotImplementedException();
@@ -29,7 +32,7 @@ namespace Service.Entity
 
         public int InsertData(EntityEntity entity)
         {
-            throw new NotImplementedException();
+            return entityDAO.InsertData(entity);
         }
 
         public int UpdateData(EntityEntity entity)

@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using Entity;
 using Service.Entity;
 
+
 namespace AnomaERP.BackOffice.Entity
 {
     public partial class Entity_info : System.Web.UI.Page
@@ -22,7 +23,7 @@ namespace AnomaERP.BackOffice.Entity
 
             EntityEntity entityEntity = new EntityEntity();           
             EntityService entityService = new EntityService();
-         
+            
 
             entityEntity.entity_name = txtEntityName.Text;
             entityEntity.logo = fileImage.FileName;
@@ -39,7 +40,7 @@ namespace AnomaERP.BackOffice.Entity
             entityEntity.is_active = true;
             entityEntity.is_delete = true;
 
-            success = entityService.InsertData(entityEntity);
+            success = entityService.InsertData(entityEntity);  
         }       
     }
 }
