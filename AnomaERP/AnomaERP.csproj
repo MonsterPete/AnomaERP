@@ -451,6 +451,9 @@
     <Content Include="BackOffice\Bed-Management\Job\job-assign.aspx" />
     <Content Include="BackOffice\Entity-ManageMent\Branch\branch-create.aspx" />
     <Content Include="BackOffice\Entity-ManageMent\Branch\branch-list.aspx" />
+    <Content Include="BackOffice\Entity-ManageMent\Branch\BranchBuilding\bed-setup.aspx" />
+    <Content Include="BackOffice\Entity-ManageMent\Branch\BranchBuilding\floor-setup.aspx" />
+    <Content Include="BackOffice\Entity-ManageMent\Branch\BranchBuilding\room-setup.aspx" />
     <Content Include="BackOffice\Inventory\inventory.aspx" />
     <Content Include="BackOffice\Nursing-Aide\Customer-Daily\customer-daily.aspx" />
     <Content Include="BackOffice\NursingHome\Bed-Reservation\bed-reserve-list.aspx" />
@@ -513,6 +516,27 @@
     </Compile>
     <Compile Include="BackOffice\Entity-ManageMent\Branch\branch-list.aspx.designer.cs">
       <DependentUpon>branch-list.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BackOffice\Entity-ManageMent\Branch\BranchBuilding\bed-setup.aspx.cs">
+      <DependentUpon>bed-setup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackOffice\Entity-ManageMent\Branch\BranchBuilding\bed-setup.aspx.designer.cs">
+      <DependentUpon>bed-setup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BackOffice\Entity-ManageMent\Branch\BranchBuilding\floor-setup.aspx.cs">
+      <DependentUpon>floor-setup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackOffice\Entity-ManageMent\Branch\BranchBuilding\floor-setup.aspx.designer.cs">
+      <DependentUpon>floor-setup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BackOffice\Entity-ManageMent\Branch\BranchBuilding\room-setup.aspx.cs">
+      <DependentUpon>room-setup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackOffice\Entity-ManageMent\Branch\BranchBuilding\room-setup.aspx.designer.cs">
+      <DependentUpon>room-setup.aspx</DependentUpon>
     </Compile>
     <Compile Include="BackOffice\Inventory\inventory.aspx.cs">
       <DependentUpon>inventory.aspx</DependentUpon>
