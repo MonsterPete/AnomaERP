@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masterpage.Master" AutoEventWireup="true" CodeBehind="Entity-info.aspx.cs" Inherits="AnomaERP.BackOffice.Entity.Entity_info" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masterpage.Master" AutoEventWireup="true" CodeBehind="Entity-create.aspx.cs" Inherits="AnomaERP.BackOffice.Entity.Entity_info" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="FromPlaceHolder" runat="server">   
                 <!-- Layout content -->
                 <div class="layout-content">
@@ -32,9 +32,11 @@
                                         <div class="row">
                                             <div class="col-lg-3 col-xl-3">
                                                 <div class="form-group">
+                                                    <asp:Label ID="lblentityID" runat="server" Text="" Visible="false"></asp:Label>
                                                     <label class="form-label form-label-sm text-uppercase">Nursing Home
                                                         Name: </label>                                                 
                                                     <asp:TextBox ID="txtEntityName" runat="server"  class="form-control form-control-sm" placeholder="Nursing Home Name"></asp:TextBox>
+
                                                 </div>
                                             </div>
                                             <div class="col-lg-3 col-xl-3">

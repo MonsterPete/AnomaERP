@@ -43,7 +43,29 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper, Version=1.50.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.50.5\lib\net451\Dapper.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Configuration.ConfigurationManager, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Configuration.ConfigurationManager.4.5.0\lib\net461\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Data.SqlClient, Version=4.5.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SqlClient.4.6.0\lib\net461\System.Data.SqlClient.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Security.AccessControl, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.AccessControl.4.5.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Permissions, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Permissions.4.5.0\lib\net461\System.Security.Permissions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Principal.Windows.4.5.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -449,19 +471,20 @@
     <Content Include="BackOffice\Bed-Management\Bed\bed-entity.aspx" />
     <Content Include="BackOffice\Bed-Management\Bed\bed-entity.html" />
     <Content Include="BackOffice\Bed-Management\Job\job-assign.aspx" />
-    <Content Include="BackOffice\Entity-ManageMent\Branch\branch-create.aspx" />
-    <Content Include="BackOffice\Entity-ManageMent\Branch\branch-list.aspx" />
-    <Content Include="BackOffice\Entity-ManageMent\Branch\BranchBuilding\bed-setup.aspx" />
-    <Content Include="BackOffice\Entity-ManageMent\Branch\BranchBuilding\floor-setup.aspx" />
-    <Content Include="BackOffice\Entity-ManageMent\Branch\BranchBuilding\room-setup.aspx" />
+    <Content Include="BackOffice\Entity-Management\Branch\branch-create.aspx" />
+    <Content Include="BackOffice\Entity-Management\Branch\branch-create.html" />
+    <Content Include="BackOffice\Entity-Management\Branch\branch-list.aspx" />
+    <Content Include="BackOffice\Entity-Management\Branch\BranchBuilding\bed-setup.aspx" />
+    <Content Include="BackOffice\Entity-Management\Branch\BranchBuilding\floor-setup.aspx" />
+    <Content Include="BackOffice\Entity-Management\Branch\BranchBuilding\room-setup.aspx" />
     <Content Include="BackOffice\Inventory\inventory.aspx" />
     <Content Include="BackOffice\Nursing-Aide\Customer-Daily\customer-daily.aspx" />
     <Content Include="BackOffice\NursingHome\Bed-Reservation\bed-reserve-list.aspx" />
     <Content Include="BackOffice\Nursing-Aide\Customer-Daily\customer-daily.html" />
-    <Content Include="BackOffice\Entity-ManageMent\Entity\entity-create.html" />
-    <Content Include="BackOffice\Entity-ManageMent\Entity\entity-list.html" />
-    <Content Include="BackOffice\Entity-ManageMent\Entity\Entity-info.aspx" />
-    <Content Include="BackOffice\Entity-ManageMent\Entity\Entity-list.aspx" />
+    <Content Include="BackOffice\Entity-Management\Entity\entity-create.html" />
+    <Content Include="BackOffice\Entity-Management\Entity\entity-list.html" />
+    <Content Include="BackOffice\Entity-Management\Entity\Entity-create.aspx" />
+    <Content Include="BackOffice\Entity-Management\Entity\Entity-list.aspx" />
     <Content Include="BackOffice\NursingHome\Visitor-Form\index.aspx" />
     <Content Include="BackOffice\Inventory\inventory.html" />
     <Content Include="BackOffice\Bed-Management\Job\job-assign.html" />
@@ -506,39 +529,39 @@
     <Compile Include="BackOffice\Bed-Management\Job\job-assign.aspx.designer.cs">
       <DependentUpon>job-assign.aspx</DependentUpon>
     </Compile>
-    <Compile Include="BackOffice\Entity-ManageMent\Branch\branch-create.aspx.cs">
+    <Compile Include="BackOffice\Entity-Management\Branch\branch-create.aspx.cs">
       <DependentUpon>branch-create.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="BackOffice\Entity-ManageMent\Branch\branch-create.aspx.designer.cs">
+    <Compile Include="BackOffice\Entity-Management\Branch\branch-create.aspx.designer.cs">
       <DependentUpon>branch-create.aspx</DependentUpon>
     </Compile>
-    <Compile Include="BackOffice\Entity-ManageMent\Branch\branch-list.aspx.cs">
+    <Compile Include="BackOffice\Entity-Management\Branch\branch-list.aspx.cs">
       <DependentUpon>branch-list.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="BackOffice\Entity-ManageMent\Branch\branch-list.aspx.designer.cs">
+    <Compile Include="BackOffice\Entity-Management\Branch\branch-list.aspx.designer.cs">
       <DependentUpon>branch-list.aspx</DependentUpon>
     </Compile>
-    <Compile Include="BackOffice\Entity-ManageMent\Branch\BranchBuilding\bed-setup.aspx.cs">
+    <Compile Include="BackOffice\Entity-Management\Branch\BranchBuilding\bed-setup.aspx.cs">
       <DependentUpon>bed-setup.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="BackOffice\Entity-ManageMent\Branch\BranchBuilding\bed-setup.aspx.designer.cs">
+    <Compile Include="BackOffice\Entity-Management\Branch\BranchBuilding\bed-setup.aspx.designer.cs">
       <DependentUpon>bed-setup.aspx</DependentUpon>
     </Compile>
-    <Compile Include="BackOffice\Entity-ManageMent\Branch\BranchBuilding\floor-setup.aspx.cs">
+    <Compile Include="BackOffice\Entity-Management\Branch\BranchBuilding\floor-setup.aspx.cs">
       <DependentUpon>floor-setup.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="BackOffice\Entity-ManageMent\Branch\BranchBuilding\floor-setup.aspx.designer.cs">
+    <Compile Include="BackOffice\Entity-Management\Branch\BranchBuilding\floor-setup.aspx.designer.cs">
       <DependentUpon>floor-setup.aspx</DependentUpon>
     </Compile>
-    <Compile Include="BackOffice\Entity-ManageMent\Branch\BranchBuilding\room-setup.aspx.cs">
+    <Compile Include="BackOffice\Entity-Management\Branch\BranchBuilding\room-setup.aspx.cs">
       <DependentUpon>room-setup.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="BackOffice\Entity-ManageMent\Branch\BranchBuilding\room-setup.aspx.designer.cs">
+    <Compile Include="BackOffice\Entity-Management\Branch\BranchBuilding\room-setup.aspx.designer.cs">
       <DependentUpon>room-setup.aspx</DependentUpon>
     </Compile>
     <Compile Include="BackOffice\Inventory\inventory.aspx.cs">
@@ -555,18 +578,18 @@
     <Compile Include="BackOffice\Nursing-Aide\Customer-Daily\customer-daily.aspx.designer.cs">
       <DependentUpon>customer-daily.aspx</DependentUpon>
     </Compile>
-    <Compile Include="BackOffice\Entity-ManageMent\Entity\Entity-info.aspx.cs">
-      <DependentUpon>Entity-info.aspx</DependentUpon>
+    <Compile Include="BackOffice\Entity-Management\Entity\Entity-create.aspx.cs">
+      <DependentUpon>Entity-create.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="BackOffice\Entity-ManageMent\Entity\Entity-info.aspx.designer.cs">
-      <DependentUpon>Entity-info.aspx</DependentUpon>
+    <Compile Include="BackOffice\Entity-Management\Entity\Entity-create.aspx.designer.cs">
+      <DependentUpon>Entity-create.aspx</DependentUpon>
     </Compile>
-    <Compile Include="BackOffice\Entity-ManageMent\Entity\Entity-list.aspx.cs">
+    <Compile Include="BackOffice\Entity-Management\Entity\Entity-list.aspx.cs">
       <DependentUpon>Entity-list.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="BackOffice\Entity-ManageMent\Entity\Entity-list.aspx.designer.cs">
+    <Compile Include="BackOffice\Entity-Management\Entity\Entity-list.aspx.designer.cs">
       <DependentUpon>Entity-list.aspx</DependentUpon>
     </Compile>
     <Compile Include="BackOffice\NursingHome\Bed-Reservation\bed-reserve-list.aspx.cs">
@@ -698,6 +721,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Definitions\Definitions.csproj">
+      <Project>{1b96ebfd-8771-4332-87e2-17f7f73a853e}</Project>
+      <Name>Definitions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Entity\Entity.csproj">
       <Project>{0f901cd0-be9f-41b4-98ae-3f77d71272a1}</Project>
       <Name>Entity</Name>
