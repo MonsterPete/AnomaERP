@@ -13,13 +13,13 @@ namespace AnomaERP.BackOffice.Entity {
     public partial class Entity_list {
         
         /// <summary>
-        /// upnInquiryList control.
+        /// upnEntityList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel upnInquiryList;
+        protected global::System.Web.UI.UpdatePanel upnEntityList;
         
         /// <summary>
         /// txtSearch control.
@@ -49,12 +49,12 @@ namespace AnomaERP.BackOffice.Entity {
         protected global::System.Web.UI.WebControls.Button btnSearch;
         
         /// <summary>
-        /// rptInquiryList control.
+        /// rptEntityList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptInquiryList;
+        protected global::System.Web.UI.WebControls.Repeater rptEntityList;
     }
 }

@@ -26,5 +26,9 @@ namespace Entity
         public Int32 modify_by { get; set; }
         public Boolean is_active { get; set; }
         public Boolean is_delete { get; set; }
+
+        #region entity table
+        public String entity_name { get; set; }
+        #endregion
     }
 }

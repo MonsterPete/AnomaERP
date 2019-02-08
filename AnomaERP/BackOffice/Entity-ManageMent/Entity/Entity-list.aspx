@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masterpage.Master" AutoEventWireup="true" CodeBehind="Entity-list.aspx.cs" Inherits="AnomaERP.BackOffice.Entity.Entity_list" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="FromPlaceHolder" runat="server">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript">
         var pr = Sys.WebForms.PageRequestManager.getInstance();
@@ -31,7 +33,7 @@
             document.head.appendChild(script);
         }
 
-        
+
 
         function showReturnPayment() {
 
@@ -83,7 +85,7 @@
         });
 
     </script>
-    <asp:UpdatePanel ID="upnInquiryList" runat="server">
+    <asp:UpdatePanel ID="upnEntityList" runat="server">
         <ContentTemplate>
             <div class="container-fluid flex-grow-1 container-p-y">
                 <h4 class="font-weight-bold py-3 mb-2">Entity Management
@@ -97,7 +99,7 @@
                     <h4></h4>
                     <div class="row">
                         <div class="col-lg-12">
-                            <a class="btn btn-success mb-3 mr-2" href="entity-info.aspx">+ Create Entity</a>                           
+                            <a class="btn btn-success mb-3 mr-2" href="entity-create.aspx">+ Create Entity</a>
                         </div>
                     </div>
                     <!-- Statistics -->
@@ -124,13 +126,14 @@
                                                 </asp:DropDownList>
                                             </div>
                                         </div>
-                                    </div>                                    
-                                    <asp:Button ID="btnSearch" runat="server" CssClass="btn btn-primary"  Text="Search" /> <%--OnClick="btnSearch_Click"--%>
+                                    </div>
+                                    <asp:Button ID="btnSearch" runat="server" CssClass="btn btn-primary" Text="Search" OnClick="btnSearch_Click" />
+                                    <%--OnClick="btnSearch_Click"--%>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="row">
                         <div class="col-md-12 col-lg-12">
                             <!-- Sale stats -->
@@ -138,7 +141,7 @@
                             <div class="card">
                                 <!-- <h6 class="card-header">
                                         Customers
-                                    </h6> -->                               
+                                    </h6> -->
                                 <div class="card-datatable table-responsive">
                                     <table id="tableList" class="datatables-demo table table-striped table-hover table-bordered">
                                         <thead class="thead-dark">
@@ -147,28 +150,42 @@
                                                 <th style="width: 20%">Entity Name</th>
                                                 <th style="width: 50%">Information</th>
                                                 <th style="width: 10%">Status</th>
-                                                <th style="width: 10%">Tools</th>                                                
+                                                <th style="width: 10%">Tools</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <asp:Repeater ID="rptInquiryList" runat="server" ><%-- OnItemCommand="rptInquiryList_ItemCommand" OnItemDataBound="rptInquiryList_ItemDataBound"--%>
+                                            <asp:Repeater ID="rptEntityList" runat="server" OnItemDataBound="rptEntityList_ItemDataBound" OnItemCommand="rptEntityList_ItemCommand">
+                                                <%-- OnItemCommand="rptInquiryList_ItemCommand" OnItemDataBound="rptInquiryList_ItemDataBound"--%>
                                                 <ItemTemplate>
-                                                    <tr id="trCountDays" runat="server" class="odd gradeX">                                                        
+                                                    <tr id="trCountDays" runat="server" class="odd gradeX">
                                                         <td>
-                                                            <asp:Label ID="lblInquiryDate" runat="server"></asp:Label>
+                                                            <asp:Label ID="lblID" runat="server"></asp:Label>
                                                         </td>
                                                         <td id="tdCountDays" runat="server" style="text-align: center;">
-                                                            <asp:Label ID="lblCountDays" runat="server"></asp:Label>
+                                                            <asp:Label ID="lblEntityName" runat="server"></asp:Label>
                                                         </td>
                                                         <td id="td1" runat="server" style="text-align: center;">
-                                                            <asp:Label ID="Label1" runat="server"></asp:Label>
+                                                            <asp:Label ID="lblInfor" runat="server"></asp:Label>
                                                         </td>
-                                                        <td id="td2" runat="server" style="text-align: center;">
-                                                            <asp:Label ID="Label2" runat="server"></asp:Label>
-                                                        </td> 
+                                                        <td class="center">
+                                                            <label class="switcher switcher-sm">
+                                                                <asp:HiddenField ID="hdfStatus" runat="server" />
+                                                                <asp:LinkButton ID="lbnStatus" runat="server" ClientIDMode="AutoID">
+                                                                    <input id="chkStatus" runat="server" type="checkbox" class="switcher-input">
+                                                                    <span class="switcher-indicator">
+                                                                        <span class="switcher-yes">
+                                                                            <span class="ion ion-md-checkmark"></span>
+                                                                        </span>
+                                                                        <span class="switcher-no">
+                                                                            <span class="ion ion-md-close"></span>
+                                                                        </span>
+                                                                    </span>
+                                                                </asp:LinkButton>
+                                                            </label>
+                                                        </td>
                                                         <td class="center">
                                                             <div class="btn-group btn-group-sm">
-                                                                <asp:LinkButton ID="lbnEdit" runat="server" CssClass="btn btn-primary"><i class="ion ion-md-create"></i></asp:LinkButton>                                                               
+                                                                <asp:LinkButton ID="lbnEdit" runat="server" CssClass="btn btn-primary"><i class="ion ion-md-create"></i></asp:LinkButton>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -181,7 +198,7 @@
                             <!-- / Sale stats -->
                         </div>
                     </div>
-                        
+
                     <!-- / Statistics -->
                 </h4>
             </div>

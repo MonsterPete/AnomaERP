@@ -8,7 +8,7 @@ namespace Service.Entity
 {
     public class EntityService : IServiceRepository<EntityEntity>
     {
-        EntityDAO entityDAO = new EntityDAO();
+        
 
         public List<EntityEntity> GetDataAll()
         {
@@ -17,7 +17,8 @@ namespace Service.Entity
 
         public List<EntityEntity> GetDataByCondition(EntityEntity entity)
         {
-            throw new NotImplementedException();
+            EntityDAO entityDAO = new EntityDAO();
+            return entityDAO.GetDataByCondition(entity);
         }
 
         public List<EntityEntity> GetDataByCondition(EntityEntity entity, int index)
@@ -32,12 +33,20 @@ namespace Service.Entity
 
         public int InsertData(EntityEntity entity)
         {
+            EntityDAO entityDAO = new EntityDAO();
             return entityDAO.InsertData(entity);
         }
 
         public int UpdateData(EntityEntity entity)
         {
-            throw new NotImplementedException();
+            EntityDAO entityDAO = new EntityDAO();
+            return entityDAO.UpdateData(entity);
+        }
+
+        public EntityEntity GetDataEntityByID(int entity_id)
+        {
+            EntityDAO entityDAO = new EntityDAO();
+            return entityDAO.GetDataEntityByID(entity_id);
         }
     }
 }

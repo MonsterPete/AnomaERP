@@ -1,0 +1,1909 @@
+<!DOCTYPE html>
+
+<html lang="en" class="default-style">
+
+<head>
+    <title>Anoma Health Care</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900" rel="stylesheet">
+
+    <!-- Icon fonts -->
+    <link rel="stylesheet" href="assets/vendor/fonts/fontawesome.css">
+    <link rel="stylesheet" href="assets/vendor/fonts/ionicons.css">
+    <link rel="stylesheet" href="assets/vendor/fonts/linearicons.css">
+    <link rel="stylesheet" href="assets/vendor/fonts/open-iconic.css">
+    <link rel="stylesheet" href="assets/vendor/fonts/pe-icon-7-stroke.css">
+
+    <!-- Core stylesheets -->
+    <link rel="stylesheet" href="assets/vendor/css/bootstrap-material.css" class="theme-settings-bootstrap-css">
+    <link rel="stylesheet" href="assets/vendor/css/appwork-material.css" class="theme-settings-appwork-css">
+    <link rel="stylesheet" href="assets/vendor/css/theme-corporate-material.css" class="theme-settings-theme-css">
+    <link rel="stylesheet" href="assets/vendor/css/colors-material.css" class="theme-settings-colors-css">
+    <link rel="stylesheet" href="assets/vendor/css/uikit.css">
+    <link rel="stylesheet" href="assets/css/demo.css">
+
+    <script src="assets/vendor/js/material-ripple.js"></script>
+    <script src="assets/vendor/js/layout-helpers.js"></script>
+
+    <!-- Core scripts -->
+    <script src="assets/vendor/js/pace.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Libs -->
+    <link rel="stylesheet" href="assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" href="assets/vendor/libs/datatables/datatables.css">
+    <link rel="stylesheet" href="assets/vendor/libs/dropzone/dropzone.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+
+<body>
+    <div class="page-loader">
+        <div class="bg-primary"></div>
+    </div>
+
+    <!-- Layout wrapper -->
+    <div class="layout-wrapper layout-2">
+        <div class="layout-inner">
+
+            <!-- Layout sidenav -->
+            <div id="layout-sidenav" class="layout-sidenav sidenav sidenav-vertical bg-dark">
+
+                <!-- Brand demo (see assets/css/demo/demo.css) -->
+                <div class="app-brand demo">
+                    <a href="index.html" class="app-brand-text demo sidenav-text font-weight-normal ml-2">
+                        Anoma Health Care
+                    </a>
+                    <a href="javascript:void(0)" class="layout-sidenav-toggle sidenav-link text-large ml-auto">
+                        <i class="ion ion-md-menu align-middle"></i>
+                    </a>
+                </div>
+
+                <div class="sidenav-divider mt-0"></div>
+
+                <!-- Links -->
+                <ul class="sidenav-inner py-1">
+                    <li class="sidenav-item">
+                        <a href="javascript:void(0)" class="sidenav-link sidenav-toggle">
+                            <i class="sidenav-icon ion ion-ios-folder"></i>
+                            <div>Nursing Home</div>
+                        </a>
+                        <ul class="sidenav-menu">
+                            <li class="sidenav-item">
+                                <a href="index.html" class="sidenav-link">
+                                    <div>Visitor Form</div>
+                                </a>
+                            </li>
+                            <li class="sidenav-item">
+                                <a href="bed-reserve-list.html" class="sidenav-link">
+                                    <div>Bed Reservation</div>
+                                </a>
+                            </li>
+                            <li class="sidenav-item">
+                                <a href="logistic-list.html" class="sidenav-link">
+                                    <div>Moving & Logistic</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sidenav-divider mb-1"></li>
+                    <li class="sidenav-item">
+                        <a href="javascript:void(0)" class="sidenav-link sidenav-toggle">
+                            <i class="sidenav-icon ion ion-ios-folder"></i>
+                            <div>Entity Management</div>
+                        </a>
+                        <ul class="sidenav-menu">
+                            <li class="sidenav-item">
+                                <a href="entity-list.html" class="sidenav-link">
+                                    <div>Entity Setup</div>
+                                </a>
+                            </li>
+                            <li class="sidenav-item">
+                                <a href="branch-list.html" class="sidenav-link">
+                                    <div>Branch Setup</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sidenav-divider mb-1"></li>
+                    <li class="sidenav-item">
+                        <a href="javascript:void(0)" class="sidenav-link sidenav-toggle">
+                            <i class="sidenav-icon ion ion-ios-folder"></i>
+                            <div>Resource Planing</div>
+                        </a>
+                        <ul class="sidenav-menu">
+                            <li class="sidenav-item">
+                                <a href="role-list.html" class="sidenav-link">
+                                    <div>Role List</div>
+                                </a>
+                            </li>
+                            <li class="sidenav-item">
+                                <a href="role-assign-list.html" class="sidenav-link">
+                                    <div>Role Assignment</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sidenav-divider mb-1"></li>
+                    <li class="sidenav-item">
+                        <a href="javascript:void(0)" class="sidenav-link sidenav-toggle">
+                            <i class="sidenav-icon ion ion-ios-folder"></i>
+                            <div>Nursing Aide</div>
+                        </a>
+                        <ul class="sidenav-menu">
+                            <li class="sidenav-item">
+                                <a href="workshift-management.html" class="sidenav-link">
+                                    <div>Workshift Management</div>
+                                </a>
+                            </li>
+                            <li class="sidenav-item">
+                                <a href="customer-daily.html" class="sidenav-link">
+                                    <div>Customer Daily Operation</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sidenav-divider mb-1"></li>
+                    <li class="sidenav-item">
+                        <a href="javascript:void(0)" class="sidenav-link sidenav-toggle">
+                            <i class="sidenav-icon ion ion-ios-folder"></i>
+                            <div>Bed Management</div>
+                        </a>
+                        <ul class="sidenav-menu">
+                            <li class="sidenav-item">
+                                <a href="bed-entity.html" class="sidenav-link">
+                                    <div>By Entity</div>
+                                </a>
+                            </li>
+                            <li class="sidenav-item">
+                                <a href="job-assign.html" class="sidenav-link">
+                                    <div>Nursing Aide Management</div>
+                                </a>
+                            </li>
+                            <li class="sidenav-item">
+                                <a href="accessory.html" class="sidenav-link">
+                                    <div>Accessories</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sidenav-divider mb-1"></li>
+                    <li class="sidenav-item">
+                        <a href="inventory.html" class="sidenav-link">
+                            <i class="sidenav-icon ion ion-ios-folder"></i>
+                            <div>Inventory</div>
+                        </a>
+                    </li>
+                    <li class="sidenav-divider mb-1"></li>
+                </ul>
+            </div>
+            <!-- / Layout sidenav -->
+
+            <!-- Layout container -->
+            <div class="layout-container">
+                <!-- Layout navbar -->
+                <nav class="layout-navbar navbar navbar-expand-lg align-items-lg-center bg-white container-p-x" id="layout-navbar">
+
+                    <!-- Brand demo (see assets/css/demo/demo.css) -->
+                    <a href="index.html" class="navbar-brand app-brand demo d-lg-none py-0 mr-4">
+                        <span class="app-brand-text demo font-weight-normal ml-2">Anoma Health Care</span>
+                    </a>
+
+                    <!-- Sidenav toggle (see assets/css/demo/demo.css) -->
+                    <div class="layout-sidenav-toggle navbar-nav d-lg-none align-items-lg-center mr-auto">
+                        <a class="nav-item nav-link px-0 mr-lg-4" href="javascript:void(0)">
+                            <i class="ion ion-md-menu text-large align-middle"></i>
+                        </a>
+                    </div>
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#layout-navbar-collapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="navbar-collapse collapse" id="layout-navbar-collapse">
+                        <!-- Divider -->
+                        <hr class="d-lg-none w-100 my-2">
+
+                        <div class="navbar-nav align-items-lg-center ml-auto">
+                            <div class="demo-navbar-user nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                                    <span class="d-inline-flex flex-lg-row-reverse align-items-center align-middle">
+                                        <!-- <img src="assets/img/avatars/1.png" alt class="d-block ui-w-30 rounded-circle"> -->
+                                        <span class="px-1 mr-lg-2 ml-2 ml-lg-0">Administrator</span>
+                                    </span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a href="javascript:void(0)" class="dropdown-item"><i class="ion ion-ios-log-out text-danger"></i>
+                                        &nbsp; Log Out</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+                <!-- / Layout navbar -->
+
+                <!-- Layout content -->
+                <div class="layout-content">
+
+                    <!-- Content -->
+                    <div class="container-fluid flex-grow-1 container-p-y">
+
+                        <h4 class="font-weight-bold py-3 mb-2">
+                            Entity Management
+                            <div class="text-muted text-tiny mt-1">
+                                <small class="font-weight-normal text-uppercase">
+                                    <a href="#" class="mr-1">Entity List</a>/
+                                    Branch Setup
+                                </small>
+                            </div>
+                        </h4>
+                        <!-- 
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <a href="visitor-form.html" class="btn btn-success mb-3 mr-2">+ Create Visitor Form</a>
+                            </div>
+                        </div> -->
+
+                        <!-- Statistics -->
+                        <div class="card mb-3">
+                            <h4 class="card-header with-elements">
+                                <div class="card-header-title"><strong>Branch Setup</strong></div>
+                            </h4>
+                            <div class="row no-gutters row-bordered">
+                                <div class="col-md-12 col-lg-12 col-xl-12">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-xl-6">
+                                                <div class="form-group">
+                                                    <label class="form-label form-label-sm text-uppercase">Branch Name:
+                                                    </label>
+                                                    <input type="text" class="form-control form-control-sm" placeholder="Branch Name">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6 col-xl-6">
+                                                <div class="form-group">
+                                                    <label class="form-label form-label-sm text-uppercase">Address:
+                                                    </label>
+                                                    <textarea class="form-control form-control-sm" rows="3" placeholder="Address"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6 col-xl-6">
+                                                <div class="form-group">
+                                                    <label class="form-label form-label-sm text-uppercase">Register
+                                                        Address: </label>
+                                                    <textarea class="form-control form-control-sm" rows="3" placeholder="Register Address"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-3 col-xl-3">
+                                                <div class="form-group">
+                                                    <label class="form-label form-label-sm text-uppercase">Tax ID:
+                                                    </label>
+                                                    <input type="text" class="form-control form-control-sm" placeholder="Tax ID">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-xl-3">
+                                                <div class="form-group">
+                                                    <label class="form-label form-label-sm text-uppercase">Prefix (3
+                                                        Character): </label>
+                                                    <input type="text" class="form-control form-control-sm" placeholder="Prefix">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-2 col-xl-2">
+                                                <div class="form-group">
+                                                    <label class="form-label form-label-sm text-uppercase">Building
+                                                        Type:</label>
+                                                    <select class="form-control form-control-sm">
+                                                        <option>Not Spectify</option>
+                                                        <option>Stand Alone House</option>
+                                                        <option>Building</option>
+                                                        <option>Apartment</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-2 col-xl-2">
+                                                <div class="form-group">
+                                                    <label class="form-label form-label-sm text-uppercase">Useage
+                                                        Area(sqm.): </label>
+                                                    <input type="text" class="form-control form-control-sm" placeholder="Area">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-2 col-xl-2">
+                                                <div class="form-group">
+                                                    <label class="form-label form-label-sm text-uppercase">Rental
+                                                        Price: </label>
+                                                    <input type="text" class="form-control form-control-sm" placeholder="Price">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr class="mb-0">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-xl-12">
+                                                <h5 class="mt-4"><strong>Floor Setup</strong></h5>
+                                            </div>
+                                            <div class="col-lg-2 col-xl-2">
+                                                <div class="form-group">
+                                                    <label class="form-label form-label-sm text-uppercase">Number of
+                                                        Floor:</label>
+                                                    <select class="form-control form-control-sm">
+                                                        <option>5</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-10 col-xl-10">
+                                                <div id="accordion2">
+                                                    <div class="card mb-2">
+                                                        <div class="card-header">
+                                                            <a class="d-flex justify-content-between text-dark"
+                                                                data-toggle="collapse" aria-expanded="true" href="#accordion2-1">
+                                                                Floor 1
+                                                                <div class="collapse-icon"></div>
+                                                            </a>
+                                                        </div>
+
+                                                        <div id="accordion2-1" class="collapse show" data-parent="#accordion2">
+                                                            <div class="card-body">
+                                                                <div class="row">
+                                                                    <div class="col-lg-2 col-xl-2">
+                                                                        <div class="form-group">
+                                                                            <label class="form-label form-label-sm text-uppercase">Number
+                                                                                of Room:</label>
+                                                                            <select class="form-control form-control-sm">
+                                                                                <option>4</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <hr>
+                                                                <div class="row">
+                                                                    <div class="col-lg-2 col-xl-2">
+                                                                        <div class="form-group">
+                                                                            <label class="form-label form-label-sm text-uppercase">Room
+                                                                                Name: </label>
+                                                                            <input type="text" class="form-control form-control-sm"
+                                                                                placeholder="Room Name">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-10 col-xl-10">
+                                                                        <div class="row">
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Number
+                                                                                        of Bed:</label>
+                                                                                    <select class="form-control form-control-sm">
+                                                                                        <option>20</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="A">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="B">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="C">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <hr>
+                                                                <div class="row">
+                                                                    <div class="col-lg-2 col-xl-2">
+                                                                        <div class="form-group">
+                                                                            <label class="form-label form-label-sm text-uppercase">Room
+                                                                                Name: </label>
+                                                                            <input type="text" class="form-control form-control-sm"
+                                                                                placeholder="Room Name">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-10 col-xl-10">
+                                                                        <div class="row">
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Number
+                                                                                        of Bed:</label>
+                                                                                    <select class="form-control form-control-sm">
+                                                                                        <option>20</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="A">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="B">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="C">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <hr>
+                                                                <div class="row">
+                                                                    <div class="col-lg-2 col-xl-2">
+                                                                        <div class="form-group">
+                                                                            <label class="form-label form-label-sm text-uppercase">Room
+                                                                                Name: </label>
+                                                                            <input type="text" class="form-control form-control-sm"
+                                                                                placeholder="Room Name">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-10 col-xl-10">
+                                                                        <div class="row">
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Number
+                                                                                        of Bed:</label>
+                                                                                    <select class="form-control form-control-sm">
+                                                                                        <option>20</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="A">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="B">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="C">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <hr>
+                                                                <div class="row">
+                                                                    <div class="col-lg-2 col-xl-2">
+                                                                        <div class="form-group">
+                                                                            <label class="form-label form-label-sm text-uppercase">Room
+                                                                                Name: </label>
+                                                                            <input type="text" class="form-control form-control-sm"
+                                                                                placeholder="Room Name">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-10 col-xl-10">
+                                                                        <div class="row">
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Number
+                                                                                        of Bed:</label>
+                                                                                    <select class="form-control form-control-sm">
+                                                                                        <option>20</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="A">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="B">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="C">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="card mb-2">
+                                                        <div class="card-header">
+                                                            <a class="collapsed d-flex justify-content-between text-dark"
+                                                                data-toggle="collapse" href="#accordion2-2">
+                                                                Floor 2
+                                                                <div class="collapse-icon"></div>
+                                                            </a>
+                                                        </div>
+                                                        <div id="accordion2-2" class="collapse" data-parent="#accordion2">
+                                                            <div class="card-body">
+                                                                <div class="row">
+                                                                    <div class="col-lg-2 col-xl-2">
+                                                                        <div class="form-group">
+                                                                            <label class="form-label form-label-sm text-uppercase">Number
+                                                                                of Room:</label>
+                                                                            <select class="form-control form-control-sm">
+                                                                                <option>4</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <hr>
+                                                                <div class="row">
+                                                                    <div class="col-lg-2 col-xl-2">
+                                                                        <div class="form-group">
+                                                                            <label class="form-label form-label-sm text-uppercase">Room
+                                                                                Name: </label>
+                                                                            <input type="text" class="form-control form-control-sm"
+                                                                                placeholder="Room Name">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-10 col-xl-10">
+                                                                        <div class="row">
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Number
+                                                                                        of Bed:</label>
+                                                                                    <select class="form-control form-control-sm">
+                                                                                        <option>20</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="A">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="B">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="C">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <hr>
+                                                                <div class="row">
+                                                                    <div class="col-lg-2 col-xl-2">
+                                                                        <div class="form-group">
+                                                                            <label class="form-label form-label-sm text-uppercase">Room
+                                                                                Name: </label>
+                                                                            <input type="text" class="form-control form-control-sm"
+                                                                                placeholder="Room Name">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-10 col-xl-10">
+                                                                        <div class="row">
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Number
+                                                                                        of Bed:</label>
+                                                                                    <select class="form-control form-control-sm">
+                                                                                        <option>20</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="A">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="B">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="C">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <hr>
+                                                                <div class="row">
+                                                                    <div class="col-lg-2 col-xl-2">
+                                                                        <div class="form-group">
+                                                                            <label class="form-label form-label-sm text-uppercase">Room
+                                                                                Name: </label>
+                                                                            <input type="text" class="form-control form-control-sm"
+                                                                                placeholder="Room Name">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-10 col-xl-10">
+                                                                        <div class="row">
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Number
+                                                                                        of Bed:</label>
+                                                                                    <select class="form-control form-control-sm">
+                                                                                        <option>20</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="A">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="B">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="C">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <hr>
+                                                                <div class="row">
+                                                                    <div class="col-lg-2 col-xl-2">
+                                                                        <div class="form-group">
+                                                                            <label class="form-label form-label-sm text-uppercase">Room
+                                                                                Name: </label>
+                                                                            <input type="text" class="form-control form-control-sm"
+                                                                                placeholder="Room Name">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-10 col-xl-10">
+                                                                        <div class="row">
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Number
+                                                                                        of Bed:</label>
+                                                                                    <select class="form-control form-control-sm">
+                                                                                        <option>20</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="A">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="B">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="C">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="card mb-2">
+                                                        <div class="card-header">
+                                                            <a class="collapsed d-flex justify-content-between text-dark"
+                                                                data-toggle="collapse" href="#accordion2-3">
+                                                                Floor 3
+                                                                <div class="collapse-icon"></div>
+                                                            </a>
+                                                        </div>
+                                                        <div id="accordion2-3" class="collapse" data-parent="#accordion2">
+                                                            <div class="card-body">
+                                                                <div class="row">
+                                                                    <div class="col-lg-2 col-xl-2">
+                                                                        <div class="form-group">
+                                                                            <label class="form-label form-label-sm text-uppercase">Number
+                                                                                of Room:</label>
+                                                                            <select class="form-control form-control-sm">
+                                                                                <option>4</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <hr>
+                                                                <div class="row">
+                                                                    <div class="col-lg-2 col-xl-2">
+                                                                        <div class="form-group">
+                                                                            <label class="form-label form-label-sm text-uppercase">Room
+                                                                                Name: </label>
+                                                                            <input type="text" class="form-control form-control-sm"
+                                                                                placeholder="Room Name">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-10 col-xl-10">
+                                                                        <div class="row">
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Number
+                                                                                        of Bed:</label>
+                                                                                    <select class="form-control form-control-sm">
+                                                                                        <option>20</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="A">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="B">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="C">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <hr>
+                                                                <div class="row">
+                                                                    <div class="col-lg-2 col-xl-2">
+                                                                        <div class="form-group">
+                                                                            <label class="form-label form-label-sm text-uppercase">Room
+                                                                                Name: </label>
+                                                                            <input type="text" class="form-control form-control-sm"
+                                                                                placeholder="Room Name">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-10 col-xl-10">
+                                                                        <div class="row">
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Number
+                                                                                        of Bed:</label>
+                                                                                    <select class="form-control form-control-sm">
+                                                                                        <option>20</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="A">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="B">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="C">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <hr>
+                                                                <div class="row">
+                                                                    <div class="col-lg-2 col-xl-2">
+                                                                        <div class="form-group">
+                                                                            <label class="form-label form-label-sm text-uppercase">Room
+                                                                                Name: </label>
+                                                                            <input type="text" class="form-control form-control-sm"
+                                                                                placeholder="Room Name">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-10 col-xl-10">
+                                                                        <div class="row">
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Number
+                                                                                        of Bed:</label>
+                                                                                    <select class="form-control form-control-sm">
+                                                                                        <option>20</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="A">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="B">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="C">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <hr>
+                                                                <div class="row">
+                                                                    <div class="col-lg-2 col-xl-2">
+                                                                        <div class="form-group">
+                                                                            <label class="form-label form-label-sm text-uppercase">Room
+                                                                                Name: </label>
+                                                                            <input type="text" class="form-control form-control-sm"
+                                                                                placeholder="Room Name">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-10 col-xl-10">
+                                                                        <div class="row">
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Number
+                                                                                        of Bed:</label>
+                                                                                    <select class="form-control form-control-sm">
+                                                                                        <option>20</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="A">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="B">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="C">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="card mb-2">
+                                                        <div class="card-header">
+                                                            <a class="collapsed d-flex justify-content-between text-dark"
+                                                                data-toggle="collapse" href="#accordion2-4">
+                                                                Floor 4
+                                                                <div class="collapse-icon"></div>
+                                                            </a>
+                                                        </div>
+                                                        <div id="accordion2-4" class="collapse" data-parent="#accordion2">
+                                                            <div class="card-body">
+                                                                <div class="row">
+                                                                    <div class="col-lg-2 col-xl-2">
+                                                                        <div class="form-group">
+                                                                            <label class="form-label form-label-sm text-uppercase">Number
+                                                                                of Room:</label>
+                                                                            <select class="form-control form-control-sm">
+                                                                                <option>4</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <hr>
+                                                                <div class="row">
+                                                                    <div class="col-lg-2 col-xl-2">
+                                                                        <div class="form-group">
+                                                                            <label class="form-label form-label-sm text-uppercase">Room
+                                                                                Name: </label>
+                                                                            <input type="text" class="form-control form-control-sm"
+                                                                                placeholder="Room Name">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-10 col-xl-10">
+                                                                        <div class="row">
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Number
+                                                                                        of Bed:</label>
+                                                                                    <select class="form-control form-control-sm">
+                                                                                        <option>20</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="A">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="B">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="C">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <hr>
+                                                                <div class="row">
+                                                                    <div class="col-lg-2 col-xl-2">
+                                                                        <div class="form-group">
+                                                                            <label class="form-label form-label-sm text-uppercase">Room
+                                                                                Name: </label>
+                                                                            <input type="text" class="form-control form-control-sm"
+                                                                                placeholder="Room Name">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-10 col-xl-10">
+                                                                        <div class="row">
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Number
+                                                                                        of Bed:</label>
+                                                                                    <select class="form-control form-control-sm">
+                                                                                        <option>20</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="A">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="B">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="C">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <hr>
+                                                                <div class="row">
+                                                                    <div class="col-lg-2 col-xl-2">
+                                                                        <div class="form-group">
+                                                                            <label class="form-label form-label-sm text-uppercase">Room
+                                                                                Name: </label>
+                                                                            <input type="text" class="form-control form-control-sm"
+                                                                                placeholder="Room Name">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-10 col-xl-10">
+                                                                        <div class="row">
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Number
+                                                                                        of Bed:</label>
+                                                                                    <select class="form-control form-control-sm">
+                                                                                        <option>20</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="A">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="B">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="C">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <hr>
+                                                                <div class="row">
+                                                                    <div class="col-lg-2 col-xl-2">
+                                                                        <div class="form-group">
+                                                                            <label class="form-label form-label-sm text-uppercase">Room
+                                                                                Name: </label>
+                                                                            <input type="text" class="form-control form-control-sm"
+                                                                                placeholder="Room Name">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-10 col-xl-10">
+                                                                        <div class="row">
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Number
+                                                                                        of Bed:</label>
+                                                                                    <select class="form-control form-control-sm">
+                                                                                        <option>20</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="A">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="B">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="C">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="card mb-2">
+                                                        <div class="card-header">
+                                                            <a class="collapsed d-flex justify-content-between text-dark"
+                                                                data-toggle="collapse" href="#accordion2-5">
+                                                                Floor 5
+                                                                <div class="collapse-icon"></div>
+                                                            </a>
+                                                        </div>
+                                                        <div id="accordion2-5" class="collapse" data-parent="#accordion2">
+                                                            <div class="card-body">
+                                                                <div class="row">
+                                                                    <div class="col-lg-2 col-xl-2">
+                                                                        <div class="form-group">
+                                                                            <label class="form-label form-label-sm text-uppercase">Number
+                                                                                of Room:</label>
+                                                                            <select class="form-control form-control-sm">
+                                                                                <option>4</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <hr>
+                                                                <div class="row">
+                                                                    <div class="col-lg-2 col-xl-2">
+                                                                        <div class="form-group">
+                                                                            <label class="form-label form-label-sm text-uppercase">Room
+                                                                                Name: </label>
+                                                                            <input type="text" class="form-control form-control-sm"
+                                                                                placeholder="Room Name">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-10 col-xl-10">
+                                                                        <div class="row">
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Number
+                                                                                        of Bed:</label>
+                                                                                    <select class="form-control form-control-sm">
+                                                                                        <option>20</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="A">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="B">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="C">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <hr>
+                                                                <div class="row">
+                                                                    <div class="col-lg-2 col-xl-2">
+                                                                        <div class="form-group">
+                                                                            <label class="form-label form-label-sm text-uppercase">Room
+                                                                                Name: </label>
+                                                                            <input type="text" class="form-control form-control-sm"
+                                                                                placeholder="Room Name">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-10 col-xl-10">
+                                                                        <div class="row">
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Number
+                                                                                        of Bed:</label>
+                                                                                    <select class="form-control form-control-sm">
+                                                                                        <option>20</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="A">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="B">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="C">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <hr>
+                                                                <div class="row">
+                                                                    <div class="col-lg-2 col-xl-2">
+                                                                        <div class="form-group">
+                                                                            <label class="form-label form-label-sm text-uppercase">Room
+                                                                                Name: </label>
+                                                                            <input type="text" class="form-control form-control-sm"
+                                                                                placeholder="Room Name">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-10 col-xl-10">
+                                                                        <div class="row">
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Number
+                                                                                        of Bed:</label>
+                                                                                    <select class="form-control form-control-sm">
+                                                                                        <option>20</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="A">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="B">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="C">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <hr>
+                                                                <div class="row">
+                                                                    <div class="col-lg-2 col-xl-2">
+                                                                        <div class="form-group">
+                                                                            <label class="form-label form-label-sm text-uppercase">Room
+                                                                                Name: </label>
+                                                                            <input type="text" class="form-control form-control-sm"
+                                                                                placeholder="Room Name">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-10 col-xl-10">
+                                                                        <div class="row">
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Number
+                                                                                        of Bed:</label>
+                                                                                    <select class="form-control form-control-sm">
+                                                                                        <option>20</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="A">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="B">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-3 col-xl-3">
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Type: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="C">
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="form-label form-label-sm text-uppercase">Bed
+                                                                                        Number: </label>
+                                                                                    <input type="text" class="form-control form-control-sm"
+                                                                                        placeholder="Bed Number">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr class="mb-0">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-xl-12">
+                                                <h5 class="mt-4"><strong>Branch Manager</strong></h5>
+                                            </div>
+                                            <div class="col-lg-3 col-xl-3">
+                                                <div class="form-group">
+                                                    <label class="form-label form-label-sm text-uppercase">Username:
+                                                    </label>
+                                                    <input type="text" class="form-control form-control-sm" placeholder="Username">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="form-label form-label-sm text-uppercase">Password:
+                                                    </label>
+                                                    <input type="text" class="form-control form-control-sm" placeholder="Password">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-xl-3">
+                                                <div class="form-group">
+                                                    <label class="form-label form-label-sm text-uppercase">Email:</label>
+                                                    <input type="text" class="form-control form-control-sm" placeholder="Email">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="form-label form-label-sm text-uppercase">Phone:</label>
+                                                    <input type="text" class="form-control form-control-sm" placeholder="Phone">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <a href="#" class="btn btn-lg btn-secondary">Back</a>
+                                        <a href="#" class="btn btn-lg btn-success">Save</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- / Statistics -->
+                    </div>
+                    <!-- / Content -->
+
+                    <!-- Layout footer -->
+                    <nav class="layout-footer footer bg-footer-theme">
+                        <div class="container-fluid d-flex flex-wrap justify-content-between text-center container-p-x pb-3">
+                            <div class="pt-3">
+                                <span class="footer-text font-weight-bolder">Anoma Health Care</span> ©
+                            </div>
+                        </div>
+                    </nav>
+                    <!-- / Layout footer -->
+
+                </div>
+                <!-- Layout content -->
+
+            </div>
+            <!-- / Layout container -->
+
+        </div>
+
+        <!-- Overlay -->
+        <div class="layout-overlay layout-sidenav-toggle"></div>
+    </div>
+    <!-- / Layout wrapper -->
+
+
+
+    <!-- MODAL Template -->
+
+    <div class="modal fade" id="modals-default">
+        <div class="modal-dialog">
+            <form class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title text-danger text-center mb-0">
+                        Are you sure?
+                    </h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">×</button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            You will not be able to recover this imaginary file!
+                        </div>
+                    </div>
+                </div>
+                <hr class="m-0">
+                <div class="modal-footer">
+                    <a href="#" class="btn btn-default" data-dismiss="modal">Cancel</a>
+                    <a href="#" class="btn btn-danger">Comfirm</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Core scripts -->
+    <script src="assets/vendor/libs/popper/popper.js"></script>
+    <script src="assets/vendor/js/bootstrap.js"></script>
+    <script src="assets/vendor/js/sidenav.js"></script>
+
+    <!-- Libs -->
+    <script src="assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+    <script src="assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="assets/vendor/libs/datatables/datatables.js"></script>
+    <script src="assets/vendor/libs/dropzone/dropzone.js"></script>
+    <script src="assets/vendor/libs/moment/moment.js"></script>
+    <script src="assets/js/ui_button-groups.js"></script>
+    <script src="assets/js/ui_modals.js"></script>
+
+    <!-- Demo -->
+    <script src="assets/js/demo.js"></script>
+    <script src="assets/js/forms_pickers.js"></script>
+    <script src="assets/js/forms_file-upload.js"></script>
+    <script src="assets/js/tables_datatables.js"></script>
+    <script src="assets/js/dashboards_dashboard-1.js"></script>
+</body>
+
+</html>

@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 using Entity;
+using DAO.Branch;
 
 namespace Service.Branch
 {
-    class BranchService : IServiceRepository<BranchEntity>
+    public class BranchService : IServiceRepository<BranchEntity>
     {
         public List<BranchEntity> GetDataAll()
         {
@@ -14,7 +15,8 @@ namespace Service.Branch
 
         public List<BranchEntity> GetDataByCondition(BranchEntity entity)
         {
-            throw new NotImplementedException();
+            BranchDAO branchDAO = new BranchDAO();
+            return branchDAO.GetDataByCondition(entity);
         }
 
         public List<BranchEntity> GetDataByCondition(BranchEntity entity, int index)
@@ -29,12 +31,20 @@ namespace Service.Branch
 
         public int InsertData(BranchEntity entity)
         {
-            throw new NotImplementedException();
+            BranchDAO branchDAO = new BranchDAO();
+            return branchDAO.InsertData(entity);
         }
 
         public int UpdateData(BranchEntity entity)
         {
-            throw new NotImplementedException();
+            BranchDAO branchDAO = new BranchDAO();
+            return branchDAO.UpdateData(entity);
+        }
+
+        public BranchEntity GetDataBranchByID(int branch_id)
+        {
+            BranchDAO branchDAO = new BranchDAO();
+            return branchDAO.GetDataBranchByID(branch_id);
         }
     }
 }
