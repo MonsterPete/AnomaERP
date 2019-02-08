@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Entity
 {
-    public class EntityTask
+    public class EntityTaskEntity
     {
         public Int32 task_id { get; set; }
         public String task_name { get; set; }
