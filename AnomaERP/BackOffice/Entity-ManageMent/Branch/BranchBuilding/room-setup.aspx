@@ -19,7 +19,7 @@
                         <strong>Room Setup  
                        <br />
                             Floor Code :
-                            <label class="text-success">#F1-R2</label></strong>
+                            <label class="text-success">#F1</label></strong>
                     </div>
                 </h4>
 

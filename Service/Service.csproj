@@ -5,6 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Branch\BranchBuilding - Copy\**" />
+    <EmbeddedResource Remove="Branch\BranchBuilding - Copy\**" />
+    <None Remove="Branch\BranchBuilding - Copy\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Dapper" Version="1.50.5" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.5.0" />
     <PackageReference Include="System.Data.SqlClient" Version="4.6.0" />
@@ -14,6 +20,10 @@
     <ProjectReference Include="..\DAO\DAO.csproj" />
     <ProjectReference Include="..\Definitions\Definitions.csproj" />
     <ProjectReference Include="..\Entity\Entity.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="..\..\..\..\..\%2524ival\Codeing\Development\AnomaERP\Service\Branch\BranchBuilding\" />
   </ItemGroup>
 
 </Project>
