@@ -36,31 +36,70 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td >
-                                                        <asp:TextBox ID="TextBox1" CssClass="form-control form-control-md" runat="server"></asp:TextBox></td>
-                                                    <td>IS USE</td>
-                                                    <td class="center">
-                                                        <label class="switcher switcher-md">
-                                                            <input type="checkbox" class="switcher-input" checked="">
-                                                            <span class="switcher-indicator">
-                                                                <span class="switcher-yes">
-                                                                    <span class="ion ion-md-checkmark"></span>
-                                                                </span>
-                                                                <span class="switcher-no">
-                                                                    <span class="ion ion-md-close"></span>
-                                                                </span>
-                                                            </span>
-                                                        </label>
-                                                    </td>
-                                                    <td class="center">
-                                                        <div class="btn-group btn-group-md">
-                                                            <a class="btn btn-danger">
-                                                                <i class="ion ion-md-trash text-white"></i></a>
-                                                        </div></td>
-                                                </tr>
+                                                <asp:Label ID="lblBranchID" runat="server" Text="" Visible="false"></asp:Label>
+                                                 <asp:Label ID="lblFloorID" runat="server" Text="" Visible="false"></asp:Label>
+                                                <asp:Label ID="lblRoomID" runat="server" Text="" Visible="false"></asp:Label>
+                                                <asp:Repeater ID="rptBed" runat="server" OnItemDataBound="rptBed_ItemDataBound" OnItemCommand="rptBed_ItemCommand">
+                                                    <ItemTemplate>
+                                                        <tr class="odd gradeX">
+                                                            <td>
+                                                                <asp:Label ID="lblFloorID" runat="server" Text="" Visible="false"></asp:Label>
+                                                                <asp:Label ID="lblBranchID" runat="server" Text="" Visible="false"></asp:Label>
+                                                                <asp:Label ID="lblRoomID" runat="server" Text="" Visible="false"></asp:Label>
+                                                                <asp:Label ID="lblBedID" runat="server" Text="" Visible="false"></asp:Label>
+                                                                <asp:TextBox ID="txtBedName" CssClass="form-control form-control-sm" runat="server"></asp:TextBox>
+                                                            </td>
+                                                            <td>IS USE
+                                                            </td>
+                                                            <td class="center">
+                                                                <label class="switcher switcher-sm">
+                                                                    <asp:HiddenField ID="hdfActive" runat="server" />
+                                                                    <asp:LinkButton ID="lbnActive" runat="server" ClientIDMode="AutoID">
+                                                                        <input id="chkActive" runat="server" type="checkbox" class="switcher-input">
+                                                                        <span class="switcher-indicator">
+                                                                            <span class="switcher-yes">
+                                                                                <span class="ion ion-md-checkmark"></span>
+                                                                            </span>
+                                                                            <span class="switcher-no">
+                                                                                <span class="ion ion-md-close"></span>
+                                                                            </span>
+                                                                        </span>
+                                                                    </asp:LinkButton>
+                                                                </label>
+                                                            </td>
+                                                            <td runat="server" id="tdDelete" class="center">
+                                                                <div class="btn-group btn-group-sm">
+                                                                    <asp:LinkButton ID="lbnDelete" CssClass="btn btn-danger" runat="server">
+                                                                                    <i class="ion ion-md-close"></i>
+                                                                    </asp:LinkButton>
+                                                                </div>
+                                                               <%-- <div class="btn-group btn-group-sm">
+                                                                    <asp:LinkButton ID="lbnBed" CssClass="btn btn-success" runat="server">
+                                                                                   <i class="fas fa-door-open"></i>
+                                                                    </asp:LinkButton>
+                                                                </div>--%>
+                                                            </td>
+                                                        </tr>
+                                                    </ItemTemplate>
+                                                </asp:Repeater>                                               
                                             </tbody>
                                         </table>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-12 col-xl-12">
+                                        <div class="pull-right">
+                                            <asp:LinkButton ID="lbnAdd" runat="server" CssClass="btn btn-sm btn-success" OnClick="lbnAdd_Click">+ เพิ่มรายการ</asp:LinkButton>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr />
+                                <div class="row">
+                                    <div class="col-lg-3 col-xl-3 mb-2">
+                                        <asp:LinkButton ID="lblBack" runat="server" CssClass="btn btn-lg btn-primary" OnClick="lblBack_Click">ยกเลิก</asp:LinkButton>
+                                        <asp:LinkButton ID="lbnSave" runat="server" CssClass="btn btn-lg btn-primary" OnClick="lbnSave_Click">บันทึก</asp:LinkButton>
                                     </div>
                                 </div>
 

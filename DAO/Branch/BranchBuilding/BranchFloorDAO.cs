@@ -64,7 +64,36 @@ namespace DAO.Branch.BranchBuilding
 
         public BranchFloorEntity GetDataByID(long id)
         {
-            throw new NotImplementedException();
+            BranchFloorEntity branchFloorEntities = new BranchFloorEntity();
+            try
+            {
+                using (DBHelper.CreateConnection())
+                {
+                    try
+                    {
+                        DBHelper.OpenConnection();
+                        DBHelper.CreateParameters();
+                        DBHelper.AddParam("branch_id", id);
+
+                        branchFloorEntities = DBHelper.SelectStoreProcedureFirst<BranchFloorEntity>("select_branch_floor_by_id");
+
+
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                    finally
+                    {
+                        DBHelper.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return branchFloorEntities;
         }
 
         public int InsertData(BranchFloorEntity entity)
@@ -74,7 +103,149 @@ namespace DAO.Branch.BranchBuilding
 
         public int UpdateData(BranchFloorEntity entity)
         {
-            throw new NotImplementedException();
+            int result = 0;
+
+            try
+            {
+                using (DBHelper.CreateConnection())
+                {
+                    try
+                    {
+                        DBHelper.OpenConnection();
+
+                        using (DBHelper.BeginTransaction())
+                        {
+                            DBHelper.CreateParameters();
+                            DBHelper.AddParam("floor_id", entity.floor_id);                           
+                            DBHelper.AddParam("is_active", entity.is_active);                           
+                            DBHelper.AddParamOut("success_row", result);
+
+                            DBHelper.ExecuteStoreProcedure("update_branch_floor_active");
+                            Int32 param_out_id = DBHelper.GetParamOut<Int32>("success_row");
+
+                            DBHelper.CommitTransaction();
+                            result = param_out_id;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                    finally
+                    {
+                        DBHelper.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return result;
+        }
+
+        public List<BranchFloorEntity> GetDataBranchFloorByID(int Branch_id)
+        {
+            //BranchFloorEntity branchFloorEntity = new BranchFloorEntity();
+            List<BranchFloorEntity> branchFloorEntities = new List<BranchFloorEntity>();
+            try
+            {
+                using (DBHelper.CreateConnection())
+                {
+                    try
+                    {
+                        DBHelper.OpenConnection();
+                        DBHelper.CreateParameters();
+                        DBHelper.AddParam("branch_id", Branch_id);
+                        
+                        branchFloorEntities = DBHelper.SelectStoreProcedure<BranchFloorEntity>("select_branchfloor_by_branch_id").ToList();
+
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                    finally
+                    {
+                        DBHelper.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return branchFloorEntities;
+        }
+
+        public int InsertDataMore(List<BranchFloorEntity> branchFloorEntity)
+        {
+            int result = 0;
+            
+            try
+            {
+                using (DBHelper.CreateConnection())
+                {
+                    try
+                    {
+                        DBHelper.OpenConnection();
+
+                        using (DBHelper.BeginTransaction())
+                        {  
+                                foreach (var item in branchFloorEntity)
+                                {
+                                    if(item.floor_id > 0)
+                                {
+                                    DBHelper.CreateParameters();
+                                    DBHelper.AddParam("floor_id", item.floor_id);
+                                    DBHelper.AddParam("branch_id", item.branch_id);
+                                    DBHelper.AddParam("floor_name", item.floor_name);
+                                    DBHelper.AddParam("is_active", item.is_active);
+                                    DBHelper.AddParam("is_delete", item.is_delete);
+                                    DBHelper.AddParam("create_date", item.create_date);
+
+                                    result = DBHelper.ExecuteStoreProcedure("update_branch_floor");
+                                }
+                                else
+                                {
+                                    DBHelper.CreateParameters();
+                                    DBHelper.AddParamOut("floor_id", item.floor_id);
+                                    DBHelper.AddParam("branch_id", item.branch_id);
+                                    DBHelper.AddParam("floor_name", item.floor_name);
+                                    DBHelper.AddParam("is_active", item.is_active);
+                                    DBHelper.AddParam("is_delete", item.is_delete);
+                                    DBHelper.AddParam("create_date", item.create_date);
+
+                                    DBHelper.ExecuteStoreProcedure("insert_branch_floor");
+                                    result = DBHelper.GetParamOut<Int32>("floor_id");
+                                }
+                                       
+                                                                      
+
+                                }
+                            
+                            
+                            DBHelper.CommitTransaction();
+                           
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                    finally
+                    {
+                        DBHelper.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return result;
         }
     }
 }

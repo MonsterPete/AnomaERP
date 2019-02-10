@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using DAO.Branch.BranchBuilding;
 
 namespace Service.Branch.BranchBuilding
 {
@@ -24,7 +25,8 @@ namespace Service.Branch.BranchBuilding
 
         public BranchRoomEntity GetDataByID(long id)
         {
-            throw new NotImplementedException();
+            BranchRoomDAO branchRoomDAO = new BranchRoomDAO();
+            return branchRoomDAO.GetDataByID(id);
         }
 
         public int InsertData(BranchRoomEntity entity)
@@ -34,7 +36,19 @@ namespace Service.Branch.BranchBuilding
 
         public int UpdateData(BranchRoomEntity entity)
         {
-            throw new NotImplementedException();
+            BranchRoomDAO branchRoomDAO = new BranchRoomDAO();
+            return branchRoomDAO.UpdateData(entity);
+        }
+        public List<BranchRoomEntity> GetDataBranchRoomByID(int Floor_id)
+        {
+            BranchRoomDAO branchRoomDAO = new BranchRoomDAO();
+            return branchRoomDAO.GetDataBranchRoomByID(Floor_id);
+        }
+
+        public int InsertDataMore(List<BranchRoomEntity> branchFloorEntities)
+        {
+            BranchRoomDAO branchRoomDAO = new BranchRoomDAO();
+            return branchRoomDAO.InsertDataMore(branchFloorEntities);
         }
     }
 }

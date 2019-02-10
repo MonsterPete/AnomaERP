@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using DAO.Branch.BranchBuilding;
 
 namespace Service.Branch.BranchBuilding
 {
@@ -24,7 +25,8 @@ namespace Service.Branch.BranchBuilding
 
         public BranchBedEntity GetDataByID(long id)
         {
-            throw new NotImplementedException();
+            BranchBedDAO branchBedDAO = new BranchBedDAO();
+            return branchBedDAO.GetDataByID(id);
         }
 
         public int InsertData(BranchBedEntity entity)
@@ -34,7 +36,20 @@ namespace Service.Branch.BranchBuilding
 
         public int UpdateData(BranchBedEntity entity)
         {
-            throw new NotImplementedException();
+            BranchBedDAO branchBedDAO = new BranchBedDAO();
+            return branchBedDAO.UpdateData(entity);
+        }
+
+        public List<BranchBedEntity> GetDataBranchBedByID(int room_id)
+        {
+            BranchBedDAO branchBedDAO = new BranchBedDAO();
+            return branchBedDAO.GetDataBranchBedByID(room_id);
+        }
+
+        public int InsertDataMore(List<BranchBedEntity> branchFloorEntities)
+        {
+            BranchBedDAO branchBedDAO = new BranchBedDAO();
+            return branchBedDAO.InsertDataMore(branchFloorEntities);
         }
     }
 }

@@ -64,7 +64,36 @@ namespace DAO.Branch.BranchBuilding
 
         public BranchRoomEntity GetDataByID(long id)
         {
-            throw new NotImplementedException();
+            BranchRoomEntity branchRoomEntity = new BranchRoomEntity();
+            try
+            {
+                using (DBHelper.CreateConnection())
+                {
+                    try
+                    {
+                        DBHelper.OpenConnection();
+                        DBHelper.CreateParameters();
+                        DBHelper.AddParam("floor_id", id);
+
+                        branchRoomEntity = DBHelper.SelectStoreProcedureFirst<BranchRoomEntity>("select_branch_room_by_id");
+
+
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                    finally
+                    {
+                        DBHelper.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return branchRoomEntity;
         }
 
         public int InsertData(BranchRoomEntity entity)
@@ -74,7 +103,149 @@ namespace DAO.Branch.BranchBuilding
 
         public int UpdateData(BranchRoomEntity entity)
         {
-            throw new NotImplementedException();
+            int result = 0;
+
+            try
+            {
+                using (DBHelper.CreateConnection())
+                {
+                    try
+                    {
+                        DBHelper.OpenConnection();
+
+                        using (DBHelper.BeginTransaction())
+                        {
+                            DBHelper.CreateParameters();
+                            DBHelper.AddParam("room_id", entity.room_id);
+                            DBHelper.AddParam("is_active", entity.is_active);
+                            DBHelper.AddParamOut("success_row", result);
+
+                            DBHelper.ExecuteStoreProcedure("update_branch_room_active");
+                            Int32 param_out_id = DBHelper.GetParamOut<Int32>("success_row");
+
+                            DBHelper.CommitTransaction();
+                            result = param_out_id;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                    finally
+                    {
+                        DBHelper.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return result;
+        }
+
+        public List<BranchRoomEntity> GetDataBranchRoomByID(int Floor_id)
+        {
+            //BranchFloorEntity branchFloorEntity = new BranchFloorEntity();
+            List<BranchRoomEntity> branchRoomEntities = new List<BranchRoomEntity>();
+            try
+            {
+                using (DBHelper.CreateConnection())
+                {
+                    try
+                    {
+                        DBHelper.OpenConnection();
+                        DBHelper.CreateParameters();
+                        DBHelper.AddParam("floor_id", Floor_id);
+
+                        branchRoomEntities = DBHelper.SelectStoreProcedure<BranchRoomEntity>("select_branchroom_by_floor_id").ToList();
+
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                    finally
+                    {
+                        DBHelper.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return branchRoomEntities;
+        }
+
+        public int InsertDataMore(List<BranchRoomEntity> branchRoomEntities)
+        {
+            int result = 0;
+
+            try
+            {
+                using (DBHelper.CreateConnection())
+                {
+                    try
+                    {
+                        DBHelper.OpenConnection();
+
+                        using (DBHelper.BeginTransaction())
+                        {
+                            foreach (var item in branchRoomEntities)
+                            {
+                                if (item.room_id > 0)
+                                {
+                                    DBHelper.CreateParameters();
+                                    DBHelper.AddParam("floor_id", item.floor_id);
+                                    DBHelper.AddParam("room_id", item.room_id);
+                                    DBHelper.AddParam("room_name", item.room_name);
+                                    DBHelper.AddParam("is_active", item.is_active);
+                                    DBHelper.AddParam("is_delete", item.is_delete);
+                                    DBHelper.AddParam("create_date", item.create_date);
+
+                                    result = DBHelper.ExecuteStoreProcedure("update_branch_room");
+                                }
+                                else
+                                {
+                                    DBHelper.CreateParameters();
+                                    DBHelper.AddParamOut("room_id", item.room_id);
+                                    DBHelper.AddParam("floor_id", item.floor_id);
+                                    DBHelper.AddParam("room_name", item.room_name);
+                                    DBHelper.AddParam("is_active", item.is_active);
+                                    DBHelper.AddParam("is_delete", item.is_delete);
+                                    DBHelper.AddParam("create_date", item.create_date);
+
+                                    DBHelper.ExecuteStoreProcedure("insert_branch_room");
+                                    result = DBHelper.GetParamOut<Int32>("room_id");
+                                }
+
+
+
+                            }
+
+
+                            DBHelper.CommitTransaction();
+
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                    finally
+                    {
+                        DBHelper.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return result;
         }
     }
 }
