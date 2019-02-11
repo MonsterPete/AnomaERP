@@ -16,7 +16,8 @@ namespace Service.Role
 
         public List<PositionGroupEntity> GetDataByCondition(PositionGroupEntity entity)
         {
-            throw new NotImplementedException();
+            PositionGroupDAO positionGroupDAO = new PositionGroupDAO();
+            return positionGroupDAO.GetDataByCondition(entity);
         }
 
         public List<PositionGroupEntity> GetDataByCondition(PositionGroupEntity entity, int index)
@@ -36,7 +37,8 @@ namespace Service.Role
 
         public int UpdateData(PositionGroupEntity entity)
         {
-            throw new NotImplementedException();
+            PositionGroupDAO positionGroupDAO = new PositionGroupDAO();
+            return positionGroupDAO.UpdateData(entity);
         }
     }
 }

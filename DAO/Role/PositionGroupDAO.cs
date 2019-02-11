@@ -49,7 +49,37 @@ namespace DAO.Role
 
         public List<PositionGroupEntity> GetDataByCondition(PositionGroupEntity entity)
         {
-            throw new NotImplementedException();
+            List<PositionGroupEntity> positionGroupEntities = null;
+
+            try
+            {
+                using (DBHelper.CreateConnection())
+                {
+                    try
+                    {
+                        DBHelper.OpenConnection();
+                        DBHelper.CreateParameters();
+
+                        DBHelper.AddParam("Search", entity.group_name);
+
+
+                        positionGroupEntities = DBHelper.SelectStoreProcedure<PositionGroupEntity>("select_position_group_by_condition").ToList();
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                    finally
+                    {
+                        DBHelper.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return positionGroupEntities;
         }
 
         public List<PositionGroupEntity> GetDataByCondition(PositionGroupEntity entity, int Index)
@@ -69,7 +99,46 @@ namespace DAO.Role
 
         public int UpdateData(PositionGroupEntity entity)
         {
-            throw new NotImplementedException();
+            int result = 0;
+
+            try
+            {
+                using (DBHelper.CreateConnection())
+                {
+                    try
+                    {
+                        DBHelper.OpenConnection();
+
+                        using (DBHelper.BeginTransaction())
+                        {
+                            DBHelper.CreateParameters();
+                            DBHelper.AddParam("group_id", entity.group_id);
+                            DBHelper.AddParam("is_active", entity.is_active);                           
+                            DBHelper.AddParamOut("success_row", result);
+
+                            DBHelper.ExecuteStoreProcedure("update_position_group_active");
+                            Int32 param_out_id = DBHelper.GetParamOut<Int32>("success_row");
+
+                            DBHelper.CommitTransaction();
+                            result = param_out_id;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                    finally
+                    {
+                        DBHelper.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return result;
         }
     }
 }

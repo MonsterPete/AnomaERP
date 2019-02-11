@@ -23,9 +23,9 @@ namespace AnomaERP.BackOffice.Role.RoleSetup
 
                     if (int.Parse(Request.QueryString["group_id"]) > 0)
                     {
-                        lblGroupID.Text = Request.QueryString["group_id"].ToString();
-                        txtGroupName.Text = Request.QueryString["group_name"].ToString();
+                        lblGroupID.Text = Request.QueryString["group_id"].ToString();                       
                         SetDataToUI(int.Parse(lblGroupID.Text));
+                        //txtGroupName.Text = Request.QueryString["group_name"].ToString();
                     }
                 }
             }
@@ -36,8 +36,9 @@ namespace AnomaERP.BackOffice.Role.RoleSetup
             PositionService positionService = new PositionService();
             List<PositionEntity> positionEntities = new List<PositionEntity>();
             PositionEntity positionEntity = new PositionEntity();
-
-            positionEntities = positionService.GetDataPositionGroupByID(Group_id);            
+            positionEntity = positionService.GetDataByID(Group_id);
+            positionEntities = positionService.GetDataPositionGroupByID(Group_id);
+            txtGroupName.Text = positionEntity.group_name;
             SetDataTorpt(positionEntities);
 
         }
