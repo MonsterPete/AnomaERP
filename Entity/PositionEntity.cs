@@ -13,5 +13,9 @@ namespace Entity
         public DateTime create_date { get; set; }
         public Boolean is_active { get; set; }
         public Boolean is_delete { get; set; }
+
+        #region position_group table
+        public String group_name { get; set; }
+        #endregion
     }
 }

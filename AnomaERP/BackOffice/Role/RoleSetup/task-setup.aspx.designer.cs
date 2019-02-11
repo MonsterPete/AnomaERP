@@ -7,55 +7,37 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AnomaERP.BackOffice.Entity_ManageMent.Branch.BranchBuilding {
+namespace AnomaERP.BackOffice.Role.RoleSetup {
     
     
-    public partial class bed_setup {
+    public partial class task_setup {
         
         /// <summary>
-        /// upnBedSetup control.
+        /// ddlGroupName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel upnBedSetup;
+        protected global::System.Web.UI.WebControls.DropDownList ddlGroupName;
         
         /// <summary>
-        /// lblBranchID control.
+        /// lblGroupID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblBranchID;
+        protected global::System.Web.UI.WebControls.Label lblGroupID;
         
         /// <summary>
-        /// lblFloorID control.
+        /// rptTask control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblFloorID;
-        
-        /// <summary>
-        /// lblRoomID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRoomID;
-        
-        /// <summary>
-        /// rptBed control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptBed;
+        protected global::System.Web.UI.WebControls.Repeater rptTask;
         
         /// <summary>
         /// lbnAdd control.

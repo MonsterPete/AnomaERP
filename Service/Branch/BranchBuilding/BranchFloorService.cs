@@ -51,5 +51,11 @@ namespace Service.Branch.BranchBuilding
             BranchFloorDAO branchFloorDAO = new BranchFloorDAO();
             return branchFloorDAO.InsertDataMore(branchFloorEntity);
         }
+
+        public int DeleteData(BranchFloorEntity entity)
+        {
+            BranchFloorDAO branchFloorDAO = new BranchFloorDAO();
+            return branchFloorDAO.DeleteData(entity);
+        }
     }
 }

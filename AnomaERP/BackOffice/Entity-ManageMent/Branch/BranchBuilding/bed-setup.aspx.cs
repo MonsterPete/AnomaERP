@@ -61,7 +61,7 @@ namespace AnomaERP.BackOffice.Entity_ManageMent.Branch.BranchBuilding
             LinkButton lbnActive = (LinkButton)e.Item.FindControl("lbnActive");
             HtmlInputCheckBox chkActive = (HtmlInputCheckBox)e.Item.FindControl("chkActive");
             HiddenField hdfActive = (HiddenField)e.Item.FindControl("hdfActive");
-            //LinkButton lbnDelete = (LinkButton)e.Item.FindControl("lbnDelete");
+            LinkButton lbnDelete = (LinkButton)e.Item.FindControl("lbnDelete");
             LinkButton lbnBed = (LinkButton)e.Item.FindControl("lbnBed");
 
             lblFloorID.Text = lblFloorID.Text;
@@ -83,6 +83,8 @@ namespace AnomaERP.BackOffice.Entity_ManageMent.Branch.BranchBuilding
             lbnActive.CommandArgument = branchBedEntity.bed_id.ToString();
             //lbnBed.CommandName = "Bed";
             //lbnBed.CommandArgument = branchBedEntity.room_id.ToString();
+            lbnDelete.CommandName = "Delete";
+            lbnDelete.CommandArgument = branchBedEntity.bed_id.ToString();
         }
 
         protected void lbnAdd_Click(object sender, EventArgs e)
@@ -126,77 +128,52 @@ namespace AnomaERP.BackOffice.Entity_ManageMent.Branch.BranchBuilding
                 BranchBedEntity branchBedEntity = new BranchBedEntity();
                 BranchBedService branchBedService = new BranchBedService();
                 branchBedEntity = branchBedService.GetDataByID(int.Parse(lblRoomID.Text));
-                if (branchBedEntity.is_active == true)
+                if (branchBedEntity != null)
                 {
-                    if (rptBed.Items[i].Visible == true)
-                    {
-
-                        branchBedEntities.Add(new BranchBedEntity
-                        {
-                            
-                            room_id = int.Parse(lblRoomID.Text),
-                            bed_id = int.Parse(lblBedID.Text),
-                            bed_type_id = 1,
-                            bed_name = txtBedName.Text,
-                            create_date = DateTime.UtcNow,
-                            is_delete = false,
-                            is_active = chkActive.Checked
-
-                        });
+                    if (branchBedEntity.is_active == true)
+                    {                       
+                            branchBedEntities.Add(new BranchBedEntity
+                            {
+                                room_id = int.Parse(lblRoomID.Text),
+                                bed_id = int.Parse(lblBedID.Text),
+                                bed_type_id = 1,
+                                bed_name = txtBedName.Text,
+                                create_date = DateTime.UtcNow,
+                                is_delete = false,
+                                is_active = chkActive.Checked
+                            });                      
                     }
                     else
-                    {
+                    {                       
+                            branchBedEntities.Add(new BranchBedEntity
+                            {
 
-                        branchBedEntities.Add(new BranchBedEntity
-                        {
-                            
-                            room_id = int.Parse(lblRoomID.Text),
-                            bed_id = int.Parse(lblBedID.Text),
-                            bed_type_id = 1,
-                            bed_name = txtBedName.Text,
-                            create_date = DateTime.UtcNow,
-                            is_delete = false,
-                            is_active = chkActive.Checked
+                                room_id = int.Parse(lblRoomID.Text),
+                                bed_id = int.Parse(lblBedID.Text),
+                                bed_type_id = 1,
+                                bed_name = txtBedName.Text,
+                                create_date = DateTime.UtcNow,
+                                is_delete = false,
+                                is_active = chkActive.Checked
 
-                        });
+                            });
+                       
                     }
-
                 }
                 else
                 {
-                    if (rptBed.Items[i].Visible == true)
+                    branchBedEntities.Add(new BranchBedEntity
                     {
+                        room_id = int.Parse(lblRoomID.Text),
+                        bed_id = int.Parse(lblBedID.Text),
+                        bed_type_id = 1,
+                        bed_name = txtBedName.Text,
+                        create_date = DateTime.UtcNow,
+                        is_delete = false,
+                        is_active = chkActive.Checked
 
+                    });
 
-                        branchBedEntities.Add(new BranchBedEntity
-                        {
-                            
-                            room_id = int.Parse(lblRoomID.Text),
-                            bed_id = int.Parse(lblBedID.Text),
-                            bed_type_id = 1,
-                            bed_name = txtBedName.Text,
-                            create_date = DateTime.UtcNow,
-                            is_delete = false,
-                            is_active = chkActive.Checked
-
-                        });
-                    }
-                    else
-                    {
-
-                        branchBedEntities.Add(new BranchBedEntity
-                        {
-                            
-                            room_id = int.Parse(lblRoomID.Text),
-                            bed_id = int.Parse(lblBedID.Text),
-                            bed_type_id = 1,
-                            bed_name = txtBedName.Text,
-                            create_date = DateTime.UtcNow,
-                            is_delete = false,
-                            is_active = chkActive.Checked
-
-                        });
-                    }
                 }
             }
 
@@ -253,10 +230,16 @@ namespace AnomaERP.BackOffice.Entity_ManageMent.Branch.BranchBuilding
                     SetDataToUI(int.Parse(lblRoomID.Text));
                 }
             }
-            //else if (e.CommandName == "Bed")
-            //{
-            //    Response.Redirect("/BackOffice/Entity-Management/Branch/BranchBuilding/bed-setup.aspx?room_id=" + e.CommandArgument + "&branch_id=" + lblBranchID.Text + "&floor_id=" + lblFloorID.Text);
-            //}
+            else if (e.CommandName == "Delete")
+            {
+                BranchBedEntity branchBedEntity = new BranchBedEntity();
+                BranchBedService branchBedService = new BranchBedService();
+                branchBedEntity.bed_id = Int32.Parse(e.CommandArgument.ToString());
+                if (branchBedService.DeleteData(branchBedEntity) > 0)
+                {
+                    SetDataToUI(int.Parse(lblBranchID.Text));
+                }
+            }
         }
     }
 }

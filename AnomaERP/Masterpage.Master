@@ -216,6 +216,29 @@
                                 <div>Inventory</div>
                             </a>
                         </li>
+                        <li class="sidenav-item">
+                             <a href="javascript:void(0)" class="sidenav-link sidenav-toggle">
+                                <i class="sidenav-icon ion ion-ios-folder"></i>
+                                <div>Role Setup</div>
+                            </a>
+                            <ul class="sidenav-menu">
+                                <li class="sidenav-item">
+                                    <a href="/BackOffice/Role/RoleSetup/position-list.aspx" class="sidenav-link">
+                                        <div>Position Setup</div>
+                                    </a>
+                                </li>
+                                <li class="sidenav-item">
+                                    <a href="/BackOffice/Role/RoleSetup/role-position.aspx" class="sidenav-link">
+                                        <div>Role Position</div>
+                                    </a>
+                                </li>
+                                 <li class="sidenav-item">
+                                    <a href="/BackOffice/Role/RoleSetup/task-setup.aspx" class="sidenav-link">
+                                        <div>Task Setup</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
                 <!-- / Layout sidenav -->

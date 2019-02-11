@@ -502,8 +502,12 @@
     <Content Include="BackOffice\Role\role-list.html" />
     <Content Include="BackOffice\Nursing-Aide\Workshift\workshift-management.aspx" />
     <Content Include="BackOffice\Nursing-Aide\Workshift\workshift-management.html" />
+    <Content Include="BackOffice\Role\RoleSetup\position-list.aspx" />
+    <Content Include="BackOffice\Role\RoleSetup\position-setup.aspx" />
     <Content Include="BackOffice\Role\RoleSetup\position-setup.html" />
+    <Content Include="BackOffice\Role\RoleSetup\role-position.aspx" />
     <Content Include="BackOffice\Role\RoleSetup\role-position.html" />
+    <Content Include="BackOffice\Role\RoleSetup\task-setup.aspx" />
     <Content Include="BackOffice\Role\RoleSetup\task-setup.html" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -668,6 +672,34 @@
     </Compile>
     <Compile Include="BackOffice\Nursing-Aide\Workshift\workshift-management.aspx.designer.cs">
       <DependentUpon>workshift-management.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BackOffice\Role\RoleSetup\position-list.aspx.cs">
+      <DependentUpon>position-list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackOffice\Role\RoleSetup\position-list.aspx.designer.cs">
+      <DependentUpon>position-list.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BackOffice\Role\RoleSetup\position-setup.aspx.cs">
+      <DependentUpon>position-setup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackOffice\Role\RoleSetup\position-setup.aspx.designer.cs">
+      <DependentUpon>position-setup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BackOffice\Role\RoleSetup\role-position.aspx.cs">
+      <DependentUpon>role-position.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackOffice\Role\RoleSetup\role-position.aspx.designer.cs">
+      <DependentUpon>role-position.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BackOffice\Role\RoleSetup\task-setup.aspx.cs">
+      <DependentUpon>task-setup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackOffice\Role\RoleSetup\task-setup.aspx.designer.cs">
+      <DependentUpon>task-setup.aspx</DependentUpon>
     </Compile>
     <Compile Include="Masterpage.Master.cs">
       <DependentUpon>Masterpage.Master</DependentUpon>

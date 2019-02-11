@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masterpage.Master" AutoEventWireup="true" CodeBehind="bed-setup.aspx.cs" Inherits="AnomaERP.BackOffice.Entity_ManageMent.Branch.BranchBuilding.bed_setup" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="FromPlaceHolder" runat="server">
+     <asp:UpdatePanel ID="upnBedSetup" runat="server">
+        <ContentTemplate>
     <div class="layout-content">
         <div class="container-fluid flex-grow-1 container-p-y">
 
@@ -110,6 +112,8 @@
             </div>
         </div>
     </div>
+     </ContentTemplate>
+    </asp:UpdatePanel>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ModalPlaceHolder" runat="server">
 </asp:Content>

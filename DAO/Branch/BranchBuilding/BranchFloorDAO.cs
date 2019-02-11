@@ -247,5 +247,48 @@ namespace DAO.Branch.BranchBuilding
 
             return result;
         }
+
+        public int DeleteData(BranchFloorEntity entity)
+        {
+            int result = 0;
+
+            try
+            {
+                using (DBHelper.CreateConnection())
+                {
+                    try
+                    {
+                        DBHelper.OpenConnection();
+
+                        using (DBHelper.BeginTransaction())
+                        {
+                            DBHelper.CreateParameters();
+                            DBHelper.AddParam("floor_id", entity.floor_id);                            
+                            DBHelper.AddParamOut("success_row", result);
+
+                            DBHelper.ExecuteStoreProcedure("update_delete_branch_floor");
+                            Int32 param_out_id = DBHelper.GetParamOut<Int32>("success_row");
+
+                            DBHelper.CommitTransaction();
+                            result = param_out_id;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                    finally
+                    {
+                        DBHelper.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return result;
+        }
     }
 }

@@ -59,7 +59,7 @@ namespace AnomaERP.BackOffice.Entity_ManageMent.Branch.BranchBuilding
             LinkButton lbnActive = (LinkButton)e.Item.FindControl("lbnActive");
             HtmlInputCheckBox chkActive = (HtmlInputCheckBox)e.Item.FindControl("chkActive");
             HiddenField hdfActive = (HiddenField)e.Item.FindControl("hdfActive");
-            //LinkButton lbnDelete = (LinkButton)e.Item.FindControl("lbnDelete");
+            LinkButton lbnDelete = (LinkButton)e.Item.FindControl("lbnDelete");
             LinkButton lbnRoom = (LinkButton)e.Item.FindControl("lbnRoom");
 
             lblFloorID.Text = branchRoomEntity.floor_id.ToString();
@@ -80,6 +80,8 @@ namespace AnomaERP.BackOffice.Entity_ManageMent.Branch.BranchBuilding
             lbnActive.CommandArgument = branchRoomEntity.room_id.ToString();
             lbnRoom.CommandName = "Room";
             lbnRoom.CommandArgument = branchRoomEntity.room_id.ToString();
+            lbnDelete.CommandName = "Delete";
+            lbnDelete.CommandArgument = branchRoomEntity.room_id.ToString();
 
         }
 
@@ -113,6 +115,17 @@ namespace AnomaERP.BackOffice.Entity_ManageMent.Branch.BranchBuilding
             {
                 Response.Redirect("/BackOffice/Entity-Management/Branch/BranchBuilding/bed-setup.aspx?room_id=" + e.CommandArgument + "&branch_id=" + lblBranchID.Text + "&floor_id=" + lblFloorID.Text);
             }
+            else if (e.CommandName == "Delete")
+            {
+                BranchRoomEntity branchRoomEntity = new BranchRoomEntity();
+                BranchRoomService branchRoomService = new BranchRoomService();
+
+                branchRoomEntity.room_id = Int32.Parse(e.CommandArgument.ToString());
+                if (branchRoomService.DeleteData(branchRoomEntity) > 0)
+                {
+                    SetDataToUI(int.Parse(lblBranchID.Text));
+                }
+            }
 
         }
 
@@ -134,63 +147,55 @@ namespace AnomaERP.BackOffice.Entity_ManageMent.Branch.BranchBuilding
                 BranchRoomEntity branchRoomEntity = new BranchRoomEntity();
                 BranchRoomService branchRoomService = new BranchRoomService();
                 branchRoomEntity = branchRoomService.GetDataByID(int.Parse(lblFloorID.Text));
-                if (branchRoomEntity.is_active == true)
+                if (branchRoomEntity != null)
                 {
-                    if (rptRoom.Items[i].Visible == true)
+                    if (branchRoomEntity.is_active == true)
                     {
+                        
 
-                        branchRoomEntities.Add(new BranchRoomEntity
-                        {
-                            floor_id = int.Parse(lblFloorID.Text),
-                            room_id = int.Parse(lblRoomID.Text),
-                            room_name = txtRoomName.Text,
-                            create_date = DateTime.UtcNow,
-                            is_delete = false,
-                            is_active = chkActive.Checked
+                            branchRoomEntities.Add(new BranchRoomEntity
+                            {
+                                floor_id = int.Parse(lblFloorID.Text),
+                                room_id = int.Parse(lblRoomID.Text),
+                                room_name = txtRoomName.Text,
+                                create_date = DateTime.UtcNow,
+                                is_delete = false,
+                                is_active = chkActive.Checked
 
-                        });
+                            });
+                        
+                      
                     }
                     else
                     {
-                        branchRoomEntities.Add(new BranchRoomEntity
-                        {
-                            floor_id = int.Parse(lblFloorID.Text),
-                            room_id = int.Parse(lblRoomID.Text),
-                            room_name = txtRoomName.Text,
-                            create_date = DateTime.UtcNow,
-                            is_delete = false,
-                            is_active = chkActive.Checked
-                        });
+                       
+                            branchRoomEntities.Add(new BranchRoomEntity
+                            {
+                                floor_id = int.Parse(lblFloorID.Text),
+                                room_id = int.Parse(lblRoomID.Text),
+                                room_name = txtRoomName.Text,
+                                create_date = DateTime.UtcNow,
+                                is_delete = false,
+                                is_active = chkActive.Checked
+                            });
+                        
                     }
-
                 }
                 else
                 {
-                    if (rptRoom.Items[i].Visible == true)
-                    {
 
-                        branchRoomEntities.Add(new BranchRoomEntity
-                        {
-                            floor_id = int.Parse(lblFloorID.Text),
-                            room_id = int.Parse(lblRoomID.Text),
-                            room_name = txtRoomName.Text,
-                            create_date = DateTime.UtcNow,
-                            is_delete = false,
-                            is_active = chkActive.Checked
-                        });
-                    }
-                    else
+
+                    branchRoomEntities.Add(new BranchRoomEntity
                     {
-                        branchRoomEntities.Add(new BranchRoomEntity
-                        {
-                            floor_id = int.Parse(lblFloorID.Text),
-                            room_id = int.Parse(lblRoomID.Text),
-                            room_name = txtRoomName.Text,
-                            create_date = DateTime.UtcNow,
-                            is_delete = false,
-                            is_active = chkActive.Checked
-                        });
-                    }
+                        floor_id = int.Parse(lblFloorID.Text),
+                        room_id = int.Parse(lblRoomID.Text),
+                        room_name = txtRoomName.Text,
+                        create_date = DateTime.UtcNow,
+                        is_delete = false,
+                        is_active = chkActive.Checked
+
+                    });
+                    
                 }
             }
 

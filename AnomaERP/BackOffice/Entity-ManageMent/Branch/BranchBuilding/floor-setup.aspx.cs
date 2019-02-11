@@ -40,7 +40,7 @@ namespace AnomaERP.BackOffice.Entity_ManageMent.Branch.BranchBuilding
             LinkButton lbnActive = (LinkButton)e.Item.FindControl("lbnActive");
             HtmlInputCheckBox chkActive = (HtmlInputCheckBox)e.Item.FindControl("chkActive");
             HiddenField hdfActive = (HiddenField)e.Item.FindControl("hdfActive");
-            //LinkButton lbnDelete = (LinkButton)e.Item.FindControl("lbnDelete");
+            LinkButton lbnDelete = (LinkButton)e.Item.FindControl("lbnDelete");
             LinkButton lbnRoom = (LinkButton)e.Item.FindControl("lbnRoom");
 
             lblFloorID.Text = branchFloorEntity.floor_id.ToString();
@@ -60,6 +60,8 @@ namespace AnomaERP.BackOffice.Entity_ManageMent.Branch.BranchBuilding
             lbnActive.CommandArgument = branchFloorEntity.floor_id.ToString();
             lbnRoom.CommandName = "Room";
             lbnRoom.CommandArgument = branchFloorEntity.floor_id.ToString();
+            lbnDelete.CommandName = "Delete";
+            lbnDelete.CommandArgument = branchFloorEntity.floor_id.ToString();
 
         }
 
@@ -88,10 +90,11 @@ namespace AnomaERP.BackOffice.Entity_ManageMent.Branch.BranchBuilding
         {
             DateFormat dateFormat = new DateFormat();
 
-            List<BranchFloorEntity> branchFloorEntities = new List<BranchFloorEntity>();                
+            List<BranchFloorEntity> branchFloorEntities = new List<BranchFloorEntity>();
 
             for (int i = 0; i < rptFloor.Items.Count; i++)
             {
+
                 Label lblFloorID = (Label)rptFloor.Items[i].FindControl("lblFloorID");
                 Label lblBranchID = (Label)rptFloor.Items[i].FindControl("lblBranchID");
                 TextBox txtFloorName = (TextBox)rptFloor.Items[i].FindControl("txtFloorName");
@@ -100,65 +103,49 @@ namespace AnomaERP.BackOffice.Entity_ManageMent.Branch.BranchBuilding
                 BranchFloorEntity branchFloorEntity = new BranchFloorEntity();
                 BranchFloorService branchFloorService = new BranchFloorService();
                 branchFloorEntity = branchFloorService.GetDataByID(int.Parse(lblBranchID.Text));
-                if (branchFloorEntity.is_active == true)
+                if (branchFloorEntity != null)
                 {
-                    if (rptFloor.Items[i].Visible == true)
+                    if (branchFloorEntity.is_active == true)
                     {
+                        
+                            branchFloorEntities.Add(new BranchFloorEntity
+                            {
+                                floor_id = int.Parse(lblFloorID.Text),
+                                branch_id = int.Parse(lblBranchID.Text),
+                                floor_name = txtFloorName.Text,
+                                create_date = DateTime.UtcNow,
+                                is_delete = false,
+                                is_active = chkActive.Checked
 
-                        branchFloorEntities.Add(new BranchFloorEntity
-                        {
-                            floor_id = int.Parse(lblFloorID.Text),
-                            branch_id = int.Parse(lblBranchID.Text),
-                            floor_name = txtFloorName.Text,
-                            create_date = DateTime.UtcNow,
-                            is_delete = false,
-                            is_active = chkActive.Checked
-
-                        });
+                            });                       
                     }
                     else
-                    {
-                        branchFloorEntities.Add(new BranchFloorEntity
-                        {
-                            floor_id = int.Parse(lblFloorID.Text),
-                            branch_id = int.Parse(lblBranchID.Text),
-                            floor_name = txtFloorName.Text,
-                            create_date = DateTime.UtcNow,
-                            is_delete = false,
-                            is_active = chkActive.Checked
-                        });
+                    {                       
+                            branchFloorEntities.Add(new BranchFloorEntity
+                            {
+                                floor_id = int.Parse(lblFloorID.Text),
+                                branch_id = int.Parse(lblBranchID.Text),
+                                floor_name = txtFloorName.Text,
+                                create_date = DateTime.UtcNow,
+                                is_delete = false,
+                                is_active = chkActive.Checked
+
+                            });                        
                     }
-                   
                 }
                 else
                 {
-                    if (rptFloor.Items[i].Visible == true)
+                    branchFloorEntities.Add(new BranchFloorEntity
                     {
+                        floor_id = int.Parse(lblFloorID.Text),
+                        branch_id = int.Parse(lblBranchID.Text),
+                        floor_name = txtFloorName.Text,
+                        create_date = DateTime.UtcNow,
+                        is_delete = false,
+                        is_active = chkActive.Checked
 
-                        branchFloorEntities.Add(new BranchFloorEntity
-                        {
-                            floor_id = int.Parse(lblFloorID.Text),
-                            branch_id = int.Parse(lblBranchID.Text),
-                            floor_name = txtFloorName.Text,
-                            create_date = DateTime.UtcNow,
-                            is_delete = false,
-                            is_active = chkActive.Checked
-
-                        });
-                    }
-                    else
-                    {
-                        branchFloorEntities.Add(new BranchFloorEntity
-                        {
-                            floor_id = int.Parse(lblFloorID.Text),
-                            branch_id = int.Parse(lblBranchID.Text),
-                            floor_name = txtFloorName.Text,
-                            create_date = DateTime.UtcNow,
-                            is_delete = false,
-                            is_active = chkActive.Checked
-                        });
-                    }                 
-                }                   
+                    });
+                }
             }
 
             return branchFloorEntities;
@@ -200,15 +187,23 @@ namespace AnomaERP.BackOffice.Entity_ManageMent.Branch.BranchBuilding
                
 
                 if (branchFloorService.UpdateData(branchFloorEntity) > 0)
-                {
-                    //setDataToUI(setCondition());
-                    //Response.Redirect("/BackOffice/Entity-Management/Branch/BranchBuilding/floor-setup.aspx/branch_id=" + lblBranchID.Text);
+                {                    
                     SetDataToUI(int.Parse(lblBranchID.Text));
                 }
             }
             else if(e.CommandName == "Room")
             {
                 Response.Redirect("/BackOffice/Entity-Management/Branch/BranchBuilding/room-setup.aspx?floor_id=" + e.CommandArgument+"&branch_id="+ lblBranchID.Text);
+            }
+            else if (e.CommandName == "Delete")
+            {
+                BranchFloorEntity branchFloorEntity = new BranchFloorEntity();
+                BranchFloorService branchFloorService = new BranchFloorService();
+                branchFloorEntity.floor_id = Int32.Parse(e.CommandArgument.ToString());
+                if (branchFloorService.DeleteData(branchFloorEntity) > 0)
+                {
+                    SetDataToUI(int.Parse(lblBranchID.Text));
+                }
             }
         }
 

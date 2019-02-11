@@ -51,5 +51,11 @@ namespace Service.Branch.BranchBuilding
             BranchBedDAO branchBedDAO = new BranchBedDAO();
             return branchBedDAO.InsertDataMore(branchFloorEntities);
         }
+
+        public int DeleteData(BranchBedEntity entity)
+        {
+            BranchBedDAO branchBedDAO = new BranchBedDAO();
+            return branchBedDAO.DeleteData(entity);
+        }
     }
 }
