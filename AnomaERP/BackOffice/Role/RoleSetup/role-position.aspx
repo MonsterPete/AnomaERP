@@ -42,62 +42,38 @@
                                             <thead class="thead-dark">
                                                 <tr>
                                                     <th>Task Name</th>
-                                                    <th>Nurse</th>
-                                                    <th>Head Nurse</th>
+                                                    <asp:Repeater ID="RptPosition" OnItemDataBound="RptPosition_ItemDataBound" runat="server">
+                                                        <ItemTemplate>
+                                                            <th>
+                                                                <asp:Label ID="lblPositionName" runat="server"></asp:Label>
+                                                            </th>
+                                                        </ItemTemplate>
+                                                    </asp:Repeater>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <input type="text" class="form-control form-control-sm" placeholder="Group Name" value="ฉีดยา" disabled>
-                                                    </td>
-                                                    <td>
-                                                        <label class="custom-control custom-checkbox mb-0">
-                                                            <input type="checkbox" class="custom-control-input">
-                                                            <span class="custom-control-label">&nbsp;</span>
-                                                        </label>
-                                                    </td>
-                                                    <td>
-                                                        <label class="custom-control custom-checkbox mb-0">
-                                                            <input type="checkbox" class="custom-control-input">
-                                                            <span class="custom-control-label">&nbsp;</span>
-                                                        </label>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <input type="text" class="form-control form-control-sm" placeholder="Group Name" value="ทำกายภาพบำบัด" disabled>
-                                                    </td>
-                                                    <td>
-                                                        <label class="custom-control custom-checkbox mb-0">
-                                                            <input type="checkbox" class="custom-control-input">
-                                                            <span class="custom-control-label">&nbsp;</span>
-                                                        </label>
-                                                    </td>
-                                                    <td>
-                                                        <label class="custom-control custom-checkbox mb-0">
-                                                            <input type="checkbox" class="custom-control-input">
-                                                            <span class="custom-control-label">&nbsp;</span>
-                                                        </label>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <input type="text" class="form-control form-control-sm" placeholder="Group Name" value="ป้อนอาหารทางสายยาง" disabled>
-                                                    </td>
-                                                    <td>
-                                                        <label class="custom-control custom-checkbox mb-0">
-                                                            <input type="checkbox" class="custom-control-input">
-                                                            <span class="custom-control-label">&nbsp;</span>
-                                                        </label>
-                                                    </td>
-                                                    <td>
-                                                        <label class="custom-control custom-checkbox mb-0">
-                                                            <input type="checkbox" class="custom-control-input">
-                                                            <span class="custom-control-label">&nbsp;</span>
-                                                        </label>
-                                                    </td>
-                                                </tr>
+                                                <asp:Repeater ID="RptTask" OnItemDataBound="RptTask_ItemDataBound" runat="server">
+                                                    <ItemTemplate>
+                                                        <tr>
+                                                            <td>
+                                                                <asp:TextBox CssClass="form-control form-control-sm" ID="txtTask" runat="server"></asp:TextBox>
+                                                            </td>
+                                                            <asp:Repeater ID="RptTaskPosition" OnItemDataBound="RptTaskPosition_ItemDataBound" runat="server">
+                                                                <ItemTemplate>
+                                                                    <td>
+                                                                        <asp:HiddenField ID="hdfPositionId" runat="server" />
+                                                                        <asp:HiddenField ID="hdfTaskId" runat="server" />
+                                                                        <asp:HiddenField ID="hdfTaskPositionId" runat="server" />
+                                                                        <label class="custom-control custom-checkbox mb-0">
+                                                                            <input type="checkbox" runat="server" id="chkTask" class="custom-control-input">
+                                                                            <span class="custom-control-label">&nbsp;</span>
+                                                                        </label>
+                                                                    </td>
+                                                                </ItemTemplate>
+                                                            </asp:Repeater>
+                                                        </tr>
+                                                    </ItemTemplate>
+                                                </asp:Repeater>
                                             </tbody>
                                         </table>
                                     </div>

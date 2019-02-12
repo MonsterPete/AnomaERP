@@ -61,6 +61,7 @@ namespace DAO.Role
                         DBHelper.CreateParameters();
 
                         DBHelper.AddParam("Search", entity.group_name);
+                        DBHelper.AddParam("entity_id", entity.entity_id);
 
 
                         positionGroupEntities = DBHelper.SelectStoreProcedure<PositionGroupEntity>("select_position_group_by_condition").ToList();

@@ -504,11 +504,8 @@
     <Content Include="BackOffice\Nursing-Aide\Workshift\workshift-management.html" />
     <Content Include="BackOffice\Role\RoleSetup\position-list.aspx" />
     <Content Include="BackOffice\Role\RoleSetup\position-setup.aspx" />
-    <Content Include="BackOffice\Role\RoleSetup\position-setup.html" />
     <Content Include="BackOffice\Role\RoleSetup\role-position.aspx" />
-    <Content Include="BackOffice\Role\RoleSetup\role-position.html" />
     <Content Include="BackOffice\Role\RoleSetup\task-setup.aspx" />
-    <Content Include="BackOffice\Role\RoleSetup\task-setup.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

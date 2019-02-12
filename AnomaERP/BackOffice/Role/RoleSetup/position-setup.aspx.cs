@@ -17,6 +17,7 @@ namespace AnomaERP.BackOffice.Role.RoleSetup
         {
             if (!IsPostBack)
             {
+                hdfEntityId.Value = "1";
                 lblGroupID.Text = "0";
                 if (Request.QueryString["group_id"] != null)
                 {
@@ -25,7 +26,6 @@ namespace AnomaERP.BackOffice.Role.RoleSetup
                     {
                         lblGroupID.Text = Request.QueryString["group_id"].ToString();                       
                         SetDataToUI(int.Parse(lblGroupID.Text));
-                        //txtGroupName.Text = Request.QueryString["group_name"].ToString();
                     }
                 }
             }
@@ -37,7 +37,7 @@ namespace AnomaERP.BackOffice.Role.RoleSetup
             List<PositionEntity> positionEntities = new List<PositionEntity>();
             PositionEntity positionEntity = new PositionEntity();
             positionEntity = positionService.GetDataByID(Group_id);
-            positionEntities = positionService.GetDataPositionGroupByID(Group_id);
+            positionEntities = positionService.GetDataPositionByGroupID(Group_id);
             txtGroupName.Text = positionEntity.group_name;
             SetDataTorpt(positionEntities);
 
@@ -59,7 +59,6 @@ namespace AnomaERP.BackOffice.Role.RoleSetup
             if (positionService.InsertDataMore(positionEntities) > 0)
             {
                 Response.Redirect("/BackOffice/Role/RoleSetup/position-list.aspx");
-
             }
             else
             {
@@ -78,20 +77,18 @@ namespace AnomaERP.BackOffice.Role.RoleSetup
             List<PositionEntity> positionEntities = getDataFromRpt();
             PositionEntity positionEntity = new PositionEntity();
 
-            for (int i = 0; i < 1; i++)
+            positionEntities.Add(new PositionEntity
             {
-                positionEntities.Add(new PositionEntity
-                {
-                    position_id = 0,
-                    group_id = int.Parse(lblGroupID.Text),
-                    group_name = "",
-                    create_by = 1,
-                    create_date = DateTime.UtcNow,
-                    is_delete = false,
-                    is_active = true
+                position_id = 0,
+                group_id = int.Parse(lblGroupID.Text),
+                group_name = "",
+                create_by = 1,
+                create_date = DateTime.UtcNow,
+                is_delete = false,
+                is_active = true
 
-                });
-            }
+            });
+
             SetDataTorpt(positionEntities);
         }
 
@@ -161,6 +158,7 @@ namespace AnomaERP.BackOffice.Role.RoleSetup
                             {
                                 position_id = int.Parse(lblPositionID.Text),
                                 group_id = int.Parse(lblGroupID.Text),
+                                entity_id = int.Parse(hdfEntityId.Value),
                                 group_name = txtGroupName.Text,
                                 position_name = txtPositionName.Text,
                                 create_by = 1,
@@ -180,6 +178,7 @@ namespace AnomaERP.BackOffice.Role.RoleSetup
                             {
                                 position_id = int.Parse(lblPositionID.Text),
                                 group_id = int.Parse(lblGroupID.Text),
+                                entity_id = int.Parse(hdfEntityId.Value),
                                 group_name = txtGroupName.Text,
                                 position_name = txtPositionName.Text,
                                 create_by = 1,
@@ -200,6 +199,7 @@ namespace AnomaERP.BackOffice.Role.RoleSetup
                         {
                             position_id = int.Parse(lblPositionID.Text),
                             group_id = int.Parse(lblGroupID.Text),
+                            entity_id = int.Parse(hdfEntityId.Value),
                             group_name = txtGroupName.Text,
                             position_name = txtPositionName.Text,
                             create_by = 1,
@@ -210,7 +210,6 @@ namespace AnomaERP.BackOffice.Role.RoleSetup
                         });
                     }
                 }
-                
             }
 
             return positionEntities;

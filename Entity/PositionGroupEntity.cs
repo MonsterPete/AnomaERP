@@ -6,6 +6,7 @@ namespace Entity
 {
     public class PositionGroupEntity
     {
+        public Int32 entity_id { get; set; }
         public Int32 group_id { get; set; }
         public String group_name { get; set; }
         public Int32 create_by { get; set; }

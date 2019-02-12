@@ -91,7 +91,7 @@ namespace DAO.Role
             return positionEntity;
         }
 
-        public List<PositionEntity> GetDataPositionGroupByID(int Group_id)
+        public List<PositionEntity> GetDataPositionByGroupID(int Group_id)
         {
             List<PositionEntity> positionEntities = new List<PositionEntity>();
 
@@ -139,7 +139,7 @@ namespace DAO.Role
         public int InsertDataMore(List<PositionEntity> positionEntities)
         {
             int result = 0;
-            int result_group_id = 0;
+            int result_group_id = positionEntities[0].group_id;
             try
             {
                 using (DBHelper.CreateConnection())
@@ -150,6 +150,26 @@ namespace DAO.Role
 
                         using (DBHelper.BeginTransaction())
                         {
+                            if (result_group_id == 0)
+                            {
+                                DBHelper.CreateParameters();
+                                DBHelper.AddParamOut("group_id", positionEntities[0].group_id);
+                                DBHelper.AddParam("entity_id", positionEntities[0].entity_id);
+                                DBHelper.AddParam("group_name", positionEntities[0].group_name);
+                                DBHelper.AddParam("create_by", positionEntities[0].create_by);
+                                DBHelper.AddParam("create_date", positionEntities[0].create_date);
+                                DBHelper.AddParam("is_active", positionEntities[0].is_active);
+                                DBHelper.AddParam("is_delete", positionEntities[0].is_delete);
+                                DBHelper.ExecuteStoreProcedure("insert_position_group");
+                                result_group_id = DBHelper.GetParamOut<Int32>("group_id");
+                            }
+                            else
+                            {
+                                DBHelper.CreateParameters();
+                                DBHelper.AddParam("group_id", positionEntities[0].group_id);
+                                DBHelper.AddParam("group_name", positionEntities[0].group_name);
+                                DBHelper.ExecuteStoreProcedure("update_position_group");
+                            }
                             foreach (var item in positionEntities)
                             {
                                 if (item.position_id > 0)
@@ -158,74 +178,22 @@ namespace DAO.Role
                                     DBHelper.AddParam("position_name", item.position_name);
                                     DBHelper.AddParam("position_id", item.position_id);                                   
                                     result = DBHelper.ExecuteStoreProcedure("update_position");
-
                                 }
                                 else
                                 {
-                                    if (item.group_id > 0)
-                                    {
-
-                                        DBHelper.CreateParameters();
-                                        DBHelper.AddParamOut("position_id", item.position_id);
-                                        DBHelper.AddParam("group_id", item.group_id);
-                                        DBHelper.AddParam("position_name", item.position_name);
-                                        DBHelper.AddParam("create_by", item.create_by);
-                                        DBHelper.AddParam("create_date", item.create_date);
-                                        DBHelper.AddParam("is_active", item.is_active);
-                                        DBHelper.AddParam("is_delete", item.is_delete);
-                                        DBHelper.ExecuteStoreProcedure("insert_position");
-                                        result = DBHelper.GetParamOut<Int32>("position_id");
-
-                                        DBHelper.CreateParameters();
-                                        DBHelper.AddParam("position_id", result);
-                                        DBHelper.AddParam("create_by", item.create_by);
-                                        DBHelper.AddParam("create_date", item.create_date);
-                                        DBHelper.AddParam("is_active", item.is_active);
-                                        DBHelper.AddParam("is_delete", item.is_delete);
-                                        DBHelper.ExecuteStoreProcedure("insert_task_group");
-                                    }
-                                    else
-                                    {
-                                        if(result_group_id == 0)
-                                        { 
-                                        DBHelper.CreateParameters();
-                                        DBHelper.AddParamOut("group_id", item.group_id);
-                                        DBHelper.AddParam("group_name", item.group_name);
-                                        DBHelper.AddParam("create_by", item.create_by);
-                                        DBHelper.AddParam("create_date", item.create_date);
-                                        DBHelper.AddParam("is_active", item.is_active);
-                                        DBHelper.AddParam("is_delete", item.is_delete);
-                                        DBHelper.ExecuteStoreProcedure("insert_position_group");
-                                        result_group_id = DBHelper.GetParamOut<Int32>("group_id");
-                                        }
-
-                                        
-                                        DBHelper.CreateParameters();
-                                        DBHelper.AddParamOut("position_id", item.position_id);
-                                        DBHelper.AddParam("group_id", result_group_id);
-                                        DBHelper.AddParam("position_name", item.position_name);
-                                        DBHelper.AddParam("create_by", item.create_by);
-                                        DBHelper.AddParam("create_date", item.create_date);
-                                        DBHelper.AddParam("is_active", item.is_active);
-                                        DBHelper.AddParam("is_delete", item.is_delete);
-                                        DBHelper.ExecuteStoreProcedure("insert_position");
-                                        int position = DBHelper.GetParamOut<Int32>("position_id");
-
-                                        DBHelper.CreateParameters();
-                                        DBHelper.AddParam("position_id", position);
-                                        DBHelper.AddParam("create_by", item.create_by);
-                                        DBHelper.AddParam("create_date", item.create_date);
-                                        DBHelper.AddParam("is_active", item.is_active);
-                                        DBHelper.AddParam("is_delete", item.is_delete);
-                                        DBHelper.ExecuteStoreProcedure("insert_task_group");
-                                        
-                                    }                                    
+                                    DBHelper.CreateParameters();
+                                    DBHelper.AddParamOut("position_id", item.position_id);
+                                    DBHelper.AddParam("group_id", result_group_id);
+                                    DBHelper.AddParam("position_name", item.position_name);
+                                    DBHelper.AddParam("create_by", item.create_by);
+                                    DBHelper.AddParam("create_date", item.create_date);
+                                    DBHelper.AddParam("is_active", item.is_active);
+                                    DBHelper.AddParam("is_delete", item.is_delete);
+                                    DBHelper.ExecuteStoreProcedure("insert_position");
+                                    int position = DBHelper.GetParamOut<Int32>("position_id");
                                 }
                             }
-
-
                             DBHelper.CommitTransaction();
-
                         }
                     }
                     catch (Exception ex)

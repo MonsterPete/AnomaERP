@@ -29,6 +29,12 @@ namespace Service.Role
             return entityTaskDAO.GetDataByID(id);
         }
 
+        public List<EntityTaskEntity> GetDataByGroupID(int id)
+        {
+            EntityTaskDAO entityTaskDAO = new EntityTaskDAO();
+            return entityTaskDAO.GetDataByGroupID(id);
+        }
+
         public int InsertData(EntityTaskEntity entity)
         {
             throw new NotImplementedException();

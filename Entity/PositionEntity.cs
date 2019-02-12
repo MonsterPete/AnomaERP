@@ -16,6 +16,11 @@ namespace Entity
 
         #region position_group table
         public String group_name { get; set; }
+        public Int32 entity_id { get; set; }
+        #endregion
+
+        #region task_group
+        TaskGroupEntity taskGroupEntity { get; set; }
         #endregion
     }
 }

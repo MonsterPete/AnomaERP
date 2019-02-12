@@ -32,6 +32,7 @@
                                         <div class="col-lg-3 col-xl-3 mb-2">
                                             <div class="form-group">
                                                 <label class="form-label form-label-sm text-uppercase">Group Name</label>
+                                                <asp:HiddenField ID="hdfEntityId" runat="server" />
                                                 <asp:TextBox ID="txtGroupName" CssClass="form-control form-control-sm" runat="server"></asp:TextBox>
                                             </div>
                                         </div>

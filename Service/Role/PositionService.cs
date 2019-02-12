@@ -40,10 +40,10 @@ namespace Service.Role
             throw new NotImplementedException();
         }
 
-        public List<PositionEntity> GetDataPositionGroupByID(int Group_id)
+        public List<PositionEntity> GetDataPositionByGroupID(int Group_id)
         {
             PositionDAO positionDAO = new PositionDAO();
-            return positionDAO.GetDataPositionGroupByID(Group_id);
+            return positionDAO.GetDataPositionByGroupID(Group_id);
         }
 
         public int InsertDataMore(List<PositionEntity> positionEntities)

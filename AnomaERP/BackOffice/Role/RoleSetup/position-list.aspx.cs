@@ -74,10 +74,6 @@ namespace AnomaERP.BackOffice.Role.RoleSetup
             lbnStatus.CommandArgument = positionGroupEntity.group_id.ToString();
             lbnEdit.CommandName = "Edit";
             lbnEdit.CommandArgument = positionGroupEntity.group_id.ToString();
-
-
-
-
         }
 
         protected void rptGroupList_ItemCommand(object source, RepeaterCommandEventArgs e)
