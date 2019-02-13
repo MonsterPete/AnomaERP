@@ -78,5 +78,70 @@ namespace DAO.Role
         {
             throw new NotImplementedException();
         }
+
+
+        public int InsertAndUpdateDataMore(List<TaskGroupEntity> taskGroupEntities)
+        {
+            int result = 0;
+            int param_out_id = 0;
+            try
+            {
+                using (DBHelper.CreateConnection())
+                {
+                    try
+                    {
+                        DBHelper.OpenConnection();
+
+                        foreach (var item in taskGroupEntities)
+                        {
+                            if (item.task_group_id > 0 )
+                            {
+                                DBHelper.CreateParameters();
+                                DBHelper.AddParamOut("success_row", result);
+                                DBHelper.AddParam("task_group_id", item.task_group_id);
+                                DBHelper.AddParam("position_id", item.position_id);
+                                DBHelper.AddParam("task_id", item.task_id);
+                                DBHelper.AddParam("create_by", item.create_by);
+                                DBHelper.AddParam("create_date", item.create_date);
+                                DBHelper.AddParam("is_active", item.is_active);
+                                DBHelper.AddParam("is_delete", item.is_delete);
+                                DBHelper.ExecuteStoreProcedure("update_task_group");
+                                param_out_id = DBHelper.GetParamOut<Int32>("success_row");
+                            }
+                            else
+                            {
+                                DBHelper.CreateParameters();
+                                DBHelper.AddParamOut("task_group_id", item.task_group_id);
+                                DBHelper.AddParam("position_id", item.position_id);
+                                DBHelper.AddParam("task_id", item.task_id);
+                                DBHelper.AddParam("create_by", item.create_by);
+                                DBHelper.AddParam("create_date", item.create_date);
+                                DBHelper.AddParam("is_active", item.is_active);
+                                DBHelper.AddParam("is_delete", item.is_delete);
+                                DBHelper.ExecuteStoreProcedure("insert_task_group");
+                                param_out_id = DBHelper.GetParamOut<Int32>("task_group_id");
+                            }
+                            result += param_out_id;
+                        }
+
+                        
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                    finally
+                    {
+                        DBHelper.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return result;
+        }
     }
 }

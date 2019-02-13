@@ -43,5 +43,12 @@ namespace Service.Role
         {
             throw new NotImplementedException();
         }
-    }
+
+        public int InsertAndUpdateDataMore(List<TaskGroupEntity> taskGroupEntities)
+        {
+            TaskGroupDAO taskGroupDAO = new TaskGroupDAO();
+            return taskGroupDAO.InsertAndUpdateDataMore(taskGroupEntities);
+        }
+
+     }
 }
