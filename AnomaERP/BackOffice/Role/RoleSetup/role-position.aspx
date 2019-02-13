@@ -81,8 +81,8 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <a href="#" class="btn btn-secondary">Back</a>
-                            <a href="#" class="btn btn-success">Save</a>
+                            <asp:LinkButton ID="lbnBack" runat="server" class="btn btn-secondary" OnClick="lbnBack_Click">Back</asp:LinkButton>
+                            <asp:LinkButton ID="lbnSave" runat="server" class="btn btn-success" OnClick="lbnSave_Click">Save</asp:LinkButton>
                         </div>
                     </div>
                 </div>

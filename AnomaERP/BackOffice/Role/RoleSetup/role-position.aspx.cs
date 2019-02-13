@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
+using Definitions;
 
 namespace AnomaERP.BackOffice.Role.RoleSetup
 {
@@ -101,6 +102,65 @@ namespace AnomaERP.BackOffice.Role.RoleSetup
             hdfPositionId.Value = taskGroupEntity.position_id.ToString();
             hdfTaskId.Value = taskGroupEntity.task_id.ToString();
             hdfTaskPositionId.Value = taskGroupEntity.task_group_id.ToString();
+        }
+
+
+        public List<TaskGroupEntity> getDataFromRptTaskPosition()
+        {           
+            List<TaskGroupEntity> taskGroupEntities = new List<TaskGroupEntity>();
+
+            for (int i = 0; i < RptTask.Items.Count; i++)
+            {
+                Repeater RptTaskPosition = (Repeater)RptTask.Items[i].FindControl("RptTaskPosition");
+
+                for (int j = 0; j < RptTaskPosition.Items.Count; j++)
+                {
+                    HtmlInputCheckBox chkTask = (HtmlInputCheckBox)RptTaskPosition.Items[j].FindControl("chkTask");
+                    HiddenField hdfPositionId = (HiddenField)RptTaskPosition.Items[j].FindControl("hdfPositionId");
+                    HiddenField hdfTaskId = (HiddenField)RptTaskPosition.Items[j].FindControl("hdfTaskId");
+                    HiddenField hdfTaskPositionId = (HiddenField)RptTaskPosition.Items[j].FindControl("hdfTaskPositionId");
+
+                    bool delete = false;
+                    if (RptTaskPosition.Items[j].Visible == false)
+                    {
+                        delete = true;
+                    }
+
+                    DateFormat dateFormat = new DateFormat();
+                    taskGroupEntities.Add(new TaskGroupEntity
+                    {
+                        task_group_id = int.Parse(hdfTaskPositionId.Value),
+                        position_id = int.Parse(hdfPositionId.Value),
+                        task_id = int.Parse(hdfTaskId.Value),
+                        create_by = 1,
+                        create_date = dateFormat.EngFormatDateToSQL(DateTime.Now),
+                        is_active = chkTask.Checked,      
+                        is_delete = delete
+                    });
+                }
+            }
+
+            return taskGroupEntities;
+        }
+
+        protected void lbnSave_Click(object sender, EventArgs e)
+        {
+            int success = 0;
+            List<TaskGroupEntity> taskGroupEntities = new List<TaskGroupEntity>();
+            TaskGroupService taskGroupService = new TaskGroupService();
+            taskGroupEntities = getDataFromRptTaskPosition();
+            success = taskGroupService.InsertAndUpdateDataMore(taskGroupEntities);
+
+            if (success > 0 )
+            {
+                System.Web.UI.ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "AlertBox", "alert('successs');", true);
+            }
+
+        }
+
+        protected void lbnBack_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

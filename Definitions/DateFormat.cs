@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
+using System.Globalization;
 
 namespace Definitions
 {
@@ -47,7 +49,7 @@ namespace Definitions
             TimeSpan time = new TimeSpan(0, 7, 0, 0);
             DateTime dateEngAddTime = dateEng.Add(time);
 
-            return DateTime.Parse(dateEngAddTime.ToString("MM/dd/yyyy HH:mm:ss", _cultureEnInfo));
+            return DateTime.Parse( dateEngAddTime.ToString("MM/dd/yyyy HH:mm:ss", _cultureEnInfo));
         }
 
         public DateTime EngFormatDateToSQL(DateTime dateTime)
