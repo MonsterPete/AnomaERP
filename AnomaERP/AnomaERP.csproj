@@ -467,9 +467,7 @@
     <Content Include="assets\vendor\libs\vegas\vegas.css" />
     <Content Include="assets\vendor\libs\vegas\vegas.js" />
     <Content Include="BackOffice\Bed-Management\Accessory\accessory.aspx" />
-    <Content Include="BackOffice\Bed-Management\Accessory\accessory.html" />
     <Content Include="BackOffice\Bed-Management\Bed\bed-entity.aspx" />
-    <Content Include="BackOffice\Bed-Management\Bed\bed-entity.html" />
     <Content Include="BackOffice\Bed-Management\Job\job-assign.aspx" />
     <Content Include="BackOffice\Entity-Management\Branch\branch-create.aspx" />
     <Content Include="BackOffice\Entity-Management\Branch\branch-create.html" />
@@ -487,19 +485,12 @@
     <Content Include="BackOffice\Entity-Management\Entity\Entity-list.aspx" />
     <Content Include="BackOffice\NursingHome\Visitor-Form\index.aspx" />
     <Content Include="BackOffice\Inventory\inventory.html" />
-    <Content Include="BackOffice\Bed-Management\Job\job-assign.html" />
     <Content Include="BackOffice\NursingHome\Logistic\logistic-list.aspx" />
     <Content Include="BackOffice\NursingHome\Logistic\logistic-reserve-form.aspx" />
     <Content Include="BackOffice\NursingHome\Bed-Reservation\reserve-form.aspx" />
     <Content Include="BackOffice\NursingHome\Visitor-Form\visitor-form.aspx" />
     <Content Include="BackOffice\Role\role-assign-create.aspx" />
-    <Content Include="BackOffice\Role\role-assign-create.html" />
     <Content Include="BackOffice\Role\role-assign-list.aspx" />
-    <Content Include="BackOffice\Role\role-assign-list.html" />
-    <Content Include="BackOffice\Role\role-create.aspx" />
-    <Content Include="BackOffice\Role\role-create.html" />
-    <Content Include="BackOffice\Role\role-list.aspx" />
-    <Content Include="BackOffice\Role\role-list.html" />
     <Content Include="BackOffice\Nursing-Aide\Workshift\workshift-management.aspx" />
     <Content Include="BackOffice\Nursing-Aide\Workshift\workshift-management.html" />
     <Content Include="BackOffice\Role\RoleSetup\position-list.aspx" />
@@ -648,20 +639,6 @@
     </Compile>
     <Compile Include="BackOffice\Role\role-assign-list.aspx.designer.cs">
       <DependentUpon>role-assign-list.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="BackOffice\Role\role-create.aspx.cs">
-      <DependentUpon>role-create.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BackOffice\Role\role-create.aspx.designer.cs">
-      <DependentUpon>role-create.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="BackOffice\Role\role-list.aspx.cs">
-      <DependentUpon>role-list.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BackOffice\Role\role-list.aspx.designer.cs">
-      <DependentUpon>role-list.aspx</DependentUpon>
     </Compile>
     <Compile Include="BackOffice\Nursing-Aide\Workshift\workshift-management.aspx.cs">
       <DependentUpon>workshift-management.aspx</DependentUpon>

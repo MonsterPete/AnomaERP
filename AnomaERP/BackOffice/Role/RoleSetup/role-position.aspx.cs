@@ -18,9 +18,9 @@ namespace AnomaERP.BackOffice.Role.RoleSetup
             {
                 Session["ConfigRolePosition"] = null;
                 PositionService positionService = new PositionService();
-                setDataToRptPosition(positionService.GetDataPositionByGroupID(int.Parse(Request.QueryString["groupId"].ToString())));
+                setDataToRptPosition(positionService.GetDataPositionByGroupID(int.Parse(Request.QueryString["group_id"].ToString())));
                 EntityTaskService entityTaskService = new EntityTaskService();
-                setDataToRptTask(entityTaskService.GetDataByGroupID(int.Parse(Request.QueryString["groupId"].ToString())));
+                setDataToRptTask(entityTaskService.GetDataByGroupID(int.Parse(Request.QueryString["group_id"].ToString())));
             }
         }
 

@@ -56,7 +56,7 @@ namespace AnomaERP.BackOffice.Role.RoleSetup
             HiddenField hdfStatus = (HiddenField)e.Item.FindControl("hdfStatus");
             LinkButton lbnEdit = (LinkButton)e.Item.FindControl("lbnEdit");
             LinkButton lbnName = (LinkButton)e.Item.FindControl("lbnName");
-
+            LinkButton lbnConfigTask = (LinkButton)e.Item.FindControl("lbnConfigTask");
 
             lblGroupName.Text = positionGroupEntity.group_name;
             
@@ -74,6 +74,8 @@ namespace AnomaERP.BackOffice.Role.RoleSetup
             lbnStatus.CommandArgument = positionGroupEntity.group_id.ToString();
             lbnEdit.CommandName = "Edit";
             lbnEdit.CommandArgument = positionGroupEntity.group_id.ToString();
+            lbnConfigTask.CommandName = "TaskConfig";
+            lbnConfigTask.CommandArgument = positionGroupEntity.group_id.ToString();
         }
 
         protected void rptGroupList_ItemCommand(object source, RepeaterCommandEventArgs e)
@@ -81,6 +83,10 @@ namespace AnomaERP.BackOffice.Role.RoleSetup
             if (e.CommandName == "Edit")
             {
                 Response.Redirect("/BackOffice/Role/RoleSetup/position-setup.aspx?group_id=" + e.CommandArgument);
+            }
+            else if (e.CommandName == "TaskConfig")
+            {
+                Response.Redirect("/BackOffice/Role/RoleSetup/role-position.aspx?group_id=" + e.CommandArgument);
             }
             else if (e.CommandName == "Status")
             {

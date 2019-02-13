@@ -92,8 +92,10 @@
                                                         </td>
                                                         <td class="center">
                                                             <div class="btn-group btn-group-sm">
+                                                                <asp:LinkButton ID="lbnConfigTask" runat="server" CssClass="btn btn-success"><i class="ion ion-md-options"></i></asp:LinkButton>
+                                                            </div>
+                                                            <div class="btn-group btn-group-sm">
                                                                 <asp:LinkButton ID="lbnEdit" runat="server" CssClass="btn btn-primary"><i class="ion ion-md-create"></i></asp:LinkButton>
-                                                                 
                                                             </div>
                                                         </td>
                                                     </tr>
