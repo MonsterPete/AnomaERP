@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Entity;
 
 namespace Entity
 {
@@ -23,5 +24,16 @@ namespace Entity
         public DateTime create_date { get; set; }
         public Boolean is_active { get; set; }
         public Boolean is_delete { get; set; }
+
+        public ShifTimeEntity shifTimeEntity { get; set; }
+        public DateWorkEntity dateWorkEntity { get; set; }
+
+        #region position
+        public String position_name { get; set; }
+        #endregion
+
+        #region date_work
+        public String working_time_name { get; set; }
+        #endregion
     }
 }

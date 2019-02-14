@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masterpage.Master" AutoEventWireup="true" CodeBehind="position-list.aspx.cs" Inherits="AnomaERP.BackOffice.Role.RoleSetup.position_list" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="FromPlaceHolder" runat="server">
     <asp:UpdatePanel ID="upnEntityList" runat="server">
         <ContentTemplate>
@@ -60,8 +61,8 @@
                                 <div class="card-datatable table-responsive">
                                     <table id="tableList" class="datatables-demo table table-striped table-hover table-bordered">
                                         <thead class="thead-dark">
-                                            <tr>                                                
-                                                <th style="width: 20%">Position Group Name</th>                                               
+                                            <tr>
+                                                <th style="width: 20%">Position Group Name</th>
                                                 <th style="width: 10%">Status</th>
                                                 <th style="width: 10%">Tools</th>
                                             </tr>
@@ -70,10 +71,10 @@
                                             <asp:Repeater ID="rptGroupList" runat="server" OnItemDataBound="rptGroupList_ItemDataBound" OnItemCommand="rptGroupList_ItemCommand">
                                                 <%-- OnItemCommand="rptInquiryList_ItemCommand" OnItemDataBound="rptInquiryList_ItemDataBound"--%>
                                                 <ItemTemplate>
-                                                    <tr id="trCountDays" runat="server" class="odd gradeX">                                                        
+                                                    <tr id="trCountDays" runat="server" class="odd gradeX">
                                                         <td id="tdCountDays" runat="server" style="text-align: center;">
                                                             <asp:Label ID="lblGroupName" runat="server"></asp:Label>
-                                                        </td>                                                       
+                                                        </td>
                                                         <td class="center">
                                                             <label class="switcher switcher-sm">
                                                                 <asp:HiddenField ID="hdfStatus" runat="server" />
@@ -93,7 +94,7 @@
                                                         <td class="center">
                                                             <div class="btn-group btn-group-sm">
                                                                 <asp:LinkButton ID="lbnEdit" runat="server" CssClass="btn btn-primary"><i class="ion ion-md-create"></i></asp:LinkButton>
-                                                                 
+
                                                             </div>
                                                         </td>
                                                     </tr>
