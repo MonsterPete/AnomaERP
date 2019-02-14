@@ -171,7 +171,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ModalPlaceHolder" runat="server">
     <div class="modal fade" id="modals-assign">
         <div class="modal-dialog">
-            <form class="modal-content">
+            <div class="modal-content">
                 <div class="modal-header">
                     <h3 class="modal-title text-center mb-0">
                         Assgin management
@@ -228,13 +228,13 @@
                     <a href="#" class="btn btn-default" data-dismiss="modal">Clear</a>
                     <a href="#" class="btn btn-success">Comfirm</a>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 
     <div class="modal fade" id="modals-equip-edit">
         <div class="modal-dialog">
-            <form class="modal-content">
+            <div class="modal-content">
                 <div class="modal-header">
                     <h3 class="modal-title text-center mb-0">
                         Equipment
@@ -291,7 +291,7 @@
                     <a href="#" class="btn btn-default" data-dismiss="modal">Clear</a>
                     <a href="#" class="btn btn-success">Comfirm</a>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 </asp:Content>
