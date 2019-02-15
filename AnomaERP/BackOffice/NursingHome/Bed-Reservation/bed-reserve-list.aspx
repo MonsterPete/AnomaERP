@@ -31,6 +31,7 @@
                                                 <div class="form-group">
                                                     <label class="form-label form-label-sm text-uppercase">Customer
                                                         Name</label>
+                                                    <asp:TextBox ID="txtCustomerName" runat="server"></asp:TextBox>
                                                     <input type="text" class="form-control form-control-sm" placeholder="ค้นหา">
                                                 </div>
                                             </div>

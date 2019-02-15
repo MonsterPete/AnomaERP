@@ -24,19 +24,19 @@
                                             <div class="col-lg-3 col-xl-3 mb-2">
                                                 <div class="form-group">
                                                     <label class="form-label form-label-sm text-uppercase">Branch</label>
-                                                    <input type="text" class="form-control form-control-sm" placeholder="Branch">
+                                                    <asp:TextBox ID="txtBranch" CssClass="form-control form-control-sm" placeholder="Branch" runat="server"></asp:TextBox>
                                                 </div>
                                             </div>
                                             <div class="col-lg-3 col-xl-3 mb-2">
                                                 <div class="form-group">
                                                     <label class="form-label form-label-sm text-uppercase">Floor</label>
-                                                    <input type="text" class="form-control form-control-sm" placeholder="Floor">
+                                                    <asp:TextBox ID="txtFloor" CssClass="form-control form-control-sm" placeholder="Floor" runat="server"></asp:TextBox>
                                                 </div>
                                             </div>
                                             <div class="col-lg-3 col-xl-3 mb-2">
                                                 <div class="form-group">
                                                     <label class="form-label form-label-sm text-uppercase">Customer Name</label>
-                                                    <input type="text" class="form-control form-control-sm" placeholder="Customer Name">
+                                                    <asp:TextBox ID="txtCustomerName" CssClass="form-control form-control-sm" placeholder="Customer Name" runat="server"></asp:TextBox>
                                                 </div>
                                             </div>
                                             <div class="col-lg-3 col-xl-3 mb-2">
