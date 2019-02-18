@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Entity;
 
 namespace Entity
 {
@@ -12,7 +13,7 @@ namespace Entity
         public String firstname { get; set; }
         public String lastname { get; set; }
         public String general_information_upload { get; set; }
-        public String DOB { get; set; }
+        public DateTime DOB { get; set; }
         public String gender { get; set; }
         public DateTime contract_start { get; set; }
         public DateTime contract_end { get; set; }
@@ -21,5 +22,10 @@ namespace Entity
         public Int32 create_by { get; set; }
         public DateTime modify_date { get; set; }
         public Int32 modify_by { get; set; }
+
+
+        public Customer_relativeEntity customer_RelativeEntity { get; set; }
+        public Customer_service_agreementEntity customer_Service_AgreementEntity { get; set; }
+        public String branch_name { get; set; }
     }
 }
