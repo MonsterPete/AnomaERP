@@ -38,6 +38,7 @@
                                             <div class="col-lg-3 col-xl-3 mb-2">
                                                 <div class="form-group">
                                                     <label class="form-label form-label-sm text-uppercase">Status</label>
+                                                    <asp:DropDownList ID="ddlStatus" runat="server"></asp:DropDownList>
                                                     <select class="form-control form-control-sm">
                                                         <option>Reserved</option>
                                                         <option>No Reserved</option>
