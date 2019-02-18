@@ -1,4 +1,5 @@
-﻿using Entity;
+﻿using DAO.Customer;
+using Entity;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -35,6 +36,12 @@ namespace Service.Customer
         public int UpdateData(CustomerEntity entity)
         {
             throw new NotImplementedException();
+        }
+
+        public List<CustomerEntity> GetDDLCustomerForAssginBed(int branchId)
+        {
+            CustomerDAO customerDAO = new CustomerDAO();
+            return customerDAO.GetDDLCustomerForAssginBed(branchId);
         }
     }
 }

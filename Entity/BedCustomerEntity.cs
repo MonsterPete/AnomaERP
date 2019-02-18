@@ -23,6 +23,6 @@ namespace Entity
         public String fullname { get; set; }
         public String lastname { get; set; }
         public String firstname { get; set; }
-        public Int32 is_have_customer { get; set; }
+        public Boolean is_have_customer { get; set; }
     }
 }

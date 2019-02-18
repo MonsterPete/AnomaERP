@@ -46,7 +46,7 @@ namespace DAO.Customer
             throw new NotImplementedException();
         }
 
-        public List<CustomerEntity> GetDDLCustomerForAssginBed(CustomerEntity branchEntity)
+        public List<CustomerEntity> GetDDLCustomerForAssginBed(int branchId)
         {
             List<CustomerEntity> customerEntities = null;
 
@@ -59,7 +59,7 @@ namespace DAO.Customer
                         DBHelper.OpenConnection();
                         DBHelper.CreateParameters();
 
-                        DBHelper.AddParam("branch_id", branchEntity.branch_id);
+                        DBHelper.AddParam("branch_id", branchId);
 
 
                         customerEntities = DBHelper.SelectStoreProcedure<CustomerEntity>("ddl_customer_for_assginbed_bed").ToList();
