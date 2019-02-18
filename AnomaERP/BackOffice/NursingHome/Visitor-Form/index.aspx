@@ -17,7 +17,7 @@
 
                         <div class="row">
                             <div class="col-lg-12">
-                                <a href="visitor-form.html" class="btn btn-success mb-3 mr-2">+ Create Visitor Form</a>
+                                <a href="visitor-form.aspx" class="btn btn-success mb-3 mr-2">+ Create Visitor Form</a>
                             </div>
                         </div>
 

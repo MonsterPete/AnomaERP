@@ -40,36 +40,36 @@
                                         <div class="row">
                                             <div class="col-lg-3 col-xl-3">
                                                 <div class="form-group">
-                                                    <label class="form-label form-label-sm text-uppercase">ชื่อ-นามสกุล ลูกค้า</label>
-                                                    <input type="text" class="form-control form-control-sm" placeholder="ชื่อ-นามสกุล">
+                                                    <label class="form-label form-label-sm text-uppercase">ชื่อ</label>
+                                                    <input type="text" class="form-control form-control-sm" placeholder="ชื่อ">
                                                 </div>
                                             </div>
+                                            <div class="col-lg-3 col-xl-3">
+                                                <div class="form-group">
+                                                    <label class="form-label form-label-sm text-uppercase">นามสกุล</label>
+                                                    <input type="text" class="form-control form-control-sm" placeholder="นามสกุล">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
                                             <div class="col-lg-3 col-xl-3">
                                                 <div class="form-group">
                                                     <label class="form-label form-label-sm text-uppercase">เบอร์ติดต่อ</label>
                                                     <input type="text" class="form-control form-control-sm" placeholder="เบอร์ติดต่อ">
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
                                             <div class="col-lg-3 col-xl-3">
                                                 <div class="form-group">
                                                     <label class="form-label form-label-sm text-uppercase">รับจาก</label>
                                                     <input type="text" class="form-control form-control-sm" placeholder="รับจาก">
                                                 </div>
                                             </div>
-                                            <div class="col-lg-3 col-xl-3">
-                                                <div class="form-group">
-                                                    <label class="form-label form-label-sm text-uppercase">ราคาที่แจ้ง</label>
-                                                    <input type="text" class="form-control form-control-sm" placeholder="ราคาที่แจ้ง">
-                                                </div>
-                                            </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-lg-3 col-xl-3">
                                                 <div class="form-group">
-                                                    <label class="form-label form-label-sm text-uppercase">อาการลูกค้า</label>
-                                                    <textarea class="form-control form-control-sm" rows="3" placeholder="อาการลูกค้า"></textarea>
+                                                    <label class="form-label form-label-sm text-uppercase">ราคาที่แจ้ง</label>
+                                                    <input type="text" class="form-control form-control-sm" placeholder="ราคาที่แจ้ง">
                                                 </div>
                                             </div>
                                             <div class="col-lg-3 col-xl-3">
@@ -85,6 +85,14 @@
                                                         value="option1">
                                                     <span class="form-check-label">ไม่จอง</span>
                                                 </label>
+                                            </div>
+                                        </div>                                        
+                                        <div class="row">
+                                            <div class="col-lg-6 col-xl-6">
+                                                <div class="form-group">
+                                                    <label class="form-label form-label-sm text-uppercase">อาการลูกค้า</label>
+                                                    <textarea class="form-control form-control-sm" rows="3" placeholder="อาการลูกค้า"></textarea>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

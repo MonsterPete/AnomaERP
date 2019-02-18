@@ -2,10 +2,10 @@
 $(function() {
   var isRtl = $('html').attr('dir') === 'rtl';
 
-  $('#datepicker-base').datepicker({
+  $('#datepicker_base').datepicker({
     orientation: isRtl ? 'auto right' : 'auto left'
   });
-  $('#datepicker-base-2').datepicker({
+  $('#datepicker_base_2').datepicker({
     orientation: isRtl ? 'auto right' : 'auto left'
   });
   $('#datepicker-base-3').datepicker({
