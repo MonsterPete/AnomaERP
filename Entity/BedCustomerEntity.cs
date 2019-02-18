@@ -17,6 +17,7 @@ namespace Entity
         public Boolean is_active { get; set; }
 
         public String branch_name { get; set; }
+        public Int32 branch_id { get; set; }
         public String floor_name { get; set; }
         public String room_name { get; set; }
         public String bed_name { get; set; }
@@ -24,5 +25,10 @@ namespace Entity
         public String lastname { get; set; }
         public String firstname { get; set; }
         public Boolean is_have_customer { get; set; }
+
+        #region Care Plan
+        public DateTime start_date { get; set; }
+        public DateTime end_date { get; set; }
+        #endregion
     }
 }

@@ -21,6 +21,10 @@ namespace AnomaERP.BackOffice.Bed_Management.Bed
                 rptBedEntity.DataBind();
                 CustomerService customerService = new CustomerService();
                 ddlCustomer.DataSource = customerService.GetDDLCustomerForAssginBed(1);
+                ddlCustomer.DataTextField = "fullname";
+                ddlCustomer.DataValueField = "customer_id";
+                ddlCustomer.DataBind();
+                //ddlCustomer.Items.Insert(0, new ListItem("Select--", ""));
             }
         }
 
@@ -69,16 +73,29 @@ namespace AnomaERP.BackOffice.Bed_Management.Bed
                 lblCustomer.Visible = false;
             }
             lbnAssign.CommandName = "Assign";
-            lbnAssign.CommandArgument = bedCustomerEntity.branch_name;
+            lbnAssign.CommandArgument = bedCustomerEntity.bed_id.ToString() + "||" + bedCustomerEntity.bed_name;
         }
 
         protected void rptBedEntity_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
             if (e.CommandName == "Assign")
             {
-                lblStatus.Text = e.CommandArgument.ToString();
+                string[] str1 = e.CommandArgument.ToString().Split("||".ToCharArray());
+                string name = str1[2];
+                string id = str1[0];
+                hdfBedId.Value = id;
+                hdfBedName.Value = name;
                 ScriptManager.RegisterClientScriptBlock((source as Control), this.GetType(), "Pop", "openModal();", true);
+               
             }
+        }
+
+        protected void lbnComfirm_Click(object sender, EventArgs e)
+        {
+            BedCustomerEntity bedCustomerEntity = new BedCustomerEntity();
+            bedCustomerEntity.bed_id = int.Parse(hdfBedId.Value);
+            bedCustomerEntity.start_date = Convert.ToDateTime(txtDateStart.Text);
+            bedCustomerEntity.end_date = Convert.ToDateTime(txtDateEnd.Text);
         }
     }
 }
