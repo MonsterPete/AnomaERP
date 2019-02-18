@@ -71,8 +71,8 @@
                                                                         <th class="tbw-5">#</th>
                                                                         <th class="tbw-7">Appointment Date</th>
                                                                         <th class="tbw-7">Visitor Date</th>
-                                                                        <th>Customer Name</th>
-                                                                        <th>Symptom</th>
+                                                                        <th>Visitor Name</th>
+                                                                        <th>Phone Number</th>
                                                                         <th class="tbw-9">Reserve Status</th>
                                                                         <th class="tbw-9">Tools</th>
                                                                     </tr>
@@ -83,44 +83,8 @@
                                                                         <td>12/01/2019</td>
                                                                         <td>12/01/2019</td>
                                                                         <td>Steve Job</td>
-                                                                        <td>เดินไม่ไหว</td>
+                                                                        <td>089-584845215</td>
                                                                         <td class="center">Reserved</td>
-                                                                        <td class="center">
-                                                                            <div class="btn-group btn-group-sm">
-                                                                                <a href="visitor-form.html" class="btn btn-primary">
-                                                                                    <i class="ion ion-md-create"></i></a>
-                                                                                <a href="#" class="btn btn-danger" data-toggle="modal"
-                                                                                    data-target="#modals-default">
-                                                                                    <i class="ion ion-md-close"></i>
-                                                                                </a>
-                                                                            </div>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="odd gradeX">
-                                                                        <td>0000002</td>
-                                                                        <td>12/01/2019</td>
-                                                                        <td>12/01/2019</td>
-                                                                        <td>Steve Job</td>
-                                                                        <td>เดินไม่ไหว</td>
-                                                                        <td class="center">No Reserved</td>
-                                                                        <td class="center">
-                                                                            <div class="btn-group btn-group-sm">
-                                                                                <a href="visitor-form.html" class="btn btn-primary">
-                                                                                    <i class="ion ion-md-create"></i></a>
-                                                                                <a href="#" class="btn btn-danger" data-toggle="modal"
-                                                                                    data-target="#modals-default">
-                                                                                    <i class="ion ion-md-close"></i>
-                                                                                </a>
-                                                                            </div>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="odd gradeX">
-                                                                        <td>0000003</td>
-                                                                        <td>12/01/2019</td>
-                                                                        <td>12/01/2019</td>
-                                                                        <td>Steve Job</td>
-                                                                        <td>เดินไม่ไหว</td>
-                                                                        <td class="center">No Reserved</td>
                                                                         <td class="center">
                                                                             <div class="btn-group btn-group-sm">
                                                                                 <a href="visitor-form.html" class="btn btn-primary">
