@@ -30,7 +30,8 @@ namespace Service.SiteVisit
 
         public int InsertData(SiteVisitEntity entity)
         {
-            throw new NotImplementedException();
+            SiteVisitDAO siteVisitDAO = new SiteVisitDAO();
+            return siteVisitDAO.InsertData(entity);
         }
 
         public int UpdateData(SiteVisitEntity entity)

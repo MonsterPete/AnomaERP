@@ -53,23 +53,33 @@ namespace AnomaERP.BackOffice.NursingHome
             entity.price_listed = int.Parse(txtPriceListed.Text);
             entity.symptom = txtSymptom.Text;
 
+            if (rdoReservation.Checked == true)
+            {
+                entity.reservation = true;
+            }
+            else if (rdoUnReservation.Checked == true)
+            {
+                entity.reservation = false;
+            }
+
             return entity;
         }
         private Boolean isValid()
         {
-            Boolean valid = true;
+            Boolean unValid = true, valid = true;
             string date_of_visit = txtVisitDate.Text;
             string date_of_appointment = txtAppointmentDate.Text;
             string firstname = txtFirstname.Text;
             string lastname = txtLastname.Text;
             string phone = txtPhone.Text;
-            
-            valid &= string.IsNullOrWhiteSpace(date_of_visit);
-            valid &= string.IsNullOrWhiteSpace(date_of_appointment);
-            valid &= string.IsNullOrWhiteSpace(firstname);
-            valid &= string.IsNullOrWhiteSpace(lastname);
-            valid &= string.IsNullOrWhiteSpace(phone);
-            
+
+            unValid &= string.IsNullOrWhiteSpace(date_of_visit);
+            unValid &= string.IsNullOrWhiteSpace(date_of_appointment);
+            unValid &= string.IsNullOrWhiteSpace(firstname);
+            unValid &= string.IsNullOrWhiteSpace(lastname);
+            unValid &= string.IsNullOrWhiteSpace(phone);
+
+            valid = !unValid;
             return valid;
         }
 
@@ -79,12 +89,12 @@ namespace AnomaERP.BackOffice.NursingHome
             {
                 SiteVisitEntity entity = getEntityData();
                 SiteVisitService siteVisitService = new SiteVisitService();
-                //if (siteVisitService.InsertData(entity) > 0)
-                //{
-                //}
-                //else
-                //{
-                //}
+                if (siteVisitService.InsertData(entity) > 0)
+                {
+                }
+                else
+                {
+                }
             }
             else
             {
