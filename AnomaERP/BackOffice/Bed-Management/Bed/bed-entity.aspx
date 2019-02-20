@@ -20,6 +20,8 @@
                     <!-- Statistics -->
                     <div class="card mb-3">
                         <asp:HiddenField ID="hdfBedId" runat="server" />
+                        <asp:HiddenField ID="hdfCustomerId" runat="server" />
+                        <asp:HiddenField ID="hdfBedCustomerId" runat="server" />
                         <asp:HiddenField ID="hdfBedName" runat="server" />
                         <div class="row no-gutters row-bordered">
                             <div class="col-md-12 col-lg-12 col-xl-12">
@@ -111,10 +113,24 @@
                                                                             </td>
                                                                             <td>-</td>
                                                                             <td class="center">
-                                                                                <div class="btn-group btn-group-sm">
-                                                                                    <a href="" class="btn btn-primary"
-                                                                                        data-toggle="modal" data-target="#modals-assign-edit">
-                                                                                        <i class="ion ion-md-create"></i></a>
+                                                                                <div runat="server" id="manupnl">
+                                                                                    <div class="btn-group btn-group-sm">
+                                                                                        <a href="" class="btn btn-primary"
+                                                                                            data-toggle="modal" data-target="#modals-assign-edit">
+                                                                                            <i class="ion ion-md-create"></i></a>
+                                                                                    </div>
+                                                                                    <div class="btn-group btn-group-sm">
+                                                                                        <asp:LinkButton runat="server" ID="lbnCustomerGoOutBed" ClientIDMode="AutoID" class="btn btn-success text-white">
+                                                                                            <i class="ion ion-md-log-out"></i></asp:LinkButton>
+                                                                                    </div>
+                                                                                    <div class="btn-group btn-group-sm">
+                                                                                        <asp:LinkButton runat="server" ID="lbnAdmit" ClientIDMode="AutoID" class="btn btn-warning text-white">
+                                                                                            <i class="ion ion-md-medkit"></i></asp:LinkButton>
+                                                                                    </div>
+                                                                                    <div class="btn-group btn-group-sm">
+                                                                                        <asp:LinkButton runat="server" ID="lbnDeleteCustomer" ClientIDMode="AutoID" class="btn btn-danger text-white">
+                                                                                            <i class="ion ion-md-close"></i></asp:LinkButton>
+                                                                                    </div>
                                                                                 </div>
                                                                             </td>
                                                                         </tr>
@@ -142,14 +158,101 @@
     </asp:UpdatePanel>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ModalPlaceHolder" runat="server">
-
     <script>
+        function openModalGoOut() {
+            $('#modals-gooutbed').modal('show');
+        };
+        function openModalAdmit() {
+            $('#modals-admit').modal('show');
+        };
+        function openModalDeleteCustomer() {
+            $('#modals-delete').modal('show');
+        };
         function openModal() {
             $('#modals-assign').modal('show');
 
             $('#txtModalBedName').val(document.getElementById('<%= hdfBedName.ClientID %>').value);
-        }
-    </script>
+        };
+    </script> 
+    <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+        <ContentTemplate>
+     <div class="modal fade" id="modals-delete">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title text-center mb-0">Delete Customer
+                    </h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">×</button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-12 col-xl-12">
+                            <div class="form-group">
+                                <label class="form-label form-label-sm text-uppercase">คุณต้องการลบข้อมูลผู้ป่วยใช่หรือไม่</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="m-0">
+                <div class="modal-footer">
+                    <a href="#" class="btn btn-default" data-dismiss="modal">Clear</a>
+                    <asp:LinkButton ID="lbnDeleteCustomer" runat="server" OnClick="lbnDeleteCustomer_Click" CssClass="btn btn-success">Comfirm</asp:LinkButton>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+     <div class="modal fade" id="modals-admit">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title text-center mb-0">Customer Admit
+                    </h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">×</button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-12 col-xl-12">
+                            <div class="form-group">
+                                <label class="form-label form-label-sm text-uppercase">ผู้ป่วยไม่ได้อยู่ที่เตียงใช่หรือไม่</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="m-0">
+                <div class="modal-footer">
+                    <a href="#" class="btn btn-default" data-dismiss="modal">Clear</a>
+                    <asp:LinkButton ID="lbnAdmit" runat="server" OnClick="lbnAdmit_Click" CssClass="btn btn-success">Comfirm</asp:LinkButton>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modals-gooutbed">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title text-center mb-0">Customer go out bed
+                    </h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">×</button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-12 col-xl-12">
+                            <div class="form-group">
+                                <label class="form-label form-label-sm text-uppercase">คุณต้องการจะย้ายผู้ป่วยออกจากเตียงใช่หรือไม่</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="m-0">
+                <div class="modal-footer">
+                    <a href="#" class="btn btn-default" data-dismiss="modal">Clear</a>
+                    <asp:LinkButton ID="lbnGoOutBed" runat="server" OnClick="lbnGoOutBed_Click" CssClass="btn btn-success">Comfirm</asp:LinkButton>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="modal fade" id="modals-assign">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -174,20 +277,20 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <%--<div class="row">
                         <div class="col-lg-12 col-xl-12">
                             <h5 class="mt-0"><strong>Contract Date</strong></h5>
                         </div>
                         <div class="col-lg-6 col-xl-6">
                             <div class="form-group">
                                 <label class="form-label form-label-sm text-uppercase">Start Contract</label>
-                                <asp:TextBox ID="txtDateStart" runat="server" CssClass="form-control form-control-sm" TextMode="Date"></asp:TextBox>
+                                <asp:TextBox ID="txtDateStart" runat="server" CssClass="form-control form-control-sm"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-lg-6 col-xl-6">
                             <div class="form-group">
                                 <label class="form-label form-label-sm text-uppercase">End Contract</label>
-                                <asp:TextBox ID="txtDateEnd" runat="server" CssClass="form-control form-control-sm" TextMode="Date"></asp:TextBox>
+                                <asp:TextBox ID="txtDateEnd" runat="server" CssClass="form-control form-control-sm"></asp:TextBox>
                             </div>
                         </div>
                     </div>
@@ -202,7 +305,7 @@
                                 </asp:DropDownList>
                             </div>
                         </div>
-                    </div>
+                    </div>--%>
                 </div>
                 <hr class="m-0">
                 <div class="modal-footer">
@@ -296,4 +399,6 @@
             </div>
         </div>
     </div>
+        </ContentTemplate>
+    </asp:UpdatePanel>
 </asp:Content>

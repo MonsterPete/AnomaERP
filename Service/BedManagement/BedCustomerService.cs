@@ -44,5 +44,30 @@ namespace Service.BedManagement
             BedCustomerDAO bedCustomerDAO = new BedCustomerDAO();
             return bedCustomerDAO.SelectBedCustomerForBedEntity(bedCustomerEntity);
         }
+
+        public int InsertDataAndUpTBDateBedAndTBCustomer(BedCustomerEntity entity)
+        {
+            BedCustomerDAO bedCustomerDAO = new BedCustomerDAO();
+            return bedCustomerDAO.InsertDataAndUpTBDateBedAndTBCustomer(entity);
+        }
+
+        public int UpdateDeleteDataAndUpTBDateBedAndTBCustomer(BedCustomerEntity entity)
+        {
+            BedCustomerDAO bedCustomerDAO = new BedCustomerDAO();
+            
+            return bedCustomerDAO.UpdateDeleteDataAndUpTBDateBedAndTBCustomer(entity);
+        }
+
+        public int UpdateDeleteDataAndUpDeleteTBDateBedAndTBCustomer(BedCustomerEntity entity)
+        {
+            BedCustomerDAO bedCustomerDAO = new BedCustomerDAO();
+            return bedCustomerDAO.UpdateDeleteDataAndUpDeleteTBDateBedAndTBCustomer(entity);
+        }
+
+        public int UpdateAdmitCustomer(BedCustomerEntity bedCustomerEntity)
+        {
+            BedCustomerDAO bedCustomerDAO = new BedCustomerDAO();
+            return bedCustomerDAO.UpdateAdmitCustomer(bedCustomerEntity);
+        }
     }
 }

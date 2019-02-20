@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 namespace AnomaERP.BackOffice.Bed_Management.Bed
@@ -57,13 +58,19 @@ namespace AnomaERP.BackOffice.Bed_Management.Bed
             Label lblBed = (Label)e.Item.FindControl("lblBed");
             Label lblCustomer = (Label)e.Item.FindControl("lblCustomer");
             Label lblStatus = (Label)e.Item.FindControl("lblStatus");
+            #region Tools
             LinkButton lbnAssign = (LinkButton)e.Item.FindControl("lbnAssign");
+            HtmlGenericControl manupnl = (HtmlGenericControl)e.Item.FindControl("manupnl");
+            LinkButton lbnCustomerGoOutBed = (LinkButton)e.Item.FindControl("lbnCustomerGoOutBed");
+            LinkButton lbnAdmit = (LinkButton)e.Item.FindControl("lbnAdmit");
+            LinkButton lbnDeleteCustomer = (LinkButton)e.Item.FindControl("lbnDeleteCustomer");
+            #endregion
 
             lblBranch.Text = bedCustomerEntity.branch_name;
             lblFloor.Text = bedCustomerEntity.floor_name;
             lblRoom.Text = bedCustomerEntity.room_name;
             lblBed.Text = bedCustomerEntity.bed_name;
-            lblStatus.Text = bedCustomerEntity.status_bed_id.ToString();
+
             if (bedCustomerEntity.is_have_customer)
             {
                 lblCustomer.Text = bedCustomerEntity.fullname;
@@ -72,9 +79,22 @@ namespace AnomaERP.BackOffice.Bed_Management.Bed
             else
             {
                 lblCustomer.Visible = false;
+                manupnl.Visible = false;
             }
+            
+            #region Tool
             lbnAssign.CommandName = "Assign";
             lbnAssign.CommandArgument = bedCustomerEntity.bed_id.ToString() + "||" + bedCustomerEntity.bed_name;
+
+            lbnCustomerGoOutBed.CommandName = "GoOutBed";
+            lbnCustomerGoOutBed.CommandArgument = bedCustomerEntity.bed_customer_id + "||" + bedCustomerEntity.customer_id + "||" + bedCustomerEntity.bed_id;
+
+            lbnAdmit.CommandName = "Admit";
+            lbnAdmit.CommandArgument = bedCustomerEntity.bed_customer_id + "||" + bedCustomerEntity.customer_id + "||" + bedCustomerEntity.bed_id;
+
+            lbnDeleteCustomer.CommandName = "DeleteCustomer";
+            lbnDeleteCustomer.CommandArgument = bedCustomerEntity.bed_customer_id + "||" + bedCustomerEntity.customer_id + "||" + bedCustomerEntity.bed_id;
+            #endregion
         }
 
         protected void rptBedEntity_ItemCommand(object source, RepeaterCommandEventArgs e)
@@ -87,26 +107,81 @@ namespace AnomaERP.BackOffice.Bed_Management.Bed
                 hdfBedId.Value = id;
                 hdfBedName.Value = name;
                 ScriptManager.RegisterClientScriptBlock((source as Control), this.GetType(), "Pop", "openModal();", true);
-               
+            }
+            else
+            {
+                string[] str1 = e.CommandArgument.ToString().Split("||".ToCharArray());
+                hdfBedId.Value = str1[4];
+                hdfCustomerId.Value = str1[2];
+                hdfBedCustomerId.Value = str1[0];
+
+                if (e.CommandName == "GoOutBed")
+                {
+                    ScriptManager.RegisterClientScriptBlock((source as Control), this.GetType(), "Pop", "openModalGoOut();", true);
+                }
+                else if (e.CommandName == "Admit")
+                {
+                    ScriptManager.RegisterClientScriptBlock((source as Control), this.GetType(), "Pop", "openModalAdmit();", true);
+                }
+                else if (e.CommandName == "DeleteCustomer")
+                {
+                    ScriptManager.RegisterClientScriptBlock((source as Control), this.GetType(), "Pop", "openModalDeleteCustomer();", true);
+                }
             }
         }
 
         protected void lbnComfirm_Click(object sender, EventArgs e)
         {
             BedCustomerService bedCustomerService = new BedCustomerService();
-            bedCustomerService.InsertData(preparData());
+            bedCustomerService.InsertDataAndUpTBDateBedAndTBCustomer(preparDataInsert());
         }
 
-        private BedCustomerEntity preparData()
+        private BedCustomerEntity preparDataInsert()
         {
             BedCustomerEntity bedCustomerEntity = new BedCustomerEntity();
             bedCustomerEntity.bed_id = int.Parse(hdfBedId.Value);
-            bedCustomerEntity.start_date = Convert.ToDateTime(txtDateStart.Text);
-            bedCustomerEntity.end_date = Convert.ToDateTime(txtDateEnd.Text);
+            bedCustomerEntity.customer_id = int.Parse(ddlCustomer.SelectedValue);
             bedCustomerEntity.create_by = user_id;
             bedCustomerEntity.create_date = DateTime.Now;
 
             return bedCustomerEntity;
+        }
+
+        protected void lbnDeleteCustomer_Click(object sender, EventArgs e)
+        {
+            BedCustomerEntity bedCustomerEntity = new BedCustomerEntity();
+            bedCustomerEntity.bed_customer_id = int.Parse(hdfBedCustomerId.Value);
+            bedCustomerEntity.bed_id = int.Parse(hdfBedId.Value);
+            bedCustomerEntity.customer_id = int.Parse(hdfCustomerId.Value);
+
+            BedCustomerService bedCustomerService = new BedCustomerService();
+            bedCustomerService.UpdateDeleteDataAndUpDeleteTBDateBedAndTBCustomer(bedCustomerEntity);
+        }
+
+        protected void lbnAdmit_Click(object sender, EventArgs e)
+        {
+            BedCustomerEntity bedCustomerEntity = new BedCustomerEntity();
+            bedCustomerEntity.bed_customer_id = int.Parse(hdfBedCustomerId.Value);
+            bedCustomerEntity.bed_id = int.Parse(hdfBedId.Value);
+            bedCustomerEntity.customer_id = int.Parse(hdfCustomerId.Value);
+            bedCustomerEntity.customer_id = int.Parse(hdfCustomerId.Value);
+            bedCustomerEntity.create_by = user_id;
+            bedCustomerEntity.create_date = DateTime.Now;
+            bedCustomerEntity.is_admit = true;
+
+            BedCustomerService bedCustomerService = new BedCustomerService();
+            bedCustomerService.UpdateAdmitCustomer(bedCustomerEntity);
+        }
+
+        protected void lbnGoOutBed_Click(object sender, EventArgs e)
+        {
+            BedCustomerEntity bedCustomerEntity = new BedCustomerEntity();
+            bedCustomerEntity.bed_customer_id = int.Parse(hdfBedCustomerId.Value);
+            bedCustomerEntity.bed_id = int.Parse(hdfBedId.Value);
+            bedCustomerEntity.customer_id = int.Parse(hdfCustomerId.Value);
+
+            BedCustomerService bedCustomerService = new BedCustomerService();
+            bedCustomerService.UpdateDeleteDataAndUpTBDateBedAndTBCustomer(bedCustomerEntity);
         }
     }
 }

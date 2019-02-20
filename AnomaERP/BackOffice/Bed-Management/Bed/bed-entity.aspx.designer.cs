@@ -31,6 +31,24 @@ namespace AnomaERP.BackOffice.Bed_Management.Bed {
         protected global::System.Web.UI.WebControls.HiddenField hdfBedId;
         
         /// <summary>
+        /// hdfCustomerId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdfCustomerId;
+        
+        /// <summary>
+        /// hdfBedCustomerId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdfBedCustomerId;
+        
+        /// <summary>
         /// hdfBedName control.
         /// </summary>
         /// <remarks>
@@ -76,6 +94,42 @@ namespace AnomaERP.BackOffice.Bed_Management.Bed {
         protected global::System.Web.UI.WebControls.Repeater rptBedEntity;
         
         /// <summary>
+        /// UpdatePanel2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel2;
+        
+        /// <summary>
+        /// lbnDeleteCustomer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbnDeleteCustomer;
+        
+        /// <summary>
+        /// lbnAdmit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbnAdmit;
+        
+        /// <summary>
+        /// lbnGoOutBed control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbnGoOutBed;
+        
+        /// <summary>
         /// ddlCustomer control.
         /// </summary>
         /// <remarks>
@@ -83,33 +137,6 @@ namespace AnomaERP.BackOffice.Bed_Management.Bed {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlCustomer;
-        
-        /// <summary>
-        /// txtDateStart control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDateStart;
-        
-        /// <summary>
-        /// txtDateEnd control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDateEnd;
-        
-        /// <summary>
-        /// ddlStatus control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlStatus;
         
         /// <summary>
         /// lbnComfirm control.
