@@ -15,7 +15,8 @@ namespace Service.Customer
 
         public List<CustomerEntity> GetDataByCondition(CustomerEntity entity)
         {
-            throw new NotImplementedException();
+            CustomerDAO customerDAO = new CustomerDAO();
+            return customerDAO.GetDataByCondition(entity);
         }
 
         public List<CustomerEntity> GetDataByCondition(CustomerEntity entity, int index)
@@ -25,17 +26,20 @@ namespace Service.Customer
 
         public CustomerEntity GetDataByID(long id)
         {
-            throw new NotImplementedException();
+            CustomerDAO customerDAO = new CustomerDAO();
+            return customerDAO.GetDataByID(id);
         }
 
         public int InsertData(CustomerEntity entity)
         {
-            throw new NotImplementedException();
+            CustomerDAO customerDAO = new CustomerDAO();
+            return customerDAO.InsertData(entity);
         }
 
         public int UpdateData(CustomerEntity entity)
         {
-            throw new NotImplementedException();
+            CustomerDAO customerDAO = new CustomerDAO();
+            return customerDAO.UpdateData(entity);
         }
 
         public List<CustomerEntity> GetDDLCustomerForAssginBed(int branchId)
