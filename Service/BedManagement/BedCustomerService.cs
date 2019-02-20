@@ -30,7 +30,8 @@ namespace Service.BedManagement
 
         public int InsertData(BedCustomerEntity entity)
         {
-            throw new NotImplementedException();
+            BedCustomerDAO bedCustomerDAO = new BedCustomerDAO();
+            return bedCustomerDAO.InsertData(entity);
         }
 
         public int UpdateData(BedCustomerEntity entity)

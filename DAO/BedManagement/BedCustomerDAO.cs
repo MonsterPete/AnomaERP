@@ -38,7 +38,58 @@ namespace DAO.BedManagement
 
         public int InsertData(BedCustomerEntity entity)
         {
-            throw new NotImplementedException();
+            int result = 0;
+
+            try
+            {
+                using (DBHelper.CreateConnection())
+                {
+                    try
+                    {
+                        DBHelper.OpenConnection();
+                        using (DBHelper.BeginTransaction())
+                        {
+                            DBHelper.CreateParameters();
+                            DBHelper.AddParam("customer_id", entity.customer_id);
+                            DBHelper.AddParam("bed_id", entity.bed_id);
+                            DBHelper.AddParam("status_bed_id", entity.status_bed_id);
+                            DBHelper.AddParam("create_by", entity.create_by);
+                            DBHelper.AddParam("create_date", entity.create_date);
+
+                            result = DBHelper.ExecuteStoreProcedure("insert_bed_customer");
+
+                            if(result > 0)
+                            {
+                                DBHelper.CreateParameters();
+                                DBHelper.AddParam("customer_id", entity.customer_id);
+                                DBHelper.AddParam("bed_id", entity.bed_id);
+                                DBHelper.AddParam("status_bed_id", entity.status_bed_id);
+                                DBHelper.AddParam("create_by", entity.create_by);
+                                DBHelper.AddParam("create_date", entity.create_date);
+
+                                result = DBHelper.ExecuteStoreProcedure("insert_bed_customer");
+                            }
+                        }
+                        if (result > 0)
+                        {
+                            DBHelper.CommitTransaction();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                    finally
+                    {
+                        DBHelper.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return result;
         }
 
         public int UpdateData(BedCustomerEntity entity)

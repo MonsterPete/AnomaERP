@@ -12,10 +12,12 @@ namespace AnomaERP.BackOffice.Bed_Management.Bed
 {
     public partial class bed_entity : System.Web.UI.Page
     {
+        static int user_id = 1;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+
                 BedCustomerService bedCustomerService = new BedCustomerService();
                 rptBedEntity.DataSource = bedCustomerService.SelectBedCustomerForBedEntity(setDataSearch());
                 rptBedEntity.DataBind();
@@ -24,7 +26,6 @@ namespace AnomaERP.BackOffice.Bed_Management.Bed
                 ddlCustomer.DataTextField = "fullname";
                 ddlCustomer.DataValueField = "customer_id";
                 ddlCustomer.DataBind();
-                //ddlCustomer.Items.Insert(0, new ListItem("Select--", ""));
             }
         }
 
@@ -92,10 +93,20 @@ namespace AnomaERP.BackOffice.Bed_Management.Bed
 
         protected void lbnComfirm_Click(object sender, EventArgs e)
         {
+            BedCustomerService bedCustomerService = new BedCustomerService();
+            bedCustomerService.InsertData(preparData());
+        }
+
+        private BedCustomerEntity preparData()
+        {
             BedCustomerEntity bedCustomerEntity = new BedCustomerEntity();
             bedCustomerEntity.bed_id = int.Parse(hdfBedId.Value);
             bedCustomerEntity.start_date = Convert.ToDateTime(txtDateStart.Text);
             bedCustomerEntity.end_date = Convert.ToDateTime(txtDateEnd.Text);
+            bedCustomerEntity.create_by = user_id;
+            bedCustomerEntity.create_date = DateTime.Now;
+
+            return bedCustomerEntity;
         }
     }
 }
