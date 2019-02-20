@@ -10,6 +10,7 @@ namespace Entity
         public Int32 branch_id { get; set; }
         public String firstname { get; set; }
         public String lastname { get; set; }
+        public String revice_from { get; set; }
         public String phone { get; set; }
         public String comment { get; set; }
         public DateTime date_of_visit { get; set; }

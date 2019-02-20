@@ -13,6 +13,15 @@ namespace AnomaERP.BackOffice.NursingHome {
     public partial class visitor_form {
         
         /// <summary>
+        /// txtAppointmentDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtAppointmentDate;
+        
+        /// <summary>
         /// txtVisitDate control.
         /// </summary>
         /// <remarks>
@@ -47,6 +56,15 @@ namespace AnomaERP.BackOffice.NursingHome {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPhone;
+        
+        /// <summary>
+        /// txtReviceFrom control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtReviceFrom;
         
         /// <summary>
         /// txtPriceListed control.

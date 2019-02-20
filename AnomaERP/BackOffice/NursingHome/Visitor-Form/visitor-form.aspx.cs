@@ -45,22 +45,46 @@ namespace AnomaERP.BackOffice.NursingHome
             entity.branch_id = this.branch_id;
             entity.firstname = txtFirstname.Text;
             entity.lastname = txtLastname.Text;
+            entity.revice_from = txtReviceFrom.Text;
             entity.phone = txtPhone.Text;
             entity.comment = "";
-            entity.date_of_visit = Convert.ToDateTime(txtVisitDate.Text);  //DateTime.UtcNow;
-            entity.date_of_appointment = Convert.ToDateTime(txtVisitDate.Text);
+            entity.date_of_visit = Convert.ToDateTime(txtVisitDate.Text);
+            entity.date_of_appointment = Convert.ToDateTime(txtAppointmentDate.Text);
             entity.price_listed = int.Parse(txtPriceListed.Text);
             entity.symptom = txtSymptom.Text;
 
             return entity;
         }
+        private Boolean isValid()
+        {
+            Boolean valid = true;
+            string date_of_visit = txtVisitDate.Text;
+            string date_of_appointment = txtAppointmentDate.Text;
+            string firstname = txtFirstname.Text;
+            string lastname = txtLastname.Text;
+            string phone = txtPhone.Text;
+            
+            valid &= string.IsNullOrWhiteSpace(date_of_visit);
+            valid &= string.IsNullOrWhiteSpace(date_of_appointment);
+            valid &= string.IsNullOrWhiteSpace(firstname);
+            valid &= string.IsNullOrWhiteSpace(lastname);
+            valid &= string.IsNullOrWhiteSpace(phone);
+            
+            return valid;
+        }
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            SiteVisitEntity entity = getEntityData();
-            SiteVisitService siteVisitService = new SiteVisitService();
-            if (siteVisitService.InsertData(entity) > 0)
+            if (isValid() == true)
             {
+                SiteVisitEntity entity = getEntityData();
+                SiteVisitService siteVisitService = new SiteVisitService();
+                //if (siteVisitService.InsertData(entity) > 0)
+                //{
+                //}
+                //else
+                //{
+                //}
             }
             else
             {
@@ -73,7 +97,6 @@ namespace AnomaERP.BackOffice.NursingHome
             ////{
             ////    Response.Redirect("/BackOffice/Entity-Management/Branch/BranchBuilding/room-setup.aspx?branch_id=" + lblBranchID.Text + "&floor_id=" + lblFloorID.Text);
             ////}
-
         }
     }
 }

@@ -28,6 +28,12 @@
                                     <div class="form-group">
                                         <label class="form-label form-label-sm text-uppercase">วันที่นัด</label><label class="text-danger">*</label>
                                         <%--<input type="text"  id="datepicker-base-2">--%>
+                                        <asp:TextBox ID="txtAppointmentDate" runat="server" TextMode="Date" CssClass="form-control form-control-sm"></asp:TextBox>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-xl-3">
+                                    <div class="form-group">
+                                        <label class="form-label form-label-sm text-uppercase">วันที่เข้าชม</label><label class="text-danger">*</label>
                                         <asp:TextBox ID="txtVisitDate" runat="server" TextMode="Date" CssClass="form-control form-control-sm"></asp:TextBox>
                                     </div>
                                 </div>
@@ -58,7 +64,8 @@
                                 <div class="col-lg-3 col-xl-3">
                                     <div class="form-group">
                                         <label class="form-label form-label-sm text-uppercase">รับจาก</label>
-                                        <input type="text" class="form-control form-control-sm" placeholder="รับจาก">
+                                        <%--<input type="text" class="form-control form-control-sm" placeholder="รับจาก">--%>
+                                        <asp:TextBox ID="txtReviceFrom" runat="server" CssClass="form-control form-control-sm" placeholder="รับจาก"></asp:TextBox>
                                     </div>
                                 </div>
                             </div>
