@@ -56,8 +56,8 @@ namespace Definitions
         {
             //*** Eng Format
             System.Globalization.CultureInfo _cultureEnInfo = new System.Globalization.CultureInfo("en-US");
-            DateTime dateEng = Convert.ToDateTime(dateTime, _cultureEnInfo);
-            return DateTime.Parse(dateEng.ToString("MM dd yyyy HH:mm:ss", _cultureEnInfo));
+            DateTime dateEng = Convert.ToDateTime(dateTime.ToString("dd'/'MM'/'yyyy"), _cultureEnInfo);
+            return dateEng;
         }
     }
 }

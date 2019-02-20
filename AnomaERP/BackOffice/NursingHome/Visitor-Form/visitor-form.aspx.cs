@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Service.SiteVisit;
+using Definitions;
 
 namespace AnomaERP.BackOffice.NursingHome
 {
@@ -40,6 +41,7 @@ namespace AnomaERP.BackOffice.NursingHome
 
         private SiteVisitEntity getEntityData()
         {
+            DateFormat dateFormat = new DateFormat();
             SiteVisitEntity entity = new SiteVisitEntity();
             entity.visitor_id = this.visitor_id;
             entity.branch_id = this.branch_id;
@@ -48,8 +50,8 @@ namespace AnomaERP.BackOffice.NursingHome
             entity.revice_from = txtReviceFrom.Text;
             entity.phone = txtPhone.Text;
             entity.comment = "";
-            entity.date_of_visit = Convert.ToDateTime(txtVisitDate.Text);
-            entity.date_of_appointment = Convert.ToDateTime(txtAppointmentDate.Text);
+            entity.date_of_visit = dateFormat.EngFormatDateToSQL(DateTime.Parse(txtVisitDate.Text));
+            entity.date_of_appointment = dateFormat.EngFormatDateToSQL(DateTime.Parse(txtAppointmentDate.Text));
             entity.price_listed = int.Parse(txtPriceListed.Text);
             entity.symptom = txtSymptom.Text;
 
@@ -89,24 +91,25 @@ namespace AnomaERP.BackOffice.NursingHome
             {
                 SiteVisitEntity entity = getEntityData();
                 SiteVisitService siteVisitService = new SiteVisitService();
-                if (siteVisitService.InsertData(entity) > 0)
+                
+                int success = 0;
+                if (this.visitor_id > 0)
                 {
+                    success = siteVisitService.UpdateData(entity);
                 }
                 else
                 {
+                    success = siteVisitService.InsertData(entity);
+                }
+
+                if (success > 0)
+                {
+                    Response.Redirect("/BackOffice/NursingHome/Visitor-Form/index.aspx", true);
                 }
             }
-            else
+            else //Dont't have Require Field
             {
             }
-            ////if (branchBedService.InsertDataMore(branchBedEntities) > 0)
-            ////{
-            ////    Response.Redirect("/BackOffice/Entity-Management/Branch/BranchBuilding/room-setup.aspx?branch_id=" + lblBranchID.Text + "&floor_id=" + lblFloorID.Text);
-            ////}
-            ////else
-            ////{
-            ////    Response.Redirect("/BackOffice/Entity-Management/Branch/BranchBuilding/room-setup.aspx?branch_id=" + lblBranchID.Text + "&floor_id=" + lblFloorID.Text);
-            ////}
         }
     }
 }
