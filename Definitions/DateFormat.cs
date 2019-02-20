@@ -49,15 +49,14 @@ namespace Definitions
             TimeSpan time = new TimeSpan(0, 7, 0, 0);
             DateTime dateEngAddTime = dateEng.Add(time);
 
-            return DateTime.Parse( dateEngAddTime.ToString("MM/dd/yyyy HH:mm:ss", _cultureEnInfo));
+            return DateTime.Parse(dateEngAddTime.ToString("MM/dd/yyyy HH:mm:ss", _cultureEnInfo));
         }
 
         public DateTime EngFormatDateToSQL(DateTime dateTime)
         {
-            //*** Eng Format
-            System.Globalization.CultureInfo _cultureEnInfo = new System.Globalization.CultureInfo("en-US");
-            DateTime dateEng = Convert.ToDateTime(dateTime, _cultureEnInfo);
-            return DateTime.Parse(dateEng.ToString("MM dd yyyy HH:mm:ss", _cultureEnInfo));
+            //***Convert to Eng format
+            DateTime dateEng = DateTime.Parse(dateTime.ToString(), new CultureInfo("en-US"));
+            return dateEng;
         }
     }
 }
