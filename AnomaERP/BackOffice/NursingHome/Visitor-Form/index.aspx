@@ -78,7 +78,9 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr class="odd gradeX">
+
+
+                                                          <tr class="odd gradeX">
                                                             <td>0000001</td>
                                                             <td>12/01/2019</td>
                                                             <td>12/01/2019</td>
