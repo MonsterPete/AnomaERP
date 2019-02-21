@@ -179,6 +179,8 @@ namespace AnomaERP.BackOffice.Bed_Management.Bed
             bedCustomerEntity.bed_customer_id = int.Parse(hdfBedCustomerId.Value);
             bedCustomerEntity.bed_id = int.Parse(hdfBedId.Value);
             bedCustomerEntity.customer_id = int.Parse(hdfCustomerId.Value);
+            bedCustomerEntity.create_by = user_id;
+            bedCustomerEntity.create_date = DateTime.Now;
 
             BedCustomerService bedCustomerService = new BedCustomerService();
             bedCustomerService.UpdateDeleteDataAndUpTBDateBedAndTBCustomer(bedCustomerEntity);

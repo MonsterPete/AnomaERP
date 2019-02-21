@@ -174,8 +174,6 @@
             $('#txtModalBedName').val(document.getElementById('<%= hdfBedName.ClientID %>').value);
         };
     </script> 
-    <asp:UpdatePanel ID="UpdatePanel2" runat="server">
-        <ContentTemplate>
      <div class="modal fade" id="modals-delete">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -399,6 +397,4 @@
             </div>
         </div>
     </div>
-        </ContentTemplate>
-    </asp:UpdatePanel>
 </asp:Content>

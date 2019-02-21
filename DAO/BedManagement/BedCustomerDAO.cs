@@ -225,8 +225,8 @@ namespace DAO.BedManagement
                         {
                             DBHelper.CreateParameters();
                             DBHelper.AddParam("bed_customer_id", entity.bed_customer_id);
-                            DBHelper.AddParam("modify_by", entity.modify_by);
-                            DBHelper.AddParam("modify_date", entity.modify_date);
+                            DBHelper.AddParam("modify_by", entity.create_by);
+                            DBHelper.AddParam("modify_date", entity.create_date);
 
                             result = DBHelper.ExecuteStoreProcedure("update_un_active_bed_customer");
 
