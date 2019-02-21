@@ -32,10 +32,9 @@ namespace AnomaERP.BackOffice.NursingHome
             Label lblReserve = (Label)e.Item.FindControl("lblReserve");
 
             LinkButton lbnEdit = (LinkButton)e.Item.FindControl("lbnEdit");
-            LinkButton lbnRemove = (LinkButton)e.Item.FindControl("lbnRemove");
+            //LinkButton lbnDelete = (LinkButton)e.Item.FindControl("lbnDelete");
 
             //HiddenField hdfStatus = (HiddenField)e.Item.FindControl("hdfStatus");
-
             //lblVisitorID.Text = entity.row_index.ToString();
             lblAppointmentDate.Text = entity.date_of_appointment.ToString("dd'/'MM'/'yyyy");
             lblVisitDate.Text = entity.date_of_visit.ToString("dd'/'MM'/'yyyy");
@@ -47,8 +46,8 @@ namespace AnomaERP.BackOffice.NursingHome
 
             lbnEdit.CommandName = "Edit";
             lbnEdit.CommandArgument = entity.visitor_id.ToString();
-            lbnRemove.CommandName = "Remove";
-            lbnRemove.CommandArgument = entity.visitor_id.ToString();
+            //lbnDelete.CommandName = "Delete";
+            //lbnDelete.CommandArgument = entity.visitor_id.ToString();
         }
 
         protected void rptList_ItemCommand(object source, RepeaterCommandEventArgs e)
@@ -57,18 +56,18 @@ namespace AnomaERP.BackOffice.NursingHome
             {
                 Response.Redirect("/BackOffice/NursingHome/Visitor-Form/visitor-form.aspx?visitor_id=" + e.CommandArgument);
             }
-            else if (e.CommandName == "Remove")
-            {
-                SiteVisitEntity entity = new SiteVisitEntity();
-                SiteVisitService service = new SiteVisitService();
+            //else if (e.CommandName == "Delete")
+            //{
+            //    SiteVisitEntity entity = new SiteVisitEntity();
+            //    SiteVisitService service = new SiteVisitService();
 
-                entity.visitor_id = Int32.Parse(e.CommandArgument.ToString());
+            //    entity.visitor_id = Int32.Parse(e.CommandArgument.ToString());
 
-                if (service.RemoveData(entity) > 0)
-                {
-                    setDataToUI(setCondition());
-                }
-            }
+            //    if (service.DeleteData(entity) > 0)
+            //    {
+            //        setDataToUI(setCondition());
+            //    }
+            //}
         }
 
         public void setDataToUI(SiteVisitEntity entity)
@@ -77,7 +76,7 @@ namespace AnomaERP.BackOffice.NursingHome
             List<SiteVisitEntity> entityList = new List<SiteVisitEntity>();
 
             entityList = service.GetDataByCondition(entity);
-            
+
             resultList.DataSource = entityList;
             resultList.DataBind();
         }
@@ -85,9 +84,14 @@ namespace AnomaERP.BackOffice.NursingHome
         public SiteVisitEntity setCondition()
         {
             SiteVisitEntity entity = new SiteVisitEntity();
-            
+
             String txtReserved = fltReserved.Text;
-            Boolean reserved = (txtReserved == "Reserved") ? true : false;
+            bool? reserved = null;
+            if (txtReserved == "Reserved") {
+                reserved = true;
+            } else if (txtReserved == "No Reserved") {
+                reserved = false;
+            }
 
             entity.sch_customer_name = txtSearch.Text;
             entity.sch_reservation = reserved;

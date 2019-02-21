@@ -41,9 +41,10 @@ namespace Service.SiteVisit
             SiteVisitDAO siteVisitDAO = new SiteVisitDAO();
             return siteVisitDAO.UpdateData(entity);
         }
-        public int RemoveData(SiteVisitEntity entity)
-        {
-            throw new NotImplementedException();
-        }
+        //public int DeleteData(SiteVisitEntity entity)
+        //{
+        //    SiteVisitDAO siteVisitDAO = new SiteVisitDAO();
+        //    return siteVisitDAO.DeleteData(entity);
+        //}
     }
 }

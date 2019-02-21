@@ -21,6 +21,6 @@ namespace Entity
 
         //Search Field
         public String sch_customer_name { get; set; }
-        public Boolean sch_reservation { get; set; }
+        public bool? sch_reservation { get; set; }
     }
 }

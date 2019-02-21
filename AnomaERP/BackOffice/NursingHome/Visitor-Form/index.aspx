@@ -38,6 +38,7 @@
                                     <div class="form-group">
                                         <label class="form-label form-label-sm text-uppercase">Status</label>
                                         <asp:DropDownList ID="fltReserved" runat="server" CssClass="" class="form-control form-control-sm">
+                                            <asp:ListItem>All</asp:ListItem>
                                             <asp:ListItem>Reserved</asp:ListItem>
                                             <asp:ListItem>No Reserved</asp:ListItem>
                                         </asp:DropDownList>
@@ -105,9 +106,9 @@
                                                                         <div class="btn-group btn-group-sm">
                                                                             <asp:LinkButton ID="lbnEdit" runat="server" CssClass="btn btn-primary"><i class="ion ion-md-create"></i></asp:LinkButton>
                                                                         </div>
-                                                                        <div class="btn-group btn-group-sm">
-                                                                            <asp:LinkButton ID="lbnRemove" runat="server" CssClass="btn btn-danger"><i class="ion ion-md-close"></i></asp:LinkButton>
-                                                                        </div>
+                                                                      <%--  <div class="btn-group btn-group-sm">
+                                                                            <asp:LinkButton ID="lbnDelete" runat="server" CssClass="btn btn-danger"><i class="ion ion-md-close"></i></asp:LinkButton>
+                                                                        </div>--%>
                                                                     </td>
                                                                 </tr>
                                                             </ItemTemplate>

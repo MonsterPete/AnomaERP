@@ -197,5 +197,43 @@ namespace DAO.SiteVisit
             }
             return result;
         }
+
+        //public int DeleteData(SiteVisitEntity entity)
+        //{
+        //    int result = 0;
+
+        //    try
+        //    {
+        //        using (DBHelper.CreateConnection())
+        //        {
+        //            try
+        //            {
+        //                DBHelper.OpenConnection();
+        //                using (DBHelper.BeginTransaction())
+        //                {
+        //                    DBHelper.CreateParameters();
+        //                    DBHelper.AddParam("visitor_id", entity.visitor_id);
+
+        //                    DBHelper.ExecuteStoreProcedure("update_delete_site_visit");
+        //                    result = entity.visitor_id;
+        //                    DBHelper.CommitTransaction();
+        //                }
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                throw ex;
+        //            }
+        //            finally
+        //            {
+        //                DBHelper.CloseConnection();
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //    return result;
+        //}
     }
 }
