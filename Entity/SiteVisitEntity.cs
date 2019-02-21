@@ -18,5 +18,9 @@ namespace Entity
         public Int32 price_listed { get; set; }
         public String symptom { get; set; }
         public Boolean reservation { get; set; }
+
+        //Search Field
+        public String sch_customer_name { get; set; }
+        public Boolean sch_reservation { get; set; }
     }
 }

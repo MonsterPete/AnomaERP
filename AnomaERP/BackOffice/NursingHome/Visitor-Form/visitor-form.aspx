@@ -17,6 +17,10 @@
 
             <!-- Statistics -->
             <div class="card mb-3">
+
+                <asp:Label ID="lblVisitorID" runat="server" Text="" Visible="false"></asp:Label>
+                <asp:Label ID="lblBranchID" runat="server" Text="" Visible="false"></asp:Label>
+
                 <h4 class="card-header with-elements">
                     <div class="card-header-title"><strong>ใบบันทึกนัดชมศูนย์ฯ</strong></div>
                 </h4>
@@ -107,8 +111,8 @@
                         <asp:FormView ID="FormView1" runat="server"></asp:FormView>
                         <div class="card-footer">
                             <a href="javascript:history.go(-1)" class="btn btn-lg btn-secondary">Back</a>
-                            <asp:Button ID="btnSave" runat="server" CssClass="btn btn-lg btn-success" Text="Save" OnClick="btnSave_Click" />
                             <%--<a href="#" class="btn btn-lg btn-success">Save</a>--%>
+                            <asp:Button ID="btnSave" runat="server" CssClass="btn btn-lg btn-success" Text="Save" OnClick="btnSave_Click" />
                         </div>
                     </div>
                 </div>
