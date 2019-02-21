@@ -24,7 +24,37 @@ namespace DAO.SiteVisit
 
         public List<SiteVisitEntity> GetDataByCondition(SiteVisitEntity entity)
         {
-            throw new NotImplementedException();
+            List<SiteVisitEntity> entityList = null;
+
+            try
+            {
+                using (DBHelper.CreateConnection())
+                {
+                    try
+                    {
+                        DBHelper.OpenConnection();
+                        DBHelper.CreateParameters();
+
+                        DBHelper.AddParam("customer_name", entity.sch_customer_name);
+                        DBHelper.AddParam("reservation", entity.sch_reservation);
+
+                        entityList = DBHelper.SelectStoreProcedure<SiteVisitEntity>("select_site_visit_by_condition").ToList();
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                    finally
+                    {
+                        DBHelper.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return entityList;
         }
 
         public List<SiteVisitEntity> GetDataByCondition(SiteVisitEntity entity, int Index)
@@ -34,7 +64,36 @@ namespace DAO.SiteVisit
 
         public SiteVisitEntity GetDataByID(long id)
         {
-            throw new NotImplementedException();
+            SiteVisitEntity entity = null;
+
+            try
+            {
+                using (DBHelper.CreateConnection())
+                {
+                    try
+                    {
+                        DBHelper.OpenConnection();
+                        DBHelper.CreateParameters();
+
+                        DBHelper.AddParam("visitor_id", id);
+
+                        entity = DBHelper.SelectStoreProcedure<SiteVisitEntity>("select_site_visit_by_id").ToList()[0];
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                    finally
+                    {
+                        DBHelper.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return entity;
         }
 
         public int InsertData(SiteVisitEntity entity)
@@ -103,9 +162,8 @@ namespace DAO.SiteVisit
                         DBHelper.OpenConnection();
                         using (DBHelper.BeginTransaction())
                         {
-
                             DBHelper.CreateParameters();
-                            DBHelper.AddParam("visitor_id", entity.branch_id);
+                            DBHelper.AddParam("visitor_id", entity.visitor_id);
                             DBHelper.AddParam("branch_id", entity.branch_id);
                             DBHelper.AddParam("firstname", entity.firstname);
                             DBHelper.AddParam("lastname", entity.lastname);
@@ -119,9 +177,8 @@ namespace DAO.SiteVisit
                             DBHelper.AddParam("reservation", entity.reservation);
 
                             DBHelper.ExecuteStoreProcedure("update_site_visit");
-                            Int32 param_out_id = DBHelper.GetParamOut<Int32>("success_row");
+                            result = entity.visitor_id;
                             DBHelper.CommitTransaction();
-                            result = param_out_id;
                         }
                     }
                     catch (Exception ex)
@@ -140,5 +197,43 @@ namespace DAO.SiteVisit
             }
             return result;
         }
+
+        //public int DeleteData(SiteVisitEntity entity)
+        //{
+        //    int result = 0;
+
+        //    try
+        //    {
+        //        using (DBHelper.CreateConnection())
+        //        {
+        //            try
+        //            {
+        //                DBHelper.OpenConnection();
+        //                using (DBHelper.BeginTransaction())
+        //                {
+        //                    DBHelper.CreateParameters();
+        //                    DBHelper.AddParam("visitor_id", entity.visitor_id);
+
+        //                    DBHelper.ExecuteStoreProcedure("update_delete_site_visit");
+        //                    result = entity.visitor_id;
+        //                    DBHelper.CommitTransaction();
+        //                }
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                throw ex;
+        //            }
+        //            finally
+        //            {
+        //                DBHelper.CloseConnection();
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //    return result;
+        //}
     }
 }

@@ -30,22 +30,24 @@
                                 <div class="col-lg-3 col-xl-3 mb-2">
                                     <div class="form-group">
                                         <label class="form-label form-label-sm text-uppercase">Customer Name</label>
-                                        <input type="text" class="form-control form-control-sm" placeholder="ค้นหา">
+                                        <%--<input type="text" class="form-control form-control-sm" placeholder="ค้นหา">--%>
+                                        <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control form-control-sm" placeholder="ค้นหา"></asp:TextBox>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-xl-3 mb-2">
                                     <div class="form-group">
                                         <label class="form-label form-label-sm text-uppercase">Status</label>
-                                        <select class="form-control form-control-sm">
-                                            <option>Reserved</option>
-                                            <option>No Reserved</option>
-                                        </select>
+                                        <asp:DropDownList ID="fltReserved" runat="server" CssClass="" class="form-control form-control-sm">
+                                            <asp:ListItem>All</asp:ListItem>
+                                            <asp:ListItem>Reserved</asp:ListItem>
+                                            <asp:ListItem>No Reserved</asp:ListItem>
+                                        </asp:DropDownList>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="card-footer">
-                            <a href="#" class="btn btn-primary">Search</a>
+                            <asp:Button ID="btnSave" runat="server" CssClass="btn btn-primary" Text="Search" OnClick="btnSave_Click" />
                         </div>
                     </div>
                 </div>
@@ -68,36 +70,49 @@
                                                 <table class="datatables-demo table table-striped table-hover table-bordered">
                                                     <thead class="thead-dark">
                                                         <tr>
-                                                            <th class="tbw-5">#</th>
+                                                            <%--<th class="tbw-5">#</th>--%>
                                                             <th class="tbw-7">Appointment Date</th>
                                                             <th class="tbw-7">Visitor Date</th>
-                                                            <th>Visitor Name</th>
-                                                            <th>Phone Number</th>
+                                                            <th class="tbw-7">Visitor Name</th>
+                                                            <th class="tbw-7">Phone Number</th>
                                                             <th class="tbw-9">Reserve Status</th>
                                                             <th class="tbw-9">Tools</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-
-
-                                                          <tr class="odd gradeX">
-                                                            <td>0000001</td>
-                                                            <td>12/01/2019</td>
-                                                            <td>12/01/2019</td>
-                                                            <td>Steve Job</td>
-                                                            <td>089-584845215</td>
-                                                            <td class="center">Reserved</td>
-                                                            <td class="center">
-                                                                <div class="btn-group btn-group-sm">
-                                                                    <a href="visitor-form.html" class="btn btn-primary">
-                                                                        <i class="ion ion-md-create"></i></a>
-                                                                    <a href="#" class="btn btn-danger" data-toggle="modal"
-                                                                        data-target="#modals-default">
-                                                                        <i class="ion ion-md-close"></i>
-                                                                    </a>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
+                                                        <asp:Repeater ID="resultList" runat="server" OnItemDataBound="rptList_ItemDataBound" OnItemCommand="rptList_ItemCommand">
+                                                            <%-- OnItemCommand="rptInquiryList_ItemCommand" OnItemDataBound="rptInquiryList_ItemDataBound"--%>
+                                                            <ItemTemplate>
+                                                                <tr id="trCountDays" runat="server" class="odd gradeX">
+                                                                    <%--    <td>
+                                                                        <asp:Label ID="lblVisitorID" runat="server"></asp:Label>
+                                                                    </td>--%>
+                                                                    <td id="tdCountDays" runat="server" style="text-align: center;">
+                                                                        <asp:Label ID="lblAppointmentDate" runat="server"></asp:Label>
+                                                                    </td>
+                                                                    <td id="td1" runat="server" style="text-align: center;">
+                                                                        <asp:Label ID="lblVisitDate" runat="server"></asp:Label>
+                                                                    </td>
+                                                                    <td id="td2" runat="server" style="text-align: center;">
+                                                                        <asp:Label ID="lblFullName" runat="server"></asp:Label>
+                                                                    </td>
+                                                                    <td id="td3" runat="server" style="text-align: center;">
+                                                                        <asp:Label ID="lblPhone" runat="server"></asp:Label>
+                                                                    </td>
+                                                                    <td id="td5" runat="server" style="text-align: center;">
+                                                                        <asp:Label ID="lblReserve" runat="server"></asp:Label>
+                                                                    </td>
+                                                                    <td class="center">
+                                                                        <div class="btn-group btn-group-sm">
+                                                                            <asp:LinkButton ID="lbnEdit" runat="server" CssClass="btn btn-primary"><i class="ion ion-md-create"></i></asp:LinkButton>
+                                                                        </div>
+                                                                      <%--  <div class="btn-group btn-group-sm">
+                                                                            <asp:LinkButton ID="lbnDelete" runat="server" CssClass="btn btn-danger"><i class="ion ion-md-close"></i></asp:LinkButton>
+                                                                        </div>--%>
+                                                                    </td>
+                                                                </tr>
+                                                            </ItemTemplate>
+                                                        </asp:Repeater>
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -106,7 +121,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                     <!-- / Sale stats -->
                 </div>

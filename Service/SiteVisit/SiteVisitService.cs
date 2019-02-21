@@ -15,7 +15,8 @@ namespace Service.SiteVisit
 
         public List<SiteVisitEntity> GetDataByCondition(SiteVisitEntity entity)
         {
-            throw new NotImplementedException();
+            SiteVisitDAO siteVisitDAO = new SiteVisitDAO();
+            return siteVisitDAO.GetDataByCondition(entity);
         }
 
         public List<SiteVisitEntity> GetDataByCondition(SiteVisitEntity entity, int index)
@@ -25,7 +26,8 @@ namespace Service.SiteVisit
 
         public SiteVisitEntity GetDataByID(long id)
         {
-            throw new NotImplementedException();
+            SiteVisitDAO siteVisitDAO = new SiteVisitDAO();
+            return siteVisitDAO.GetDataByID(id);
         }
 
         public int InsertData(SiteVisitEntity entity)
@@ -36,7 +38,13 @@ namespace Service.SiteVisit
 
         public int UpdateData(SiteVisitEntity entity)
         {
-            throw new NotImplementedException();
+            SiteVisitDAO siteVisitDAO = new SiteVisitDAO();
+            return siteVisitDAO.UpdateData(entity);
         }
+        //public int DeleteData(SiteVisitEntity entity)
+        //{
+        //    SiteVisitDAO siteVisitDAO = new SiteVisitDAO();
+        //    return siteVisitDAO.DeleteData(entity);
+        //}
     }
 }

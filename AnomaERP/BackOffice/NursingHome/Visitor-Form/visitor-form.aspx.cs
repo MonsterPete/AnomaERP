@@ -13,29 +13,58 @@ namespace AnomaERP.BackOffice.NursingHome
 {
     public partial class visitor_form : System.Web.UI.Page
     {
-        int visitor_id = 0;
-        int branch_id = 1;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                this.visitor_id = 0;
+                lblVisitorID.Text = "0";
                 if (Request.QueryString["visitor_ID"] != null)
                 {
                     if (int.Parse(Request.QueryString["visitor_ID"]) > 0)
                     {
-                        this.visitor_id = int.Parse(Request.QueryString["visitor_ID"].ToString());
+                        lblVisitorID.Text = Request.QueryString["visitor_ID"].ToString();
+                        SetEntityData(int.Parse(lblVisitorID.Text));
                     }
                 }
 
-                this.branch_id = 0;
+                lblBranchID.Text = "1"; //Suma fix for Test
                 if (Request.QueryString["branch_ID"] != null)
                 {
                     if (int.Parse(Request.QueryString["branch_ID"]) > 0)
                     {
-                        this.branch_id = int.Parse(Request.QueryString["branch_ID"].ToString());
+                        lblBranchID.Text = Request.QueryString["branch_ID"].ToString();
                     }
                 }
+            }
+        }
+        private void SetEntityData(int visitor_id)
+        {
+            SiteVisitEntity entity = null;
+            SiteVisitService siteVisitService = new SiteVisitService();
+            entity = siteVisitService.GetDataByID(visitor_id);
+
+            lblVisitorID.Text = entity.visitor_id.ToString();
+            lblBranchID.Text = entity.branch_id.ToString();
+            txtFirstname.Text = entity.firstname;
+            txtFirstname.Text = entity.firstname;
+            txtLastname.Text = entity.lastname;
+            txtReviceFrom.Text = entity.revice_from.ToString();
+            txtPhone.Text = entity.phone;
+
+            txtVisitDate.Text = entity.date_of_visit.ToString("yyyy-MM-dd");
+            txtAppointmentDate.Text = entity.date_of_appointment.ToString("yyyy-MM-dd");
+            //entity.date_of_visit = dateFormat.EngFormatDateToSQL(DateTime.Parse(txtVisitDate.Text));
+            //entity.date_of_appointment = dateFormat.EngFormatDateToSQL(DateTime.Parse(txtAppointmentDate.Text));
+            txtPriceListed.Text = entity.price_listed.ToString();
+            txtSymptom.Text = entity.symptom;
+
+            if (entity.reservation == true)
+            {
+                rdoReservation.Checked = true;
+            }
+            else if (entity.reservation == false)
+            {
+                rdoUnReservation.Checked = true;
             }
         }
 
@@ -43,8 +72,8 @@ namespace AnomaERP.BackOffice.NursingHome
         {
             DateFormat dateFormat = new DateFormat();
             SiteVisitEntity entity = new SiteVisitEntity();
-            entity.visitor_id = this.visitor_id;
-            entity.branch_id = this.branch_id;
+            entity.visitor_id = int.Parse(lblVisitorID.Text);
+            entity.branch_id = int.Parse(lblBranchID.Text);
             entity.firstname = txtFirstname.Text;
             entity.lastname = txtLastname.Text;
             entity.revice_from = txtReviceFrom.Text;
@@ -68,18 +97,18 @@ namespace AnomaERP.BackOffice.NursingHome
         }
         private Boolean isValid()
         {
-            Boolean unValid = true, valid = true;
+            Boolean unValid = false, valid = true;
             string date_of_visit = txtVisitDate.Text;
             string date_of_appointment = txtAppointmentDate.Text;
             string firstname = txtFirstname.Text;
             string lastname = txtLastname.Text;
             string phone = txtPhone.Text;
 
-            unValid &= string.IsNullOrWhiteSpace(date_of_visit);
-            unValid &= string.IsNullOrWhiteSpace(date_of_appointment);
-            unValid &= string.IsNullOrWhiteSpace(firstname);
-            unValid &= string.IsNullOrWhiteSpace(lastname);
-            unValid &= string.IsNullOrWhiteSpace(phone);
+            unValid |= string.IsNullOrWhiteSpace(date_of_visit);
+            unValid |= string.IsNullOrWhiteSpace(date_of_appointment);
+            unValid |= string.IsNullOrWhiteSpace(firstname);
+            unValid |= string.IsNullOrWhiteSpace(lastname);
+            unValid |= string.IsNullOrWhiteSpace(phone);
 
             valid = !unValid;
             return valid;
@@ -91,9 +120,9 @@ namespace AnomaERP.BackOffice.NursingHome
             {
                 SiteVisitEntity entity = getEntityData();
                 SiteVisitService siteVisitService = new SiteVisitService();
-                
+
                 int success = 0;
-                if (this.visitor_id > 0)
+                if (int.Parse(lblVisitorID.Text) > 0)
                 {
                     success = siteVisitService.UpdateData(entity);
                 }
