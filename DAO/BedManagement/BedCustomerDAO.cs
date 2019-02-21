@@ -38,6 +38,53 @@ namespace DAO.BedManagement
 
         public int InsertData(BedCustomerEntity entity)
         {
+            throw new NotImplementedException();
+        }
+
+        public int UpdateAdmitCustomer(BedCustomerEntity entity)
+        {
+            int result = 0;
+
+            try
+            {
+                using (DBHelper.CreateConnection())
+                {
+                    try
+                    {
+                        DBHelper.OpenConnection();
+                        using (DBHelper.BeginTransaction())
+                        {
+                            DBHelper.CreateParameters();
+                            DBHelper.AddParam("customer_id", entity.customer_id);
+                            DBHelper.AddParam("is_admit", entity.is_admit);
+                            DBHelper.AddParam("modify_by", entity.create_by);
+                            DBHelper.AddParam("modify_date", entity.create_date);
+
+                            result = DBHelper.ExecuteStoreProcedure("update_admit_customer");
+                            if (result > 0)
+                            {
+                                DBHelper.CommitTransaction();
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                    finally
+                    {
+                        DBHelper.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return result;
+        }
+        public int InsertDataAndUpTBDateBedAndTBCustomer(BedCustomerEntity entity)
+        {
             int result = 0;
 
             try
@@ -52,27 +99,161 @@ namespace DAO.BedManagement
                             DBHelper.CreateParameters();
                             DBHelper.AddParam("customer_id", entity.customer_id);
                             DBHelper.AddParam("bed_id", entity.bed_id);
-                            DBHelper.AddParam("status_bed_id", entity.status_bed_id);
+                            //DBHelper.AddParam("status_bed_id", entity.status_bed_id);
                             DBHelper.AddParam("create_by", entity.create_by);
                             DBHelper.AddParam("create_date", entity.create_date);
 
                             result = DBHelper.ExecuteStoreProcedure("insert_bed_customer");
 
-                            if(result > 0)
+                            if (result > 0)
                             {
                                 DBHelper.CreateParameters();
-                                DBHelper.AddParam("customer_id", entity.customer_id);
                                 DBHelper.AddParam("bed_id", entity.bed_id);
-                                DBHelper.AddParam("status_bed_id", entity.status_bed_id);
-                                DBHelper.AddParam("create_by", entity.create_by);
-                                DBHelper.AddParam("create_date", entity.create_date);
+                                DBHelper.AddParam("is_have_customer", true);
+                                DBHelper.AddParam("modify_by", entity.create_by);
+                                DBHelper.AddParam("modify_date", entity.create_date);
 
-                                result = DBHelper.ExecuteStoreProcedure("insert_bed_customer");
+                                result = DBHelper.ExecuteStoreProcedure("update_bed_have_customer");
+                                if (result > 0)
+                                {
+                                    DBHelper.CreateParameters();
+                                    DBHelper.AddParam("customer_id", entity.customer_id);
+                                    DBHelper.AddParam("is_have_bed", true);
+                                    DBHelper.AddParam("modify_by", entity.create_by);
+                                    DBHelper.AddParam("modify_date", entity.create_date);
+
+                                    result = DBHelper.ExecuteStoreProcedure("update_customer_have_bed");
+                                }
+                            }
+                            if (result > 0)
+                            {
+                                DBHelper.CommitTransaction();
                             }
                         }
-                        if (result > 0)
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                    finally
+                    {
+                        DBHelper.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception ex) 
+            {
+                throw ex;
+            }
+            return result;
+        }
+
+        public int UpdateDeleteDataAndUpDeleteTBDateBedAndTBCustomer(BedCustomerEntity entity)
+        {
+            int result = 0;
+
+            try
+            {
+                using (DBHelper.CreateConnection())
+                {
+                    try
+                    {
+                        DBHelper.OpenConnection();
+                        using (DBHelper.BeginTransaction())
                         {
-                            DBHelper.CommitTransaction();
+                            DBHelper.CreateParameters();
+                            DBHelper.AddParam("bed_customer_id", entity.bed_customer_id);
+                            DBHelper.AddParam("modify_by", entity.modify_by);
+                            DBHelper.AddParam("modify_date", entity.modify_date);
+
+                            result = DBHelper.ExecuteStoreProcedure("update_un_active_bed_customer");
+
+                            if (result > 0)
+                            {
+                                DBHelper.CreateParameters();
+                                DBHelper.AddParam("bed_id", entity.bed_id);
+                                DBHelper.AddParam("is_have_customer", false);
+                                DBHelper.AddParam("modify_by", entity.create_by);
+                                DBHelper.AddParam("modify_date", entity.create_date);
+
+                                result = DBHelper.ExecuteStoreProcedure("update_bed_have_customer");
+                                if (result > 0)
+                                {
+                                    DBHelper.CreateParameters();
+                                    DBHelper.AddParam("customer_id", entity.customer_id);
+                                    DBHelper.AddParam("modify_by", entity.create_by);
+                                    DBHelper.AddParam("modify_date", entity.create_date);
+
+                                    result = DBHelper.ExecuteStoreProcedure("update_delete_customer");
+                                }
+                            }
+                            if (result > 0)
+                            {
+                                DBHelper.CommitTransaction();
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                    finally
+                    {
+                        DBHelper.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return result;
+        }
+
+        public int UpdateDeleteDataAndUpTBDateBedAndTBCustomer(BedCustomerEntity entity)
+        {
+            int result = 0;
+
+            try
+            {
+                using (DBHelper.CreateConnection())
+                {
+                    try
+                    {
+                        DBHelper.OpenConnection();
+                        using (DBHelper.BeginTransaction())
+                        {
+                            DBHelper.CreateParameters();
+                            DBHelper.AddParam("bed_customer_id", entity.bed_customer_id);
+                            DBHelper.AddParam("modify_by", entity.modify_by);
+                            DBHelper.AddParam("modify_date", entity.modify_date);
+
+                            result = DBHelper.ExecuteStoreProcedure("update_un_active_bed_customer");
+
+                            if (result > 0)
+                            {
+                                DBHelper.CreateParameters();
+                                DBHelper.AddParam("bed_id", entity.bed_id);
+                                DBHelper.AddParam("is_have_customer", false);
+                                DBHelper.AddParam("modify_by", entity.create_by);
+                                DBHelper.AddParam("modify_date", entity.create_date);
+
+                                result = DBHelper.ExecuteStoreProcedure("update_bed_have_customer");
+                                if (result > 0)
+                                {
+                                    DBHelper.CreateParameters();
+                                    DBHelper.AddParam("customer_id", entity.customer_id);
+                                    DBHelper.AddParam("is_have_bed", false);
+                                    DBHelper.AddParam("modify_by", entity.create_by);
+                                    DBHelper.AddParam("modify_date", entity.create_date);
+
+                                    result = DBHelper.ExecuteStoreProcedure("update_customer_have_bed");
+                                }
+                            }
+                            if (result > 0)
+                            {
+                                DBHelper.CommitTransaction();
+                            }
                         }
                     }
                     catch (Exception ex)
@@ -111,7 +292,6 @@ namespace DAO.BedManagement
                         DBHelper.AddParam("branch_name", entity.branch_name);
                         DBHelper.AddParam("floor_name", entity.floor_name);
                         DBHelper.AddParam("customer_name", entity.fullname);
-                        DBHelper.AddParam("status_id", entity.status_bed_id);
                         bedCustomerEntities = DBHelper.SelectStoreProcedure<BedCustomerEntity>("select_bed_customer_for_bed_entity").ToList();
 
                     }

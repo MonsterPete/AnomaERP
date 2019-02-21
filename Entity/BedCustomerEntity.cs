@@ -9,7 +9,6 @@ namespace Entity
         public Int32 bed_customer_id { get; set; }
         public Int32 customer_id { get; set; }
         public Int32 bed_id { get; set; }
-        public Int32 status_bed_id { get; set; }
         public DateTime create_date { get; set; }
         public Int32 create_by { get; set; }
         public DateTime modify_date { get; set; }
@@ -21,6 +20,7 @@ namespace Entity
         public String floor_name { get; set; }
         public String room_name { get; set; }
         public String bed_name { get; set; }
+        public Boolean is_admit { get; set; }
         public String fullname { get; set; }
         public String lastname { get; set; }
         public String firstname { get; set; }
