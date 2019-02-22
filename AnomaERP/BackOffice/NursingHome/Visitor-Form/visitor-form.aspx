@@ -108,7 +108,6 @@
                                 </div>
                             </div>
                         </div>
-                        <asp:FormView ID="FormView1" runat="server"></asp:FormView>
                         <div class="card-footer">
                             <a href="javascript:history.go(-1)" class="btn btn-lg btn-secondary">Back</a>
                             <%--<a href="#" class="btn btn-lg btn-success">Save</a>--%>

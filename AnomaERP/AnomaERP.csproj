@@ -475,6 +475,8 @@
     <Content Include="BackOffice\Entity-Management\Branch\BranchBuilding\bed-setup.aspx" />
     <Content Include="BackOffice\Entity-Management\Branch\BranchBuilding\floor-setup.aspx" />
     <Content Include="BackOffice\Entity-Management\Branch\BranchBuilding\room-setup.aspx" />
+    <Content Include="BackOffice\Inventory\inventory-inbound-form.aspx" />
+    <Content Include="BackOffice\Inventory\inventory-outbound-form.aspx" />
     <Content Include="BackOffice\Inventory\inventory.aspx" />
     <Content Include="BackOffice\Nursing-Aide\Customer-Daily\customer-daily.aspx" />
     <Content Include="BackOffice\NursingHome\Bed-Reservation\bed-reserve-list.aspx" />
@@ -555,6 +557,20 @@
     </Compile>
     <Compile Include="BackOffice\Entity-Management\Branch\BranchBuilding\room-setup.aspx.designer.cs">
       <DependentUpon>room-setup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BackOffice\Inventory\inventory-inbound-form.aspx.cs">
+      <DependentUpon>inventory-inbound-form.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackOffice\Inventory\inventory-inbound-form.aspx.designer.cs">
+      <DependentUpon>inventory-inbound-form.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BackOffice\Inventory\inventory-outbound-form.aspx.cs">
+      <DependentUpon>inventory-outbound-form.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackOffice\Inventory\inventory-outbound-form.aspx.designer.cs">
+      <DependentUpon>inventory-outbound-form.aspx</DependentUpon>
     </Compile>
     <Compile Include="BackOffice\Inventory\inventory.aspx.cs">
       <DependentUpon>inventory.aspx</DependentUpon>

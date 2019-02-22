@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AnomaERP.BackOffice.NursingHome {
+namespace AnomaERP.BackOffice.Inventory {
     
     
-    public partial class visitor_form {
+    public partial class inventory_inbound_form {
         
         /// <summary>
         /// lblVisitorID control.
@@ -31,94 +31,58 @@ namespace AnomaERP.BackOffice.NursingHome {
         protected global::System.Web.UI.WebControls.Label lblBranchID;
         
         /// <summary>
-        /// txtAppointmentDate control.
+        /// txtSku control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAppointmentDate;
+        protected global::System.Web.UI.WebControls.TextBox txtSku;
         
         /// <summary>
-        /// txtVisitDate control.
+        /// txtSerial control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtVisitDate;
+        protected global::System.Web.UI.WebControls.TextBox txtSerial;
         
         /// <summary>
-        /// txtFirstname control.
+        /// txtName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFirstname;
+        protected global::System.Web.UI.WebControls.TextBox txtName;
         
         /// <summary>
-        /// txtLastname control.
+        /// txtQty control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtLastname;
+        protected global::System.Web.UI.WebControls.TextBox txtQty;
         
         /// <summary>
-        /// txtPhone control.
+        /// lbnAdd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPhone;
+        protected global::System.Web.UI.WebControls.LinkButton lbnAdd;
         
         /// <summary>
-        /// txtReviceFrom control.
+        /// resultList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtReviceFrom;
-        
-        /// <summary>
-        /// txtPriceListed control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPriceListed;
-        
-        /// <summary>
-        /// rdoReservation control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rdoReservation;
-        
-        /// <summary>
-        /// rdoUnReservation control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rdoUnReservation;
-        
-        /// <summary>
-        /// txtSymptom control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSymptom;
+        protected global::System.Web.UI.WebControls.Repeater resultList;
         
         /// <summary>
         /// btnSave control.
