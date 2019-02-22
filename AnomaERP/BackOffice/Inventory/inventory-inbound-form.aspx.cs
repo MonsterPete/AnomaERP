@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Entity;
+using Service.AssetType;
+using Service.Category;
 
 namespace AnomaERP.BackOffice.Inventory
 {
@@ -11,36 +14,59 @@ namespace AnomaERP.BackOffice.Inventory
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                lblBranchID.Text = "1"; //Suma fix for Test
+                if (Request.QueryString["branch_ID"] != null)
+                {
+                    if (int.Parse(Request.QueryString["branch_ID"]) > 0)
+                    {
+                        lblBranchID.Text = Request.QueryString["branch_ID"].ToString();
+                    }
+                }
+                setDropDownList();
+            }
         }
+        protected void setDropDownList()
+        {
+            AssetTypeService atService = new AssetTypeService();
+            List<AssetTypeEntity> atEntityList = atService.GetDataAll();
+            foreach (AssetTypeEntity at in atEntityList)
+            {
+                ddlType.Items.Add(new ListItem(at.name, at.type_id.ToString()));
+            }
+
+            CategoryService cService = new CategoryService();
+            List<CategoryEntity> cEntityList = cService.GetDataAll();
+            foreach (CategoryEntity c in cEntityList)
+            {
+                ddlCategory.Items.Add(new ListItem(c.category_name, c.category_id.ToString()));
+            }
+        }
+
         protected void rptList_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
-            ////SiteVisitEntity entity = (SiteVisitEntity)e.Item.DataItem;
+            InventoryEntity entity = (InventoryEntity)e.Item.DataItem;
 
-            //////Label lblVisitorID = (Label)e.Item.FindControl("lblVisitorID");
-            ////Label lblAppointmentDate = (Label)e.Item.FindControl("lblAppointmentDate");
-            ////Label lblVisitDate = (Label)e.Item.FindControl("lblVisitDate");
-            ////Label lblFullName = (Label)e.Item.FindControl("lblFullName");
-            ////Label lblPhone = (Label)e.Item.FindControl("lblPhone");
-            ////Label lblReserve = (Label)e.Item.FindControl("lblReserve");
+            Label lblType = (Label)e.Item.FindControl("lblType");
+            Label lblCategory = (Label)e.Item.FindControl("lblCategory");
+            Label lblSku = (Label)e.Item.FindControl("lblSku");
+            Label lblSerial = (Label)e.Item.FindControl("lblSerial");
+            Label lblName = (Label)e.Item.FindControl("lblName");
+            Label lblQty = (Label)e.Item.FindControl("lblQty");
 
-            ////LinkButton lbnEdit = (LinkButton)e.Item.FindControl("lbnEdit");
-            //////LinkButton lbnDelete = (LinkButton)e.Item.FindControl("lbnDelete");
+            LinkButton lbnRemove = (LinkButton)e.Item.FindControl("lbnRemove");
+            //HiddenField hdfStatus = (HiddenField)e.Item.FindControl("hdfStatus");
 
-            //////HiddenField hdfStatus = (HiddenField)e.Item.FindControl("hdfStatus");
-            //////lblVisitorID.Text = entity.row_index.ToString();
-            ////lblAppointmentDate.Text = entity.date_of_appointment.ToString("dd'/'MM'/'yyyy");
-            ////lblVisitDate.Text = entity.date_of_visit.ToString("dd'/'MM'/'yyyy");
-            ////lblFullName.Text = entity.firstname + " " + entity.lastname;
-            ////lblPhone.Text = entity.phone;
+            lblType.Text = entity.type_name;
+            lblCategory.Text = entity.category_name;
+            lblSku.Text = entity.sku;
+            lblSerial.Text = entity.serial;
+            lblName.Text = entity.name;
+            lblQty.Text = entity.qty.ToString();
 
-            ////lblReserve.Text = (entity.reservation == true) ? "Reserved" : "No Reserved";
-            //////hdfStatus.Value = entity.is_active.ToString();
-
-            ////lbnEdit.CommandName = "Edit";
-            ////lbnEdit.CommandArgument = entity.visitor_id.ToString();
-            //////lbnDelete.CommandName = "Delete";
-            //////lbnDelete.CommandArgument = entity.visitor_id.ToString();
+            lbnRemove.CommandName = "Edit";
+            lbnRemove.CommandArgument = entity.inventory_id.ToString();
         }
 
         protected void rptList_ItemCommand(object source, RepeaterCommandEventArgs e)
@@ -49,59 +75,58 @@ namespace AnomaERP.BackOffice.Inventory
             {
                 Response.Redirect("/BackOffice/NursingHome/Visitor-Form/visitor-form.aspx?visitor_id=" + e.CommandArgument);
             }
-            //else if (e.CommandName == "Delete")
-            //{
-            //    SiteVisitEntity entity = new SiteVisitEntity();
-            //    SiteVisitService service = new SiteVisitService();
-
-            //    entity.visitor_id = Int32.Parse(e.CommandArgument.ToString());
-
-            //    if (service.DeleteData(entity) > 0)
-            //    {
-            //        setDataToUI(setCondition());
-            //    }
-            //}
         }
+        private Boolean isValid()
+        {
+            Boolean unValid = false, valid = true;
+            String sku = txtSku.Text;
+            String serial = txtSerial.Text;
+            String name = txtName.Text;
+            String qty = txtQty.Text;
+            String type_id = ddlType.SelectedValue;
+            String category_id = ddlCategory.SelectedValue;
 
+            unValid |= String.IsNullOrEmpty(sku);
+            unValid |= String.IsNullOrEmpty(serial);
+            unValid |= String.IsNullOrEmpty(name);
+            unValid |= String.IsNullOrEmpty(qty);
+            unValid |= String.IsNullOrEmpty(type_id);
+            unValid |= String.IsNullOrEmpty(category_id);
+
+            valid = !unValid;
+            return valid;
+        }
+        public void addDataToUI(InventoryEntity entity)
+        {
+            Object nowList = resultList.DataSource;
+
+            List<InventoryEntity> entityList = new List<InventoryEntity>();
+            entityList.Add(entity);
+
+            resultList.DataSource = entityList;
+            resultList.DataBind();
+        }
         protected void lbnAdd_Click(object sender, EventArgs e)
         {
+            if (isValid() == true)
+            {
+                InventoryEntity entity = new InventoryEntity();
+                entity.sku = txtSku.Text;
+                entity.serial = txtSerial.Text;
+                entity.name = txtName.Text;
+                entity.qty = int.Parse(txtQty.Text);
+                entity.type_id = int.Parse(ddlType.SelectedItem.Value);
+                entity.category_id = int.Parse(ddlCategory.SelectedItem.Value);
 
+                entity.type_name = ddlType.SelectedItem.Text;
+                entity.category_name = ddlCategory.SelectedItem.Text;
+                
+                addDataToUI(entity);
+            }
+            else
+            {
+                //Suma Alert !isValid
+            }
         }
-
-        //public void setDataToUI(SiteVisitEntity entity)
-        //{
-        //    SiteVisitService service = new SiteVisitService();
-        //    List<SiteVisitEntity> entityList = new List<SiteVisitEntity>();
-
-        //    entityList = service.GetDataByCondition(entity);
-
-        //    resultList.DataSource = entityList;
-        //    resultList.DataBind();
-        //}
-
-        //public SiteVisitEntity setCondition()
-        //{
-        //    SiteVisitEntity entity = new SiteVisitEntity();
-
-        //    String txtReserved = fltReserved.Text;
-        //    bool? reserved = null;
-        //    if (txtReserved == "Reserved")
-        //    {
-        //        reserved = true;
-        //    }
-        //    else if (txtReserved == "No Reserved")
-        //    {
-        //        reserved = false;
-        //    }
-
-        //    entity.sch_customer_name = txtSearch.Text;
-        //    entity.sch_reservation = reserved;
-        //    return entity;
-        //}
-
-        //protected void btnSave_Click(object sender, EventArgs e)
-        //{
-        //    setDataToUI(setCondition());
-        //}
     }
 }

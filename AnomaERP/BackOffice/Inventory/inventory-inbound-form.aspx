@@ -18,7 +18,6 @@
             <!-- Statistics -->
             <div class="card mb-3">
 
-                <asp:Label ID="lblVisitorID" runat="server" Text="" Visible="false"></asp:Label>
                 <asp:Label ID="lblBranchID" runat="server" Text="" Visible="false"></asp:Label>
 
                 <h4 class="card-header with-elements">
@@ -49,6 +48,8 @@
                                         <table class="table table-striped table-hover table-bordered">
                                             <thead class="thead-dark">
                                                 <tr>
+                                                    <th>Type</th>
+                                                    <th>CAT</th>
                                                     <th>SKU</th>
                                                     <th>Serial</th>
                                                     <th>Name</th>
@@ -58,6 +59,18 @@
                                             </thead>
                                             <tbody>
                                                 <tr class="odd gradeX">
+                                                    <td>
+                                                        <div class="form-group mb-0">
+                                                            <asp:DropDownList ID="ddlType" runat="server" CssClass="" class="form-control form-control-sm">
+                                                            </asp:DropDownList>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="form-group mb-0">
+                                                            <asp:DropDownList ID="ddlCategory" runat="server" CssClass="" class="form-control form-control-sm">
+                                                            </asp:DropDownList>
+                                                        </div>
+                                                    </td>
                                                     <td>
                                                         <div class="form-group mb-0">
                                                             <%--<input type="text" class="form-control form-control-sm" placeholder="SKU">--%>
@@ -80,8 +93,7 @@
                                                     <td>
                                                         <div class="form-group mb-0">
                                                             <%--<input type="text" class="form-control form-control-sm" placeholder="Number">--%>
-                                                            <asp:TextBox ID="txtQty" placeholder="Number" runat="server" CssClass="form-control form-control-sm"></asp:TextBox>
-
+                                                            <asp:TextBox ID="txtQty" placeholder="QTY" runat="server" TextMode="Number" CssClass="form-control form-control-sm"></asp:TextBox>
                                                         </div>
                                                     </td>
                                                     <td>
@@ -93,6 +105,12 @@
                                                     <%-- OnItemCommand="rptInquiryList_ItemCommand" OnItemDataBound="rptInquiryList_ItemDataBound"--%>
                                                     <ItemTemplate>
                                                         <tr id="trCountDays" runat="server" class="odd gradeX">
+                                                              <td id="td5" runat="server" style="text-align: center;">
+                                                                <asp:Label ID="lblType" runat="server"></asp:Label>
+                                                            </td>
+                                                              <td id="td6" runat="server" style="text-align: center;">
+                                                                <asp:Label ID="lblCategory" runat="server"></asp:Label>
+                                                            </td>
                                                             <td id="td1" runat="server" style="text-align: center;">
                                                                 <asp:Label ID="lblSku" runat="server"></asp:Label>
                                                             </td>
