@@ -5,7 +5,7 @@ using Entity;
 using DAO.Inventory;
 
 
-namespace Service
+namespace Service.Inventory
 {
     public class InventoryService : IServiceRepository<InventoryEntity>
     {
@@ -31,7 +31,8 @@ namespace Service
 
         public int InsertData(InventoryEntity entity)
         {
-            throw new NotImplementedException();
+            InventoryDAO dao = new InventoryDAO();
+            return dao.InsertData(entity);
         }
 
         public int UpdateData(InventoryEntity entity)

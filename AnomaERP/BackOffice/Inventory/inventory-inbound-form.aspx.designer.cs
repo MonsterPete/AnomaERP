@@ -22,6 +22,33 @@ namespace AnomaERP.BackOffice.Inventory {
         protected global::System.Web.UI.WebControls.Label lblBranchID;
         
         /// <summary>
+        /// lblCreateByID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCreateByID;
+        
+        /// <summary>
+        /// txtBranch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtBranch;
+        
+        /// <summary>
+        /// txtCreateBy control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCreateBy;
+        
+        /// <summary>
         /// ddlType control.
         /// </summary>
         /// <remarks>

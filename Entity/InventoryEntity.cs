@@ -25,5 +25,15 @@ namespace Entity
         public DateTime modify_date { get; set; }
         public Boolean is_active { get; set; }
         public Boolean is_delete { get; set; }
+
+        //develop parameter
+        //parameter to remove data from resultList
+        public String temp_inventory_id { get; set; }
+
+        public String Inbound = "Inbound";
+        public String OutBound = "OutBound";
+        //parameter to save 
+        public String updateMode { get; set; } //Inbound , OutBound
+        public List<InventoryEntity> inventoryEntityList { get; set; }
     }
 }

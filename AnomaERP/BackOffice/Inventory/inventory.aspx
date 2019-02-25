@@ -25,7 +25,7 @@
                     <%-- <a href="#" class="btn btn-info mb-3"
                         data-toggle="modal" data-target="#modals-create-outbound">+ Create outbound
                     </a>--%>
-                    <a href="inventory-outbound-form.aspx" class="btn btn-success mb-3">+ Create outbound</a>
+                    <a href="inventory-outbound-form.aspx" class="btn btn-info mb-3">+ Create outbound</a>
 
                 </div>
             </div>
@@ -238,7 +238,7 @@
         </asp:UpdatePanel>
     </div>--%>
 
-    <div class="modal fade" id="modals-create-outbound">
+  <%--  <div class="modal fade" id="modals-create-outbound">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -349,6 +349,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>--%>
 
 </asp:Content>

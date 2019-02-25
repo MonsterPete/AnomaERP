@@ -13,5 +13,9 @@ namespace AnomaERP.BackOffice.Inventory
         {
 
         }
+        protected void btnSave_Click(object sender, EventArgs e)
+        {
+            //gDatastore
+        }
     }
 }
