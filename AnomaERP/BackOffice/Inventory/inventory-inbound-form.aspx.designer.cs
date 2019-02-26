@@ -7,19 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AnomaERP.BackOffice.NursingHome {
+namespace AnomaERP.BackOffice.Inventory {
     
     
-    public partial class visitor_form {
-        
-        /// <summary>
-        /// lblVisitorID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblVisitorID;
+    public partial class inventory_inbound_form {
         
         /// <summary>
         /// lblBranchID control.
@@ -31,94 +22,103 @@ namespace AnomaERP.BackOffice.NursingHome {
         protected global::System.Web.UI.WebControls.Label lblBranchID;
         
         /// <summary>
-        /// txtAppointmentDate control.
+        /// lblCreateByID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAppointmentDate;
+        protected global::System.Web.UI.WebControls.Label lblCreateByID;
         
         /// <summary>
-        /// txtVisitDate control.
+        /// txtBranch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtVisitDate;
+        protected global::System.Web.UI.WebControls.TextBox txtBranch;
         
         /// <summary>
-        /// txtFirstname control.
+        /// txtCreateBy control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFirstname;
+        protected global::System.Web.UI.WebControls.TextBox txtCreateBy;
         
         /// <summary>
-        /// txtLastname control.
+        /// ddlType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtLastname;
+        protected global::System.Web.UI.WebControls.DropDownList ddlType;
         
         /// <summary>
-        /// txtPhone control.
+        /// ddlCategory control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPhone;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCategory;
         
         /// <summary>
-        /// txtReviceFrom control.
+        /// txtSku control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtReviceFrom;
+        protected global::System.Web.UI.WebControls.TextBox txtSku;
         
         /// <summary>
-        /// txtPriceListed control.
+        /// txtSerial control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPriceListed;
+        protected global::System.Web.UI.WebControls.TextBox txtSerial;
         
         /// <summary>
-        /// rdoReservation control.
+        /// txtName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rdoReservation;
+        protected global::System.Web.UI.WebControls.TextBox txtName;
         
         /// <summary>
-        /// rdoUnReservation control.
+        /// txtQty control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rdoUnReservation;
+        protected global::System.Web.UI.WebControls.TextBox txtQty;
         
         /// <summary>
-        /// txtSymptom control.
+        /// lbnAdd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSymptom;
+        protected global::System.Web.UI.WebControls.LinkButton lbnAdd;
+        
+        /// <summary>
+        /// resultList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater resultList;
         
         /// <summary>
         /// btnSave control.

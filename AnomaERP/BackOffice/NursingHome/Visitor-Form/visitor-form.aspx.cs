@@ -53,8 +53,7 @@ namespace AnomaERP.BackOffice.NursingHome
 
             txtVisitDate.Text = entity.date_of_visit.ToString("yyyy-MM-dd");
             txtAppointmentDate.Text = entity.date_of_appointment.ToString("yyyy-MM-dd");
-            //entity.date_of_visit = dateFormat.EngFormatDateToSQL(DateTime.Parse(txtVisitDate.Text));
-            //entity.date_of_appointment = dateFormat.EngFormatDateToSQL(DateTime.Parse(txtAppointmentDate.Text));
+
             txtPriceListed.Text = entity.price_listed.ToString();
             txtSymptom.Text = entity.symptom;
 
@@ -98,17 +97,17 @@ namespace AnomaERP.BackOffice.NursingHome
         private Boolean isValid()
         {
             Boolean unValid = false, valid = true;
-            string date_of_visit = txtVisitDate.Text;
-            string date_of_appointment = txtAppointmentDate.Text;
-            string firstname = txtFirstname.Text;
-            string lastname = txtLastname.Text;
-            string phone = txtPhone.Text;
+            String date_of_visit = txtVisitDate.Text;
+            String date_of_appointment = txtAppointmentDate.Text;
+            String firstname = txtFirstname.Text;
+            String lastname = txtLastname.Text;
+            String phone = txtPhone.Text;
 
-            unValid |= string.IsNullOrWhiteSpace(date_of_visit);
-            unValid |= string.IsNullOrWhiteSpace(date_of_appointment);
-            unValid |= string.IsNullOrWhiteSpace(firstname);
-            unValid |= string.IsNullOrWhiteSpace(lastname);
-            unValid |= string.IsNullOrWhiteSpace(phone);
+            unValid |= String.IsNullOrEmpty(date_of_visit);
+            unValid |= String.IsNullOrEmpty(date_of_appointment);
+            unValid |= String.IsNullOrEmpty(firstname);
+            unValid |= String.IsNullOrEmpty(lastname);
+            unValid |= String.IsNullOrEmpty(phone);
 
             valid = !unValid;
             return valid;
@@ -116,6 +115,7 @@ namespace AnomaERP.BackOffice.NursingHome
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
+            //Suma Alert Confirm
             if (isValid() == true)
             {
                 SiteVisitEntity entity = getEntityData();
@@ -136,8 +136,9 @@ namespace AnomaERP.BackOffice.NursingHome
                     Response.Redirect("/BackOffice/NursingHome/Visitor-Form/index.aspx", true);
                 }
             }
-            else //Dont't have Require Field
+            else
             {
+                //Suma Alert !isValid
             }
         }
     }

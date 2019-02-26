@@ -112,7 +112,7 @@ namespace DAO.SiteVisit
                         {
 
                             DBHelper.CreateParameters();
-                            DBHelper.AddParam("visitor_id", entity.branch_id);
+                            DBHelper.AddParamOut("visitor_id", entity.visitor_id);
                             DBHelper.AddParam("branch_id", entity.branch_id);
                             DBHelper.AddParam("firstname", entity.firstname);
                             DBHelper.AddParam("lastname", entity.lastname);

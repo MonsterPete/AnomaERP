@@ -47,7 +47,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <asp:Button ID="btnSave" runat="server" CssClass="btn btn-primary" Text="Search" OnClick="btnSave_Click" />
+                            <asp:Button ID="btnSave" runat="server" CssClass="btn btn-primary" Text="Search" OnClick="btnSearch_Click" />
                         </div>
                     </div>
                 </div>
@@ -87,16 +87,16 @@
                                                                     <%--    <td>
                                                                         <asp:Label ID="lblVisitorID" runat="server"></asp:Label>
                                                                     </td>--%>
-                                                                    <td id="tdCountDays" runat="server" style="text-align: center;">
+                                                                    <td id="td1" runat="server" style="text-align: center;">
                                                                         <asp:Label ID="lblAppointmentDate" runat="server"></asp:Label>
                                                                     </td>
-                                                                    <td id="td1" runat="server" style="text-align: center;">
+                                                                    <td id="td2" runat="server" style="text-align: center;">
                                                                         <asp:Label ID="lblVisitDate" runat="server"></asp:Label>
                                                                     </td>
-                                                                    <td id="td2" runat="server" style="text-align: center;">
+                                                                    <td id="td3" runat="server" style="text-align: center;">
                                                                         <asp:Label ID="lblFullName" runat="server"></asp:Label>
                                                                     </td>
-                                                                    <td id="td3" runat="server" style="text-align: center;">
+                                                                    <td id="td4" runat="server" style="text-align: center;">
                                                                         <asp:Label ID="lblPhone" runat="server"></asp:Label>
                                                                     </td>
                                                                     <td id="td5" runat="server" style="text-align: center;">
