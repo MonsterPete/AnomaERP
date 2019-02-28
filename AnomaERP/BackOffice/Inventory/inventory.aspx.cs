@@ -116,7 +116,7 @@ namespace AnomaERP.BackOffice.Inventory
             lblName.Text = entity.name;
             lblType.Text = entity.type_name;
             lblQty.Text = entity.qty_total.ToString();
-            lblOnHand.Text = entity.qty.ToString();
+            lblOnHand.Text = entity.qty_on_hand.ToString();
         }
 
         protected void rptList_ItemCommand(object source, RepeaterCommandEventArgs e)
