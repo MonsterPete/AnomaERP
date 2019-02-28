@@ -102,12 +102,21 @@ namespace AnomaERP.BackOffice.NursingHome
             String firstname = txtFirstname.Text;
             String lastname = txtLastname.Text;
             String phone = txtPhone.Text;
+            String priceListed = txtPriceListed.Text;
 
+            //Check Empty
             unValid |= String.IsNullOrEmpty(date_of_visit);
             unValid |= String.IsNullOrEmpty(date_of_appointment);
             unValid |= String.IsNullOrEmpty(firstname);
             unValid |= String.IsNullOrEmpty(lastname);
             unValid |= String.IsNullOrEmpty(phone);
+
+            //Check Number < 0 
+            if (!String.IsNullOrEmpty(priceListed))
+            {
+                unValid |= (int.Parse(priceListed) < 0);
+            }
+
 
             valid = !unValid;
             return valid;

@@ -20,7 +20,7 @@
             <div class="card mb-3">
 
                 <asp:Label ID="lblBranchID" runat="server" Text="" Visible="false"></asp:Label>
-                 <asp:Label ID="lblCreateByID" runat="server" Text="" Visible="false"></asp:Label>
+                <asp:Label ID="lblCreateByID" runat="server" Text="" Visible="false"></asp:Label>
 
                 <h4 class="card-header with-elements">
                     <div class="card-header-title"><strong>Inbound Request Form</strong></div>
@@ -36,7 +36,6 @@
                                         <label class="form-label form-label-sm text-uppercase">Branch</label>
                                         <%--<input type="text" class="form-control form-control-sm" placeholder="Branch" value="V001">--%>
                                         <asp:TextBox ID="txtBranch" placeholder="Branch" runat="server" CssClass="form-control form-control-sm"></asp:TextBox>
-
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-xl-6">
@@ -44,7 +43,6 @@
                                         <label class="form-label form-label-sm text-uppercase">Approver</label>
                                         <%--<input type="text" class="form-control form-control-sm" placeholder="Approver" value="Pisan Ungchumchoke">--%>
                                         <asp:TextBox ID="txtCreateBy" placeholder="Approver" runat="server" CssClass="form-control form-control-sm"></asp:TextBox>
-
                                     </div>
                                 </div>
                             </div>
@@ -95,7 +93,6 @@
                                                                 <div class="form-group mb-0">
                                                                     <%--<input type="text" class="form-control form-control-sm" placeholder="Name">--%>
                                                                     <asp:TextBox ID="txtName" placeholder="Name" runat="server" CssClass="form-control form-control-sm"></asp:TextBox>
-
                                                                 </div>
                                                             </td>
                                                             <td>
@@ -109,6 +106,12 @@
                                                                 <asp:LinkButton ID="lbnAdd" runat="server" CssClass="btn btn-success btn-sm" OnClick="lbnAdd_Click">+ Add</asp:LinkButton>
                                                             </td>
                                                         </tr>
+                                                        <%--        <tr>
+                                                            <td>
+                                                                <asp:RangeValidator ErrorMessage="Please enter value between 1-99." ForeColor="Red" ControlToValidate="txtQty" MinimumValue="1" MaximumValue="99" runat="server" Type="Integer">
+                                                                </asp:RangeValidator>
+                                                            </td>
+                                                        </tr>--%>
 
                                                         <asp:Repeater ID="resultList" runat="server" OnItemDataBound="rptList_ItemDataBound" OnItemCommand="rptList_ItemCommand">
                                                             <%-- OnItemCommand="rptInquiryList_ItemCommand" OnItemDataBound="rptInquiryList_ItemDataBound"--%>
@@ -151,7 +154,7 @@
                         <hr class="m-0">
 
                         <div class="modal-footer">
-                            <a href="javascript:history.go(-1)" class="btn btn-lg btn-default">Cancel</a>
+                            <a href="inventory.aspx" class="btn btn-lg btn-default">Cancel</a>
                             <%--<a href="#" class="btn btn-lg btn-success">Save</a>--%>
                             <asp:Button ID="btnSave" runat="server" CssClass="btn btn-lg btn-primary" Text="Confirm" OnClick="btnSave_Click" />
                         </div>

@@ -14,6 +14,8 @@ namespace AnomaERP.BackOffice.Inventory
 {
     public partial class inventory_inbound_form : System.Web.UI.Page
     {
+        public static String gFormatDateValStr = "yyyyMMddHHmmssff";
+
         public static List<InventoryEntity> gDatastore = new List<InventoryEntity>();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -145,12 +147,19 @@ namespace AnomaERP.BackOffice.Inventory
             String type_id = ddlType.SelectedValue;
             String category_id = ddlCategory.SelectedValue;
 
+            //Check Empty
             unValid |= String.IsNullOrEmpty(sku);
             unValid |= String.IsNullOrEmpty(serial);
             unValid |= String.IsNullOrEmpty(name);
             unValid |= String.IsNullOrEmpty(qty);
             unValid |= String.IsNullOrEmpty(type_id);
             unValid |= String.IsNullOrEmpty(category_id);
+
+            //Check Number < 0 
+            if (!String.IsNullOrEmpty(qty))
+            {
+                unValid |= (int.Parse(qty) < 0);
+            }
 
             valid = !unValid;
             return valid;
@@ -182,6 +191,7 @@ namespace AnomaERP.BackOffice.Inventory
                 entity.branch_id = int.Parse(lblBranchID.Text);
                 entity.name = txtName.Text;
                 entity.qty = int.Parse(txtQty.Text);
+                entity.qty_total = int.Parse(txtQty.Text);
                 entity.sku = txtSku.Text;
                 entity.serial = txtSerial.Text;
                 entity.type_id = int.Parse(ddlType.SelectedItem.Value);
@@ -193,8 +203,8 @@ namespace AnomaERP.BackOffice.Inventory
                 entity.is_active = true;
                 entity.is_delete = false;
                 entity.updateMode = entity.Inbound;
-                entity.temp_inventory_id = DateTime.Now.ToString("yyyyMMddHHmmssff");
-                
+                entity.temp_inventory_id = DateTime.Now.ToString(gFormatDateValStr);
+
                 addDataToUI(entity);
             }
             else
@@ -219,7 +229,7 @@ namespace AnomaERP.BackOffice.Inventory
                 {
                     clearAddFrom();
                     gDatastore = new List<InventoryEntity>();
-                   
+
                     Response.Redirect("/BackOffice/Inventory/inventory.aspx", true);
                 }
             }

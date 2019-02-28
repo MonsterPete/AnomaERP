@@ -29,6 +29,32 @@ namespace Service.Inventory
             throw new NotImplementedException();
         }
 
+        public List<InventoryEntity> GetSkuAll()
+        {
+            InventoryDAO dao = new InventoryDAO();
+            return dao.GetSkuAll();
+        }
+        public List<InventoryEntity> GetDataBySku(String sku)
+        {
+            InventoryDAO dao = new InventoryDAO();
+            return dao.GetDataBySku(sku);
+        }
+        public List<InventoryEntity> GetDataBySku(InventoryEntity entity)
+        {
+            InventoryDAO dao = new InventoryDAO();
+            return dao.GetDataBySku(entity);
+        }
+        public List<InventoryEntity> GetDataBySerial(InventoryEntity entity)
+        {
+            InventoryDAO dao = new InventoryDAO();
+            return dao.GetDataBySerial(entity);
+        }
+        public List<InventoryEntity> GetDataByDate(InventoryEntity entity)
+        {
+            InventoryDAO dao = new InventoryDAO();
+            return dao.GetDataByDate(entity);
+        }
+
         public int InsertData(InventoryEntity entity)
         {
             InventoryDAO dao = new InventoryDAO();
@@ -38,6 +64,11 @@ namespace Service.Inventory
         public int UpdateData(InventoryEntity entity)
         {
             throw new NotImplementedException();
+        }
+        public int UpdateQtyTotle(InventoryEntity entity)
+        {
+            InventoryDAO dao = new InventoryDAO();
+            return dao.UpdateQtyTotle(entity);
         }
     }
 }
