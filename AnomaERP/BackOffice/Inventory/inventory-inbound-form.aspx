@@ -67,7 +67,7 @@
                                                         <tr class="odd gradeX">
                                                             <td>
                                                                 <div class="form-group mb-0">
-                                                                    <asp:DropDownList ID="ddlType" runat="server" CssClass="" class="form-control form-control-sm">
+                                                                    <asp:DropDownList ID="ddlType" AutoPostBack="true"  runat="server" CssClass="" class="form-control form-control-sm" OnSelectedIndexChanged="ddlType_SelectedIndexChanged">
                                                                     </asp:DropDownList>
                                                                 </div>
                                                             </td>

@@ -76,6 +76,9 @@ namespace AnomaERP.BackOffice.Inventory
         }
         protected void setDropDownList()
         {
+            txtQty.ReadOnly = true;
+            txtQty.Text = "1";
+
             ddlType.Items.Clear();
             ddlCategory.Items.Clear();
 
@@ -177,17 +180,27 @@ namespace AnomaERP.BackOffice.Inventory
 
             if (type_id == 1)
             {
-                InventoryService service = new InventoryService();
-                List<InventoryEntity> duplicateList = new List<InventoryEntity>();
-                duplicateList = service.CheckDuplicateData(entity);
-
-                if (duplicateList.Count > 0)
+                //Check Duplicate from gDatastore
+                foreach (InventoryEntity data in gDatastore)
                 {
-                    isDuplicate = true;
+                    if (entity.sku == data.sku && entity.serial == data.serial)
+                    {
+                        isDuplicate = true;
+                    }
                 }
 
+                //Check Duplicate from dbTable inventory
+                if (isDuplicate == false)
+                {
+                    InventoryService service = new InventoryService();
+                    List<InventoryEntity> duplicateList = new List<InventoryEntity>();
+                    duplicateList = service.CheckDuplicateData(entity);
+                    if (duplicateList.Count > 0)
+                    {
+                        isDuplicate = true;
+                    }
+                }
             }
-
             return isDuplicate;
         }
         protected void clearAddFrom()
@@ -195,8 +208,7 @@ namespace AnomaERP.BackOffice.Inventory
             txtSku.Text = "";
             txtSerial.Text = "";
             txtName.Text = "";
-            txtQty.Text = "";
-
+            
             setDropDownList();
         }
         public void addDataToUI(InventoryEntity entity)
@@ -269,6 +281,21 @@ namespace AnomaERP.BackOffice.Inventory
             else
             {
                 //Suma Alert No Update Data
+            }
+        }
+
+        protected void ddlType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int type_id = int.Parse(ddlType.SelectedItem.Value);
+            if (type_id == 1)
+            {
+                txtQty.ReadOnly = true;
+                txtQty.Text = "1";
+            }
+            else if (type_id == 2)
+            {
+                txtQty.ReadOnly = false;
+                txtQty.Text = "";
             }
         }
     }

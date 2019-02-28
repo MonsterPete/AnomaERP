@@ -203,6 +203,9 @@ namespace AnomaERP.BackOffice.Inventory
 
                     //เก็บ max Qty ไว้เช็ค isValid
                     maxQty = selEntity.qty;
+
+                    txtQtyOutbound.ReadOnly = true;
+                    txtQtyOutbound.Text = "1";
                 }
             }
         }
@@ -242,6 +245,9 @@ namespace AnomaERP.BackOffice.Inventory
 
                     //เก็บ max Qty ไว้เช็ค isValid
                     maxQty = selEntity.qty;
+
+                    txtQtyOutbound.ReadOnly = false;
+                    txtQtyOutbound.Text = "";
                 }
             }
         }
@@ -362,8 +368,10 @@ namespace AnomaERP.BackOffice.Inventory
         protected void clearAddInput()
         {
             txtName.Text = "";
-            txtQtyOutbound.Text = "";
             txtQtyTotal.Text = "";
+
+            txtQtyOutbound.ReadOnly = false;
+            txtQtyOutbound.Text = "";
         }
         protected void clearAddFrom()
         {
