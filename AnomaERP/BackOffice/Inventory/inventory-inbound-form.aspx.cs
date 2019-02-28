@@ -177,17 +177,27 @@ namespace AnomaERP.BackOffice.Inventory
 
             if (type_id == 1)
             {
-                InventoryService service = new InventoryService();
-                List<InventoryEntity> duplicateList = new List<InventoryEntity>();
-                duplicateList = service.CheckDuplicateData(entity);
-
-                if (duplicateList.Count > 0)
+                //Check Duplicate from gDatastore
+                foreach (InventoryEntity data in gDatastore)
                 {
-                    isDuplicate = true;
+                    if (entity.sku == data.sku && entity.serial == data.serial)
+                    {
+                        isDuplicate = true;
+                    }
                 }
 
+                //Check Duplicate from dbTable inventory
+                if (isDuplicate == false)
+                {
+                    InventoryService service = new InventoryService();
+                    List<InventoryEntity> duplicateList = new List<InventoryEntity>();
+                    duplicateList = service.CheckDuplicateData(entity);
+                    if (duplicateList.Count > 0)
+                    {
+                        isDuplicate = true;
+                    }
+                }
             }
-
             return isDuplicate;
         }
         protected void clearAddFrom()
