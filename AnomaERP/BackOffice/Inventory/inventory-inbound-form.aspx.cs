@@ -149,11 +149,17 @@ namespace AnomaERP.BackOffice.Inventory
 
             //Check Empty
             unValid |= String.IsNullOrEmpty(sku);
-            unValid |= String.IsNullOrEmpty(serial);
             unValid |= String.IsNullOrEmpty(name);
             unValid |= String.IsNullOrEmpty(qty);
             unValid |= String.IsNullOrEmpty(type_id);
             unValid |= String.IsNullOrEmpty(category_id);
+
+            //if type = single require serial
+            if (int.Parse(type_id) == 1)
+            {
+                unValid |= String.IsNullOrEmpty(serial);
+            }
+
 
             //Check Number < 0 
             if (!String.IsNullOrEmpty(qty))
@@ -163,6 +169,26 @@ namespace AnomaERP.BackOffice.Inventory
 
             valid = !unValid;
             return valid;
+        }
+        private Boolean checkDuplicateData(InventoryEntity entity)
+        {
+            Boolean isDuplicate = false;
+            int type_id = entity.type_id;
+
+            if (type_id == 1)
+            {
+                InventoryService service = new InventoryService();
+                List<InventoryEntity> duplicateList = new List<InventoryEntity>();
+                duplicateList = service.CheckDuplicateData(entity);
+
+                if (duplicateList.Count > 0)
+                {
+                    isDuplicate = true;
+                }
+
+            }
+
+            return isDuplicate;
         }
         protected void clearAddFrom()
         {
@@ -205,7 +231,14 @@ namespace AnomaERP.BackOffice.Inventory
                 entity.updateMode = entity.Inbound;
                 entity.temp_inventory_id = DateTime.Now.ToString(gFormatDateValStr);
 
-                addDataToUI(entity);
+                if (checkDuplicateData(entity) == false)
+                {
+                    addDataToUI(entity);
+                }
+                else
+                {
+                    //Suma Alert DuplicateData
+                }
             }
             else
             {

@@ -54,7 +54,12 @@ namespace Service.Inventory
             InventoryDAO dao = new InventoryDAO();
             return dao.GetDataByDate(entity);
         }
-
+        public List<InventoryEntity> CheckDuplicateData(InventoryEntity entity)
+        {
+            InventoryDAO dao = new InventoryDAO();
+            return dao.CheckDuplicateData(entity);
+        }
+        
         public int InsertData(InventoryEntity entity)
         {
             InventoryDAO dao = new InventoryDAO();

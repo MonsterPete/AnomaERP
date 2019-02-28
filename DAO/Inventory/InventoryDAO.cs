@@ -174,6 +174,41 @@ namespace DAO.Inventory
             }
             return entityList;
         }
+
+        public List<InventoryEntity> CheckDuplicateData(InventoryEntity entity)
+        {
+
+            List<InventoryEntity> entityList = null;
+
+            try
+            {
+                using (DBHelper.CreateConnection())
+                {
+                    try
+                    {
+                        DBHelper.OpenConnection();
+                        DBHelper.CreateParameters();
+                        DBHelper.AddParam("sku", entity.sku);
+                        DBHelper.AddParam("serial", entity.serial);
+                        entityList = DBHelper.SelectStoreProcedure<InventoryEntity>("select_inventory_duplicate").ToList();
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                    finally
+                    {
+                        DBHelper.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return entityList;
+        }
+       
         public int InsertData(InventoryEntity entity)
         {
             int result = 0;
