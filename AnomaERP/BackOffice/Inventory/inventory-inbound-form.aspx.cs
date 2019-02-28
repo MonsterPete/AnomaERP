@@ -76,6 +76,9 @@ namespace AnomaERP.BackOffice.Inventory
         }
         protected void setDropDownList()
         {
+            txtQty.ReadOnly = true;
+            txtQty.Text = "1";
+
             ddlType.Items.Clear();
             ddlCategory.Items.Clear();
 
@@ -205,8 +208,7 @@ namespace AnomaERP.BackOffice.Inventory
             txtSku.Text = "";
             txtSerial.Text = "";
             txtName.Text = "";
-            txtQty.Text = "";
-
+            
             setDropDownList();
         }
         public void addDataToUI(InventoryEntity entity)
@@ -279,6 +281,21 @@ namespace AnomaERP.BackOffice.Inventory
             else
             {
                 //Suma Alert No Update Data
+            }
+        }
+
+        protected void ddlType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int type_id = int.Parse(ddlType.SelectedItem.Value);
+            if (type_id == 1)
+            {
+                txtQty.ReadOnly = true;
+                txtQty.Text = "1";
+            }
+            else if (type_id == 2)
+            {
+                txtQty.ReadOnly = false;
+                txtQty.Text = "";
             }
         }
     }

@@ -68,7 +68,7 @@
                                                     <th>Date</th>
                                                     <th>Name</th>
                                                     <th>QTY</th>
-                                                    <th>QTY Total</th>
+                                                    <th>QTY Outbound</th>
                                                     <th>Tools</th>
                                                 </tr>
                                             </thead>
