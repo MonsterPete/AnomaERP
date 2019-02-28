@@ -18,16 +18,21 @@ namespace AnomaERP.BackOffice.Bed_Management.Bed
         {
             if (!IsPostBack)
             {
+                setDataToUI();
 
-                BedCustomerService bedCustomerService = new BedCustomerService();
-                rptBedEntity.DataSource = bedCustomerService.SelectBedCustomerForBedEntity(setDataSearch());
-                rptBedEntity.DataBind();
                 CustomerService customerService = new CustomerService();
                 ddlCustomer.DataSource = customerService.GetDDLCustomerForAssginBed(1);
                 ddlCustomer.DataTextField = "fullname";
                 ddlCustomer.DataValueField = "customer_id";
                 ddlCustomer.DataBind();
             }
+        }
+
+        private void setDataToUI()
+        {
+            BedCustomerService bedCustomerService = new BedCustomerService();
+            rptBedEntity.DataSource = bedCustomerService.SelectBedCustomerForBedEntity(setDataSearch());
+            rptBedEntity.DataBind();
         }
 
         private BedCustomerEntity setDataSearch()
@@ -134,6 +139,7 @@ namespace AnomaERP.BackOffice.Bed_Management.Bed
         {
             BedCustomerService bedCustomerService = new BedCustomerService();
             bedCustomerService.InsertDataAndUpTBDateBedAndTBCustomer(preparDataInsert());
+            setDataToUI();
         }
 
         private BedCustomerEntity preparDataInsert()
@@ -156,6 +162,7 @@ namespace AnomaERP.BackOffice.Bed_Management.Bed
 
             BedCustomerService bedCustomerService = new BedCustomerService();
             bedCustomerService.UpdateDeleteDataAndUpDeleteTBDateBedAndTBCustomer(bedCustomerEntity);
+            setDataToUI();
         }
 
         protected void lbnAdmit_Click(object sender, EventArgs e)
@@ -171,6 +178,7 @@ namespace AnomaERP.BackOffice.Bed_Management.Bed
 
             BedCustomerService bedCustomerService = new BedCustomerService();
             bedCustomerService.UpdateAdmitCustomer(bedCustomerEntity);
+            setDataToUI();
         }
 
         protected void lbnGoOutBed_Click(object sender, EventArgs e)
@@ -184,6 +192,7 @@ namespace AnomaERP.BackOffice.Bed_Management.Bed
 
             BedCustomerService bedCustomerService = new BedCustomerService();
             bedCustomerService.UpdateDeleteDataAndUpTBDateBedAndTBCustomer(bedCustomerEntity);
+            setDataToUI();
         }
     }
 }
