@@ -499,6 +499,7 @@
     <Content Include="BackOffice\Role\RoleSetup\position-setup.aspx" />
     <Content Include="BackOffice\Role\RoleSetup\role-position.aspx" />
     <Content Include="BackOffice\Role\RoleSetup\task-setup.aspx" />
+    <Content Include="BackOffice\ServiceCare\care-plan.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -691,6 +692,13 @@
     <Compile Include="BackOffice\Role\RoleSetup\task-setup.aspx.designer.cs">
       <DependentUpon>task-setup.aspx</DependentUpon>
     </Compile>
+    <Compile Include="BackOffice\ServiceCare\care-plan.aspx.cs">
+      <DependentUpon>care-plan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackOffice\ServiceCare\care-plan.aspx.designer.cs">
+      <DependentUpon>care-plan.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Masterpage.Master.cs">
       <DependentUpon>Masterpage.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -756,6 +764,7 @@
       <Name>Service</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
