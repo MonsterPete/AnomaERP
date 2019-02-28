@@ -61,9 +61,8 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <asp:Button ID="btnSearch" runat="server" CssClass="btn btn-lg btn-primary" Text="Confirm" OnClick="btnSearch_Click" />
-
-                            <%--<a href="#" class="btn btn-primary">Search</a>--%>
+                             <%--<a href="#" class="btn btn-primary">Search</a>--%>
+                            <asp:Button ID="btnSearch" runat="server" CssClass="btn btn-primary" Text="Search" OnClick="btnSearch_Click" />
                         </div>
                     </div>
                 </div>
