@@ -30,6 +30,8 @@
                 </div>
             </div>
 
+            <asp:Label ID="lblEntityID" runat="server" Text="" Visible="false"></asp:Label>
+
             <!-- Statistics -->
             <div class="card mb-3">
                 <div class="row no-gutters row-bordered">
@@ -38,26 +40,30 @@
                             <div class="row">
                                 <div class="col-lg-3 col-xl-3 mb-2">
                                     <div class="form-group">
-                                        <label class="form-label form-label-sm text-uppercase">Entity</label>
-                                        <input type="text" class="form-control form-control-sm" placeholder="Branch">
+                                        <label class="form-label form-label-sm text-uppercase">Search</label>
+                                        <asp:TextBox ID="txtSearch" placeholder="Search" runat="server" CssClass="form-control form-control-sm"></asp:TextBox>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-xl-3 mb-2">
                                     <div class="form-group">
                                         <label class="form-label form-label-sm text-uppercase">Branch</label>
-                                        <input type="text" class="form-control form-control-sm" placeholder="Floor">
+                                        <asp:DropDownList ID="ddlBranch" runat="server" CssClass="form-control form-control-sm">
+                                        </asp:DropDownList>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-xl-3 mb-2">
                                     <div class="form-group">
                                         <label class="form-label form-label-sm text-uppercase">Category</label>
-                                        <input type="text" class="form-control form-control-sm" placeholder="Customer Name">
+                                        <asp:DropDownList ID="ddlCategory" runat="server" CssClass="form-control form-control-sm">
+                                        </asp:DropDownList>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="card-footer">
-                            <a href="#" class="btn btn-primary">Search</a>
+                            <asp:Button ID="btnSearch" runat="server" CssClass="btn btn-lg btn-primary" Text="Confirm" OnClick="btnSearch_Click" />
+
+                            <%--<a href="#" class="btn btn-primary">Search</a>--%>
                         </div>
                     </div>
                 </div>
@@ -65,68 +71,52 @@
             <!-- / Statistics -->
 
             <div class="row">
-                <div class="col-md-12 col-lg-12">
-                    <!-- Sale stats -->
-                    <div class="card">
-                        <!-- <h6 class="card-header">
-                                        Customers
-                                    </h6> -->
-                        <div class="row no-gutters row-bordered">
-                            <div class="col-md-12 col-lg-12 col-xl-12">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-xl-12 mb-2">
-                                            <div class="card-datatable table-responsive">
-                                                <table class="datatables-demo table table-striped table-hover table-bordered">
-                                                    <thead class="thead-dark">
-                                                        <tr>
-                                                            <th>SKU</th>
-                                                            <th>Serial</th>
-                                                            <th>Name</th>
-                                                            <th>Type</th>
-                                                            <th>QTY</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr class="odd gradeX">
-                                                            <td>AH0001</td>
-                                                            <td>HN0002323</td>
-                                                            <td>เครื่องช่วยหายใจ</td>
-                                                            <td>Single</td>
-                                                            <td>90</td>
-                                                        </tr>
-                                                        <tr class="odd gradeX">
-                                                            <td>AH0001</td>
-                                                            <td>-</td>
-                                                            <td>เครื่องช่วยหายใจ</td>
-                                                            <td>Multiple</td>
-                                                            <td>100</td>
-                                                        </tr>
-                                                        <tr class="odd gradeX">
-                                                            <td>AH0001</td>
-                                                            <td>HN0002323</td>
-                                                            <td>เครื่องช่วยหายใจ</td>
-                                                            <td>Multiple</td>
-                                                            <td>12</td>
-                                                        </tr>
-                                                        <tr class="odd gradeX">
-                                                            <td>AH0001</td>
-                                                            <td>HN0002123</td>
-                                                            <td>เครื่องช่วยหายใจ</td>
-                                                            <td>Multiple</td>
-                                                            <td>45</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+                <div class="col-lg-12 col-xl-12">
+                    <div class="card-datatable table-responsive">
+                        <asp:UpdatePanel runat="server" UpdateMode="Conditional">
+                            <ContentTemplate>
+                                <table class="table table-striped table-hover table-bordered">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>SKU</th>
+                                            <th>Serial</th>
+                                            <th>Name</th>
+                                            <th>Type</th>
+                                            <th>QTY</th>
+                                            <th>On Hand</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <asp:Repeater ID="resultList" runat="server" OnItemDataBound="rptList_ItemDataBound" OnItemCommand="rptList_ItemCommand">
+                                            <%-- OnItemCommand="rptInquiryList_ItemCommand" OnItemDataBound="rptInquiryList_ItemDataBound"--%>
+                                            <ItemTemplate>
+                                                <tr runat="server" class="odd gradeX">
+                                                    <td runat="server" style="text-align: center;">
+                                                        <asp:Label ID="lblSku" runat="server"></asp:Label>
+                                                    </td>
+                                                    <td runat="server" style="text-align: center;">
+                                                        <asp:Label ID="lblSerial" runat="server"></asp:Label>
+                                                    </td>
+                                                    <td runat="server" style="text-align: center;">
+                                                        <asp:Label ID="lblName" runat="server"></asp:Label>
+                                                    </td>
+                                                    <td runat="server" style="text-align: center;">
+                                                        <asp:Label ID="lblType" runat="server"></asp:Label>
+                                                    </td>
+                                                    <td runat="server" style="text-align: center;">
+                                                        <asp:Label ID="lblQty" runat="server"></asp:Label>
+                                                    </td>
+                                                    <td runat="server" style="text-align: center;">
+                                                        <asp:Label ID="lblOnHand" runat="server"></asp:Label>
+                                                    </td>
+                                                </tr>
+                                            </ItemTemplate>
+                                        </asp:Repeater>
+                                    </tbody>
+                                </table>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
                     </div>
-                    <!-- / Sale stats -->
                 </div>
             </div>
 
@@ -238,7 +228,7 @@
         </asp:UpdatePanel>
     </div>--%>
 
-  <%--  <div class="modal fade" id="modals-create-outbound">
+    <%--  <div class="modal fade" id="modals-create-outbound">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -350,5 +340,4 @@
             </div>
         </div>
     </div>--%>
-
 </asp:Content>

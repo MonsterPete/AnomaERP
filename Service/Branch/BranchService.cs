@@ -24,6 +24,12 @@ namespace Service.Branch
             throw new NotImplementedException();
         }
 
+        public List<BranchEntity> GetDataByEntity(int entity_id)
+        {
+            BranchDAO branchDAO = new BranchDAO();
+            return branchDAO.GetDataByEntity(entity_id);
+        }
+        
         public BranchEntity GetDataByID(long id)
         {
             throw new NotImplementedException();

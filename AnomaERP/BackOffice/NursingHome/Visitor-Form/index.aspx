@@ -47,7 +47,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <asp:Button ID="btnSave" runat="server" CssClass="btn btn-primary" Text="Search" OnClick="btnSearch_Click" />
+                            <asp:Button ID="btnSearch" runat="server" CssClass="btn btn-primary" Text="Search" OnClick="btnSearch_Click" />
                         </div>
                     </div>
                 </div>
