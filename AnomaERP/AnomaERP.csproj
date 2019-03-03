@@ -467,6 +467,8 @@
     <Content Include="assets\vendor\libs\vegas\vegas.css" />
     <Content Include="assets\vendor\libs\vegas\vegas.js" />
     <Content Include="BackOffice\Bed-Management\Accessory\accessory.aspx" />
+    <Content Include="BackOffice\Bed-Management\Bed\bed-add-accessory.aspx" />
+    <Content Include="BackOffice\Bed-Management\Bed\bed-delete-accessory.aspx" />
     <Content Include="BackOffice\Bed-Management\Bed\bed-entity.aspx" />
     <Content Include="BackOffice\Bed-Management\Job\job-assign.aspx" />
     <Content Include="BackOffice\Entity-Management\Branch\branch-create.aspx" />
@@ -509,6 +511,20 @@
     </Compile>
     <Compile Include="BackOffice\Bed-Management\Accessory\accessory.aspx.designer.cs">
       <DependentUpon>accessory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BackOffice\Bed-Management\Bed\bed-add-accessory.aspx.cs">
+      <DependentUpon>bed-add-accessory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackOffice\Bed-Management\Bed\bed-add-accessory.aspx.designer.cs">
+      <DependentUpon>bed-add-accessory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BackOffice\Bed-Management\Bed\bed-delete-accessory.aspx.cs">
+      <DependentUpon>bed-delete-accessory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackOffice\Bed-Management\Bed\bed-delete-accessory.aspx.designer.cs">
+      <DependentUpon>bed-delete-accessory.aspx</DependentUpon>
     </Compile>
     <Compile Include="BackOffice\Bed-Management\Bed\bed-entity.aspx.cs">
       <DependentUpon>bed-entity.aspx</DependentUpon>

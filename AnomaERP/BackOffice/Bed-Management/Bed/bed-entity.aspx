@@ -85,6 +85,7 @@
                                                                     <th>Status</th>
                                                                     <th>Job Assign</th>
                                                                     <th>Tools</th>
+                                                                    <th>Accessory</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
@@ -114,22 +115,35 @@
                                                                             <td>-</td>
                                                                             <td class="center">
                                                                                 <div runat="server" id="manupnl">
+
                                                                                     <div class="btn-group btn-group-sm">
-                                                                                        <a href="" class="btn btn-primary"
+                                                                                        <a href="" class="btn btn-primary" title="Edit"
                                                                                             data-toggle="modal" data-target="#modals-assign-edit">
                                                                                             <i class="ion ion-md-create"></i></a>
                                                                                     </div>
                                                                                     <div class="btn-group btn-group-sm">
-                                                                                        <asp:LinkButton runat="server" ID="lbnCustomerGoOutBed" ClientIDMode="AutoID" class="btn btn-success text-white">
+                                                                                        <asp:LinkButton runat="server" ID="lbnCustomerGoOutBed" ClientIDMode="AutoID" class="btn btn-success text-white" ToolTip="OutToBed">
                                                                                             <i class="ion ion-md-log-out"></i></asp:LinkButton>
                                                                                     </div>
                                                                                     <div class="btn-group btn-group-sm">
-                                                                                        <asp:LinkButton runat="server" ID="lbnAdmit" ClientIDMode="AutoID" class="btn btn-warning text-white">
+                                                                                        <asp:LinkButton runat="server" ID="lbnAdmit" ClientIDMode="AutoID" class="btn btn-warning text-white" ToolTip="Admit">
                                                                                             <i class="ion ion-md-medkit"></i></asp:LinkButton>
                                                                                     </div>
                                                                                     <div class="btn-group btn-group-sm">
-                                                                                        <asp:LinkButton runat="server" ID="lbnDeleteCustomer" ClientIDMode="AutoID" class="btn btn-danger text-white">
+                                                                                        <asp:LinkButton runat="server" ID="lbnDeleteCustomer" ClientIDMode="AutoID" class="btn btn-danger text-white" ToolTip="Delete">
                                                                                             <i class="ion ion-md-close"></i></asp:LinkButton>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div runat="server" id="AccessoryTool">
+                                                                                    <div class="btn-group btn-group-sm">
+                                                                                        <asp:LinkButton runat="server" ID="lbnCustomerAddAccessory" ClientIDMode="AutoID" class="btn btn-success text-white" ToolTip="AddAccessory">
+                                                                                            <i class="ion ion-md-add"></i></asp:LinkButton>
+                                                                                    </div>
+                                                                                    <div class="btn-group btn-group-sm">
+                                                                                        <asp:LinkButton runat="server" ID="lbnCustomerDeleteAccessory" ClientIDMode="AutoID" class="btn btn-danger text-white" ToolTip="DeleteAccessory">
+                                                                                            <i class="ion ion-md-trash"></i></asp:LinkButton>
                                                                                     </div>
                                                                                 </div>
                                                                             </td>
@@ -173,8 +187,8 @@
 
             $('#txtModalBedName').val(document.getElementById('<%= hdfBedName.ClientID %>').value);
         };
-    </script> 
-     <div class="modal fade" id="modals-delete">
+    </script>
+    <div class="modal fade" id="modals-delete">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -199,8 +213,8 @@
             </div>
         </div>
     </div>
-    
-     <div class="modal fade" id="modals-admit">
+
+    <div class="modal fade" id="modals-admit">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
