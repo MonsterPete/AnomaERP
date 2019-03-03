@@ -71,29 +71,45 @@
                                         <table class="table table-striped table-hover table-bordered">
                                             <thead class="thead-dark">
                                                 <tr>
-                                                    <th class="twb-11">Start Time</th>
-                                                    <th class="twb-11">End Time</th>
-                                                    <th>Job</th>
-                                                    <th class="tbw-11">Tools</th>
+                                                    <th class="twb-11" style="width: 20%">Start Time</th>
+                                                    <th class="twb-11" style="width: 10%">Working Time</th>
+                                                    <th class="twb-11" style="width: 20%">End Time</th>
+                                                    <th style="width: 40%">Job</th>
+                                                    <th class="tbw-11" style="width: 10%">Tools</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr class="odd gradeX">
                                                     <td>
-                                                        <asp:TextBox ID="txtStartTime" runat="server" TextMode="Time" CssClass="form-control form-control-sm"></asp:TextBox>
+                                                        <div class="form-inline">
+                                                            <asp:DropDownList ID="ddlHour" runat="server" CssClass="form-control form-control-sm custom-select ui-w-50" OnSelectedIndexChanged="ddlTime_SelectedIndexChanged" AutoPostBack="true">
+                                                            </asp:DropDownList>
+                                                            <span class="mx-2">:</span>
+                                                            <asp:DropDownList ID="ddlMinute" runat="server" CssClass="form-control form-control-sm custom-select ui-w-50" OnSelectedIndexChanged="ddlTime_SelectedIndexChanged" AutoPostBack="true">
+                                                            </asp:DropDownList>
+                                                            <span class="mx-2">:</span>
+                                                            <asp:DropDownList ID="ddlUnit" runat="server" CssClass="form-control form-control-sm custom-select ui-w-50" OnSelectedIndexChanged="ddlTime_SelectedIndexChanged" AutoPostBack="true">
+                                                                <asp:ListItem Value="AM">AM</asp:ListItem>
+                                                                <asp:ListItem Value="PM">PM</asp:ListItem>
+                                                            </asp:DropDownList>
+                                                        </div>
+                                                        <asp:TextBox ID="txtStartTime" runat="server" Visible="false" TextMode="Time" CssClass="form-control form-control-sm"></asp:TextBox>
                                                     </td>
                                                     <td>
-                                                        <asp:TextBox ID="txtEndtime" runat="server" TextMode="Time" CssClass="form-control form-control-sm"></asp:TextBox>
+                                                        <asp:TextBox ID="txtWorkingTime" runat="server" CssClass="form-control form-control-sm text-center" TextMode="Number" Text="0" OnTextChanged="txtWorkingTime_TextChanged" AutoPostBack="true"></asp:TextBox>
                                                     </td>
                                                     <td>
-                                                        <asp:DropDownList ID="ddlTask" runat="server"></asp:DropDownList>
+                                                        <asp:TextBox ID="txtEndtime" runat="server" CssClass="form-control form-control-sm" Text="00:00 AM"></asp:TextBox>
+                                                    </td>
+                                                    <td>
+                                                        <asp:DropDownList ID="ddlTask" CssClass="form-control form-control-sm" runat="server">
+                                                        </asp:DropDownList>
                                                     </td>
                                                     <td>
                                                         <div class="btn-group btn-group-sm">
                                                             <div class="btn-group btn-group-sm">
                                                                 <asp:LinkButton ID="lbnAdd" OnClick="lbnAdd_Click" runat="server" CssClass="btn btn-success">+ Add Task</asp:LinkButton>
                                                             </div>
-
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -102,6 +118,9 @@
                                                         <tr class="odd gradeX">
                                                             <td>
                                                                 <asp:Label ID="lblStartTime" runat="server" CssClass="form-control form-control-sm"></asp:Label>
+                                                            </td>
+                                                            <td style="text-align: center">
+                                                                <asp:Label ID="lblWorkingTime" runat="server" CssClass="form-control form-control-sm"></asp:Label>
                                                             </td>
                                                             <td>
                                                                 <asp:Label ID="lblEndtime" runat="server" CssClass="form-control form-control-sm"></asp:Label>
@@ -122,10 +141,14 @@
                                         </table>
                                     </div>
                                 </div>
+
+                            </div>
+                            <div class="card-footer">
+                                <asp:LinkButton ID="lblBack" runat="server" CssClass="btn btn-lg  btn-secondary" OnClick="lblBack_Click">ยกเลิก</asp:LinkButton>
+                                <asp:LinkButton ID="lbnSave" runat="server" CssClass="btn btn-lg btn-success" OnClick="lbnSave_Click">บันทึก</asp:LinkButton>
                             </div>
                         </div>
                     </div>
-
                 </div>
                 <!-- / Sale stats -->
             </div>

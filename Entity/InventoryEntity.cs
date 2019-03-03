@@ -14,7 +14,9 @@ namespace Entity
 
         //parameter for outbound
         public Int32 qty_outbound { get; set; }
-        
+        //parameter for search inventory
+        public int qty_on_hand { get; set; }
+
         public String sku { get; set; }
         public String serial { get; set; }
 
@@ -30,6 +32,11 @@ namespace Entity
         public DateTime modify_date { get; set; }
         public Boolean is_active { get; set; }
         public Boolean is_delete { get; set; }
+
+        //search parameter
+        public String sch_word { get; set; }
+        public int? sch_branch_id { get; set; }
+        public int? sch_category_id { get; set; }
 
         //develop parameter
         //parameter to remove data from resultList

@@ -56,6 +56,40 @@ namespace DAO.Branch
             return branchEntities;
         }
 
+        public List<BranchEntity> GetDataByEntity(int entity_id)
+        {
+            List<BranchEntity> branchEntities = null;
+
+            try
+            {
+                using (DBHelper.CreateConnection())
+                {
+                    try
+                    {
+                        DBHelper.OpenConnection();
+                        DBHelper.CreateParameters();
+
+                        DBHelper.AddParam("entity_id", entity_id);
+
+                        branchEntities = DBHelper.SelectStoreProcedure<BranchEntity>("select_branch_by_entity").ToList();
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                    finally
+                    {
+                        DBHelper.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return branchEntities;
+        }
+
         public List<BranchEntity> GetDataByCondition(BranchEntity entity, int Index)
         {
             throw new NotImplementedException();

@@ -10,7 +10,8 @@ namespace Service.Role
     {
         public List<EntityTaskEntity> GetDataAll()
         {
-            throw new NotImplementedException();
+            EntityTaskDAO entityTaskDAO = new EntityTaskDAO();
+            return entityTaskDAO.GetDataAll();
         }
 
         public List<EntityTaskEntity> GetDataByCondition(EntityTaskEntity entity)

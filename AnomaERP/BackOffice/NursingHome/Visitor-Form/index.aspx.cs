@@ -93,7 +93,7 @@ namespace AnomaERP.BackOffice.NursingHome
                 reserved = false;
             }
 
-            entity.sch_customer_name = txtSearch.Text;
+            entity.sch_customer_name = txtSearch.Text.Trim();
             entity.sch_reservation = reserved;
             return entity;
         }

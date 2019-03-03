@@ -16,7 +16,8 @@ namespace Service.Inventory
 
         public List<InventoryEntity> GetDataByCondition(InventoryEntity entity)
         {
-            throw new NotImplementedException();
+            InventoryDAO dao = new InventoryDAO();
+            return dao.GetDataByCondition(entity);
         }
 
         public List<InventoryEntity> GetDataByCondition(InventoryEntity entity, int index)
@@ -59,7 +60,7 @@ namespace Service.Inventory
             InventoryDAO dao = new InventoryDAO();
             return dao.CheckDuplicateData(entity);
         }
-        
+
         public int InsertData(InventoryEntity entity)
         {
             InventoryDAO dao = new InventoryDAO();

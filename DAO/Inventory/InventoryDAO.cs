@@ -21,7 +21,38 @@ namespace DAO.Inventory
 
         public List<InventoryEntity> GetDataByCondition(InventoryEntity entity)
         {
-            throw new NotImplementedException();
+            List<InventoryEntity> entityList = null;
+
+            try
+            {
+                using (DBHelper.CreateConnection())
+                {
+                    try
+                    {
+                        DBHelper.OpenConnection();
+                        DBHelper.CreateParameters();
+
+                        DBHelper.AddParam("word", entity.sch_word);
+                        DBHelper.AddParam("branch_id", entity.sch_branch_id);
+                        DBHelper.AddParam("category_id", entity.sch_category_id);
+
+                        entityList = DBHelper.SelectStoreProcedure<InventoryEntity>("select_inventory_by_condition").ToList();
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                    finally
+                    {
+                        DBHelper.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return entityList;
         }
 
         public List<InventoryEntity> GetDataByCondition(InventoryEntity entity, int Index)

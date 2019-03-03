@@ -116,7 +116,7 @@
                                                         <asp:Repeater ID="resultList" runat="server" OnItemDataBound="rptList_ItemDataBound" OnItemCommand="rptList_ItemCommand">
                                                             <%-- OnItemCommand="rptInquiryList_ItemCommand" OnItemDataBound="rptInquiryList_ItemDataBound"--%>
                                                             <ItemTemplate>
-                                                                <tr id="trCountDays" runat="server" class="odd gradeX">
+                                                                <tr runat="server" class="odd gradeX">
                                                                     <td id="td5" runat="server" style="text-align: center;">
                                                                         <asp:Label ID="lblType" runat="server"></asp:Label>
                                                                     </td>
