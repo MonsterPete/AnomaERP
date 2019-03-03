@@ -104,6 +104,7 @@
                                                                     <td class="center">
                                                                         <div class="btn-group btn-group-sm">
                                                                             <asp:LinkButton ID="lbnEdit" runat="server" CssClass="btn btn-primary"><i class="ion ion-md-create"></i></asp:LinkButton>
+                                                                            <asp:LinkButton ID="lbnCarePlan" runat="server" CssClass="btn btn-success"><i class="ion ion-md-heart"></i></asp:LinkButton>
                                                                         </div>
                                                                     </td>
                                                                 </tr>

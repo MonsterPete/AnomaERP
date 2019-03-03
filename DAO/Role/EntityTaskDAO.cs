@@ -18,7 +18,31 @@ namespace DAO.Role
 
         public List<EntityTaskEntity> GetDataAll()
         {
-            throw new NotImplementedException();
+            List<EntityTaskEntity> entityTaskEntities = new List<EntityTaskEntity>();
+            try
+            {
+                using (DBHelper.CreateConnection())
+                {
+                    try
+                    {
+                        DBHelper.OpenConnection();
+                        entityTaskEntities = DBHelper.SelectStoreProcedure<EntityTaskEntity>("select_all_entity_task").ToList();
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                    finally
+                    {
+                        DBHelper.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return entityTaskEntities;
         }
 
         public List<EntityTaskEntity> GetDataByCondition(EntityTaskEntity entity)
