@@ -172,25 +172,30 @@ namespace DAO.Role
                             }
                             foreach (var item in positionEntities)
                             {
-                                if (item.position_id > 0)
+                                if (item.position_id != 0 && item.is_delete)
                                 {
-                                    DBHelper.CreateParameters();
-                                    DBHelper.AddParam("position_name", item.position_name);
-                                    DBHelper.AddParam("position_id", item.position_id);                                   
-                                    result = DBHelper.ExecuteStoreProcedure("update_position");
-                                }
-                                else
-                                {
-                                    DBHelper.CreateParameters();
-                                    DBHelper.AddParamOut("position_id", item.position_id);
-                                    DBHelper.AddParam("group_id", result_group_id);
-                                    DBHelper.AddParam("position_name", item.position_name);
-                                    DBHelper.AddParam("create_by", item.create_by);
-                                    DBHelper.AddParam("create_date", item.create_date);
-                                    DBHelper.AddParam("is_active", item.is_active);
-                                    DBHelper.AddParam("is_delete", item.is_delete);
-                                    DBHelper.ExecuteStoreProcedure("insert_position");
-                                    int position = DBHelper.GetParamOut<Int32>("position_id");
+                                    if (item.position_id > 0)
+                                    {
+                                        DBHelper.CreateParameters();
+                                        DBHelper.AddParam("position_name", item.position_name);
+                                        DBHelper.AddParam("position_id", item.position_id);
+                                        DBHelper.AddParam("is_active", item.is_active);
+                                        DBHelper.AddParam("is_delete", item.is_delete);
+                                        result = DBHelper.ExecuteStoreProcedure("update_position");
+                                    }
+                                    else
+                                    {
+                                        DBHelper.CreateParameters();
+                                        DBHelper.AddParamOut("position_id", item.position_id);
+                                        DBHelper.AddParam("group_id", result_group_id);
+                                        DBHelper.AddParam("position_name", item.position_name);
+                                        DBHelper.AddParam("create_by", item.create_by);
+                                        DBHelper.AddParam("create_date", item.create_date);
+                                        DBHelper.AddParam("is_active", item.is_active);
+                                        DBHelper.AddParam("is_delete", item.is_delete);
+                                        DBHelper.ExecuteStoreProcedure("insert_position");
+                                        int position = DBHelper.GetParamOut<Int32>("position_id");
+                                    }
                                 }
                             }
                             DBHelper.CommitTransaction();
