@@ -15,6 +15,7 @@ namespace Entity
         public DateTime create_date { get; set; }
         public Int32 modify_by { get; set; }
         public DateTime modify_date { get; set; }
+        public Boolean is_active { get; set; }
 
         #region task_group
         public List<TaskGroupEntity> taskGroupEntities { get; set; }

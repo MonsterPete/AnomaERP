@@ -74,8 +74,8 @@
                                             <div class="form-group">
                                                 <label class="form-label form-label-sm text-uppercase">Gender</label>
                                                 <asp:DropDownList ID="ddlGender" CssClass="form-control form-control-sm" runat="server">
-                                                    <asp:ListItem Value="Male" Text="Male"></asp:ListItem>
-                                                    <asp:ListItem Value="Female" Text="Female"></asp:ListItem>
+                                                    <asp:ListItem Value="Male" Text="ชาย"></asp:ListItem>
+                                                    <asp:ListItem Value="Female" Text="หญิง"></asp:ListItem>
                                                 </asp:DropDownList>
                                             </div>
                                         </div>
