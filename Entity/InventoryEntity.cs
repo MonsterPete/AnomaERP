@@ -47,5 +47,14 @@ namespace Entity
         //parameter to save 
         public String updateMode { get; set; } //Inbound , OutBound
         public List<InventoryEntity> inventoryEntityList { get; set; }
+
+
+        public String s_create_date { get; set; }
+        public String flag { get; set; }
+
+        public Int32 Bed_inventory_id { get; set; }
+        public Int32 Bed_id { get; set; }
+        public Boolean Active { get; set; }
+        public Int32 qty_return { get; set; }
     }
 }

@@ -66,9 +66,12 @@ namespace AnomaERP.BackOffice.Bed_Management.Bed
             #region Tools
             LinkButton lbnAssign = (LinkButton)e.Item.FindControl("lbnAssign");
             HtmlGenericControl manupnl = (HtmlGenericControl)e.Item.FindControl("manupnl");
+            HtmlGenericControl AccessoryTool = (HtmlGenericControl)e.Item.FindControl("AccessoryTool");
             LinkButton lbnCustomerGoOutBed = (LinkButton)e.Item.FindControl("lbnCustomerGoOutBed");
             LinkButton lbnAdmit = (LinkButton)e.Item.FindControl("lbnAdmit");
             LinkButton lbnDeleteCustomer = (LinkButton)e.Item.FindControl("lbnDeleteCustomer");
+            LinkButton lbnCustomerAddAccessory = (LinkButton)e.Item.FindControl("lbnCustomerAddAccessory");
+            LinkButton lbnCustomerDeleteAccessory = (LinkButton)e.Item.FindControl("lbnCustomerDeleteAccessory");
             #endregion
 
             lblBranch.Text = bedCustomerEntity.branch_name;
@@ -85,6 +88,7 @@ namespace AnomaERP.BackOffice.Bed_Management.Bed
             {
                 lblCustomer.Visible = false;
                 manupnl.Visible = false;
+                AccessoryTool.Visible = false;
             }
             
             #region Tool
@@ -99,6 +103,13 @@ namespace AnomaERP.BackOffice.Bed_Management.Bed
 
             lbnDeleteCustomer.CommandName = "DeleteCustomer";
             lbnDeleteCustomer.CommandArgument = bedCustomerEntity.bed_customer_id + "||" + bedCustomerEntity.customer_id + "||" + bedCustomerEntity.bed_id;
+
+
+            lbnCustomerAddAccessory.CommandName = "AddAccessory";
+            lbnCustomerAddAccessory.CommandArgument = bedCustomerEntity.bed_id.ToString();
+
+            lbnCustomerDeleteAccessory.CommandName = "DeleteAccessory";
+            lbnCustomerDeleteAccessory.CommandArgument = bedCustomerEntity.bed_id.ToString();
             #endregion
         }
 
@@ -112,6 +123,16 @@ namespace AnomaERP.BackOffice.Bed_Management.Bed
                 hdfBedId.Value = id;
                 hdfBedName.Value = name;
                 ScriptManager.RegisterClientScriptBlock((source as Control), this.GetType(), "Pop", "openModal();", true);
+            }
+            else if (e.CommandName == "AddAccessory")
+            {
+                Response.Redirect("/BackOffice/Bed-Management/Bed/bed-add-accessory.aspx?bed_id=" + e.CommandArgument);
+            }
+
+
+            else if (e.CommandName == "DeleteAccessory")
+            {
+                Response.Redirect("/BackOffice/Bed-Management/Bed/bed-delete-accessory.aspx?bed_id=" + e.CommandArgument);
             }
             else
             {
