@@ -2,17 +2,47 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="FromPlaceHolder" runat="server">
 
-    <script type="text/javascript">
-
-        function checkNum(txt) {
-            num = parseInt(txt.value);
-            if (txt.value == "" || isNaN(num) || num == 0) {
-                WarningAlert('กรุณากรอกข้อมูลให้ถูกต้อง');
-            }
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type='text/javascript'>
+        function openModalError() {
+            swal({
+                title: '',
+                text: 'ทำรายการไม่สำเร็จ',
+                type: "error",
+                confirmButtonClass: "btn-danger",
+            });
         }
 
-    </script>
+        function openModalWaring(msg) {
+            swal({
+                title: '',
+                text: msg,
+                type: "warning",
+                confirmButtonClass: "btn-warning",
+            });
+        }
 
+        function openModalSuccess() {
+            swal({
+                title: '',
+                text: 'ทำรายการสำเร็จ',
+                type: "success",
+                confirmButtonClass: "btn-success",
+            },
+                function (isConfirm) {
+                    if (isConfirm) {
+                        window.location = '/BackOffice/Bed-Management/Bed/bed-entity.aspx';
+                    }
+                });
+        }
+
+         function checkNum(txt) {
+            num = parseInt(txt.value);
+            if (txt.value == "" || isNaN(num) || num == 0) {
+                openModalWaring('กรุณากรอกข้อมูลให้ถูกต้อง');
+            }
+        }
+    </script>
     <asp:UpdatePanel runat="server">
         <ContentTemplate>
             <div class="layout-content">

@@ -52,6 +52,42 @@
 </head>
 <body>
 
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type='text/javascript'>
+        function openModalError() {
+            swal({
+                title: '',
+                text: 'ทำรายการไม่สำเร็จ',
+                type: "error",
+                confirmButtonClass: "btn-danger",
+            });
+        }
+
+        function openModalWaring(msg) {
+            swal({
+                title: '',
+                text: msg,
+                type: "warning",
+                confirmButtonClass: "btn-warning",
+            });
+        }
+
+        function openModalSuccess() {
+            swal({
+                title: '',
+                text: 'ทำรายการสำเร็จ',
+                type: "success",
+                confirmButtonClass: "btn-success",
+            },
+                function (isConfirm) {
+                    if (isConfirm) {
+                        window.location = '/BackOffice/Bed-Management/Bed/bed-entity.aspx';
+                    }
+                });
+        }
+    </script>
+
+
     <div class="page-loader">
         <div class="bg-primary"></div>
     </div>
@@ -175,3 +211,6 @@
 </body>
 
 </html>
+
+
+ 
