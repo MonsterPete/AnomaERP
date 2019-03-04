@@ -36,6 +36,8 @@
     <!-- Core scripts -->
     <script src="/assets/vendor/js/pace.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="/assets/js/bootbox.js"></script>
+    <script src="/assets/js/custom.js" type="text/javascript"></script>
 
     <!-- Libs -->
     <link rel="stylesheet" href="/assets/vendor/libs/photoswipe/photoswipe.css">
@@ -110,7 +112,7 @@
                     <!-- Links -->
 
                     <ul class="sidenav-inner py-1">
-                        <li class="sidenav-item">
+                        <li class="sidenav-item" runat="server" id="MenuNH" visible="false">
                             <a href="javascript:void(0)" class="sidenav-link sidenav-toggle">
                                 <i class="sidenav-icon ion ion-ios-folder"></i>
                                 <div>Nursing Home</div>
@@ -133,7 +135,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="sidenav-item">
+                        <li class="sidenav-item" runat="server" id="MenuEM" visible="false">
                             <a href="javascript:void(0)" class="sidenav-link sidenav-toggle">
                                 <i class="sidenav-icon ion ion-ios-folder"></i>
                                 <div>Entity Management</div>
@@ -151,7 +153,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="sidenav-item">
+                        <li class="sidenav-item" runat="server" id="MenuRP" visible="false">
                             <a href="javascript:void(0)" class="sidenav-link sidenav-toggle">
                                 <i class="sidenav-icon ion ion-ios-folder"></i>
                                 <div>Resource Planing</div>
@@ -181,7 +183,7 @@
                                         </li>
                             </ul>
                         </li>
-                        <li class="sidenav-item">
+                        <li class="sidenav-item" runat="server" id="MenuNA" visible="false">
                             <a href="javascript:void(0)" class="sidenav-link sidenav-toggle">
                                 <i class="sidenav-icon ion ion-ios-folder"></i>
                                 <div>Nursing Aide</div>
@@ -199,7 +201,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="sidenav-item">
+                        <li class="sidenav-item" runat="server" id="MenuBM" visible="false">
                             <a href="javascript:void(0)" class="sidenav-link sidenav-toggle">
                                 <i class="sidenav-icon ion ion-ios-folder"></i>
                                 <div>Bed Management</div>
@@ -222,7 +224,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="sidenav-item">
+                        <li class="sidenav-item" runat="server" id="MenuIN" visible="false">
                             <a href="/Backoffice/Inventory/inventory.aspx" class="sidenav-link" runat="server" id="aInventory" visible="true">
                                 <i class="sidenav-icon ion ion-ios-folder"></i>
                                 <div>Inventory</div>
@@ -268,7 +270,7 @@
                                         </span>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <asp:LinkButton ID="log_out" runat="server" CssClass="dropdown-item">
+                                         <asp:LinkButton ID="log_out" runat="server" OnClick="log_out_Click" CssClass="dropdown-item">
                                             <i class="ion ion-ios-log-out text-danger"></i>&nbsp; ออกจากระบบ</asp:LinkButton>
                                     </div>
                                 </div>
