@@ -25,9 +25,12 @@ namespace AnomaERP.BackOffice.Entity_ManageMent.Branch.BranchBuilding
 
                     if (int.Parse(Request.QueryString["branch_id"]) > 0)
                     {
+                        BranchBedService branchBedService = new BranchBedService();
                         lblBranchID.Text = Request.QueryString["branch_id"].ToString();
                         lblFloorID.Text = Request.QueryString["floor_id"].ToString();
                         lblRoomID.Text = Request.QueryString["room_id"].ToString();
+
+                        lblName.Text = branchBedService.GetNameFloorAndRoom(int.Parse(lblRoomID.Text)).name;
                         SetDataToUI(int.Parse(lblRoomID.Text));
                     }
                 }
@@ -201,7 +204,7 @@ namespace AnomaERP.BackOffice.Entity_ManageMent.Branch.BranchBuilding
 
         protected void lblBack_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("/BackOffice/Entity-Management/Branch/BranchBuilding/room-setup.aspx?branch_id=" + lblBranchID.Text + "&floor_id=" + lblFloorID.Text);
         }
 
         protected void rptBed_ItemCommand(object source, RepeaterCommandEventArgs e)

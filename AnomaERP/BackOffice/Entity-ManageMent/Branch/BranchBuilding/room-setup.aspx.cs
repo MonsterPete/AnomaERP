@@ -24,8 +24,12 @@ namespace AnomaERP.BackOffice.Entity_ManageMent.Branch.BranchBuilding
 
                     if (int.Parse(Request.QueryString["branch_id"]) > 0)
                     {
+                        BranchFloorService branchFloorService = new BranchFloorService();
+                        BranchFloorEntity branchFloorEntity = new BranchFloorEntity();
                         lblBranchID.Text = Request.QueryString["branch_id"].ToString();
                         lblFloorID.Text = Request.QueryString["floor_id"].ToString();
+                        branchFloorEntity.floor_id = int.Parse(lblFloorID.Text);
+                        lblFloor.Text = branchFloorService.GetDataByCondition(branchFloorEntity)[0].floor_name;
                         SetDataToUI(int.Parse(lblFloorID.Text));
                     }
                 }
@@ -82,7 +86,6 @@ namespace AnomaERP.BackOffice.Entity_ManageMent.Branch.BranchBuilding
             lbnRoom.CommandArgument = branchRoomEntity.room_id.ToString();
             lbnDelete.CommandName = "Delete";
             lbnDelete.CommandArgument = branchRoomEntity.room_id.ToString();
-
         }
 
         protected void rptRoom_ItemCommand(object source, RepeaterCommandEventArgs e)
@@ -151,34 +154,28 @@ namespace AnomaERP.BackOffice.Entity_ManageMent.Branch.BranchBuilding
                 {
                     if (branchRoomEntity.is_active == true)
                     {
-                        
+                        branchRoomEntities.Add(new BranchRoomEntity
+                        {
+                            floor_id = int.Parse(lblFloorID.Text),
+                            room_id = int.Parse(lblRoomID.Text),
+                            room_name = txtRoomName.Text,
+                            create_date = DateTime.UtcNow,
+                            is_delete = false,
+                            is_active = chkActive.Checked
 
-                            branchRoomEntities.Add(new BranchRoomEntity
-                            {
-                                floor_id = int.Parse(lblFloorID.Text),
-                                room_id = int.Parse(lblRoomID.Text),
-                                room_name = txtRoomName.Text,
-                                create_date = DateTime.UtcNow,
-                                is_delete = false,
-                                is_active = chkActive.Checked
-
-                            });
-                        
-                      
+                        });
                     }
                     else
                     {
-                       
-                            branchRoomEntities.Add(new BranchRoomEntity
-                            {
-                                floor_id = int.Parse(lblFloorID.Text),
-                                room_id = int.Parse(lblRoomID.Text),
-                                room_name = txtRoomName.Text,
-                                create_date = DateTime.UtcNow,
-                                is_delete = false,
-                                is_active = chkActive.Checked
-                            });
-                        
+                        branchRoomEntities.Add(new BranchRoomEntity
+                        {
+                            floor_id = int.Parse(lblFloorID.Text),
+                            room_id = int.Parse(lblRoomID.Text),
+                            room_name = txtRoomName.Text,
+                            create_date = DateTime.UtcNow,
+                            is_delete = false,
+                            is_active = chkActive.Checked
+                        });
                     }
                 }
                 else
@@ -226,7 +223,7 @@ namespace AnomaERP.BackOffice.Entity_ManageMent.Branch.BranchBuilding
 
         protected void lblBack_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("/BackOffice/Entity-Management/Branch/BranchBuilding/floor-setup.aspx?branch_id=" + lblBranchID.Text);
         }
 
         protected void lbnSave_Click(object sender, EventArgs e)
@@ -241,7 +238,6 @@ namespace AnomaERP.BackOffice.Entity_ManageMent.Branch.BranchBuilding
             if (branchRoomService.InsertDataMore(branchRoomEntities) > 0)
             {
                 Response.Redirect("/BackOffice/Entity-Management/Branch/BranchBuilding/floor-setup.aspx?branch_id="+ lblBranchID.Text);
-
             }
             else
             {

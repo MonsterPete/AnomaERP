@@ -19,7 +19,7 @@
             <div class="card mb-3">
                 <h4 class="card-header with-elements">
                     <div class="card-header-title"><strong>Bed Setup  
-                       <br /> Room Code : <label class="text-success"> #F1-R2</label></strong></div>
+                       <br /> Room Code : <div class="text-success"> #<asp:Label ID="lblName" runat="server" Text="Label"></asp:Label></div></strong></div>
                 </h4>
                     
                 <div class="card-body">

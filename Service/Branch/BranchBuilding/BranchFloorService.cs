@@ -15,7 +15,8 @@ namespace Service.Branch.BranchBuilding
 
         public List<BranchFloorEntity> GetDataByCondition(BranchFloorEntity entity)
         {
-            throw new NotImplementedException();
+            BranchFloorDAO branchFloorDAO = new BranchFloorDAO();
+            return branchFloorDAO.GetDataByCondition(entity);
         }
 
         public List<BranchFloorEntity> GetDataByCondition(BranchFloorEntity entity, int index)

@@ -21,6 +21,37 @@ namespace DAO.Branch.BranchBuilding
             throw new NotImplementedException();
         }
 
+        public NameEntity GetNameFloorAndRoom(int roomId)
+        {
+            NameEntity nameEntity = null;
+            try
+            {
+                using (DBHelper.CreateConnection())
+                {
+                    try
+                    {
+                        DBHelper.OpenConnection();
+                        DBHelper.CreateParameters();
+                        DBHelper.AddParam("room_id", roomId);
+                        nameEntity = DBHelper.SelectStoreProcedureFirst<NameEntity>("select_name_floor_room");
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                    finally
+                    {
+                        DBHelper.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return nameEntity;
+        }
+
         public List<BranchBedEntity> GetDataByCondition(BranchBedEntity entity)
         {
             List<BranchBedEntity> branchBedEntities = null;

@@ -33,10 +33,10 @@ namespace DAO.Branch.BranchBuilding
                     {
                         DBHelper.OpenConnection();
                         DBHelper.CreateParameters();
-                        DBHelper.AddParam("room_id", entity.branch_id);
+                        DBHelper.AddParam("branch_id", entity.branch_id);
                         DBHelper.AddParam("floor_id", entity.floor_id);
                         DBHelper.AddParam("floor_name", entity.floor_name);
-                        DBHelper.AddParam("is_active", entity.is_active);
+                        //DBHelper.AddParam("is_active", entity.is_active);
                         branchFloorEntities = DBHelper.SelectStoreProcedure<BranchFloorEntity>("select_branch_floor_by_condition").ToList();
                     }
                     catch (Exception ex)
