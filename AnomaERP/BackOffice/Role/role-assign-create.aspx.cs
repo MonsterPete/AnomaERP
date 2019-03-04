@@ -50,7 +50,11 @@ namespace AnomaERP.BackOffice.Role
             txtNickname.Text = employeeEntity.nickname.ToString();
 
             ddlGender.SelectedValue = employeeEntity.gender.ToString();
-            txtDateOdBirth.Text = employeeEntity.date_of_birth.ToString("yyyy-MM-dd");
+            if (employeeEntity.date_of_birth != default(DateTime))
+            {
+                txtDateOdBirth.Text = employeeEntity.date_of_birth.ToString("yyyy-MM-dd");
+            }
+
             txtCitizenID.Text = employeeEntity.citizen_id.ToString();
             ddlPosition.SelectedValue = employeeEntity.position_id.ToString();
             ddlWorkingTime.SelectedValue = employeeEntity.working_time_id.ToString();
@@ -96,32 +100,32 @@ namespace AnomaERP.BackOffice.Role
 
             if (employeeEntity.shifTimeEntity != null)
             {
-                if (employeeEntity.shifTimeEntity.start_time_1 != null)
+                if (employeeEntity.shifTimeEntity.start_time_1 != default(DateTime).TimeOfDay)
                 {
                     txtStartTime1.Text = employeeEntity.shifTimeEntity.start_time_1.ToString();
                 }
 
-                if (employeeEntity.shifTimeEntity.end_time_1 != null)
+                if (employeeEntity.shifTimeEntity.end_time_1 != default(DateTime).TimeOfDay)
                 {
                     txtEndTime1.Text = employeeEntity.shifTimeEntity.end_time_1.ToString();
                 }
 
-                if (employeeEntity.shifTimeEntity.start_time_2 != null)
+                if (employeeEntity.shifTimeEntity.start_time_2 != default(DateTime).TimeOfDay)
                 {
                     txtStartTime2.Text = employeeEntity.shifTimeEntity.start_time_2.ToString();
                 }
 
-                if (employeeEntity.shifTimeEntity.end_time_2 != null)
+                if (employeeEntity.shifTimeEntity.end_time_2 != default(DateTime).TimeOfDay)
                 {
                     txtEndTime2.Text = employeeEntity.shifTimeEntity.end_time_2.ToString();
                 }
 
-                if (employeeEntity.shifTimeEntity.start_time_3 != null)
+                if (employeeEntity.shifTimeEntity.start_time_3 != default(DateTime).TimeOfDay)
                 {
                     txtStartTime3.Text = employeeEntity.shifTimeEntity.start_time_3.ToString();
                 }
 
-                if (employeeEntity.shifTimeEntity.end_time_3 != null)
+                if (employeeEntity.shifTimeEntity.end_time_3 != default(DateTime).TimeOfDay)
                 {
                     txtEndTime3.Text = employeeEntity.shifTimeEntity.end_time_3.ToString();
                 }
@@ -153,10 +157,6 @@ namespace AnomaERP.BackOffice.Role
             if (string.IsNullOrEmpty(txtDateOdBirth.Text) == false)
             {
                 employeeEntity.date_of_birth = dateFormat.EngFormatDateToSQL(DateTime.Parse(txtDateOdBirth.Text));
-            }
-            else
-            {
-                employeeEntity.date_of_birth = dateFormat.EngFormatDateToSQL(DateTime.Now);
             }
 
             employeeEntity.citizen_id = txtCitizenID.Text;
@@ -211,30 +211,17 @@ namespace AnomaERP.BackOffice.Role
                 date = txtStartTime1.Text;
                 shifTimeEntity.start_time_1 = TimeSpan.Parse(date); 
             }
-            else
-            {
-                shifTimeEntity.start_time_1 = DateTime.Now.TimeOfDay;
-            }
 
             if (string.IsNullOrEmpty(txtEndTime1.Text) == false)
             {
                 date = txtEndTime1.Text;
                 shifTimeEntity.end_time_1 = TimeSpan.Parse(date);
             }
-            else
-            {
-                shifTimeEntity.end_time_1 = DateTime.Now.TimeOfDay;
-            }
-
 
             if (string.IsNullOrEmpty(txtStartTime2.Text) == false)
             {
                 date = txtStartTime2.Text;
                 shifTimeEntity.start_time_2 = TimeSpan.Parse(date);
-            }
-            else
-            {
-                shifTimeEntity.start_time_2 = DateTime.Now.TimeOfDay;
             }
 
             if (string.IsNullOrEmpty(txtEndTime2.Text) == false)
@@ -242,30 +229,17 @@ namespace AnomaERP.BackOffice.Role
                 date = txtEndTime2.Text;
                 shifTimeEntity.end_time_2 = TimeSpan.Parse(date);
             }
-            else
-            {
-                shifTimeEntity.end_time_2 = DateTime.Now.TimeOfDay;
-            }
 
             if (string.IsNullOrEmpty(txtStartTime3.Text) == false)
             {
                 date = txtStartTime3.Text;
                 shifTimeEntity.start_time_3 = TimeSpan.Parse(date);
             }
-            else
-            {
-                shifTimeEntity.start_time_3 = DateTime.Now.TimeOfDay;
-            }
 
             if (string.IsNullOrEmpty(txtEndTime3.Text) == false)
             {
                 date = txtEndTime3.Text;
                 shifTimeEntity.end_time_3 = TimeSpan.Parse(date);
-
-            }
-            else
-            {
-                 shifTimeEntity.end_time_3 = DateTime.Now.TimeOfDay;
 
             }
 

@@ -112,7 +112,7 @@
                     <!-- Links -->
 
                     <ul class="sidenav-inner py-1">
-                        <li class="sidenav-item" runat="server" id="MenuNH" visible="false">
+                        <li class="sidenav-item" runat="server" id="MenuNH" visible="true">
                             <a href="javascript:void(0)" class="sidenav-link sidenav-toggle">
                                 <i class="sidenav-icon ion ion-ios-folder"></i>
                                 <div>Nursing Home</div>
@@ -135,7 +135,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="sidenav-item" runat="server" id="MenuEM" visible="false">
+                        <li class="sidenav-item" runat="server" id="MenuEM" visible="true">
                             <a href="javascript:void(0)" class="sidenav-link sidenav-toggle">
                                 <i class="sidenav-icon ion ion-ios-folder"></i>
                                 <div>Entity Management</div>
@@ -153,7 +153,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="sidenav-item" runat="server" id="MenuRP" visible="false">
+                        <li class="sidenav-item" runat="server" id="MenuRP" visible="true">
                             <a href="javascript:void(0)" class="sidenav-link sidenav-toggle">
                                 <i class="sidenav-icon ion ion-ios-folder"></i>
                                 <div>Resource Planing</div>
@@ -183,7 +183,7 @@
                                         </li>
                             </ul>
                         </li>
-                        <li class="sidenav-item" runat="server" id="MenuNA" visible="false">
+                        <li class="sidenav-item" runat="server" id="MenuNA" visible="true">
                             <a href="javascript:void(0)" class="sidenav-link sidenav-toggle">
                                 <i class="sidenav-icon ion ion-ios-folder"></i>
                                 <div>Nursing Aide</div>
@@ -201,7 +201,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="sidenav-item" runat="server" id="MenuBM" visible="false">
+                        <li class="sidenav-item" runat="server" id="MenuBM" visible="true">
                             <a href="javascript:void(0)" class="sidenav-link sidenav-toggle">
                                 <i class="sidenav-icon ion ion-ios-folder"></i>
                                 <div>Bed Management</div>
@@ -224,7 +224,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="sidenav-item" runat="server" id="MenuIN" visible="false">
+                        <li class="sidenav-item" runat="server" id="MenuIN" visible="true">
                             <a href="/Backoffice/Inventory/inventory.aspx" class="sidenav-link" runat="server" id="aInventory" visible="true">
                                 <i class="sidenav-icon ion ion-ios-folder"></i>
                                 <div>Inventory</div>

@@ -130,7 +130,7 @@
                                                                 <asp:LinkButton ID="lbnEdit" runat="server" ClientIDMode="AutoID" CssClass="btn btn-primary">
                                                         <i class="ion ion-md-create"></i>
                                                                 </asp:LinkButton>
-                                                                <asp:LinkButton ID="lbnDelete" runat="server" ClientIDMode="AutoID" CssClass="btn btn-danger">
+                                                                <asp:LinkButton ID="lbnDelete" runat="server" ClientIDMode="AutoID" CssClass="btn btn-danger" Visible="false">
                                                             <i class="ion ion-md-close"></i>
                                                                 </asp:LinkButton>
                                                             </div>

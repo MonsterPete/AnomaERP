@@ -133,7 +133,12 @@ namespace DAO.Employee
                             DBHelper.AddParam("lastname", entity.lastname);
                             DBHelper.AddParam("nickname", entity.nickname);
                             DBHelper.AddParam("gender", entity.gender);
-                            DBHelper.AddParam("date_of_birth", entity.date_of_birth);
+
+                            if (entity.date_of_birth !=  default(DateTime))
+                            {
+                                DBHelper.AddParam("date_of_birth", entity.date_of_birth);
+                            }
+                           
                             DBHelper.AddParam("citizen_id", entity.citizen_id);
                             DBHelper.AddParam("position_id", entity.position_id);
                             DBHelper.AddParam("working_time_id", entity.working_time_id);
@@ -177,12 +182,37 @@ namespace DAO.Employee
                             DBHelper.CreateParameters();
                             DBHelper.AddParamOut("shif_time_id", entity.shifTimeEntity.shif_time_id);
                             DBHelper.AddParam("employee_id", result);
-                            DBHelper.AddParam("start_time_1", dateFormat.EngFormatDateToSQL(DateTime.Parse(entity.shifTimeEntity.start_time_1.ToString())));
-                            DBHelper.AddParam("end_time_1",dateFormat.EngFormatDateToSQL(DateTime.Parse(entity.shifTimeEntity.end_time_1.ToString())));
-                            DBHelper.AddParam("start_time_2",dateFormat.EngFormatDateToSQL(DateTime.Parse(entity.shifTimeEntity.start_time_2.ToString())));
-                            DBHelper.AddParam("end_time_2",dateFormat.EngFormatDateToSQL(DateTime.Parse(entity.shifTimeEntity.end_time_2.ToString())));
-                            DBHelper.AddParam("start_time_3", dateFormat.EngFormatDateToSQL(DateTime.Parse(entity.shifTimeEntity.start_time_3.ToString())));
-                            DBHelper.AddParam("end_time_3", dateFormat.EngFormatDateToSQL(DateTime.Parse(entity.shifTimeEntity.end_time_3.ToString())));
+
+                            if (entity.shifTimeEntity.start_time_1 != default(DateTime).TimeOfDay)
+                            {
+                                DBHelper.AddParam("start_time_1", dateFormat.EngFormatDateToSQL(DateTime.Parse(entity.shifTimeEntity.start_time_1.ToString())));
+                            }
+
+                            if (entity.shifTimeEntity.end_time_1 != default(DateTime).TimeOfDay)
+                            {
+                                DBHelper.AddParam("end_time_1", dateFormat.EngFormatDateToSQL(DateTime.Parse(entity.shifTimeEntity.end_time_1.ToString())));
+                            }
+
+                            if (entity.shifTimeEntity.start_time_2 != default(DateTime).TimeOfDay)
+                            {
+                                DBHelper.AddParam("start_time_2", dateFormat.EngFormatDateToSQL(DateTime.Parse(entity.shifTimeEntity.start_time_2.ToString())));
+                            }
+
+                            if (entity.shifTimeEntity.end_time_2 != default(DateTime).TimeOfDay)
+                            {
+                                DBHelper.AddParam("end_time_2", dateFormat.EngFormatDateToSQL(DateTime.Parse(entity.shifTimeEntity.end_time_2.ToString())));
+                            }
+
+                            if (entity.shifTimeEntity.start_time_3 != default(DateTime).TimeOfDay)
+                            {
+                                DBHelper.AddParam("start_time_3", dateFormat.EngFormatDateToSQL(DateTime.Parse(entity.shifTimeEntity.start_time_3.ToString())));
+                            }
+
+                            if (entity.shifTimeEntity.end_time_3 != default(DateTime).TimeOfDay)
+                            {
+                                DBHelper.AddParam("end_time_3", dateFormat.EngFormatDateToSQL(DateTime.Parse(entity.shifTimeEntity.end_time_3.ToString())));
+                            }
+  
                             DBHelper.AddParam("create_by", entity.create_by);
                             DBHelper.AddParam("create_date", entity.create_date);
                             DBHelper.AddParam("is_active", entity.shifTimeEntity.is_active);
