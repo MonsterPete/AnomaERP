@@ -3,10 +3,11 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="FromPlaceHolder" runat="server">
 
     <script type="text/javascript">
+
         function checkNum(txt) {
             num = parseInt(txt.value);
             if (txt.value == "" || isNaN(num) || num == 0) {
-                alert('aaa');
+                WarningAlert('กรุณากรอกข้อมูลให้ถูกต้อง');
             }
         }
 

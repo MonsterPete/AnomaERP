@@ -158,6 +158,7 @@
     <Content Include="assets\img\uikit\s7edge-4.jpg" />
     <Content Include="assets\img\uikit\sunglasses.jpg" />
     <Content Include="assets\js\blog.js" />
+    <Content Include="assets\js\bootbox.js" />
     <Content Include="assets\js\charts_c3.js" />
     <Content Include="assets\js\charts_chartist.js" />
     <Content Include="assets\js\charts_chartjs.js" />
@@ -166,6 +167,7 @@
     <Content Include="assets\js\charts_mapael.js" />
     <Content Include="assets\js\charts_morrisjs.js" />
     <Content Include="assets\js\charts_sparkline.js" />
+    <Content Include="assets\js\custom.js" />
     <Content Include="assets\js\dashboards_dashboard-1.js" />
     <Content Include="assets\js\dashboards_dashboard-2.js" />
     <Content Include="assets\js\dashboards_dashboard-3.js" />
@@ -502,6 +504,7 @@
     <Content Include="BackOffice\Role\RoleSetup\role-position.aspx" />
     <Content Include="BackOffice\Role\RoleSetup\task-setup.aspx" />
     <Content Include="BackOffice\ServiceCare\care-plan.aspx" />
+    <Content Include="login.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -714,6 +717,13 @@
     </Compile>
     <Compile Include="BackOffice\ServiceCare\care-plan.aspx.designer.cs">
       <DependentUpon>care-plan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="login.aspx.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="login.aspx.designer.cs">
+      <DependentUpon>login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Masterpage.Master.cs">
       <DependentUpon>Masterpage.Master</DependentUpon>
