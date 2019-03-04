@@ -759,6 +759,8 @@
     <Content Include="assets\vendor\fonts\pe-icon-7-stroke\Pe-icon-7-stroke.ttf" />
     <Content Include="assets\vendor\fonts\pe-icon-7-stroke\Pe-icon-7-stroke.woff" />
     <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\anomaERP - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\anomaERP - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -112,7 +112,7 @@
                                                 Rental
                                                         Price:
                                             </label>
-                                            <asp:TextBox ID="txtPrice" runat="server" class="form-control form-control-sm"></asp:TextBox>
+                                            <asp:TextBox ID="txtPrice" runat="server" TextMode="Number" class="form-control form-control-sm"></asp:TextBox>
                                         </div>
                                     </div>
                                 </div>
