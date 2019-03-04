@@ -97,6 +97,38 @@ namespace DAO.Inventory
             return entityList;
         }
 
+        public List<InventoryEntity> GetSkuTotalMoreZero()
+        {
+            List<InventoryEntity> entityList = null;
+
+            try
+            {
+                using (DBHelper.CreateConnection())
+                {
+                    try
+                    {
+                        DBHelper.OpenConnection();
+                        DBHelper.CreateParameters();
+
+                        entityList = DBHelper.SelectStoreProcedure<InventoryEntity>("select_inventory_have_toal_more_zero").ToList();
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                    finally
+                    {
+                        DBHelper.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return entityList;
+        }
+
         public List<InventoryEntity> GetDataBySku(String sku)
         {
             throw new NotImplementedException();

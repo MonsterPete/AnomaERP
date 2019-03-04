@@ -76,5 +76,11 @@ namespace Service.Inventory
             InventoryDAO dao = new InventoryDAO();
             return dao.UpdateQtyTotle(entity);
         }
+
+        public List<InventoryEntity> GetSkuTotalMoreZero()
+        {
+            InventoryDAO dao = new InventoryDAO();
+            return dao.GetSkuTotalMoreZero();
+        }
     }
 }

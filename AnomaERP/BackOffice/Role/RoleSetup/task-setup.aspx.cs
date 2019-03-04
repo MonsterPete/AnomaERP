@@ -61,18 +61,51 @@ namespace AnomaERP.BackOffice.Role.RoleSetup
             Label lblTaskID = (Label)e.Item.FindControl("lblTaskID");
             TextBox txtTaskName = (TextBox)e.Item.FindControl("txtTaskName");            
             LinkButton lbnDelete = (LinkButton)e.Item.FindControl("lbnDelete");
-           
+
+            LinkButton lbnStatus = (LinkButton)e.Item.FindControl("lbnStatus");
+            HtmlInputCheckBox chkStatus = (HtmlInputCheckBox)e.Item.FindControl("chkStatus");
+            HiddenField hdfStatus = (HiddenField)e.Item.FindControl("hdfStatus");
+
+
             lblGroupID.Text = entityTaskEntity.group_id.ToString();
             lblTaskID.Text = entityTaskEntity.task_id.ToString();
             txtTaskName.Text = entityTaskEntity.task_name;
-           
+
+            hdfStatus.Value = entityTaskEntity.is_active.ToString();
+            if (entityTaskEntity.is_active == true)
+            {
+                chkStatus.Attributes.Add("checked", "checked");
+            }
+            else if (entityTaskEntity.is_active == false)
+            {
+                chkStatus.Attributes.Remove("checked");
+            }
+
+            lbnStatus.CommandName = "active";
+
             lbnDelete.CommandName = "Delete";
             lbnDelete.CommandArgument = entityTaskEntity.group_id.ToString();
         }
 
         protected void rptTask_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
+            LinkButton lbnStatus = (LinkButton)e.Item.FindControl("lbnStatus");
+            HtmlInputCheckBox chkStatus = (HtmlInputCheckBox)e.Item.FindControl("chkStatus");
+            HiddenField hdfStatus = (HiddenField)e.Item.FindControl("hdfStatus");
 
+            if (e.CommandName == "active")
+            {
+                if (hdfStatus.Value.ToLower() == "true")
+                {
+                    hdfStatus.Value = "false";
+                    chkStatus.Attributes.Remove("checked");
+                }
+                else if (hdfStatus.Value.ToLower() == "false")
+                {
+                    hdfStatus.Value = "true";
+                    chkStatus.Attributes.Add("checked", "checked");
+                }
+            }
         }
 
         protected void lbnAdd_Click(object sender, EventArgs e)
@@ -80,6 +113,7 @@ namespace AnomaERP.BackOffice.Role.RoleSetup
             List<EntityTaskEntity> entityTaskEntities = getDataFromRpt();
             EntityTaskEntity positionEntity = new EntityTaskEntity();
 
+            DateFormat dateFormat = new DateFormat();
             for (int i = 0; i < 1; i++)
             {
                 entityTaskEntities.Add(new EntityTaskEntity
@@ -90,9 +124,10 @@ namespace AnomaERP.BackOffice.Role.RoleSetup
                     description = "",
                     entity_id = 1,
                     create_by = 1,
-                    create_date = DateTime.UtcNow,
+                    create_date = dateFormat.EngFormatDateToSQL(DateTime.Now),
                     modify_by = 1,
-                    modify_date = DateTime.UtcNow
+                    modify_date = dateFormat.EngFormatDateToSQL(DateTime.Now),
+                    is_active = true
 
                 });
             }
@@ -109,46 +144,32 @@ namespace AnomaERP.BackOffice.Role.RoleSetup
             {               
                 Label lblTaskID = (Label)rptTask.Items[i].FindControl("lblTaskID");                
                 TextBox txtTaskName = (TextBox)rptTask.Items[i].FindControl("txtTaskName");
+                HiddenField hdfStatus = (HiddenField)rptTask.Items[i].FindControl("hdfStatus");
 
                 EntityTaskEntity entityTaskEntity = new EntityTaskEntity();
                 EntityTaskService entityTaskService = new EntityTaskService();
                 entityTaskEntity = entityTaskService.GetDataByID(int.Parse(ddlGroupName.SelectedValue));
+
                 if (entityTaskEntity != null)
-                {                                           
-                     entityTaskEntities.Add(new EntityTaskEntity
-                     {
-                                task_id = int.Parse(lblTaskID.Text),
-                                group_id = int.Parse(ddlGroupName.SelectedValue),
-                                task_name = txtTaskName.Text,
-                                description = txtTaskName.Text,
-                                entity_id = 1,
-                                create_by = 1,
-                                create_date = DateTime.UtcNow,
-                                modify_by = 1,
-                                modify_date = DateTime.UtcNow
-
-                     });
-                }
-                    
-                else
                 {
-                    
-                            entityTaskEntities.Add(new EntityTaskEntity
-                            {
-                                task_id = int.Parse(lblTaskID.Text),
-                                group_id = int.Parse(ddlGroupName.SelectedValue),
-                                task_name = txtTaskName.Text,
-                                description = txtTaskName.Text,
-                                entity_id = 1,
-                                create_by = 1,
-                                create_date = DateTime.UtcNow,
-                                modify_by = 1,
-                                modify_date = DateTime.UtcNow
+                    if (!string.IsNullOrEmpty(txtTaskName.Text))
+                    {
+                        entityTaskEntities.Add(new EntityTaskEntity
+                        {
+                            task_id = int.Parse(lblTaskID.Text),
+                            group_id = int.Parse(ddlGroupName.SelectedValue),
+                            task_name = txtTaskName.Text,
+                            description = txtTaskName.Text,
+                            entity_id = 1,
+                            create_by = 1,
+                            create_date = DateTime.UtcNow,
+                            modify_by = 1,
+                            modify_date = DateTime.UtcNow,
+                            is_active = Boolean.Parse(hdfStatus.Value)
 
-                            });
-                    
-                }
-
+                        });
+                    }  
+                }                  
             }
 
             return entityTaskEntities;
@@ -163,13 +184,7 @@ namespace AnomaERP.BackOffice.Role.RoleSetup
 
             if (entityTaskService.InsertDataMore(entityTaskEntities) > 0)
             {
-                //Response.Redirect("/BackOffice/Role/RoleSetup/position-list.aspx");
-                setDataToDDLGroupName();
-                SetDataToUI(int.Parse(ddlGroupName.SelectedValue));
-            }
-            else
-            {
-                //Response.Redirect("/BackOffice/Role/RoleSetup/position-list.aspx");
+                Response.Redirect("/BackOffice/Role/RoleSetup/position-list.aspx");
                 setDataToDDLGroupName();
                 SetDataToUI(int.Parse(ddlGroupName.SelectedValue));
             }
@@ -177,7 +192,7 @@ namespace AnomaERP.BackOffice.Role.RoleSetup
 
         protected void lblBack_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("/BackOffice/Role/RoleSetup/position-list.aspx");
         }
     }
 }

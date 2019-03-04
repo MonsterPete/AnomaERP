@@ -38,14 +38,14 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-lg-12 col-xl-12">
+                                <div class="col-lg-9 col-xl-9">
                                     <div class="table-responsive">
                                         <table class="table table-bordered">
                                             <thead class="thead-dark">
                                                 <tr>
                                                     <th>Task Name</th>
                                                     <th>Status</th>
-                                                    <th>Tools</th>
+                                                    <th style="display:none">Tools</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -64,9 +64,9 @@
                                                             </td>
                                                             <td class="center">
                                                                 <label class="switcher switcher-sm">
-                                                                    <asp:HiddenField ID="hdfActive" runat="server" />
-                                                                    <asp:LinkButton ID="lbnActive" runat="server" ClientIDMode="AutoID">
-                                                                        <input id="chkActive" runat="server" type="checkbox" class="switcher-input">
+                                                                    <asp:HiddenField ID="hdfStatus" runat="server" />
+                                                                    <asp:LinkButton ID="lbnStatus" runat="server" ClientIDMode="AutoID">
+                                                                        <input id="chkStatus" runat="server" type="checkbox" class="switcher-input">
                                                                         <span class="switcher-indicator">
                                                                             <span class="switcher-yes">
                                                                                 <span class="ion ion-md-checkmark"></span>
@@ -78,7 +78,7 @@
                                                                     </asp:LinkButton>
                                                                 </label>
                                                             </td>
-                                                            <td runat="server" id="tdDelete" class="center">
+                                                            <td runat="server" id="tdDelete" class="center" style="display:none">
                                                                 <div class="btn-group btn-group-sm">
                                                                     <asp:LinkButton ID="lbnDelete" CssClass="btn btn-danger" runat="server">
                                                                                     <i class="ion ion-md-close"></i>

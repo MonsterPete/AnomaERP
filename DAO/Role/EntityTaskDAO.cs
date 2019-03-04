@@ -170,7 +170,8 @@ namespace DAO.Role
         public int InsertDataMore(List<EntityTaskEntity> entityTaskEntities)
         {
             int result = 0;
-            
+            int param_out = 0;
+
             try
             {
                 using (DBHelper.CreateConnection())
@@ -186,10 +187,17 @@ namespace DAO.Role
                                 if (item.task_id > 0)
                                 {
                                     DBHelper.CreateParameters();
-                                    DBHelper.AddParam("task_name", item.task_name);
                                     DBHelper.AddParam("task_id", item.task_id);
-                                    result = DBHelper.ExecuteStoreProcedure("update_entity_task");
-
+                                    DBHelper.AddParam("task_name", item.task_name);
+                                    DBHelper.AddParam("description", item.description);
+                                    DBHelper.AddParam("group_id", item.group_id);
+                                    DBHelper.AddParam("entity_id", item.entity_id);
+                                    DBHelper.AddParam("modify_by", item.modify_by);
+                                    DBHelper.AddParam("modify_date", item.modify_date);
+                                    DBHelper.AddParam("is_active", item.is_active);
+                                    DBHelper.AddParamOut("success_row",result);
+                                    DBHelper.ExecuteStoreProcedure("update_entity_task");
+                                    param_out += DBHelper.GetParamOut<Int32>("success_row");
                                 }
                                 else
                                 {
@@ -202,15 +210,15 @@ namespace DAO.Role
                                     DBHelper.AddParam("entity_id", item.entity_id);
                                     DBHelper.AddParam("create_by", item.create_by);
                                     DBHelper.AddParam("create_date", item.create_date);
-                                    DBHelper.AddParam("modify_by", item.modify_by);
-                                    DBHelper.AddParam("modify_date", item.modify_date);
+                                    DBHelper.AddParam("is_active", item.is_active);
                                     DBHelper.ExecuteStoreProcedure("insert_entity_task");
-                                    result = DBHelper.GetParamOut<Int32>("task_id");
+                                    param_out += DBHelper.GetParamOut<Int32>("task_id");
                                     
                                 }
                             }
 
                             DBHelper.CommitTransaction();
+                            result = param_out;
                         }
                     }
                     catch (Exception ex)

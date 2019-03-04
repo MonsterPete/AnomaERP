@@ -36,9 +36,12 @@ namespace AnomaERP.BackOffice.Bed_Management.Bed
             BedInventoryService bedInventoryService = new BedInventoryService();
 
             bedCustomerEntity = bedInventoryService.GetDateBedCustomerByBedID(bed_id);
-
-            txtbedname.Text = bedCustomerEntity.bed_name;
-            txtcustomername.Text = bedCustomerEntity.customername;
+            if (bedCustomerEntity != null)
+            {
+                txtbedname.Text = bedCustomerEntity.bed_name;
+                txtcustomername.Text = bedCustomerEntity.customername;
+            }
+            
 
             inventoryEntities = bedInventoryService.GetDateBedInventoryByBedID(bed_id);
 
@@ -52,21 +55,21 @@ namespace AnomaERP.BackOffice.Bed_Management.Bed
             ddlDate.Items.Clear();
 
             InventoryService service = new InventoryService();
-            List<InventoryEntity> inventoryEntities = service.GetSkuAll();
+            List<InventoryEntity> inventoryEntities = service.GetSkuTotalMoreZero();
 
-            for (int i = 0; i < inventoryEntities.Count; i++)
-            {
-                if (inventoryEntities[i].qty_total <= 0)
-                {
-                    inventoryEntities.RemoveAt(i);
-                }
-            }
-
-            inventoryEntities.Insert(0, new InventoryEntity
+            inventoryEntities.Add(new InventoryEntity
             {
                 type_id = 0,
                 sku = "-select-"
             });
+
+            //for (int i = 0; i < inventoryEntities.Count; i++)
+            //{
+            //    if (inventoryEntities[i].qty_total == 0)
+            //    {
+            //        inventoryEntities.RemoveAt(i);
+            //    }
+            //}
 
             ddlSku.DataSource = inventoryEntities;
             ddlSku.DataTextField = "sku";
@@ -89,23 +92,23 @@ namespace AnomaERP.BackOffice.Bed_Management.Bed
 
             inventoryEntities = service.GetDataBySku(inventoryEntity);
 
-            if (inventoryEntities.Count > 0)
-            {
-                for (int i = 0; i < inventoryEntities.Count; i++)
-                {
-                    List<InventoryEntity> inventoryEntities_Rpt = getDatafromRpt();
-                    foreach (var item in inventoryEntities_Rpt)
-                    {
-                        if (inventoryEntities.Count > 0)
-                        {
-                            if (inventoryEntities[i].inventory_id == item.inventory_id)
-                            {
-                                inventoryEntities.RemoveAt(i);
-                            }
-                        }
-                    }
-                }
-            }
+            //if (inventoryEntities.Count > 0)
+            //{
+            //    for (int i = 0; i < inventoryEntities.Count; i++)
+            //    {
+            //        List<InventoryEntity> inventoryEntities_Rpt = getDatafromRpt();
+            //        foreach (var item in inventoryEntities_Rpt)
+            //        {
+            //            if (inventoryEntities.Count > 0)
+            //            {
+            //                if (inventoryEntities[i].inventory_id == item.inventory_id)
+            //                {
+            //                    inventoryEntities.RemoveAt(i);
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
 
             if (ddlSku.SelectedValue == "1")
             {                 
@@ -382,7 +385,8 @@ namespace AnomaERP.BackOffice.Bed_Management.Bed
             lblSku.Text = entity.sku;
             lblSerial.Text = entity.serial;
 
-            if (entity.create_date != default(DateTime))
+
+            if (entity.create_date != default(DateTime) && entity.type_id == 2)
             {
                 lblDate.Text = entity.create_date.ToString();
             }
