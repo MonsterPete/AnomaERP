@@ -148,10 +148,7 @@ namespace AnomaERP.BackOffice.Role.RoleSetup
 
                 EntityTaskEntity entityTaskEntity = new EntityTaskEntity();
                 EntityTaskService entityTaskService = new EntityTaskService();
-                entityTaskEntity = entityTaskService.GetDataByID(int.Parse(ddlGroupName.SelectedValue));
 
-                if (entityTaskEntity != null)
-                {
                     if (!string.IsNullOrEmpty(txtTaskName.Text))
                     {
                         entityTaskEntities.Add(new EntityTaskEntity
@@ -168,8 +165,7 @@ namespace AnomaERP.BackOffice.Role.RoleSetup
                             is_active = Boolean.Parse(hdfStatus.Value)
 
                         });
-                    }  
-                }                  
+                    }                                   
             }
 
             return entityTaskEntities;
@@ -184,9 +180,9 @@ namespace AnomaERP.BackOffice.Role.RoleSetup
 
             if (entityTaskService.InsertDataMore(entityTaskEntities) > 0)
             {
-                Response.Redirect("/BackOffice/Role/RoleSetup/position-list.aspx");
-                setDataToDDLGroupName();
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalSuccess();", true);
                 SetDataToUI(int.Parse(ddlGroupName.SelectedValue));
+
             }
         }
 

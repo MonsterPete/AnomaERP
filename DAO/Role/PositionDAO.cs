@@ -138,7 +138,6 @@ namespace DAO.Role
 
         public int InsertDataMore(List<PositionEntity> positionEntities)
         {
-            int result = 0;
             int result_group_id = positionEntities[0].group_id;
             try
             {
@@ -150,6 +149,7 @@ namespace DAO.Role
 
                         using (DBHelper.BeginTransaction())
                         {
+
                             if (result_group_id == 0)
                             {
                                 DBHelper.CreateParameters();
@@ -170,9 +170,10 @@ namespace DAO.Role
                                 DBHelper.AddParam("group_name", positionEntities[0].group_name);
                                 DBHelper.ExecuteStoreProcedure("update_position_group");
                             }
+
                             foreach (var item in positionEntities)
                             {
-                                if (item.position_id != 0 && item.is_delete)
+                                if (!string.IsNullOrEmpty(item.position_name))
                                 {
                                     if (item.position_id > 0)
                                     {
@@ -181,20 +182,24 @@ namespace DAO.Role
                                         DBHelper.AddParam("position_id", item.position_id);
                                         DBHelper.AddParam("is_active", item.is_active);
                                         DBHelper.AddParam("is_delete", item.is_delete);
-                                        result = DBHelper.ExecuteStoreProcedure("update_position");
+                                        DBHelper.ExecuteStoreProcedure("update_position");
                                     }
                                     else
                                     {
-                                        DBHelper.CreateParameters();
-                                        DBHelper.AddParamOut("position_id", item.position_id);
-                                        DBHelper.AddParam("group_id", result_group_id);
-                                        DBHelper.AddParam("position_name", item.position_name);
-                                        DBHelper.AddParam("create_by", item.create_by);
-                                        DBHelper.AddParam("create_date", item.create_date);
-                                        DBHelper.AddParam("is_active", item.is_active);
-                                        DBHelper.AddParam("is_delete", item.is_delete);
-                                        DBHelper.ExecuteStoreProcedure("insert_position");
-                                        int position = DBHelper.GetParamOut<Int32>("position_id");
+                                        if (item.is_delete == false)
+                                        {
+                                            DBHelper.CreateParameters();
+                                            DBHelper.AddParamOut("position_id", item.position_id);
+                                            DBHelper.AddParam("group_id", result_group_id);
+                                            DBHelper.AddParam("position_name", item.position_name);
+                                            DBHelper.AddParam("create_by", item.create_by);
+                                            DBHelper.AddParam("create_date", item.create_date);
+                                            DBHelper.AddParam("is_active", item.is_active);
+                                            DBHelper.AddParam("is_delete", item.is_delete);
+                                            DBHelper.ExecuteStoreProcedure("insert_position");
+                                            int position = DBHelper.GetParamOut<Int32>("position_id");
+                                        }
+
                                     }
                                 }
                             }
@@ -216,7 +221,7 @@ namespace DAO.Role
                 throw ex;
             }
 
-            return result;
+            return result_group_id;
         }
     }
 }

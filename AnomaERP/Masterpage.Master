@@ -112,7 +112,7 @@
                     <!-- Links -->
 
                     <ul class="sidenav-inner py-1">
-                        <li class="sidenav-item" runat="server" id="MenuNH"  visible="false">
+                        <li class="sidenav-item" runat="server" id="MenuNH" visible="false">
                             <a href="javascript:void(0)" class="sidenav-link sidenav-toggle">
                                 <i class="sidenav-icon ion ion-ios-folder"></i>
                                 <div>Nursing Home</div>
@@ -135,7 +135,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="sidenav-item" runat="server" id="MenuEM"  visible="false">
+                        <li class="sidenav-item" runat="server" id="MenuEM" visible="false">
                             <a href="javascript:void(0)" class="sidenav-link sidenav-toggle">
                                 <i class="sidenav-icon ion ion-ios-folder"></i>
                                 <div>Entity Management</div>
@@ -153,7 +153,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="sidenav-item" runat="server" id="MenuRP"  visible="false">
+                        <li class="sidenav-item" runat="server" id="MenuRP" visible="false">
                             <a href="javascript:void(0)" class="sidenav-link sidenav-toggle">
                                 <i class="sidenav-icon ion ion-ios-folder"></i>
                                 <div>Resource Planing</div>
@@ -176,14 +176,14 @@
                                         </li>
                                     </ul>
                                 </li>
-                                        <li class="sidenav-item">
-                                            <a href="/BackOffice/Role/role-assign-list.aspx" class="sidenav-link">
-                                                <div>Role Assign</div>
-                                            </a>
-                                        </li>
+                                <li class="sidenav-item">
+                                    <a href="/BackOffice/Role/role-assign-list.aspx" class="sidenav-link">
+                                        <div>Role Assign</div>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
-                        <li class="sidenav-item" runat="server" id="MenuNA"  visible="false">
+                        <li class="sidenav-item" runat="server" id="MenuNA" visible="false">
                             <a href="javascript:void(0)" class="sidenav-link sidenav-toggle">
                                 <i class="sidenav-icon ion ion-ios-folder"></i>
                                 <div>Nursing Aide</div>
@@ -201,7 +201,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="sidenav-item" runat="server" id="MenuBM"  visible="false">
+                        <li class="sidenav-item" runat="server" id="MenuBM" visible="false">
                             <a href="javascript:void(0)" class="sidenav-link sidenav-toggle">
                                 <i class="sidenav-icon ion ion-ios-folder"></i>
                                 <div>Bed Management</div>
@@ -224,8 +224,8 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="sidenav-item" runat="server" id="MenuIN"  visible="false">
-                            <a href="/Backoffice/Inventory/inventory.aspx" class="sidenav-link" runat="server" id="aInventory"  visible="false">
+                        <li class="sidenav-item" runat="server" id="MenuIN" visible="false">
+                            <a href="/Backoffice/Inventory/inventory.aspx" class="sidenav-link" runat="server" id="aInventory" visible="false">
                                 <i class="sidenav-icon ion ion-ios-folder"></i>
                                 <div>Inventory</div>
                             </a>
@@ -270,7 +270,7 @@
                                         </span>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                         <asp:LinkButton ID="log_out" runat="server" OnClick="log_out_Click" CssClass="dropdown-item">
+                                        <asp:LinkButton ID="log_out" runat="server" OnClick="log_out_Click" CssClass="dropdown-item">
                                             <i class="ion ion-ios-log-out text-danger"></i>&nbsp; ออกจากระบบ</asp:LinkButton>
                                     </div>
                                 </div>
@@ -332,6 +332,34 @@
         <!-- / Layout wrapper -->
         <asp:ContentPlaceHolder ID="ModalPlaceHolder" runat="server" EnableViewState="true">
         </asp:ContentPlaceHolder>
+        <script type='text/javascript'>
+            function openModalError() {
+                swal({
+                    title: '',
+                    text: 'ทำรายการไม่สำเร็จ',
+                    type: "error",
+                    confirmButtonClass: "btn-danger",
+                });
+            }
+
+            function openModalWaring(msg) {
+                swal({
+                    title: '',
+                    text: msg,
+                    type: "warning",
+                    confirmButtonClass: "btn-warning",
+                });
+            }
+
+            function openModalSuccess() {
+                swal({
+                    title: '',
+                    text: 'ทำรายการสำเร็จ',
+                    type: "success",
+                    confirmButtonClass: "btn-success",
+                });
+            }
+        </script>
     </form>
     <!-- Core scripts -->
     <script src="/assets/vendor/libs/popper/popper.js"></script>
@@ -359,7 +387,9 @@
     <script src="/assets/vendor/libs/bootstrap-sweetalert/bootstrap-sweetalert.js"></script>
     <script src="/assets/js/ui_lightbox.js"></script>
 
-<%--    <script type="text/javascript">
+
+
+    <%--    <script type="text/javascript">
         function showProgress() {
             document.getElementById('<%= UpdateProgress1.ClientID  %>').style.display = "block";
         }
