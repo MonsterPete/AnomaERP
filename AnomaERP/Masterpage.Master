@@ -332,6 +332,8 @@
         <!-- / Layout wrapper -->
         <asp:ContentPlaceHolder ID="ModalPlaceHolder" runat="server" EnableViewState="true">
         </asp:ContentPlaceHolder>
+
+        <%-- //Alert Modal--%>
         <script type='text/javascript'>
             function openModalError() {
                 swal({
@@ -351,6 +353,20 @@
                 });
             }
 
+            function openModalSuccessToLocation(location) {
+                swal({
+                    title: '',
+                    text: 'ทำรายการสำเร็จ',
+                    type: "success",
+                    confirmButtonClass: "btn-success",
+                },
+                    function (isConfirm) {
+                        if (isConfirm) {
+                            window.location = location;
+                        }
+                    });
+            }
+
             function openModalSuccess() {
                 swal({
                     title: '',
@@ -360,6 +376,7 @@
                 });
             }
         </script>
+        <%-- //Alert Modal--%>
     </form>
     <!-- Core scripts -->
     <script src="/assets/vendor/libs/popper/popper.js"></script>

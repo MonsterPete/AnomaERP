@@ -73,7 +73,11 @@ namespace AnomaERP.BackOffice.NursingHome
             entity.comment = "";
             entity.date_of_visit = dateFormat.EngFormatDateToSQL(DateTime.Parse(txtVisitDate.Text));
             entity.date_of_appointment = dateFormat.EngFormatDateToSQL(DateTime.Parse(txtAppointmentDate.Text));
-            entity.price_listed = int.Parse(txtPriceListed.Text);
+            if (!string.IsNullOrEmpty(txtPriceListed.Text))
+            {
+                entity.price_listed = int.Parse(txtPriceListed.Text);
+            }
+           
             entity.symptom = txtSymptom.Text;
 
             if (rdoReservation.Checked == true)
@@ -140,7 +144,8 @@ namespace AnomaERP.BackOffice.NursingHome
             }
             else
             {
-                //Suma Alert !isValid
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาระบุข้อมูลให้ครบถ้วน');", true);
+                return;
             }
         }
     }

@@ -70,7 +70,7 @@ namespace DAO.Role
                         DBHelper.CreateParameters();
                         DBHelper.AddParam("group_id", id);
 
-                        positionEntity = DBHelper.SelectStoreProcedureFirst<PositionEntity>("select_position_by_group_id");
+                        positionEntity = DBHelper.SelectStoreProcedureFirst<PositionEntity>("select_position_group_by_group_id");
 
 
                     }

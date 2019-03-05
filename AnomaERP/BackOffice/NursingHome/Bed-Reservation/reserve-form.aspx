@@ -44,14 +44,14 @@
                             <div class="row">
                                 <div class="col-lg-3 col-xl-3">
                                     <div class="form-group">
-                                        <label class="form-label form-label-sm text-uppercase">วันที่เริ่ม</label>
+                                        <label class="form-label form-label-sm text-uppercase">วันที่เริ่ม</label><label class="text-danger">*</label>
                                         <asp:TextBox ID="txtContractStart" CssClass="form-control form-control-sm" runat="server" placeholder="วันที่เริ่ม" TextMode="Date"></asp:TextBox>
                                     </div>
                                 </div>
 
                                 <div class="col-lg-3 col-xl-3">
                                     <div class="form-group">
-                                        <label class="form-label form-label-sm text-uppercase">วันที่สิ้นสุด</label>
+                                        <label class="form-label form-label-sm text-uppercase">วันที่สิ้นสุด</label><label class="text-danger">*</label>
                                         <asp:TextBox ID="txtContractEnd" CssClass="form-control form-control-sm" runat="server" placeholder="วันที่สิ้นสุด" TextMode="Date"></asp:TextBox>
                                     </div>
                                 </div>
@@ -59,13 +59,13 @@
                             <div class="row">
                                 <div class="col-lg-3 col-xl-3">
                                     <div class="form-group">
-                                        <label class="form-label form-label-sm text-uppercase">ชื่อ</label>
+                                        <label class="form-label form-label-sm text-uppercase">ชื่อ</label><label class="text-danger">*</label>
                                         <asp:TextBox ID="txtFirstname" CssClass="form-control form-control-sm" runat="server" placeholder="ชื่อ"></asp:TextBox>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-xl-3">
                                     <div class="form-group">
-                                        <label class="form-label form-label-sm text-uppercase">นามสกุล</label>
+                                        <label class="form-label form-label-sm text-uppercase">นามสกุล</label><label class="text-danger">*</label>
                                         <asp:TextBox ID="txtLastname" CssClass="form-control form-control-sm" runat="server" placeholder="นามสกุล"></asp:TextBox>
 
                                     </div>
@@ -74,7 +74,7 @@
                             <div class="row">
                                 <div class="col-lg-3 col-xl-3">
                                     <div class="form-group">
-                                        <label class="form-label form-label-sm text-uppercase">เพศ</label>
+                                        <label class="form-label form-label-sm text-uppercase">เพศ</label><label class="text-danger">*</label>
                                         <asp:DropDownList ID="ddlGender" CssClass="form-control form-control-sm" runat="server">
                                             <asp:ListItem Text="ชาย" Value="Male"></asp:ListItem>
                                             <asp:ListItem Text="หญิง" Value="Female"></asp:ListItem>
@@ -83,7 +83,7 @@
                                 </div>
                                 <div class="col-lg-3 col-xl-3">
                                     <div class="form-group">
-                                        <label class="form-label form-label-sm text-uppercase">วันเกิด</label>
+                                        <label class="form-label form-label-sm text-uppercase">วันเกิด</label><label class="text-danger">*</label>
                                         <asp:TextBox ID="txtDOB" CssClass="form-control form-control-sm" runat="server" placeholder="วันเกิด" TextMode="Date"></asp:TextBox>
                                     </div>
                                 </div>
@@ -197,11 +197,19 @@
                                     </div>
                                 </div>
                             </div>
+
                         </div>
-                        <div class="card-footer">
-                            <a href="/BackOffice/NursingHome/Bed-Reservation/bed-reserve-list.aspx" class="btn btn-lg btn-secondary">Back</a>
-                            <asp:LinkButton ID="lbnSave" ValidationGroup="whensave" OnClick="lbnSave_Click" class="btn btn-lg btn-success" runat="server" ClientIDMode="AutoID">Save</asp:LinkButton>
-                        </div>
+                        <asp:UpdatePanel runat="server">
+                            <ContentTemplate>
+                                <div class="card-footer">
+                                    <label class="text-danger">* จำเป็นต้องกรอก</label>
+                                    <div class="row">
+                                        <a href="/BackOffice/NursingHome/Bed-Reservation/bed-reserve-list.aspx" class="btn btn-lg btn-secondary">Back</a>
+                                        <asp:LinkButton ID="lbnSave" ValidationGroup="whensave" OnClick="lbnSave_Click" class="btn btn-lg btn-success" runat="server" ClientIDMode="AutoID">Save</asp:LinkButton>
+                                    </div>
+                                </div>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
                     </div>
                 </div>
             </div>

@@ -81,6 +81,33 @@ namespace AnomaERP.BackOffice.NursingHome
 
         protected void lbnSave_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtContractStart.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณากรอกวันที่เริ่ม (Contract start)');", true);
+                return;
+            }
+            if (string.IsNullOrEmpty(txtContractEnd.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณากรอกวันที่สิ้นสุด (Contract end)');", true);
+                return;
+            }
+            if (string.IsNullOrEmpty(txtFirstname.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณากรอกชื่อจริง (Firstname)');", true);
+                return;
+            }
+            if (string.IsNullOrEmpty(txtLastname.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณากรอกนามสกุล (Lastname)');", true);
+                return;
+            }
+            if (string.IsNullOrEmpty(txtDOB.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาระบุวันเกิด');", true);
+                return;
+            }
+
+
             CustomerService customerService = new CustomerService();
             CustomerEntity customerEntity = new CustomerEntity();
 
@@ -90,9 +117,8 @@ namespace AnomaERP.BackOffice.NursingHome
             DateFormat dateFormat = new DateFormat();  
             customerEntity.customer_id = int.Parse(lblCustomerID.Text);
             customerEntity.branch_id = Master.branchEntity.branch_id;
-
             customerEntity.contract_start = dateFormat.EngFormatDateToSQL(DateTime.Parse(txtContractStart.Text));
-            customerEntity.contract_end = dateFormat.EngFormatDateToSQL(DateTime.Parse(txtContractStart.Text));
+            customerEntity.contract_end = dateFormat.EngFormatDateToSQL(DateTime.Parse(txtContractEnd.Text));
             customerEntity.firstname = txtFirstname.Text;
             customerEntity.lastname = txtLastname.Text;
             customerEntity.gender = ddlGender.SelectedValue;
