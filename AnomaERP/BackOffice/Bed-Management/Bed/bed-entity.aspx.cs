@@ -1,4 +1,5 @@
 ﻿using Entity;
+using Entity.Status;
 using Service.BedManagement;
 using Service.Customer;
 using System;
@@ -79,7 +80,7 @@ namespace AnomaERP.BackOffice.Bed_Management.Bed
             LinkButton lbnCustomerAddAccessory = (LinkButton)e.Item.FindControl("lbnCustomerAddAccessory");
             LinkButton lbnCustomerDeleteAccessory = (LinkButton)e.Item.FindControl("lbnCustomerDeleteAccessory");
             #endregion
-
+             FindStatus(bedCustomerEntity);
             lblBranch.Text = bedCustomerEntity.branch_name;
             lblFloor.Text = bedCustomerEntity.floor_name;
             lblRoom.Text = bedCustomerEntity.room_name;
@@ -117,6 +118,44 @@ namespace AnomaERP.BackOffice.Bed_Management.Bed
             lbnCustomerDeleteAccessory.CommandName = "DeleteAccessory";
             lbnCustomerDeleteAccessory.CommandArgument = bedCustomerEntity.bed_id.ToString();
             #endregion
+        }
+
+        private StatusBedEntity FindStatus(BedCustomerEntity bedCustomerEntity)
+        {
+            StatusBedEntity statusBedEntity = new StatusBedEntity();
+            if (!bedCustomerEntity.is_have_customer)
+            {
+                statusBedEntity.status_bed_name = "Vacant";
+                statusBedEntity.status_bed_color = "";
+                return statusBedEntity;
+            }
+            if (bedCustomerEntity.is_admit)
+            {
+                statusBedEntity.status_bed_name = "Admit";
+                statusBedEntity.status_bed_color = "";
+                return statusBedEntity;
+            }
+            if (bedCustomerEntity.contract_start > DateTime.Today)
+            {
+                statusBedEntity.status_bed_name = "Waiting";
+                statusBedEntity.status_bed_color = "";
+                return statusBedEntity;
+            }
+            else if (bedCustomerEntity.contract_start <= DateTime.Today && bedCustomerEntity.contract_end >= DateTime.Today)
+            {
+                statusBedEntity.status_bed_name = "Active";
+                statusBedEntity.status_bed_color = "";
+                return statusBedEntity;
+            }
+            else if (bedCustomerEntity.contract_end < DateTime.Today)
+            {
+                statusBedEntity.status_bed_name = "Overdue";
+                statusBedEntity.status_bed_color = "";
+                return statusBedEntity;
+            }
+            statusBedEntity.status_bed_name = "";
+            statusBedEntity.status_bed_color = "";
+            return statusBedEntity;
         }
 
         protected void rptBedEntity_ItemCommand(object source, RepeaterCommandEventArgs e)

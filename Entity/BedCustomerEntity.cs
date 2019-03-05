@@ -33,5 +33,10 @@ namespace Entity
         public DateTime start_date { get; set; }
         public DateTime end_date { get; set; }
         #endregion
+
+        #region Customer
+        public DateTime contract_start { get; set; }
+        public DateTime contract_end { get; set; }
+        #endregion 
     }
 }

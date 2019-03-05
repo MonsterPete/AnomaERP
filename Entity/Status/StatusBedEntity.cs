@@ -8,5 +8,6 @@ namespace Entity.Status
     {
         public Int32 status_bed_id { get; set; }
         public String status_bed_name { get; set; }
+        public String status_bed_color { get; set; }
     }
 }

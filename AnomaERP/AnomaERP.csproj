@@ -490,7 +490,6 @@
     <Content Include="BackOffice\Entity-Management\Entity\Entity-create.aspx" />
     <Content Include="BackOffice\Entity-Management\Entity\Entity-list.aspx" />
     <Content Include="BackOffice\NursingHome\Visitor-Form\index.aspx" />
-    <Content Include="BackOffice\Inventory\inventory.html" />
     <Content Include="BackOffice\NursingHome\Logistic\logistic-list.aspx" />
     <Content Include="BackOffice\NursingHome\Logistic\logistic-reserve-form.aspx" />
     <Content Include="BackOffice\NursingHome\Bed-Reservation\reserve-form.aspx" />
