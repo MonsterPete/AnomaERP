@@ -122,10 +122,10 @@ namespace AnomaERP.BackOffice.Role.RoleSetup
                     group_id = int.Parse(ddlGroupName.SelectedValue),
                     task_name = "",
                     description = "",
-                    entity_id = 1,
-                    create_by = 1,
+                    entity_id = Master.entityEntity.entity_id,
+                    create_by = Master.entityEntity.entity_id,
                     create_date = dateFormat.EngFormatDateToSQL(DateTime.Now),
-                    modify_by = 1,
+                    modify_by = Master.entityEntity.entity_id,
                     modify_date = dateFormat.EngFormatDateToSQL(DateTime.Now),
                     is_active = true
 
@@ -160,11 +160,11 @@ namespace AnomaERP.BackOffice.Role.RoleSetup
                             group_id = int.Parse(ddlGroupName.SelectedValue),
                             task_name = txtTaskName.Text,
                             description = txtTaskName.Text,
-                            entity_id = 1,
-                            create_by = 1,
-                            create_date = DateTime.UtcNow,
-                            modify_by = 1,
-                            modify_date = DateTime.UtcNow,
+                            entity_id = Master.entityEntity.entity_id,
+                            create_by = Master.entityEntity.entity_id,
+                            create_date = dateFormat.EngFormatDateToSQL(DateTime.Now),
+                            modify_by = Master.entityEntity.entity_id,
+                            modify_date = dateFormat.EngFormatDateToSQL(DateTime.Now),
                             is_active = Boolean.Parse(hdfStatus.Value)
 
                         });

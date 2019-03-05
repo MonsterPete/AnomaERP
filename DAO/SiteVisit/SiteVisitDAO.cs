@@ -37,6 +37,7 @@ namespace DAO.SiteVisit
 
                         DBHelper.AddParam("customer_name", entity.sch_customer_name);
                         DBHelper.AddParam("reservation", entity.sch_reservation);
+                        DBHelper.AddParam("branch_id", entity.branch_id);
 
                         entityList = DBHelper.SelectStoreProcedure<SiteVisitEntity>("select_site_visit_by_condition").ToList();
                     }

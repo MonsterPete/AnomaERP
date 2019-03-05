@@ -88,9 +88,7 @@ namespace AnomaERP.BackOffice.NursingHome
             customerEntity.firstname = txtCustomerName.Text;
             customerEntity.lastname = txtCustomerName.Text;
 
-            customerEntity.branch_id = 1;
-                //Master.branchEntity.branch_id;
-
+            customerEntity.branch_id = Master.branchEntity.branch_id;
             return customerEntity;
         }
     }

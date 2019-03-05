@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masterpage.Master" AutoEventWireup="true" CodeBehind="position-setup.aspx.cs" Inherits="AnomaERP.BackOffice.Role.RoleSetup.position_setup" %>
-
+<%@ MasterType VirtualPath="~/Masterpage.Master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="FromPlaceHolder" runat="server">
     <asp:UpdatePanel ID="upnPositionSetup" runat="server">
         <ContentTemplate>

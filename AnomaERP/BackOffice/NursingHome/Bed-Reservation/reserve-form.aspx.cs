@@ -24,8 +24,8 @@ namespace AnomaERP.BackOffice.NursingHome
                 {
                     BranchService branchService = new BranchService();
                     BranchEntity branchEntity = new BranchEntity();
-                    //Master.branchEntity.branch_id
-                    branchEntity = branchService.GetDataBranchByID(1);
+                    
+                    branchEntity = branchService.GetDataBranchByID(Master.branchEntity.branch_id);
 
                     txtBranchName.Text = branchEntity.branch_name;
                     if (int.Parse(Request.QueryString["customer_reserve_id"]) > 0)
@@ -87,12 +87,9 @@ namespace AnomaERP.BackOffice.NursingHome
             customerEntity.customer_RelativeEntity = new Customer_relativeEntity();
             customerEntity.customer_Service_AgreementEntity = new Customer_service_agreementEntity();
 
-            DateFormat dateFormat = new DateFormat();
-
-
-            //    Master.branchEntity.branch_id;
+            DateFormat dateFormat = new DateFormat();  
             customerEntity.customer_id = int.Parse(lblCustomerID.Text);
-            customerEntity.branch_id = 1;
+            customerEntity.branch_id = Master.branchEntity.branch_id;
 
             customerEntity.contract_start = dateFormat.EngFormatDateToSQL(DateTime.Parse(txtContractStart.Text));
             customerEntity.contract_end = dateFormat.EngFormatDateToSQL(DateTime.Parse(txtContractStart.Text));
@@ -100,9 +97,9 @@ namespace AnomaERP.BackOffice.NursingHome
             customerEntity.lastname = txtLastname.Text;
             customerEntity.gender = ddlGender.SelectedValue;
             customerEntity.DOB = dateFormat.EngFormatDateToSQL(DateTime.Parse(txtDOB.Text));
-            customerEntity.create_by = 1;
+            customerEntity.create_by = Master.branchEntity.branch_id;
             customerEntity.create_date = dateFormat.EngFormatDateToSQL(DateTime.Now);
-            customerEntity.modify_by = 1;
+            customerEntity.modify_by = Master.branchEntity.branch_id;
             customerEntity.modify_date = dateFormat.EngFormatDateToSQL(DateTime.Now);
 
             customerEntity.customer_RelativeEntity.Customer_relative_id = int.Parse(lblCustomer_relative_ID.Text);

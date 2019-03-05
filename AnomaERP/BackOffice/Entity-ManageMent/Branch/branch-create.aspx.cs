@@ -39,7 +39,7 @@ namespace AnomaERP.BackOffice.Branch
             
 
             branchEntity.branch_id = int.Parse(lblbranchID.Text);
-            branchEntity.entity_id = 1;
+            branchEntity.entity_id = Master.entityEntity.entity_id;
             branchEntity.branch_name = txtBranchName.Text;
             branchEntity.address = txtAddress.Text;
             branchEntity.registor_address = txtAddressRegis.Text;

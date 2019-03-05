@@ -95,6 +95,8 @@ namespace AnomaERP.BackOffice.NursingHome
 
             entity.sch_customer_name = txtSearch.Text.Trim();
             entity.sch_reservation = reserved;
+            entity.branch_id = Master.branchEntity.branch_id;
+
             return entity;
         }
 
