@@ -120,7 +120,7 @@
                                                                                 <asp:LinkButton ID="lbnAssign" runat="server" ClientIDMode="AutoID" CssClass="btn btn-primary btn-sm">Assign</asp:LinkButton>
                                                                                 <asp:Label ID="lblCustomer" runat="server"></asp:Label>
                                                                             </td>
-                                                                            <td class="center">
+                                                                            <td style="text-align:center">
                                                                                 <asp:Label ID="lblStatus" runat="server"></asp:Label>
                                                                             </td>
                                                                             <td>-</td>
