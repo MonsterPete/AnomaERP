@@ -57,7 +57,7 @@ namespace AnomaERP.BackOffice.Bed_Management.Bed
             InventoryService service = new InventoryService();
             List<InventoryEntity> inventoryEntities = service.GetSkuTotalMoreZero();
 
-            inventoryEntities.Add(new InventoryEntity
+            inventoryEntities.Insert(0,new InventoryEntity
             {
                 type_id = 0,
                 sku = "-select-"

@@ -19,9 +19,15 @@ namespace AnomaERP.BackOffice.Role.RoleSetup
             {
                 Session["ConfigRolePosition"] = null;
                 PositionService positionService = new PositionService();
-                setDataToRptPosition(positionService.GetDataPositionByGroupID(int.Parse(Request.QueryString["group_id"].ToString())));
+                List<PositionEntity> positionEntities = positionService.GetDataPositionByGroupID(int.Parse(Request.QueryString["group_id"].ToString()));
+                setDataToRptPosition(positionEntities);
                 EntityTaskService entityTaskService = new EntityTaskService();
                 setDataToRptTask(entityTaskService.GetDataByGroupID(int.Parse(Request.QueryString["group_id"].ToString())));
+
+                foreach (var item in positionEntities)
+                {
+                    txtGroupName.Text = item.group_name;
+                }
             }
         }
 
@@ -132,7 +138,7 @@ namespace AnomaERP.BackOffice.Role.RoleSetup
                         task_group_id = int.Parse(hdfTaskPositionId.Value),
                         position_id = int.Parse(hdfPositionId.Value),
                         task_id = int.Parse(hdfTaskId.Value),
-                        create_by = 1,
+                        create_by = Master.entityEntity.entity_id,
                         create_date = dateFormat.EngFormatDateToSQL(DateTime.Now),
                         is_active = chkTask.Checked,      
                         is_delete = delete
@@ -153,14 +159,14 @@ namespace AnomaERP.BackOffice.Role.RoleSetup
 
             if (success > 0 )
             {
-                System.Web.UI.ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "AlertBox", "alert('successs');", true);
+                Response.Redirect("/BackOffice/Role/RoleSetup/position-list.aspx");
             }
 
         }
 
         protected void lbnBack_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("/BackOffice/Role/RoleSetup/position-list.aspx");
         }
     }
 }

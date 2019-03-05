@@ -37,18 +37,8 @@ namespace AnomaERP.BackOffice.Inventory
 
         protected void setDropDownList()
         {
-            ddlBranch.Items.Clear();
             ddlCategory.Items.Clear();
-            ddlBranch.Items.Add(new ListItem(defaultDDL_NoData, defaultDDL_NoData));
             ddlCategory.Items.Add(new ListItem(defaultDDL_NoData, defaultDDL_NoData));
-
-            //init DDL Branch
-            BranchService bService = new BranchService();
-            List<BranchEntity> bEntityList = bService.GetDataByEntity(int.Parse(lblEntityID.Text));
-            foreach (BranchEntity b in bEntityList)
-            {
-                ddlBranch.Items.Add(new ListItem(b.branch_name, b.branch_id.ToString()));
-            }
 
             //init DDL Category
             CategoryService cService = new CategoryService();
@@ -79,14 +69,8 @@ namespace AnomaERP.BackOffice.Inventory
         {
             InventoryEntity entity = new InventoryEntity();
             entity.sch_word = txtSearch.Text.Trim();
-            if(ddlBranch.SelectedItem.Value == defaultDDL_NoData)
-            {
-                entity.sch_branch_id = null;
-            }
-            else
-            {
-                entity.sch_branch_id = int.Parse(ddlBranch.SelectedItem.Value);
-            }
+
+            entity.sch_branch_id = Master.branchEntity.branch_id;
 
             if (ddlCategory.SelectedItem.Value == defaultDDL_NoData)
             {

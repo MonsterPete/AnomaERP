@@ -57,6 +57,8 @@ namespace AnomaERP.BackOffice.Bed_Management.Bed
             {
                 bedCustomerEntity.floor_name = txtFloor.Text;
             }
+
+            bedCustomerEntity.branch_id = Master.branchEntity.branch_id;
             return bedCustomerEntity;
         }
 

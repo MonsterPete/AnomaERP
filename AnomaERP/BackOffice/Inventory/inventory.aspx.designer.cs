@@ -31,15 +31,6 @@ namespace AnomaERP.BackOffice.Inventory {
         protected global::System.Web.UI.WebControls.TextBox txtSearch;
         
         /// <summary>
-        /// ddlBranch control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlBranch;
-        
-        /// <summary>
         /// ddlCategory control.
         /// </summary>
         /// <remarks>
@@ -65,5 +56,17 @@ namespace AnomaERP.BackOffice.Inventory {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater resultList;
+        
+        /// <summary>
+        /// Master property.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated property.
+        /// </remarks>
+        public new AnomaERP.Masterpage Master {
+            get {
+                return ((AnomaERP.Masterpage)(base.Master));
+            }
+        }
     }
 }

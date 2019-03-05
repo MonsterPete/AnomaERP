@@ -17,7 +17,7 @@ namespace AnomaERP.BackOffice.Role.RoleSetup
         {
             if (!IsPostBack)
             {
-                hdfEntityId.Value = "1";
+                hdfEntityId.Value = Master.entityEntity.entity_id.ToString(); ;
                 lblGroupID.Text = "0";
                 if (Request.QueryString["group_id"] != null)
                 {
