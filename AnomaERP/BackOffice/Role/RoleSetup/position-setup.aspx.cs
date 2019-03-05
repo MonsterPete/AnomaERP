@@ -17,7 +17,7 @@ namespace AnomaERP.BackOffice.Role.RoleSetup
         {
             if (!IsPostBack)
             {
-                hdfEntityId.Value = "1";
+                hdfEntityId.Value = Master.entityEntity.entity_id.ToString(); ;
                 lblGroupID.Text = "0";
                 if (Request.QueryString["group_id"] != null)
                 {
@@ -94,6 +94,7 @@ namespace AnomaERP.BackOffice.Role.RoleSetup
 
         protected void rptPosition_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
+            
             PositionEntity positionEntity = (PositionEntity)e.Item.DataItem;
             Label lblPositionID = (Label)e.Item.FindControl("lblPositionID");
             Label lblGroupID = (Label)e.Item.FindControl("lblGroupID");
@@ -118,6 +119,10 @@ namespace AnomaERP.BackOffice.Role.RoleSetup
             {
                 chkActive.Attributes.Remove("checked");
             }
+            if (positionEntity.is_delete)
+            {
+                e.Item.Visible = false;
+            }
             lbnActive.CommandName = "Active";
             lbnActive.CommandArgument = positionEntity.position_id.ToString();           
             lbnDelete.CommandName = "Delete";
@@ -126,7 +131,11 @@ namespace AnomaERP.BackOffice.Role.RoleSetup
 
         protected void rptPosition_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
-
+            if (e.CommandName == "Delete")
+            {
+                e.Item.Visible = false;
+                SetDataTorpt(getDataFromRpt());
+            }
         }
 
         private List<PositionEntity> getDataFromRpt()
@@ -168,6 +177,23 @@ namespace AnomaERP.BackOffice.Role.RoleSetup
 
                             });
                         }
+                        else if (rptPosition.Items[i].Visible == false)
+                        {
+
+                            positionEntities.Add(new PositionEntity
+                            {
+                                position_id = int.Parse(lblPositionID.Text),
+                                group_id = int.Parse(lblGroupID.Text),
+                                entity_id = int.Parse(hdfEntityId.Value),
+                                group_name = txtGroupName.Text,
+                                position_name = txtPositionName.Text,
+                                create_by = 1,
+                                create_date = DateTime.UtcNow,
+                                is_delete = true,
+                                is_active = chkActive.Checked
+
+                            });
+                        }
                     }
                     else
                     {
@@ -184,6 +210,23 @@ namespace AnomaERP.BackOffice.Role.RoleSetup
                                 create_by = 1,
                                 create_date = DateTime.UtcNow,
                                 is_delete = false,
+                                is_active = chkActive.Checked
+
+                            });
+                        }
+                        else if (rptPosition.Items[i].Visible == false)
+                        {
+
+                            positionEntities.Add(new PositionEntity
+                            {
+                                position_id = int.Parse(lblPositionID.Text),
+                                group_id = int.Parse(lblGroupID.Text),
+                                entity_id = int.Parse(hdfEntityId.Value),
+                                group_name = txtGroupName.Text,
+                                position_name = txtPositionName.Text,
+                                create_by = 1,
+                                create_date = DateTime.UtcNow,
+                                is_delete = true,
                                 is_active = chkActive.Checked
 
                             });
@@ -205,6 +248,23 @@ namespace AnomaERP.BackOffice.Role.RoleSetup
                             create_by = 1,
                             create_date = DateTime.UtcNow,
                             is_delete = false,
+                            is_active = chkActive.Checked
+
+                        });
+                    }
+                    else if (rptPosition.Items[i].Visible == false)
+                    {
+
+                        positionEntities.Add(new PositionEntity
+                        {
+                            position_id = int.Parse(lblPositionID.Text),
+                            group_id = int.Parse(lblGroupID.Text),
+                            entity_id = int.Parse(hdfEntityId.Value),
+                            group_name = txtGroupName.Text,
+                            position_name = txtPositionName.Text,
+                            create_by = 1,
+                            create_date = DateTime.UtcNow,
+                            is_delete = true,
                             is_active = chkActive.Checked
 
                         });

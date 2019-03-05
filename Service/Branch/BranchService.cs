@@ -35,6 +35,8 @@ namespace Service.Branch
             throw new NotImplementedException();
         }
 
+        
+
         public int InsertData(BranchEntity entity)
         {
             BranchDAO branchDAO = new BranchDAO();
@@ -51,6 +53,13 @@ namespace Service.Branch
         {
             BranchDAO branchDAO = new BranchDAO();
             return branchDAO.GetDataBranchByID(branch_id);
+        }
+
+
+        public user_loginEntity GetAlllogin(string username, string password)
+        {
+            BranchDAO branchDAO = new BranchDAO();
+            return branchDAO.GetAlllogin(username, password);
         }
     }
 }

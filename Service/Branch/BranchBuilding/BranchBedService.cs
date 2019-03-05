@@ -40,6 +40,12 @@ namespace Service.Branch.BranchBuilding
             return branchBedDAO.UpdateData(entity);
         }
 
+        public NameEntity GetNameFloorAndRoom(int roomId)
+        {
+            BranchBedDAO branchBedDAO = new BranchBedDAO();
+            return branchBedDAO.GetNameFloorAndRoom(roomId);
+        }
+
         public List<BranchBedEntity> GetDataBranchBedByID(int room_id)
         {
             BranchBedDAO branchBedDAO = new BranchBedDAO();

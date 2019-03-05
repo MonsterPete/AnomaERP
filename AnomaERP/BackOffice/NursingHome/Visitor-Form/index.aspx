@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masterpage.Master" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="AnomaERP.BackOffice.NursingHome.index" %>
-
+<%@ MasterType VirtualPath="~/Masterpage.Master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="FromPlaceHolder" runat="server">
     <div class="layout-content">
 

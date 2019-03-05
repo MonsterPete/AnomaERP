@@ -37,6 +37,7 @@ namespace AnomaERP.BackOffice.Role.RoleSetup
             PositionGroupEntity positionGroupEntity = new PositionGroupEntity();
 
             positionGroupEntity.group_name = txtSearch.Text;
+            positionGroupEntity.entity_id = Master.entityEntity.entity_id;
 
             return positionGroupEntity;
         }

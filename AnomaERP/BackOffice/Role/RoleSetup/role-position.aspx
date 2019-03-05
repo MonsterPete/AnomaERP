@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masterpage.Master" AutoEventWireup="true" CodeBehind="role-position.aspx.cs" Inherits="AnomaERP.BackOffice.Role.RoleSetup.role_position" %>
-
+<%@ MasterType VirtualPath="~/Masterpage.Master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="FromPlaceHolder" runat="server">
     <!-- Layout content -->
     <div class="layout-content">
@@ -31,7 +31,7 @@
                                 <div class="col-lg-3 col-xl-3 mb-2">
                                     <div class="form-group">
                                         <label class="form-label form-label-sm text-uppercase">Group Name</label>
-                                        <input type="text" class="form-control form-control-sm" placeholder="Group Name" value="Care" disabled>
+                                        <asp:TextBox ID="txtGroupName" runat="server" Enabled="false"></asp:TextBox>
                                     </div>
                                 </div>
                             </div>

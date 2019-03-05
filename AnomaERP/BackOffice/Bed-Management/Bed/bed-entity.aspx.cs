@@ -1,4 +1,5 @@
 ﻿using Entity;
+using Entity.Status;
 using Service.BedManagement;
 using Service.Customer;
 using System;
@@ -20,12 +21,18 @@ namespace AnomaERP.BackOffice.Bed_Management.Bed
             {
                 setDataToUI();
 
-                CustomerService customerService = new CustomerService();
-                ddlCustomer.DataSource = customerService.GetDDLCustomerForAssginBed(1);
-                ddlCustomer.DataTextField = "fullname";
-                ddlCustomer.DataValueField = "customer_id";
-                ddlCustomer.DataBind();
+                SetDllCustomer();
             }
+        }
+
+        private void SetDllCustomer()
+        {
+            CustomerService customerService = new CustomerService();
+
+            ddlCustomer.DataSource = customerService.GetDDLCustomerForAssginBed(1);
+            ddlCustomer.DataTextField = "fullname";
+            ddlCustomer.DataValueField = "customer_id";
+            ddlCustomer.DataBind();
         }
 
         private void setDataToUI()
@@ -50,6 +57,8 @@ namespace AnomaERP.BackOffice.Bed_Management.Bed
             {
                 bedCustomerEntity.floor_name = txtFloor.Text;
             }
+
+            bedCustomerEntity.branch_id = Master.branchEntity.branch_id;
             return bedCustomerEntity;
         }
 
@@ -66,11 +75,14 @@ namespace AnomaERP.BackOffice.Bed_Management.Bed
             #region Tools
             LinkButton lbnAssign = (LinkButton)e.Item.FindControl("lbnAssign");
             HtmlGenericControl manupnl = (HtmlGenericControl)e.Item.FindControl("manupnl");
+            HtmlGenericControl AccessoryTool = (HtmlGenericControl)e.Item.FindControl("AccessoryTool");
             LinkButton lbnCustomerGoOutBed = (LinkButton)e.Item.FindControl("lbnCustomerGoOutBed");
             LinkButton lbnAdmit = (LinkButton)e.Item.FindControl("lbnAdmit");
             LinkButton lbnDeleteCustomer = (LinkButton)e.Item.FindControl("lbnDeleteCustomer");
+            LinkButton lbnCustomerAddAccessory = (LinkButton)e.Item.FindControl("lbnCustomerAddAccessory");
+            LinkButton lbnCustomerDeleteAccessory = (LinkButton)e.Item.FindControl("lbnCustomerDeleteAccessory");
             #endregion
-
+             FindStatus(bedCustomerEntity);
             lblBranch.Text = bedCustomerEntity.branch_name;
             lblFloor.Text = bedCustomerEntity.floor_name;
             lblRoom.Text = bedCustomerEntity.room_name;
@@ -85,6 +97,7 @@ namespace AnomaERP.BackOffice.Bed_Management.Bed
             {
                 lblCustomer.Visible = false;
                 manupnl.Visible = false;
+                AccessoryTool.Visible = false;
             }
             
             #region Tool
@@ -99,7 +112,52 @@ namespace AnomaERP.BackOffice.Bed_Management.Bed
 
             lbnDeleteCustomer.CommandName = "DeleteCustomer";
             lbnDeleteCustomer.CommandArgument = bedCustomerEntity.bed_customer_id + "||" + bedCustomerEntity.customer_id + "||" + bedCustomerEntity.bed_id;
+
+
+            lbnCustomerAddAccessory.CommandName = "AddAccessory";
+            lbnCustomerAddAccessory.CommandArgument = bedCustomerEntity.bed_id.ToString();
+
+            lbnCustomerDeleteAccessory.CommandName = "DeleteAccessory";
+            lbnCustomerDeleteAccessory.CommandArgument = bedCustomerEntity.bed_id.ToString();
             #endregion
+        }
+
+        private StatusBedEntity FindStatus(BedCustomerEntity bedCustomerEntity)
+        {
+            StatusBedEntity statusBedEntity = new StatusBedEntity();
+            if (!bedCustomerEntity.is_have_customer)
+            {
+                statusBedEntity.status_bed_name = "Vacant";
+                statusBedEntity.status_bed_color = "";
+                return statusBedEntity;
+            }
+            if (bedCustomerEntity.is_admit)
+            {
+                statusBedEntity.status_bed_name = "Admit";
+                statusBedEntity.status_bed_color = "";
+                return statusBedEntity;
+            }
+            if (bedCustomerEntity.contract_start > DateTime.Today)
+            {
+                statusBedEntity.status_bed_name = "Waiting";
+                statusBedEntity.status_bed_color = "";
+                return statusBedEntity;
+            }
+            else if (bedCustomerEntity.contract_start <= DateTime.Today && bedCustomerEntity.contract_end >= DateTime.Today)
+            {
+                statusBedEntity.status_bed_name = "Active";
+                statusBedEntity.status_bed_color = "";
+                return statusBedEntity;
+            }
+            else if (bedCustomerEntity.contract_end < DateTime.Today)
+            {
+                statusBedEntity.status_bed_name = "Overdue";
+                statusBedEntity.status_bed_color = "";
+                return statusBedEntity;
+            }
+            statusBedEntity.status_bed_name = "";
+            statusBedEntity.status_bed_color = "";
+            return statusBedEntity;
         }
 
         protected void rptBedEntity_ItemCommand(object source, RepeaterCommandEventArgs e)
@@ -112,6 +170,16 @@ namespace AnomaERP.BackOffice.Bed_Management.Bed
                 hdfBedId.Value = id;
                 hdfBedName.Value = name;
                 ScriptManager.RegisterClientScriptBlock((source as Control), this.GetType(), "Pop", "openModal();", true);
+            }
+            else if (e.CommandName == "AddAccessory")
+            {
+                Response.Redirect("/BackOffice/Bed-Management/Bed/bed-add-accessory.aspx?bed_id=" + e.CommandArgument);
+            }
+
+
+            else if (e.CommandName == "DeleteAccessory")
+            {
+                Response.Redirect("/BackOffice/Bed-Management/Bed/bed-delete-accessory.aspx?bed_id=" + e.CommandArgument);
             }
             else
             {
@@ -140,6 +208,7 @@ namespace AnomaERP.BackOffice.Bed_Management.Bed
             BedCustomerService bedCustomerService = new BedCustomerService();
             bedCustomerService.InsertDataAndUpTBDateBedAndTBCustomer(preparDataInsert());
             setDataToUI();
+            SetDllCustomer();
         }
 
         private BedCustomerEntity preparDataInsert()
@@ -159,10 +228,13 @@ namespace AnomaERP.BackOffice.Bed_Management.Bed
             bedCustomerEntity.bed_customer_id = int.Parse(hdfBedCustomerId.Value);
             bedCustomerEntity.bed_id = int.Parse(hdfBedId.Value);
             bedCustomerEntity.customer_id = int.Parse(hdfCustomerId.Value);
+            bedCustomerEntity.create_by = user_id;
+            bedCustomerEntity.create_date = DateTime.Now;
 
             BedCustomerService bedCustomerService = new BedCustomerService();
             bedCustomerService.UpdateDeleteDataAndUpDeleteTBDateBedAndTBCustomer(bedCustomerEntity);
             setDataToUI();
+            SetDllCustomer();
         }
 
         protected void lbnAdmit_Click(object sender, EventArgs e)
@@ -179,6 +251,7 @@ namespace AnomaERP.BackOffice.Bed_Management.Bed
             BedCustomerService bedCustomerService = new BedCustomerService();
             bedCustomerService.UpdateAdmitCustomer(bedCustomerEntity);
             setDataToUI();
+            SetDllCustomer();
         }
 
         protected void lbnGoOutBed_Click(object sender, EventArgs e)
@@ -193,6 +266,7 @@ namespace AnomaERP.BackOffice.Bed_Management.Bed
             BedCustomerService bedCustomerService = new BedCustomerService();
             bedCustomerService.UpdateDeleteDataAndUpTBDateBedAndTBCustomer(bedCustomerEntity);
             setDataToUI();
+            SetDllCustomer();
         }
     }
 }

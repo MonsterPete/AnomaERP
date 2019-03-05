@@ -76,6 +76,7 @@ namespace AnomaERP.BackOffice.Branch
             BranchEntity branchEntity = new BranchEntity();
 
             branchEntity.branch_name = txtSearch.Text;
+            branchEntity.entity_id = Master.entityEntity.entity_id;
 
             return branchEntity;
         }

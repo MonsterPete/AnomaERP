@@ -17,6 +17,7 @@ namespace AnomaERP.BackOffice.NursingHome
         {
             if (!IsPostBack)
             {
+                lblBranchID.Text = Master.branchEntity.branch_id.ToString();
                 lblVisitorID.Text = "0";
                 if (Request.QueryString["visitor_ID"] != null)
                 {
@@ -27,14 +28,6 @@ namespace AnomaERP.BackOffice.NursingHome
                     }
                 }
 
-                lblBranchID.Text = "1"; //Suma fix for Test
-                if (Request.QueryString["branch_ID"] != null)
-                {
-                    if (int.Parse(Request.QueryString["branch_ID"]) > 0)
-                    {
-                        lblBranchID.Text = Request.QueryString["branch_ID"].ToString();
-                    }
-                }
             }
         }
         private void SetEntityData(int visitor_id)

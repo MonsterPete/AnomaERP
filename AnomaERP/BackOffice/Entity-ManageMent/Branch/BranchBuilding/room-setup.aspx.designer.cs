@@ -13,6 +13,15 @@ namespace AnomaERP.BackOffice.Entity_ManageMent.Branch.BranchBuilding {
     public partial class room_setup {
         
         /// <summary>
+        /// lblFloor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblFloor;
+        
+        /// <summary>
         /// lblBranchID control.
         /// </summary>
         /// <remarks>

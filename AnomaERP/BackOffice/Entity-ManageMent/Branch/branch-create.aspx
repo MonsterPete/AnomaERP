@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masterpage.Master" AutoEventWireup="true" CodeBehind="branch-create.aspx.cs" Inherits="AnomaERP.BackOffice.Branch.branch_create" %>
-
+<%@ MasterType VirtualPath="~/Masterpage.Master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="FromPlaceHolder" runat="server">
     <div class="layout-content">
         <div class="container-fluid flex-grow-1 container-p-y">
@@ -112,7 +112,7 @@
                                                 Rental
                                                         Price:
                                             </label>
-                                            <asp:TextBox ID="txtPrice" runat="server" class="form-control form-control-sm"></asp:TextBox>
+                                            <asp:TextBox ID="txtPrice" runat="server" TextMode="Number" class="form-control form-control-sm"></asp:TextBox>
                                         </div>
                                     </div>
                                 </div>

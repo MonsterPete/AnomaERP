@@ -231,7 +231,7 @@ namespace AnomaERP.BackOffice.Entity_ManageMent.Branch.BranchBuilding
 
         protected void lblBack_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("/BackOffice/Entity-Management/Branch/branch-list.aspx");
         }
     }
 }

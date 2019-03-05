@@ -30,7 +30,8 @@ namespace AnomaERP.BackOffice.NursingHome
             Label lblSymtom = (Label)e.Item.FindControl("lblSymtom");
             Label lblPhone = (Label)e.Item.FindControl("lblPhone");
             LinkButton lbnEdit = (LinkButton)e.Item.FindControl("lbnEdit");
-
+            LinkButton lbnCarePlan = (LinkButton)e.Item.FindControl("lbnCarePlan");
+            
             DateFormat dateFormat = new DateFormat();
 
             lblID.Text = customerEntity.customer_id.ToString();
@@ -45,6 +46,9 @@ namespace AnomaERP.BackOffice.NursingHome
            
             lbnEdit.CommandName = "Edit";
             lbnEdit.CommandArgument = customerEntity.customer_id.ToString();
+
+            lbnCarePlan.CommandName = "CarePlan";
+            lbnCarePlan.CommandArgument = customerEntity.customer_id.ToString();
         }
 
         protected void rptCustomerReserveList_ItemCommand(object source, RepeaterCommandEventArgs e)
@@ -52,6 +56,10 @@ namespace AnomaERP.BackOffice.NursingHome
             if (e.CommandName == "Edit")
             {
                 Response.Redirect("/BackOffice/NursingHome/Bed-Reservation/reserve-form.aspx?customer_reserve_id=" + e.CommandArgument);
+            }
+            else if (e.CommandName == "CarePlan")
+            {
+                Response.Redirect("/BackOffice/ServiceCare/care-plan.aspx?customerId=" + e.CommandArgument);
             }
         }
 
@@ -80,9 +88,7 @@ namespace AnomaERP.BackOffice.NursingHome
             customerEntity.firstname = txtCustomerName.Text;
             customerEntity.lastname = txtCustomerName.Text;
 
-            customerEntity.branch_id = 1;
-                //Master.branchEntity.branch_id;
-
+            customerEntity.branch_id = Master.branchEntity.branch_id;
             return customerEntity;
         }
     }

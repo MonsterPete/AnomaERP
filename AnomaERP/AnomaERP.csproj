@@ -158,6 +158,7 @@
     <Content Include="assets\img\uikit\s7edge-4.jpg" />
     <Content Include="assets\img\uikit\sunglasses.jpg" />
     <Content Include="assets\js\blog.js" />
+    <Content Include="assets\js\bootbox.js" />
     <Content Include="assets\js\charts_c3.js" />
     <Content Include="assets\js\charts_chartist.js" />
     <Content Include="assets\js\charts_chartjs.js" />
@@ -166,6 +167,7 @@
     <Content Include="assets\js\charts_mapael.js" />
     <Content Include="assets\js\charts_morrisjs.js" />
     <Content Include="assets\js\charts_sparkline.js" />
+    <Content Include="assets\js\custom.js" />
     <Content Include="assets\js\dashboards_dashboard-1.js" />
     <Content Include="assets\js\dashboards_dashboard-2.js" />
     <Content Include="assets\js\dashboards_dashboard-3.js" />
@@ -467,6 +469,8 @@
     <Content Include="assets\vendor\libs\vegas\vegas.css" />
     <Content Include="assets\vendor\libs\vegas\vegas.js" />
     <Content Include="BackOffice\Bed-Management\Accessory\accessory.aspx" />
+    <Content Include="BackOffice\Bed-Management\Bed\bed-add-accessory.aspx" />
+    <Content Include="BackOffice\Bed-Management\Bed\bed-delete-accessory.aspx" />
     <Content Include="BackOffice\Bed-Management\Bed\bed-entity.aspx" />
     <Content Include="BackOffice\Bed-Management\Job\job-assign.aspx" />
     <Content Include="BackOffice\Entity-Management\Branch\branch-create.aspx" />
@@ -486,7 +490,6 @@
     <Content Include="BackOffice\Entity-Management\Entity\Entity-create.aspx" />
     <Content Include="BackOffice\Entity-Management\Entity\Entity-list.aspx" />
     <Content Include="BackOffice\NursingHome\Visitor-Form\index.aspx" />
-    <Content Include="BackOffice\Inventory\inventory.html" />
     <Content Include="BackOffice\NursingHome\Logistic\logistic-list.aspx" />
     <Content Include="BackOffice\NursingHome\Logistic\logistic-reserve-form.aspx" />
     <Content Include="BackOffice\NursingHome\Bed-Reservation\reserve-form.aspx" />
@@ -500,6 +503,7 @@
     <Content Include="BackOffice\Role\RoleSetup\role-position.aspx" />
     <Content Include="BackOffice\Role\RoleSetup\task-setup.aspx" />
     <Content Include="BackOffice\ServiceCare\care-plan.aspx" />
+    <Content Include="login.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -509,6 +513,20 @@
     </Compile>
     <Compile Include="BackOffice\Bed-Management\Accessory\accessory.aspx.designer.cs">
       <DependentUpon>accessory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BackOffice\Bed-Management\Bed\bed-add-accessory.aspx.cs">
+      <DependentUpon>bed-add-accessory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackOffice\Bed-Management\Bed\bed-add-accessory.aspx.designer.cs">
+      <DependentUpon>bed-add-accessory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BackOffice\Bed-Management\Bed\bed-delete-accessory.aspx.cs">
+      <DependentUpon>bed-delete-accessory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackOffice\Bed-Management\Bed\bed-delete-accessory.aspx.designer.cs">
+      <DependentUpon>bed-delete-accessory.aspx</DependentUpon>
     </Compile>
     <Compile Include="BackOffice\Bed-Management\Bed\bed-entity.aspx.cs">
       <DependentUpon>bed-entity.aspx</DependentUpon>
@@ -699,6 +717,13 @@
     <Compile Include="BackOffice\ServiceCare\care-plan.aspx.designer.cs">
       <DependentUpon>care-plan.aspx</DependentUpon>
     </Compile>
+    <Compile Include="login.aspx.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="login.aspx.designer.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Masterpage.Master.cs">
       <DependentUpon>Masterpage.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -743,6 +768,8 @@
     <Content Include="assets\vendor\fonts\pe-icon-7-stroke\Pe-icon-7-stroke.ttf" />
     <Content Include="assets\vendor\fonts\pe-icon-7-stroke\Pe-icon-7-stroke.woff" />
     <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\anomaERP - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\anomaERP - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

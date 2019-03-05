@@ -163,8 +163,8 @@ namespace DAO.BedManagement
                         {
                             DBHelper.CreateParameters();
                             DBHelper.AddParam("bed_customer_id", entity.bed_customer_id);
-                            DBHelper.AddParam("modify_by", entity.modify_by);
-                            DBHelper.AddParam("modify_date", entity.modify_date);
+                            DBHelper.AddParam("modify_by", entity.create_by);
+                            DBHelper.AddParam("modify_date", entity.create_date);
 
                             result = DBHelper.ExecuteStoreProcedure("update_un_active_bed_customer");
 
@@ -292,6 +292,7 @@ namespace DAO.BedManagement
                         DBHelper.AddParam("branch_name", entity.branch_name);
                         DBHelper.AddParam("floor_name", entity.floor_name);
                         DBHelper.AddParam("customer_name", entity.fullname);
+                        DBHelper.AddParam("branch_id", entity.branch_id);
                         bedCustomerEntities = DBHelper.SelectStoreProcedure<BedCustomerEntity>("select_bed_customer_for_bed_entity").ToList();
 
                     }

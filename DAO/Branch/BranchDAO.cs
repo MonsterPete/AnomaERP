@@ -36,7 +36,9 @@ namespace DAO.Branch
                         DBHelper.CreateParameters();
 
                         DBHelper.AddParam("Search", branchEntity.branch_name);
-                        
+                       DBHelper.AddParam("entity_id", branchEntity.entity_id);
+
+
                         branchEntities = DBHelper.SelectStoreProcedure<BranchEntity>("select_branch_by_condition").ToList();
                     }
                     catch (Exception ex)
@@ -89,6 +91,8 @@ namespace DAO.Branch
             }
             return branchEntities;
         }
+
+       
 
         public List<BranchEntity> GetDataByCondition(BranchEntity entity, int Index)
         {
@@ -274,6 +278,40 @@ namespace DAO.Branch
                 throw ex;
             }
             return branchEntity;
+        }
+
+        public user_loginEntity GetAlllogin(string username, string password)
+        {
+            user_loginEntity user_LoginEntity = new user_loginEntity();
+            try
+            {
+                using (DBHelper.CreateConnection())
+                {
+                    try
+                    {
+                        DBHelper.OpenConnection();
+
+                        DBHelper.CreateParameters();
+                        DBHelper.AddParam("username", username);
+                        DBHelper.AddParam("password", password);
+
+                        user_LoginEntity = DBHelper.SelectStoreProcedureFirst<user_loginEntity>("[select_login]");
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                    finally
+                    {
+                        DBHelper.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return user_LoginEntity;
         }
     }
 }

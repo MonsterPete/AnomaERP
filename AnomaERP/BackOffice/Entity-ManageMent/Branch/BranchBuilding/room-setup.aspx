@@ -19,7 +19,7 @@
                         <strong>Room Setup  
                        <br />
                             Floor Code :
-                            <label class="text-success">#F1</label></strong>
+                            <label class="text-success">#<asp:Label ID="lblFloor" runat="server" Text="Label"></asp:Label></label></strong>
                     </div>
                 </h4>
 

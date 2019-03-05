@@ -13,6 +13,15 @@ namespace AnomaERP.BackOffice.Role.RoleSetup {
     public partial class role_position {
         
         /// <summary>
+        /// txtGroupName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtGroupName;
+        
+        /// <summary>
         /// RptPosition control.
         /// </summary>
         /// <remarks>
@@ -47,5 +56,17 @@ namespace AnomaERP.BackOffice.Role.RoleSetup {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lbnSave;
+        
+        /// <summary>
+        /// Master property.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated property.
+        /// </remarks>
+        public new AnomaERP.Masterpage Master {
+            get {
+                return ((AnomaERP.Masterpage)(base.Master));
+            }
+        }
     }
 }

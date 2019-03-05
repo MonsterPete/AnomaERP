@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masterpage.Master" AutoEventWireup="true" CodeBehind="inventory.aspx.cs" Inherits="AnomaERP.BackOffice.Inventory.inventory" %>
-
+<%@ MasterType VirtualPath="~/Masterpage.Master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="FromPlaceHolder" runat="server">
     <div class="layout-content">
 
@@ -42,13 +42,6 @@
                                     <div class="form-group">
                                         <label class="form-label form-label-sm text-uppercase">Search</label>
                                         <asp:TextBox ID="txtSearch" placeholder="Search" runat="server" CssClass="form-control form-control-sm"></asp:TextBox>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-xl-3 mb-2">
-                                    <div class="form-group">
-                                        <label class="form-label form-label-sm text-uppercase">Branch</label>
-                                        <asp:DropDownList ID="ddlBranch" runat="server" CssClass="form-control form-control-sm">
-                                        </asp:DropDownList>
                                     </div>
                                 </div>
                                 <div class="col-lg-3 col-xl-3 mb-2">

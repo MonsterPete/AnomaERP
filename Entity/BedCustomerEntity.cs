@@ -26,9 +26,17 @@ namespace Entity
         public String firstname { get; set; }
         public Boolean is_have_customer { get; set; }
 
+        public String customername { get; set; }
+
+
         #region Care Plan
         public DateTime start_date { get; set; }
         public DateTime end_date { get; set; }
         #endregion
+
+        #region Customer
+        public DateTime contract_start { get; set; }
+        public DateTime contract_end { get; set; }
+        #endregion 
     }
 }
