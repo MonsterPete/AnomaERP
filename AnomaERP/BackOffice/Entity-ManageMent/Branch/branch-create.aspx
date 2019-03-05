@@ -1,9 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masterpage.Master" AutoEventWireup="true" CodeBehind="branch-create.aspx.cs" Inherits="AnomaERP.BackOffice.Branch.branch_create" %>
+
 <%@ MasterType VirtualPath="~/Masterpage.Master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="FromPlaceHolder" runat="server">
     <div class="layout-content">
         <div class="container-fluid flex-grow-1 container-p-y">
-        <!-- Content -->
+            <!-- Content -->
             <div class="container-fluid flex-grow-1 container-p-y">
 
                 <h4 class="font-weight-bold py-3 mb-2">Entity Management
@@ -15,14 +16,6 @@
                     </small>
                 </div>
                 </h4>
-                <!-- 
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <a href="visitor-form.html" class="btn btn-success mb-3 mr-2">+ Create Visitor Form</a>
-                            </div>
-                        </div> -->
-
-                <!-- Statistics -->
                 <div class="card mb-3">
                     <h4 class="card-header with-elements">
                         <div class="card-header-title"><strong>Branch Setup</strong></div>
@@ -33,8 +26,8 @@
                                 <div class="row">
                                     <div class="col-lg-6 col-xl-6">
                                         <div class="form-group">
-                                            <label class="form-label form-label-sm text-uppercase">                                       
-                                            Branch Name:                                                   
+                                            <label class="form-label form-label-sm text-uppercase">
+                                                Branch Name:                                                   
                                             </label>
                                             <asp:Label ID="lblbranchID" runat="server" Text="" Visible="false"></asp:Label>
                                             <asp:TextBox ID="txtBranchName" runat="server" class="form-control form-control-sm"></asp:TextBox>
@@ -159,8 +152,8 @@
                 <!-- / Statistics -->
             </div>
             <!-- / Content -->
-            </div>
         </div>
+    </div>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ModalPlaceHolder" runat="server">
 </asp:Content>
