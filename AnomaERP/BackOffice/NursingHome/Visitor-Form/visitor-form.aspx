@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masterpage.Master" AutoEventWireup="true" CodeBehind="visitor-form.aspx.cs" Inherits="AnomaERP.BackOffice.NursingHome.visitor_form" %>
+
 <%@ MasterType VirtualPath="~/Masterpage.Master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="FromPlaceHolder" runat="server">
     <div class="layout-content">
@@ -108,12 +109,17 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card-footer">
-                            <%--<a href="javascript:history.go(-1)" class="btn btn-lg btn-secondary">Back</a>--%>
-                            <a href="index.aspx" class="btn btn-lg  btn-secondary">Back</a>
-                            <%--<a href="#" class="btn btn-lg btn-success">Save</a>--%>
-                            <asp:Button ID="btnSave" runat="server" CssClass="btn btn-lg btn-success" Text="Save" OnClick="btnSave_Click" />
-                        </div>
+                        <asp:UpdatePanel runat="server">
+                            <ContentTemplate>
+                                <div class="card-footer">
+                                    <%--<a href="javascript:history.go(-1)" class="btn btn-lg btn-secondary">Back</a>--%>
+                                    <a href="index.aspx" class="btn btn-lg  btn-secondary">Back</a>
+                                    <%--<a href="#" class="btn btn-lg btn-success">Save</a>--%>
+
+                                    <asp:Button ID="btnSave" runat="server" CssClass="btn btn-lg btn-success" Text="Save" OnClick="btnSave_Click" />
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </div>
                     </div>
                 </div>
             </div>

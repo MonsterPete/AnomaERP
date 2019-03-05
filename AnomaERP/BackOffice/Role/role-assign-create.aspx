@@ -29,11 +29,11 @@
                                         <div class="col-lg-3 col-xl-3">
                                             <div class="form-group">
                                                 <asp:Label ID="lblEmployeeID" runat="server" Visible="false"></asp:Label>
-                                                <label class="form-label form-label-sm text-uppercase">Username</label>
+                                                <label class="form-label form-label-sm text-uppercase">Username</label><label class="text-danger">*</label>
                                                 <asp:TextBox ID="txtUsername" CssClass="form-control form-control-sm" placeholder="Username" runat="server" />
                                             </div>
                                             <div class="form-group">
-                                                <label class="form-label form-label-sm text-uppercase">Password</label>
+                                                <label class="form-label form-label-sm text-uppercase">Password</label><label class="text-danger">*</label>
                                                 <asp:TextBox ID="txtPassword" CssClass="form-control form-control-sm" placeholder="Password" runat="server" />
                                             </div>
                                         </div>
@@ -43,7 +43,7 @@
                                                 <asp:TextBox ID="txtEmail" CssClass="form-control form-control-sm" placeholder="Email" runat="server" />
                                             </div>
                                             <div class="form-group">
-                                                <label class="form-label form-label-sm text-uppercase">Phone:</label>
+                                                <label class="form-label form-label-sm text-uppercase">Phone:</label><label class="text-danger">*</label>
                                                 <asp:TextBox ID="txtPhone" CssClass="form-control form-control-sm" placeholder="Phone" runat="server" />
                                             </div>
                                         </div>
@@ -51,13 +51,13 @@
                                     <div class="row">
                                         <div class="col-lg-3 col-xl-3">
                                             <div class="form-group">
-                                                <label class="form-label form-label-sm text-uppercase">Firstname:</label>
+                                                <label class="form-label form-label-sm text-uppercase">Firstname:</label><label class="text-danger">*</label>
                                                 <asp:TextBox ID="txtFirstname" CssClass="form-control form-control-sm" placeholder="Firstname" runat="server" />
                                             </div>
                                         </div>
                                         <div class="col-lg-3 col-xl-3">
                                             <div class="form-group">
-                                                <label class="form-label form-label-sm text-uppercase">Lastname:</label>
+                                                <label class="form-label form-label-sm text-uppercase">Lastname:</label><label class="text-danger">*</label>
                                                 <asp:TextBox ID="txtLastname" CssClass="form-control form-control-sm" placeholder="Lastname" runat="server" />
 
                                             </div>
@@ -173,7 +173,7 @@
                                                 <label class="form-label form-label-sm text-uppercase">End Time</label>
                                                 <asp:TextBox ID="txtEndTime1" CssClass="form-control form-control-sm" placeholder="End Time" TextMode="Time" runat="server" />
 
-                                                
+
                                             </div>
                                         </div>
                                     </div>
@@ -205,26 +205,29 @@
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
+
+
                                 <div class="card-footer">
-                                    <asp:LinkButton ID="lblBack" runat="server" CssClass="btn btn-lg btn-primary" OnClick="lblBack_Click">ยกเลิก</asp:LinkButton>
-                                    <asp:LinkButton ID="lbnSave" runat="server" CssClass="btn btn-lg btn-primary" OnClick="lbnSave_Click">บันทึก</asp:LinkButton>
+                                    <label class="text-danger">* จำเป็นต้องกรอก</label>
+                                    <div class="row">
+                                        <asp:LinkButton ID="lblBack" runat="server" CssClass="btn btn-lg btn-secondary" OnClick="lblBack_Click">ยกเลิก</asp:LinkButton>
+                                        <asp:LinkButton ID="lbnSave" runat="server" CssClass="btn btn-lg btn-success" OnClick="lbnSave_Click">บันทึก</asp:LinkButton>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <!-- / Statistics -->
+                    </div>
+        <!-- / Content -->
                 </ContentTemplate>
             </asp:UpdatePanel>
-            <!-- / Statistics -->
+
         </div>
-        <!-- / Content -->
-
-        <!-- Layout footer -->
-
-        <!-- / Layout footer -->
-
     </div>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ModalPlaceHolder" runat="server">
 </asp:Content>

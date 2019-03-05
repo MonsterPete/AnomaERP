@@ -175,6 +175,7 @@ namespace AnomaERP.BackOffice.Bed_Management.Bed
         {
             if (!isValid())
             {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาระบุข้อมูลใหม่อีกครั้ง');", true);
                 return;
             }  
             List<InventoryEntity> inventoryEntities_Rpt = getDatafromRpt();
