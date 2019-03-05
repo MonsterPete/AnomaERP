@@ -74,7 +74,7 @@
                     <div class="card-datatable table-responsive">
                         <asp:UpdatePanel runat="server" UpdateMode="Conditional">
                             <ContentTemplate>
-                                <table class="table table-striped table-hover table-bordered">
+                                <table class="datatables-demo table table-striped table-hover table-bordered">
                                     <thead class="thead-dark">
                                         <tr>
                                             <th>SKU</th>
