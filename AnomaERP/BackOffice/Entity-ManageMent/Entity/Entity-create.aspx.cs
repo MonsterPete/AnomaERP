@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Entity;
 using Service.Entity;
+using Service.Branch;
 
 
 namespace AnomaERP.BackOffice.Entity
@@ -26,6 +27,7 @@ namespace AnomaERP.BackOffice.Entity
                         SetDataToUI(int.Parse(lblentityID.Text));
                     }
                 }
+                txtPassword.Attributes.Add("type", "password");
             }
         }
 
@@ -35,6 +37,39 @@ namespace AnomaERP.BackOffice.Entity
 
             EntityEntity entityEntity = new EntityEntity();           
             EntityService entityService = new EntityService();
+
+            BranchService branchService = new BranchService();
+
+            if (string.IsNullOrEmpty(txtEntityName.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาระบุชื่อหน่วยงาน (Entity name)');", true);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtUserName.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาระบุชื่อผู้ใช้งาน (Username)');", true);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtPassword.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาระบุรหัสผ่าน (Password)');", true);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtPhone.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาระบุเบอร์โทรศัพท์ (Phone)');", true);
+                return;
+            }
+
+            if (branchService.CheckUsernameRepeat(txtUserName.Text, int.Parse(lblentityID.Text)).Role == "repeat")
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('ชื่อผู้ใช้งานมีอยู่แล้ว (Username) กรุณาระบุใหม่อีกครั้ง');", true);
+                return;
+            }
+
 
             entityEntity.entity_id = int.Parse(lblentityID.Text);
             entityEntity.entity_name = txtEntityName.Text;
@@ -50,7 +85,7 @@ namespace AnomaERP.BackOffice.Entity
             entityEntity.create_date = DateTime.UtcNow;
             entityEntity.modify_date = DateTime.UtcNow;
             entityEntity.is_active = true;
-            entityEntity.is_delete = true;
+            entityEntity.is_delete = false;
 
             success = entityService.InsertData(entityEntity);  
             if(success > 0)

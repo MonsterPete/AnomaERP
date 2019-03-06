@@ -61,5 +61,11 @@ namespace Service.Branch
             BranchDAO branchDAO = new BranchDAO();
             return branchDAO.GetAlllogin(username, password);
         }
+
+        public user_loginEntity CheckUsernameRepeat(string username, int user_id)
+        {
+            BranchDAO branchDAO = new BranchDAO();
+            return branchDAO.CheckUsernameRepeat(username, user_id);
+        }
     }
 }

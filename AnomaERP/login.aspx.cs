@@ -17,6 +17,7 @@ namespace AnomaERP
             {
                 Session["BranchEntity"] = null;
                 Session["EntityEntity"] = null;
+                Session["EmployeeEntity"] = null;
             }
             Session.Clear();
             Session.RemoveAll();
@@ -27,18 +28,18 @@ namespace AnomaERP
         {
             if (txtUsername.Text != "" && txtPassword.Text != "")
             {
-               
-                    user_loginEntity user_LoginEntity = new user_loginEntity();
-                    BranchService branchService = new BranchService();
 
-                    //get_all_login
-                    user_LoginEntity = branchService.GetAlllogin(txtUsername.Text, txtPassword.Text);
+                user_loginEntity user_LoginEntity = new user_loginEntity();
+                BranchService branchService = new BranchService();
 
-                    if (user_LoginEntity != null)
+                //get_all_login
+                user_LoginEntity = branchService.GetAlllogin(txtUsername.Text, txtPassword.Text);
+
+                if (user_LoginEntity != null)
+                {
+                    if (user_LoginEntity.Role.ToLower() == "branch")
                     {
-                        if (user_LoginEntity.Role.ToLower() == "branch")
-                        {
-                            BranchEntity branchEntity = new BranchEntity();
+                        BranchEntity branchEntity = new BranchEntity();
 
                         branchEntity.branch_id = user_LoginEntity.branch_id;
                         branchEntity.entity_id = user_LoginEntity.entity_id;
@@ -46,22 +47,37 @@ namespace AnomaERP
                         branchEntity.username = user_LoginEntity.username;
                         branchEntity.password = user_LoginEntity.password;
 
-                            Session["BranchEntity"] = branchEntity;
-                            Response.Redirect("/BackOffice/NursingHome/Visitor-Form/index.aspx");
-                        }
-                        else if (user_LoginEntity.Role.ToLower() == "entity")
-                        {
+                        Session["BranchEntity"] = branchEntity;
+                        Response.Redirect("/BackOffice/NursingHome/Visitor-Form/index.aspx");
+                    }
+                    else if (user_LoginEntity.Role.ToLower() == "entity")
+                    {
 
-                            EntityEntity entityEntity = new EntityEntity();
+                        EntityEntity entityEntity = new EntityEntity();
 
                         entityEntity.entity_id = user_LoginEntity.entity_id;
                         entityEntity.entity_name = user_LoginEntity.entity_name;
                         entityEntity.username = user_LoginEntity.username;
                         entityEntity.password = user_LoginEntity.password;
 
-                            Session["EntityEntity"] = entityEntity;
-                            Response.Redirect("/BackOffice/Entity-ManageMent/Entity/entity-list.aspx");
-                        }                        
+                        Session["EntityEntity"] = entityEntity;
+                        Response.Redirect("/BackOffice/Entity-ManageMent/Entity/entity-list.aspx");
+                    }
+                    else if (user_LoginEntity.Role.ToLower() == "employee")
+                    {
+
+                        EmployeeEntity employeeEntity = new EmployeeEntity();
+
+                        employeeEntity.employee_id = user_LoginEntity.employee_id;
+                        employeeEntity.firstname = user_LoginEntity.firstname;
+                        employeeEntity.lastname = user_LoginEntity.lastname;
+                        employeeEntity.nickname = user_LoginEntity.nickname;
+                        employeeEntity.username = user_LoginEntity.username;
+                        employeeEntity.password = user_LoginEntity.password;
+
+                        Session["EmployeeEntity"] = employeeEntity;
+                        Response.Redirect("BackOffice/ServiceCare/schedule-management.aspx");
+                    }
                 }
                 else
                 {

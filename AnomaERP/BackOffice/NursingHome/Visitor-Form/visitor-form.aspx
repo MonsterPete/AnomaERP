@@ -112,24 +112,27 @@
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
                                 <div class="card-footer">
-                                    <%--<a href="javascript:history.go(-1)" class="btn btn-lg btn-secondary">Back</a>--%>
-                                    <a href="index.aspx" class="btn btn-lg  btn-secondary">Back</a>
-                                    <%--<a href="#" class="btn btn-lg btn-success">Save</a>--%>
+                                    <label class="text-danger">* จำเป็นต้องกรอก</label>
+                                    <div class="row">
+                                        <%--<a href="javascript:history.go(-1)" class="btn btn-lg btn-secondary">Back</a>--%>
+                                        <a href="index.aspx" class="btn btn-lg  btn-secondary">Back</a>
+                                        <%--<a href="#" class="btn btn-lg btn-success">Save</a>--%>
 
-                                    <asp:Button ID="btnSave" runat="server" CssClass="btn btn-lg btn-success" Text="Save" OnClick="btnSave_Click" />
+                                        <asp:Button ID="btnSave" runat="server" CssClass="btn btn-lg btn-success" Text="Save" OnClick="btnSave_Click" />
+                                    </div>
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </div>
-                    </div>
                 </div>
             </div>
-            <!-- / Statistics -->
         </div>
-        <!-- / Content -->
+        <!-- / Statistics -->
+    </div>
+    <!-- / Content -->
 
-        <!-- Layout footer -->
+    <!-- Layout footer -->
 
-        <!-- / Layout footer -->
+    <!-- / Layout footer -->
     </div>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ModalPlaceHolder" runat="server">
