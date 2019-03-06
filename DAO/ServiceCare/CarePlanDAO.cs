@@ -92,6 +92,7 @@ namespace DAO.ServiceCare
 
                         using (DBHelper.BeginTransaction())
                         {
+                            Boolean haveUpdateData = false; 
                             foreach (CarePlanEntity index in carePlanEntities)
                             {
                                 if (index.care_plan_id == 0 && !index.is_delete)
@@ -113,8 +114,9 @@ namespace DAO.ServiceCare
                                     DBHelper.AddParam("care_plan_id", index.care_plan_id);
                                     DBHelper.AddParam("customer_id", index.customer_id);
                                     DBHelper.ExecuteStoreProcedure("insert_daily_activities");
+                                    haveUpdateData = true;
                                 }
-                                else
+                                else if (index.care_plan_id != 0 && index.is_delete)
                                 {
                                     DBHelper.CreateParameters();
                                     DBHelper.AddParam("care_plan_id", index.care_plan_id);
@@ -133,11 +135,14 @@ namespace DAO.ServiceCare
                                         DBHelper.AddParam("customer_id", index.customer_id);
                                         DBHelper.ExecuteStoreProcedure("update_daily_activities");
                                     }
+                                    haveUpdateData = true;
                                 }
-
-
+                                
                             }
-                            DBHelper.CommitTransaction();
+                            if(haveUpdateData == true)
+                            {
+                                DBHelper.CommitTransaction();
+                            }
                         }
                     }
                     catch (Exception ex)
