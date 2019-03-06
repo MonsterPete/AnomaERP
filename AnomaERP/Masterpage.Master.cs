@@ -79,7 +79,9 @@ namespace AnomaERP
                     lblUsername.Text = entityEntity.entity_name;
                 }
                 else if (Session["EmployeeEntity"] != null)
-                {  
+                {
+                    MenuSDM.Visible = true;
+                    aScheduleManagement.Visible = true;
                     lblUsername.Text = employeeEntity.firstname + ' ' + employeeEntity.lastname + '(' + employeeEntity.nickname + ')';
                 }
                 else

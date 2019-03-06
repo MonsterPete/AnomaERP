@@ -81,13 +81,15 @@ namespace AnomaERP
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript((sender as Control), this.GetType(), "alertError", "alert('ชื่อผู้ใช้งานหรือรหัสผ่านผิด กรุณาระบุใหม่อีกครั้ง');", true);
+                    ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('ชื่อผู้ใช้งานหรือรหัสผ่านผิด กรุณาระบุใหม่อีกครั้ง');", true);
+                    return;
                 }
 
             }
             else
             {
-                ScriptManager.RegisterStartupScript((sender as Control), this.GetType(), "alertError", "alert('กรุณาระบุชื่อผู้ใช้งาน หรือรหัสผ่าน');", true);
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาระบุชื่อผู้ใช้งาน หรือรหัสผ่าน');", true);
+                return;
             }
         }
     }
