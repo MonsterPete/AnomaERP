@@ -105,6 +105,14 @@ namespace DAO.ServiceCare
                                     DBHelper.AddParam("is_delete", index.is_delete);
                                     DBHelper.ExecuteStoreProcedure("insert_care_plan");
                                     result = DBHelper.GetParamOut<Int32>("care_plan_id");
+                                    index.care_plan_id = result;
+
+                                    DBHelper.CreateParameters();
+                                    DBHelper.AddParamOut("daily_activities_id", 0);
+
+                                    DBHelper.AddParam("care_plan_id", index.care_plan_id);
+                                    DBHelper.AddParam("customer_id", index.customer_id);
+                                    DBHelper.ExecuteStoreProcedure("insert_daily_activities");
                                 }
                                 else
                                 {
@@ -116,7 +124,18 @@ namespace DAO.ServiceCare
                                     DBHelper.AddParam("task_id", index.task_id);
                                     DBHelper.AddParam("is_delete", index.is_delete);
                                     DBHelper.ExecuteStoreProcedure("update_care_plan");
+
+                                    if (index.is_delete == true)
+                                    {
+                                        DBHelper.CreateParameters();
+                                        DBHelper.AddParamOut("daily_activities_id", 0);
+                                        DBHelper.AddParam("care_plan_id", index.care_plan_id);
+                                        DBHelper.AddParam("customer_id", index.customer_id);
+                                        DBHelper.ExecuteStoreProcedure("update_daily_activities");
+                                    }
                                 }
+
+
                             }
                             DBHelper.CommitTransaction();
                         }

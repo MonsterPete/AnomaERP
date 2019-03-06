@@ -35,6 +35,8 @@ namespace AnomaERP.BackOffice.ServiceCare
                 ddlTask.DataValueField = "task_id";
                 ddlTask.DataBind();
 
+                txtEndtime.ReadOnly = true;
+
                 CarePlanService carePlanService = new CarePlanService();
 
                 SetDataToRpt(carePlanService.GetDataByCustomerId(int.Parse(Request.QueryString["customerId"].ToString())));

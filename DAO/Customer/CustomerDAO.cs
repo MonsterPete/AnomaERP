@@ -34,7 +34,7 @@ namespace DAO.Customer
                         DBHelper.OpenConnection();
                         DBHelper.CreateParameters();
 
-                        DBHelper.AddParam("Search", entity.firstname.Replace(" ",""));
+                        DBHelper.AddParam("Search", entity.firstname.Replace(" ", ""));
                         DBHelper.AddParam("branch_id", entity.branch_id);
 
                         customerEntities = DBHelper.SelectStoreProcedure<CustomerEntity>("select_customer_by_condition").ToList();
@@ -130,43 +130,51 @@ namespace DAO.Customer
                         DBHelper.OpenConnection();
                         using (DBHelper.BeginTransaction())
                         {
-                                DBHelper.CreateParameters();
-                                DBHelper.AddParamOut("customer_id", entity.customer_id);
-                                DBHelper.AddParam("branch_id", entity.branch_id);
-                                DBHelper.AddParam("contract_start", entity.contract_start);
-                                DBHelper.AddParam("contract_end", entity.contract_end);
-                                DBHelper.AddParam("firstname", entity.firstname);
-                                DBHelper.AddParam("lastname", entity.lastname);
-                                DBHelper.AddParam("gender", entity.gender);
-                                DBHelper.AddParam("DOB", entity.DOB);
-                                DBHelper.AddParam("create_by", entity.create_by);
-                                DBHelper.AddParam("create_date", entity.create_date);
-                                DBHelper.ExecuteStoreProcedure("insert_customer");
-                                customer_id = DBHelper.GetParamOut<Int32>("customer_id");
+                            DBHelper.CreateParameters();
+                            DBHelper.AddParamOut("customer_id", entity.customer_id);
+                            DBHelper.AddParam("branch_id", entity.branch_id);
+                            DBHelper.AddParam("contract_start", entity.contract_start);
+                            DBHelper.AddParam("contract_end", entity.contract_end);
+                            DBHelper.AddParam("firstname", entity.firstname);
+                            DBHelper.AddParam("lastname", entity.lastname);
+                            DBHelper.AddParam("gender", entity.gender);
+                            DBHelper.AddParam("DOB", entity.DOB);
+                            DBHelper.AddParam("create_by", entity.create_by);
+                            DBHelper.AddParam("create_date", entity.create_date);
+                            DBHelper.ExecuteStoreProcedure("insert_customer");
+                            customer_id = DBHelper.GetParamOut<Int32>("customer_id");
 
-                                DBHelper.CreateParameters();
-                                DBHelper.AddParamOut("customer_relative_id", entity.customer_RelativeEntity.Customer_relative_id);
-                                DBHelper.AddParam("customer_id", customer_id);
-                                DBHelper.AddParam("customer_relative_name", entity.customer_RelativeEntity.Customer_relative_name);
-                                DBHelper.AddParam("customer_relative_phone", entity.customer_RelativeEntity.Customer_relative_phone);
-                                DBHelper.AddParam("customer_relation", entity.customer_RelativeEntity.Customer_relation);
-                                DBHelper.ExecuteStoreProcedure("insert_customer_relative");
+                            DBHelper.CreateParameters();
+                            DBHelper.AddParamOut("customer_relative_id", entity.customer_RelativeEntity.Customer_relative_id);
+                            DBHelper.AddParam("customer_id", customer_id);
+                            DBHelper.AddParam("customer_relative_name", entity.customer_RelativeEntity.Customer_relative_name);
+                            DBHelper.AddParam("customer_relative_phone", entity.customer_RelativeEntity.Customer_relative_phone);
+                            DBHelper.AddParam("customer_relation", entity.customer_RelativeEntity.Customer_relation);
+                            DBHelper.ExecuteStoreProcedure("insert_customer_relative");
 
 
-                                DBHelper.CreateParameters();
-                                DBHelper.AddParamOut("customer_service_agreement_id", entity.customer_Service_AgreementEntity.Customer_service_agreement_id);
-                                DBHelper.AddParam("customer_id", customer_id);
-                                DBHelper.AddParam("month_service_cost", entity.customer_Service_AgreementEntity.Month_service_cost);
-                                DBHelper.AddParam("diaper_commutation_cost", entity.customer_Service_AgreementEntity.Diaper_commutation_cost);
-                                DBHelper.AddParam("dressing_equipment_commutation_cost", entity.customer_Service_AgreementEntity.Dressing_equipment_commutation_cost);
-                                DBHelper.AddParam("customer_Reservations_cost", entity.customer_Service_AgreementEntity.Customer_reservations_cost);
-                                DBHelper.AddParam("customer_balance_cost", entity.customer_Service_AgreementEntity.Customer_balance_cost);
-                                DBHelper.AddParam("create_date", entity.customer_Service_AgreementEntity.Create_date);
-                                DBHelper.AddParam("remark", entity.customer_Service_AgreementEntity.Remark);
-                                DBHelper.ExecuteStoreProcedure("insert_customer_service_agreement");
+                            DBHelper.CreateParameters();
+                            DBHelper.AddParamOut("customer_service_agreement_id", entity.customer_Service_AgreementEntity.Customer_service_agreement_id);
+                            DBHelper.AddParam("customer_id", customer_id);
+                            DBHelper.AddParam("month_service_cost", entity.customer_Service_AgreementEntity.Month_service_cost);
+                            DBHelper.AddParam("diaper_commutation_cost", entity.customer_Service_AgreementEntity.Diaper_commutation_cost);
+                            DBHelper.AddParam("dressing_equipment_commutation_cost", entity.customer_Service_AgreementEntity.Dressing_equipment_commutation_cost);
+                            DBHelper.AddParam("customer_Reservations_cost", entity.customer_Service_AgreementEntity.Customer_reservations_cost);
+                            DBHelper.AddParam("customer_balance_cost", entity.customer_Service_AgreementEntity.Customer_balance_cost);
+                            DBHelper.AddParam("create_date", entity.customer_Service_AgreementEntity.Create_date);
+                            DBHelper.AddParam("remark", entity.customer_Service_AgreementEntity.Remark);
+                            DBHelper.ExecuteStoreProcedure("insert_customer_service_agreement");
 
-                                DBHelper.CommitTransaction();
-                                result = customer_id;
+                            //Insert day activities from contract date length
+                            DBHelper.CreateParameters();
+                            DBHelper.AddParamOut("day_activities_id", 0);
+                            DBHelper.AddParam("customer_id", customer_id);
+                            DBHelper.AddParam("contract_start", entity.contract_start);
+                            DBHelper.AddParam("contract_end", entity.contract_end);
+                            DBHelper.ExecuteStoreProcedure("insert_day_activities");
+
+                            DBHelper.CommitTransaction();
+                            result = customer_id;
                         }
                     }
                     catch (Exception ex)
@@ -214,7 +222,7 @@ namespace DAO.Customer
                             DBHelper.ExecuteStoreProcedure("update_customer");
                             result = DBHelper.GetParamOut<Int32>("success_row");
 
-                            if (entity.customer_RelativeEntity.Customer_relative_id > 0 )
+                            if (entity.customer_RelativeEntity.Customer_relative_id > 0)
                             {
                                 DBHelper.CreateParameters();
                                 DBHelper.AddParam("customer_relative_id", entity.customer_RelativeEntity.Customer_relative_id);
@@ -235,7 +243,7 @@ namespace DAO.Customer
                                 DBHelper.ExecuteStoreProcedure("insert_customer_relative");
                             }
 
-                            if (entity.customer_Service_AgreementEntity.Customer_service_agreement_id > 0 )
+                            if (entity.customer_Service_AgreementEntity.Customer_service_agreement_id > 0)
                             {
                                 DBHelper.CreateParameters();
                                 DBHelper.AddParam("customer_service_agreement_id", entity.customer_Service_AgreementEntity.Customer_service_agreement_id);

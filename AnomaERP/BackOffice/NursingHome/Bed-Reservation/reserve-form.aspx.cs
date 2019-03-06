@@ -92,7 +92,7 @@ namespace AnomaERP.BackOffice.NursingHome
             customerEntity.branch_id = Master.branchEntity.branch_id;
 
             customerEntity.contract_start = dateFormat.EngFormatDateToSQL(DateTime.Parse(txtContractStart.Text));
-            customerEntity.contract_end = dateFormat.EngFormatDateToSQL(DateTime.Parse(txtContractStart.Text));
+            customerEntity.contract_end = dateFormat.EngFormatDateToSQL(DateTime.Parse(txtContractEnd.Text));
             customerEntity.firstname = txtFirstname.Text;
             customerEntity.lastname = txtLastname.Text;
             customerEntity.gender = ddlGender.SelectedValue;
