@@ -137,8 +137,46 @@ namespace AnomaERP.BackOffice.Role
             Response.Redirect("~/BackOffice/Role/role-assign-list.aspx");
         }
 
+
         protected void lbnSave_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtUsername.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณากรอกชื่อผู้ใช้งาน (Username)');", true);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtPassword.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณากรอกรหัสผ่าน (Password)');", true);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtFirstname.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณากรอกชื่อ (Firstname)');", true);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtLastname.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณากรอกนามสกุล (Lastname)');", true);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtPhone.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณากรอกเบอร์โทรศัพท์ (Phone)');", true);
+                return;
+            }
+
+            int parsedValue;
+            if (!int.TryParse(txtPhone.Text, out parsedValue))
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณากรอกตัวเลขเท่านั้น (Phone)');", true);
+                return;
+            }
+
             EmployeeEntity employeeEntity = new EmployeeEntity();
             EmployeeService employeeService = new EmployeeService();
 

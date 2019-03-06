@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masterpage.Master" AutoEventWireup="true" CodeBehind="role-position.aspx.cs" Inherits="AnomaERP.BackOffice.Role.RoleSetup.role_position" %>
+
 <%@ MasterType VirtualPath="~/Masterpage.Master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="FromPlaceHolder" runat="server">
     <!-- Layout content -->
@@ -27,11 +28,13 @@
                 <div class="row no-gutters row-bordered">
                     <div class="col-md-12 col-lg-12 col-xl-12">
                         <div class="card-body">
+
                             <div class="row">
                                 <div class="col-lg-3 col-xl-3 mb-2">
                                     <div class="form-group">
-                                        <label class="form-label form-label-sm text-uppercase">Group Name</label>
-                                        <asp:TextBox ID="txtGroupName" runat="server" Enabled="false"></asp:TextBox>
+                                        <label class="form-label form-label-sm text-uppercase">
+                                            Group Name :</label>
+                                        <asp:TextBox ID="txtGroupName" runat="server" CssClass="form-control form-control-sm" placeholder="GroupName"></asp:TextBox>
                                     </div>
                                 </div>
                             </div>
@@ -79,20 +82,20 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card-footer">
-                            <asp:LinkButton ID="lbnBack" runat="server" class="btn btn-secondary" OnClick="lbnBack_Click">Back</asp:LinkButton>
-                            <asp:LinkButton ID="lbnSave" runat="server" class="btn btn-success" OnClick="lbnSave_Click">Save</asp:LinkButton>
+                            </div>
+                            <div class="card-footer">
+                                <asp:LinkButton ID="lbnBack" runat="server" class="btn btn-secondary" OnClick="lbnBack_Click">Back</asp:LinkButton>
+                                <asp:LinkButton ID="lbnSave" runat="server" class="btn btn-success" OnClick="lbnSave_Click">Save</asp:LinkButton>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- / Statistics -->
+                <!-- / Statistics -->
 
+            </div>
+            <!-- / Content -->
         </div>
-        <!-- / Content -->
-    </div>
-    <!-- Layout content -->
+        <!-- Layout content -->
 
     </div>
 </asp:Content>

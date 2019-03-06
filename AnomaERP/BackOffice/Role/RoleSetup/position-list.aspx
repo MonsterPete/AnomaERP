@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masterpage.Master" AutoEventWireup="true" CodeBehind="position-list.aspx.cs" Inherits="AnomaERP.BackOffice.Role.RoleSetup.position_list" %>
+
 <%@ MasterType VirtualPath="~/Masterpage.Master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="FromPlaceHolder" runat="server">
     <asp:UpdatePanel ID="upnEntityList" runat="server">
@@ -93,7 +94,7 @@
                                                         </td>
                                                         <td class="center">
                                                             <div class="btn-group btn-group-sm">
-                                                                <asp:LinkButton ID="lbnConfigTask" runat="server" CssClass="btn btn-success"><i class="ion ion-md-options"></i></asp:LinkButton>
+                                                                <asp:LinkButton ID="lbnConfigTask" runat="server" CssClass="btn btn-success" ClientIDMode="AutoID"><i class="ion ion-md-options"></i></asp:LinkButton>
                                                             </div>
                                                             <div class="btn-group btn-group-sm">
                                                                 <asp:LinkButton ID="lbnEdit" runat="server" CssClass="btn btn-primary"><i class="ion ion-md-create"></i></asp:LinkButton>
@@ -117,4 +118,5 @@
     </asp:UpdatePanel>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ModalPlaceHolder" runat="server">
+    
 </asp:Content>

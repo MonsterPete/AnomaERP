@@ -109,7 +109,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <hr class="mb-0">
+                                        
                                         <%--<div class="row">
                                             <div class="col-lg-12 col-xl-12">
                                                 <h5 class="mt-4"><strong>Setup Organization Structure</strong></h5>

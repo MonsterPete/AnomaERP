@@ -87,6 +87,23 @@ namespace AnomaERP.BackOffice.Role.RoleSetup
             }
             else if (e.CommandName == "TaskConfig")
             {
+                PositionService positionService = new PositionService();
+                List<PositionEntity> positionEntities = positionService.GetDataPositionByGroupID(int.Parse(e.CommandArgument.ToString()));
+                EntityTaskService entityTaskService = new EntityTaskService();
+                List<EntityTaskEntity> entityTaskEntities =  entityTaskService.GetDataByGroupID(int.Parse(e.CommandArgument.ToString()));
+
+                if (positionEntities.Count == 0)
+                {
+                    ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาเพิ่มตำแหน่ง (Position)');", true);
+                    return;
+                }
+
+                if (entityTaskEntities.Count == 0)
+                {
+                    ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาเพิ่มงาน (Task)');", true);
+                    return;
+                }
+
                 Response.Redirect("/BackOffice/Role/RoleSetup/role-position.aspx?group_id=" + e.CommandArgument);
             }
             else if (e.CommandName == "Status")
@@ -108,8 +125,7 @@ namespace AnomaERP.BackOffice.Role.RoleSetup
 
                 if (positionGroupService.UpdateData(positionGroupEntity) > 0)
                 {
-                    //setDataToUI(setCondition());
-                    Response.Redirect("/BackOffice/Role/RoleSetup/position-list.aspx");
+                    setDataToUI(setCondition());
                 }
             }
         }
