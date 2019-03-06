@@ -85,6 +85,24 @@ namespace AnomaERP {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor aInventory;
         
         /// <summary>
+        /// MenuSDM control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl MenuSDM;
+        
+        /// <summary>
+        /// aScheduleManagement control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor aScheduleManagement;
+        
+        /// <summary>
         /// lblUsername control.
         /// </summary>
         /// <remarks>

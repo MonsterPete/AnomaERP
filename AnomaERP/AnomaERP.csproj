@@ -503,6 +503,7 @@
     <Content Include="BackOffice\Role\RoleSetup\role-position.aspx" />
     <Content Include="BackOffice\Role\RoleSetup\task-setup.aspx" />
     <Content Include="BackOffice\ServiceCare\care-plan.aspx" />
+    <Content Include="BackOffice\ServiceCare\schedule-management.aspx" />
     <Content Include="login.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -716,6 +717,13 @@
     </Compile>
     <Compile Include="BackOffice\ServiceCare\care-plan.aspx.designer.cs">
       <DependentUpon>care-plan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BackOffice\ServiceCare\schedule-management.aspx.cs">
+      <DependentUpon>schedule-management.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackOffice\ServiceCare\schedule-management.aspx.designer.cs">
+      <DependentUpon>schedule-management.aspx</DependentUpon>
     </Compile>
     <Compile Include="login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>

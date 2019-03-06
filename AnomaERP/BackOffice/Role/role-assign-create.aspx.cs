@@ -9,6 +9,7 @@ using Service.Employee;
 using Definitions;
 using Service.Role;
 using Service.Working_time;
+using Service.Branch;
 
 namespace AnomaERP.BackOffice.Role
 {
@@ -176,6 +177,14 @@ namespace AnomaERP.BackOffice.Role
                 ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณากรอกตัวเลขเท่านั้น (Phone)');", true);
                 return;
             }
+
+            BranchService branchService = new BranchService();
+            if (branchService.CheckUsernameRepeat(txtUsername.Text, int.Parse(lblEmployeeID.Text)).Role == "repeat")
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('ชื่อผู้ใช้งานมีอยู่แล้ว (Username) กรุณาระบุใหม่อีกครั้ง');", true);
+                return;
+            }
+
 
             EmployeeEntity employeeEntity = new EmployeeEntity();
             EmployeeService employeeService = new EmployeeService();

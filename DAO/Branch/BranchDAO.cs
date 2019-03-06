@@ -313,5 +313,39 @@ namespace DAO.Branch
             }
             return user_LoginEntity;
         }
+
+        public user_loginEntity CheckUsernameRepeat(string username, int user_id)
+        {
+            user_loginEntity user_LoginEntity = new user_loginEntity();
+            try
+            {
+                using (DBHelper.CreateConnection())
+                {
+                    try
+                    {
+                        DBHelper.OpenConnection();
+
+                        DBHelper.CreateParameters();
+                        DBHelper.AddParam("username", username);
+                        DBHelper.AddParam("user_id", user_id);
+
+                        user_LoginEntity = DBHelper.SelectStoreProcedureFirst<user_loginEntity>("select_check_user_password_repeat");
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                    finally
+                    {
+                        DBHelper.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return user_LoginEntity;
+        }
     }
 }
