@@ -12,6 +12,13 @@ namespace Entity
         public Int32 entity_id { get; set; }
         public String entity_name { get; set; }
 
+        public Int32 employee_id { get; set; }
+        public String firstname { get; set; }
+        public String lastname { get; set; }
+        public String nickname { get; set; }
+
+
+
         public String username { get; set; }
         public String password { get; set; }
         public String Role { get; set; }

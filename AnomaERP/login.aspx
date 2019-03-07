@@ -136,8 +136,12 @@
                                         <input type="checkbox" class="custom-control-input">
                                         <span class="custom-control-label">Remember me</span>
                                     </label>--%>
-                                    <asp:LinkButton ID="btnSignin" CssClass="btn btn-primary" OnClick="btnSignin_Click" runat="server">Sign In</asp:LinkButton>
-
+                                    <asp:ScriptManager runat="server"></asp:ScriptManager>
+                                    <asp:UpdatePanel runat="server">
+                                        <ContentTemplate>
+                                            <asp:LinkButton ID="btnSignin" CssClass="btn btn-primary" OnClick="btnSignin_Click" runat="server">Sign In</asp:LinkButton>
+                                        </ContentTemplate>
+                                    </asp:UpdatePanel>
                                 </div>
                             </form>
                             <!-- / Form -->
@@ -212,4 +216,3 @@
 </html>
 
 
- 

@@ -26,6 +26,7 @@ namespace AnomaERP.BackOffice.Branch
                         SetDataToUI(int.Parse(lblbranchID.Text));
                     }
                 }
+                txtPassword.Attributes.Add("type", "password");
             }
         }
 
@@ -36,7 +37,42 @@ namespace AnomaERP.BackOffice.Branch
             BranchEntity branchEntity = new BranchEntity();
             BranchService branchService = new BranchService();
             DateFormat dateFormat = new DateFormat();
-            
+
+            if (string.IsNullOrEmpty(txtBranchName.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาระบุชื่อสาขา (Branch name)');", true);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtUsername.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาระบุชื่อผู้ใช้งาน (Username)');", true);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtPassword.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาระบุรหัสผ่าน (Password)');", true);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtPhone.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาระบุเบอร์โทรศัพท์ (Phone)');", true);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtPrice.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาระบุราคา (Rental Price)');", true);
+                return;
+            }
+
+            if (branchService.CheckUsernameRepeat(txtUsername.Text,int.Parse(lblbranchID.Text)).Role == "repeat")
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('ชื่อผู้ใช้งานมีอยู่แล้ว (Username) กรุณาระบุใหม่อีกครั้ง');", true);
+                return;
+            }
 
             branchEntity.branch_id = int.Parse(lblbranchID.Text);
             branchEntity.entity_id = Master.entityEntity.entity_id;

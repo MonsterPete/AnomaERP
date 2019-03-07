@@ -42,6 +42,23 @@ namespace AnomaERP
             }
         }
 
+
+        public EmployeeEntity employeeEntity
+        {
+            get
+            {
+
+                if (Session["EmployeeEntity"] == null)
+                {
+                    return null;
+                }
+                else
+                {
+                    return (EmployeeEntity)Session["EmployeeEntity"];
+                }
+            }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -60,6 +77,12 @@ namespace AnomaERP
                     MenuRP.Visible = true;
                     MenuNA.Visible = true;
                     lblUsername.Text = entityEntity.entity_name;
+                }
+                else if (Session["EmployeeEntity"] != null)
+                {
+                    MenuSDM.Visible = true;
+                    aScheduleManagement.Visible = true;
+                    lblUsername.Text = employeeEntity.firstname + ' ' + employeeEntity.lastname + '(' + employeeEntity.nickname + ')';
                 }
                 else
                 {
@@ -87,6 +110,7 @@ namespace AnomaERP
         {
             Session["BranchEntity"] = null;
             Session["EntityEntity"] = null;
+            Session["EmployeeEntity"] = null;
         }
     }
 }
