@@ -1,8 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masterpage.Master" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="AnomaERP.BackOffice.NursingHome.index" %>
+
 <%@ MasterType VirtualPath="~/Masterpage.Master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="FromPlaceHolder" runat="server">
     <div class="layout-content">
-
         <!-- Content -->
         <div class="container-fluid flex-grow-1 container-p-y">
 
@@ -106,7 +106,7 @@
                                                                         <div class="btn-group btn-group-sm">
                                                                             <asp:LinkButton ID="lbnEdit" runat="server" CssClass="btn btn-primary"><i class="ion ion-md-create"></i></asp:LinkButton>
                                                                         </div>
-                                                                      <%--  <div class="btn-group btn-group-sm">
+                                                                        <%--  <div class="btn-group btn-group-sm">
                                                                             <asp:LinkButton ID="lbnDelete" runat="server" CssClass="btn btn-danger"><i class="ion ion-md-close"></i></asp:LinkButton>
                                                                         </div>--%>
                                                                     </td>

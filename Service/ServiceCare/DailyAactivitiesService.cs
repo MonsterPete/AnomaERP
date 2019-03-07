@@ -1,4 +1,5 @@
-﻿using Entity;
+﻿using DAO.ServiceCare;
+using Entity;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -21,6 +22,11 @@ namespace Service.ServiceCare
         {
             throw new NotImplementedException();
         }
+        public List<DailyActivitiesEntity> GetDataByCustomer(int customerID)
+        {
+            DailyActivitiesDAO dao = new DailyActivitiesDAO();
+            return dao.GetDataByCustomer(customerID);
+        }
 
         public DailyActivitiesEntity GetDataByID(long id)
         {
@@ -36,5 +42,17 @@ namespace Service.ServiceCare
         {
             throw new NotImplementedException();
         }
+        public int UpdateDataAccept(DailyActivitiesEntity entity)
+        {
+            DailyActivitiesDAO dao = new DailyActivitiesDAO();
+            return dao.UpdateDataAccept(entity);
+        }
+        public int UpdateDataReject(DailyActivitiesEntity entity)
+        {
+            DailyActivitiesDAO dao = new DailyActivitiesDAO();
+            return dao.UpdateDataReject(entity);
+        }
+
+
     }
 }

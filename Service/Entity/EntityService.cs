@@ -8,8 +8,6 @@ namespace Service.Entity
 {
     public class EntityService : IServiceRepository<EntityEntity>
     {
-        
-
         public List<EntityEntity> GetDataAll()
         {
             throw new NotImplementedException();

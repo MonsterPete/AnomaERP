@@ -230,8 +230,8 @@
                                 <div>Inventory</div>
                             </a>
                         </li>
-                        <li class="sidenav-item" runat="server" id="MenuSdM" visible="false">
-                            <a href="/Backoffice/ServiceCare/schedule-management.aspx" class="sidenav-link" runat="server" id="aScheduleManagement" visible="false">
+                        <li class="sidenav-item" runat="server" id="MenuSdM">
+                            <a href="/Backoffice/ServiceCare/schedule-management.aspx" class="sidenav-link" runat="server" id="aScheduleManagement">
                                 <i class="sidenav-icon ion ion-ios-folder"></i>
                                 <div>Schedule Management</div>
                             </a>
