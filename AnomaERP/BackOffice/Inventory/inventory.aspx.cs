@@ -20,7 +20,7 @@ namespace AnomaERP.BackOffice.Inventory
             if (!IsPostBack)
             {
                 //***Set Branch
-                lblEntityID.Text = "1"; //Suma fix for Test
+                lblEntityID.Text = "1"; //Waiting fix for Test
                 if (Request.QueryString["entity_ID"] != null)
                 {
                     if (int.Parse(Request.QueryString["entity_ID"]) > 0)

@@ -127,7 +127,7 @@ namespace AnomaERP.BackOffice.ServiceCare
             }
             else
             {
-                //Suma Alert Update Fail
+                //Waiting Alert Update Fail
             }
         }
 
@@ -151,7 +151,7 @@ namespace AnomaERP.BackOffice.ServiceCare
             }
             else
             {
-                //Suma Alert IsValid = false
+                //Waiting Alert IsValid = false
             }
         }
         private bool checkValid()

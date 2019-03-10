@@ -32,7 +32,7 @@ namespace AnomaERP.BackOffice.Inventory
             if (!IsPostBack)
             {
                 //** Branch
-                lblBranchID.Text = "1"; //Suma fix for Test
+                lblBranchID.Text = "1"; //Waiting fix for Test
                 if (Request.QueryString["branch_ID"] != null)
                 {
                     if (int.Parse(Request.QueryString["branch_ID"]) > 0)
@@ -55,7 +55,7 @@ namespace AnomaERP.BackOffice.Inventory
                 }
 
                 //** Requestor
-                lblRequestorID.Text = "1"; //Suma fix for Test
+                lblRequestorID.Text = "1"; //Waiting fix for Test
                 if (Request.QueryString["requestor_ID"] != null)
                 {
                     if (int.Parse(Request.QueryString["requestor_ID"]) > 0)
@@ -78,7 +78,7 @@ namespace AnomaERP.BackOffice.Inventory
                 }
 
                 //** Approval
-                lblApprovalID.Text = "1"; //Suma fix for Test
+                lblApprovalID.Text = "1"; //Waiting fix for Test
                 if (Request.QueryString["approval_ID"] != null)
                 {
                     if (int.Parse(Request.QueryString["approval_ID"]) > 0)
@@ -266,7 +266,7 @@ namespace AnomaERP.BackOffice.Inventory
             }
             else
             {
-                //Suma Alert !isValid
+                //Waiting Alert !isValid
             }
         }
 
@@ -428,7 +428,7 @@ namespace AnomaERP.BackOffice.Inventory
             }
             else
             {
-                //Suma Alert No Update Data
+                //Waiting Alert No Update Data
             }
         }
         protected List<InventoryEntity> getDsUpdateQtyTotla(List<InventoryEntity> datastore)
