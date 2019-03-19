@@ -16,6 +16,7 @@ namespace AnomaERP.BackOffice.Branch
         {
             if (!IsPostBack)
             {
+                GetDDLBuildingType();
                 lblbranchID.Text = "0";
                 if (Request.QueryString["branch_ID"] != null)
                 {
@@ -81,6 +82,7 @@ namespace AnomaERP.BackOffice.Branch
             branchEntity.registor_address = txtAddressRegis.Text;
             branchEntity.tax_id = txtTaxID.Text;
             branchEntity.prefix = txtPrefix.Text;
+            branchEntity.building_type_id = int.Parse(ddlBuildingType.SelectedValue);
             branchEntity.usage_area = txtArea.Text;
             branchEntity.rental_price = Convert.ToDecimal(txtPrice.Text);
             branchEntity.phone = txtPhone.Text;
@@ -115,17 +117,36 @@ namespace AnomaERP.BackOffice.Branch
             branchEntity = branchService.GetDataBranchByID(branch_id);
 
             txtBranchName.Text = branchEntity.branch_name;
-            //fileImage.FileName = entityEntity.logo;
             txtAddress.Text = branchEntity.address;
             txtAddressRegis.Text = branchEntity.registor_address;
             txtTaxID.Text = branchEntity.tax_id;
             txtPrefix.Text = branchEntity.prefix;
+            ddlBuildingType.SelectedValue = branchEntity.building_type_id.ToString();
             txtArea.Text = branchEntity.usage_area;
             txtPrice.Text = branchEntity.rental_price.ToString("N2");
             txtPhone.Text = branchEntity.phone;
             txtEmail.Text = branchEntity.email;
             txtUsername.Text = branchEntity.username;
             txtPassword.Text = branchEntity.password;
+
+        }
+
+        public void GetDDLBuildingType()
+        {
+            List<BuildingTypeEntity> buildingTypeEntities = new List<BuildingTypeEntity>();
+            BranchService branchService = new BranchService();
+
+            buildingTypeEntities = branchService.GetDataBuildingTypeAll();
+
+            buildingTypeEntities.Insert(0, new BuildingTypeEntity {
+                building_type_id = 0,
+                building_type_name = "--select--"
+            });
+
+            ddlBuildingType.DataSource = buildingTypeEntities;
+            ddlBuildingType.DataTextField = "building_type_name";
+            ddlBuildingType.DataValueField = "building_type_id";
+            ddlBuildingType.DataBind();
 
         }
     }

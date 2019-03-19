@@ -30,7 +30,8 @@
                                                 <div class="form-group">
                                                     <label class="form-label form-label-sm text-uppercase">
                                                         Branch Name:                                                   
-                                                    </label><label class="text-danger">*</label>
+                                                    </label>
+                                                    <label class="text-danger">*</label>
                                                     <asp:Label ID="lblbranchID" runat="server" Text="" Visible="false"></asp:Label>
                                                     <asp:TextBox ID="txtBranchName" runat="server" class="form-control form-control-sm"></asp:TextBox>
                                                 </div>
@@ -77,22 +78,20 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <hr class="mb-0" />
                                         <div class="row">
-                                            <div class="col-lg-2 col-xl-2" style="display: none">
+                                            <div class="col-lg-12 col-xl-12">
+                                                <h5 class="mt-4"><strong>Building</strong></h5>
+                                            </div>
+                                            <div class="col-lg-3 col-xl-3">
                                                 <div class="form-group">
                                                     <label class="form-label form-label-sm text-uppercase">
                                                         Building
                                                         Type:</label>
-
-                                                    <%-- <select class="form-control form-control-sm">
-                                            <option>Not Spectify</option>
-                                            <option>Stand Alone House</option>
-                                            <option>Building</option>
-                                            <option>Apartment</option>
-                                        </select>--%>
+                                                    <asp:DropDownList ID="ddlBuildingType" CssClass="form-control form-control-sm" runat="server"></asp:DropDownList>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-2 col-xl-2">
+                                            <div class="col-lg-3 col-xl-3">
                                                 <div class="form-group">
                                                     <label class="form-label form-label-sm text-uppercase">
                                                         Useage
@@ -101,12 +100,15 @@
                                                     <asp:TextBox ID="txtArea" runat="server" class="form-control form-control-sm"></asp:TextBox>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-2 col-xl-2">
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-3 col-xl-3">
                                                 <div class="form-group">
                                                     <label class="form-label form-label-sm text-uppercase">
                                                         Rental
                                                         Price:
-                                                    </label> <label class="text-danger">*</label>
+                                                    </label>
+                                                    <label class="text-danger">*</label>
                                                     <asp:TextBox ID="txtPrice" runat="server" TextMode="Number" class="form-control form-control-sm"></asp:TextBox>
                                                 </div>
                                             </div>

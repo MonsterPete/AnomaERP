@@ -71,13 +71,13 @@
                                                 <table class="datatables-demo table table-striped table-hover table-bordered">
                                                     <thead class="thead-dark">
                                                         <tr>
-                                                            <th class="tbw-9">Entity ID</th>
-                                                            <th class="tbw-19">Entity Name</th>
-                                                            <th class="tbw-9">Branch ID</th>
-                                                            <th class="tbw-19">Branch Name</th>
-                                                            <th class="">Information</th>
-                                                            <th class="tbw-9">Status</th>
-                                                            <th class="tbw-9">Tools</th>
+                                                            <th class="tbw-9" style="text-align:center">Entity ID</th>
+                                                            <th class="tbw-19" style="text-align:left">Entity Name</th>
+                                                            <th class="tbw-9" style="text-align:center">Branch ID</th>
+                                                            <th class="tbw-19" style="text-align:left">Branch Name</th>
+                                                            <th class="" style="text-align:left">Information</th>
+                                                            <th class="tbw-9" style="text-align:center">Status</th>
+                                                            <th class="tbw-9" style="text-align:center">Tools</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -85,19 +85,19 @@
                                                             <%-- OnItemCommand="rptInquiryList_ItemCommand" OnItemDataBound="rptInquiryList_ItemDataBound"--%>
                                                             <ItemTemplate>
                                                                 <tr id="trCountDays" runat="server" class="odd gradeX">
-                                                                    <td>
+                                                                    <td style="text-align:center">
                                                                         <asp:Label ID="lblEntityID" runat="server"></asp:Label>
                                                                     </td>
-                                                                    <td id="tdCountDays" runat="server" style="text-align: center;">
+                                                                    <td id="tdCountDays" runat="server" style="text-align: left;">
                                                                         <asp:Label ID="lblEntityName" runat="server"></asp:Label>
                                                                     </td>
                                                                     <td id="td1" runat="server" style="text-align: center;">
                                                                         <asp:Label ID="lblBranchID" runat="server"></asp:Label>
                                                                     </td>
-                                                                    <td id="td2" runat="server" style="text-align: center;">
+                                                                    <td id="td2" runat="server" style="text-align: left;">
                                                                         <asp:Label ID="lblBranchName" runat="server"></asp:Label>
                                                                     </td>
-                                                                    <td id="td3" runat="server" style="text-align: center;">
+                                                                    <td id="td3" runat="server" style="text-align: left;">
                                                                         <asp:Label ID="lblInformation" runat="server"></asp:Label>
                                                                     </td>
                                                                     <td class="center">

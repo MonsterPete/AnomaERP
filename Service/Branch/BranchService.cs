@@ -67,5 +67,11 @@ namespace Service.Branch
             BranchDAO branchDAO = new BranchDAO();
             return branchDAO.CheckUsernameRepeat(username, user_id);
         }
+
+        public List<BuildingTypeEntity> GetDataBuildingTypeAll()
+        {
+            BranchDAO branchDAO = new BranchDAO();
+            return branchDAO.GetDataBuildingTypeAll();
+        }
     }
 }

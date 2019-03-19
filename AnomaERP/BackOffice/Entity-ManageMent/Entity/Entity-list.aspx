@@ -149,11 +149,11 @@
                                     <table id="tableList" class="datatables-demo table table-striped table-hover table-bordered">
                                         <thead class="thead-dark">
                                             <tr>
-                                                <th style="width: 3%">#</th>
+                                                <th style="width: 3%"; text-align: center;>#</th>
                                                 <th style="width: 20%">Entity Name</th>
                                                 <th style="width: 50%">Information</th>
-                                                <th style="width: 10%">Status</th>
-                                                <th style="width: 10%">Tools</th>
+                                                <th style="width: 10%"; text-align: center;>Status</th>
+                                                <th style="width: 10%"; text-align: center;>Tools</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -161,16 +161,16 @@
                                                 <%-- OnItemCommand="rptInquiryList_ItemCommand" OnItemDataBound="rptInquiryList_ItemDataBound"--%>
                                                 <ItemTemplate>
                                                     <tr id="trCountDays" runat="server" class="odd gradeX">
-                                                        <td>
+                                                        <td style="text-align: center;">
                                                             <asp:Label ID="lblID" runat="server"></asp:Label>
                                                         </td>
-                                                        <td id="tdCountDays" runat="server" style="text-align: center;">
+                                                        <td id="tdCountDays" runat="server" style="text-align: left;">
                                                             <asp:Label ID="lblEntityName" runat="server"></asp:Label>
                                                         </td>
-                                                        <td id="td1" runat="server" style="text-align: center;">
+                                                        <td id="td1" runat="server" style="text-align: left;">
                                                             <asp:Label ID="lblInfor" runat="server"></asp:Label>
                                                         </td>
-                                                        <td class="center">
+                                                        <td style="text-align: center;">
                                                             <label class="switcher switcher-sm">
                                                                 <asp:HiddenField ID="hdfStatus" runat="server" />
                                                                 <asp:LinkButton ID="lbnStatus" runat="server" ClientIDMode="AutoID">
@@ -186,7 +186,7 @@
                                                                 </asp:LinkButton>
                                                             </label>
                                                         </td>
-                                                        <td class="center">
+                                                        <td style="text-align: center;">
                                                             <div class="btn-group btn-group-sm">
                                                                 <asp:LinkButton ID="lbnEdit" runat="server" CssClass="btn btn-primary"><i class="ion ion-md-create"></i></asp:LinkButton>
                                                             </div>
