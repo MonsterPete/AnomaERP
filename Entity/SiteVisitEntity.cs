@@ -22,5 +22,17 @@ namespace Entity
         //Search Field
         public String sch_customer_name { get; set; }
         public bool? sch_reservation { get; set; }
+
+
+        //communication
+        public Int32 site_visite_communication_id { get; set; }
+        public Boolean is_facebook { get; set; }
+        public Boolean is_magazine { get; set; }
+        public Boolean is_advertise { get; set; }
+        public Boolean is_youtube { get; set; }
+        public Boolean is_biilboard { get; set; }
+        public Boolean is_recommend { get; set; }
+        public Boolean is_other { get; set; }
+        public String comment_other { get; set; }
     }
 }

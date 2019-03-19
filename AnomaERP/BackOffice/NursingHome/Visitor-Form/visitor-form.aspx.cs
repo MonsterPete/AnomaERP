@@ -19,6 +19,7 @@ namespace AnomaERP.BackOffice.NursingHome
             {
                 lblBranchID.Text = Master.branchEntity.branch_id.ToString();
                 lblVisitorID.Text = "0";
+                lblVisitorComID.Text = "0";
                 if (Request.QueryString["visitor_ID"] != null)
                 {
                     if (int.Parse(Request.QueryString["visitor_ID"]) > 0)
@@ -50,6 +51,7 @@ namespace AnomaERP.BackOffice.NursingHome
             txtPriceListed.Text = entity.price_listed.ToString();
             txtSymptom.Text = entity.symptom;
 
+            lblVisitorComID.Text = entity.site_visite_communication_id.ToString();
             if (entity.reservation == true)
             {
                 rdoReservation.Checked = true;
@@ -58,6 +60,43 @@ namespace AnomaERP.BackOffice.NursingHome
             {
                 rdoUnReservation.Checked = true;
             }
+
+            if (entity.is_facebook == true)
+            {
+                is_facebook.Checked = true;
+            }
+
+            if (entity.is_magazine == true)
+            {
+                is_magazine.Checked = true;
+            }
+
+            if (entity.is_advertise == true)
+            {
+                is_advertise.Checked = true;
+            }
+
+            if (entity.is_youtube == true)
+            {
+                is_youtube.Checked = true;
+            }
+
+            if (entity.is_biilboard == true)
+            {
+                is_biilboard.Checked = true;
+            }
+
+            if (entity.is_recommend == true)
+            {
+                is_recommend.Checked = true;
+            }
+
+            if (entity.is_other == true)
+            {
+                is_other.Checked = true;
+                txtComment.Text = entity.comment_other;
+            }
+
         }
 
         private SiteVisitEntity getEntityData()
@@ -87,6 +126,20 @@ namespace AnomaERP.BackOffice.NursingHome
             else if (rdoUnReservation.Checked == true)
             {
                 entity.reservation = false;
+            }
+
+            entity.site_visite_communication_id = int.Parse(lblVisitorComID.Text);
+            entity.is_facebook = is_facebook.Checked;
+            entity.is_magazine = is_magazine.Checked;
+            entity.is_advertise = is_advertise.Checked;
+            entity.is_youtube = is_youtube.Checked;
+            entity.is_biilboard = is_biilboard.Checked;
+            entity.is_recommend = is_recommend.Checked;
+            entity.is_other = is_other.Checked;
+
+            if (is_other.Checked == true)
+            {
+                entity.comment_other = txtComment.Text;
             }
 
             return entity;
