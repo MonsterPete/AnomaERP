@@ -64,9 +64,7 @@ namespace AnomaERP.BackOffice.Branch
             BranchService branchService = new BranchService();
             List<BranchEntity> branchEntities = new List<BranchEntity>();
 
-            branchEntities = branchService.GetDataByCondition(branchEntity);
-
-            
+            branchEntities = branchService.GetDataByCondition(branchEntity);        
             rptBranchList.DataSource = branchEntities;
             rptBranchList.DataBind();
         }
@@ -77,6 +75,15 @@ namespace AnomaERP.BackOffice.Branch
 
             branchEntity.branch_name = txtSearch.Text;
             branchEntity.entity_id = Master.entityEntity.entity_id;
+
+            if (ddlStatus.SelectedValue != "")
+            {
+                branchEntity.is_active_search = Boolean.Parse(ddlStatus.SelectedValue);
+            }
+            else
+            {
+                branchEntity.is_active_search = null;
+            }
 
             return branchEntity;
         }

@@ -4,8 +4,6 @@ using System.Linq;
 using System.Text;
 using Definitions;
 using Entity;
-using Definitions;
-
 
 namespace DAO.Employee
 {

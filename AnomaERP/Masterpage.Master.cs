@@ -80,7 +80,7 @@ namespace AnomaERP
                 }
                 else if (Session["EmployeeEntity"] != null)
                 {
-                    MenuSDM.Visible = true;
+                    MenuSdM.Visible = true;
                     aScheduleManagement.Visible = true;
                     lblUsername.Text = employeeEntity.firstname + ' ' + employeeEntity.lastname + '(' + employeeEntity.nickname + ')';
                 }

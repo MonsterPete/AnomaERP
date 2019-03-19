@@ -76,6 +76,16 @@ namespace AnomaERP.BackOffice.Entity
 
             entityEntity.entity_name = txtSearch.Text;
 
+            if (ddlStatus.SelectedValue != "")
+            {
+                entityEntity.is_active_search = Boolean.Parse(ddlStatus.SelectedValue);
+            }
+            else
+            {
+                entityEntity.is_active_search = null;
+            }
+           
+
             return entityEntity;
         }
 

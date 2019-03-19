@@ -40,6 +40,42 @@ namespace AnomaERP.BackOffice.Entity {
         protected global::System.Web.UI.WebControls.FileUpload fileImage;
         
         /// <summary>
+        /// lblimage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblimage;
+        
+        /// <summary>
+        /// AlertFileName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AlertFileName;
+        
+        /// <summary>
+        /// AlertFileSize control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AlertFileSize;
+        
+        /// <summary>
+        /// btnupload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnupload;
+        
+        /// <summary>
         /// txtAddress control.
         /// </summary>
         /// <remarks>

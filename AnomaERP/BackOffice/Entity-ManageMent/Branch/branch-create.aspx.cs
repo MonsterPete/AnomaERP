@@ -92,7 +92,15 @@ namespace AnomaERP.BackOffice.Branch
             branchEntity.is_active = true;
             branchEntity.is_delete = false;
 
-            success = branchService.InsertData(branchEntity);
+            if (int.Parse(lblbranchID.Text) > 0 )
+            {
+                success = branchService.UpdateData(branchEntity);
+            }
+            else
+            {
+                success = branchService.InsertData(branchEntity);
+            }
+            
             if (success > 0)
             {
                 Response.Redirect("/BackOffice/Entity-Management/Branch/Branch-list.aspx");

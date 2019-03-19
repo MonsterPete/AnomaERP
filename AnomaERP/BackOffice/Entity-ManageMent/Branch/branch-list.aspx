@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masterpage.Master" AutoEventWireup="true" CodeBehind="branch-list.aspx.cs" Inherits="AnomaERP.BackOffice.Branch.branch_list" %>
+
 <%@ MasterType VirtualPath="~/Masterpage.Master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="FromPlaceHolder" runat="server">
     <div class="layout-content">
@@ -12,7 +13,7 @@
                     <small class="font-weight-normal text-uppercase">
                         <a href="#" class="mr-1">Entity Management</a>/
                                     Branch Setup
-                                </small>
+                    </small>
                 </div>
             </h4>
 
@@ -37,7 +38,10 @@
                                 <div class="col-lg-3 col-xl-3 mb-2">
                                     <div class="form-group">
                                         <label class="form-label form-label-sm text-uppercase">Status</label>
-                                        <asp:DropDownList ID="ddlStatus" runat="server" CssClass="form-control form-control-sm text-uppercase">
+                                        <asp:DropDownList ID="ddlStatus" runat="server" CssClass="form-control form-control-sm">
+                                            <asp:ListItem Text="--Select--" Value=""></asp:ListItem>
+                                            <asp:ListItem Text="Active" Value="true"></asp:ListItem>
+                                            <asp:ListItem Text="InActive" Value="false"></asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
                                 </div>
@@ -116,7 +120,7 @@
                                                                         <div class="btn-group btn-group-sm">
                                                                             <asp:LinkButton ID="lbnEdit" runat="server" CssClass="btn btn-primary"><i class="ion ion-md-create"></i></asp:LinkButton>
                                                                         </div>
-                                                                        <div class="btn-group btn-group-sm">                                                                            
+                                                                        <div class="btn-group btn-group-sm">
                                                                             <asp:LinkButton ID="lbnFloor" runat="server" CssClass="btn btn-success"><i class="far fa-building"></i></asp:LinkButton>
                                                                         </div>
                                                                     </td>

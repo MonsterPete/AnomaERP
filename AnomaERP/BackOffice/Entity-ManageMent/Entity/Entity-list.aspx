@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="FromPlaceHolder" runat="server">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript">
+    <%-- <script type="text/javascript">
         var pr = Sys.WebForms.PageRequestManager.getInstance();
         if (pr != null) {
             pr.add_endRequest(function (sender, e) {
@@ -84,7 +84,7 @@
             });
         });
 
-    </script>
+    </script> --%>
     <asp:UpdatePanel ID="upnEntityList" runat="server">
         <ContentTemplate>
             <div class="container-fluid flex-grow-1 container-p-y">
@@ -122,7 +122,10 @@
                                             <div class="form-group">
                                                 <label class="form-label form-label-sm text-uppercase">
                                                     Status</label>
-                                                <asp:DropDownList ID="ddlStatus" runat="server" CssClass="form-control form-control-sm text-uppercase">
+                                                <asp:DropDownList ID="ddlStatus" runat="server" CssClass="form-control form-control-sm">
+                                                    <asp:ListItem Text="--Select--" Value=""></asp:ListItem>
+                                                    <asp:ListItem Text="Active" Value="true"></asp:ListItem>
+                                                    <asp:ListItem Text="InActive" Value="false"></asp:ListItem>
                                                 </asp:DropDownList>
                                             </div>
                                         </div>

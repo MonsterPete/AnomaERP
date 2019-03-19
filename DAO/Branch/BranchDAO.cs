@@ -37,7 +37,7 @@ namespace DAO.Branch
 
                         DBHelper.AddParam("Search", branchEntity.branch_name);
                        DBHelper.AddParam("entity_id", branchEntity.entity_id);
-
+                        DBHelper.AddParam("is_active", branchEntity.is_active_search);
 
                         branchEntities = DBHelper.SelectStoreProcedure<BranchEntity>("select_branch_by_condition").ToList();
                     }

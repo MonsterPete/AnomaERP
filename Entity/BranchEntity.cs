@@ -27,6 +27,8 @@ namespace Entity
         public Boolean is_active { get; set; }
         public Boolean is_delete { get; set; }
 
+        public Boolean? is_active_search { get; set; }
+
         #region entity table
         public String entity_name { get; set; }
         #endregion

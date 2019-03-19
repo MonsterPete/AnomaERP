@@ -35,7 +35,7 @@ namespace DAO.Entity
                         DBHelper.CreateParameters();
 
                         DBHelper.AddParam("Search", entity.entity_name);
-
+                        DBHelper.AddParam("is_active", entity.is_active_search);
 
                         entityEntities = DBHelper.SelectStoreProcedure<EntityEntity>("select_entity_by_condition").ToList();
                     }
@@ -173,7 +173,6 @@ namespace DAO.Entity
                             DBHelper.AddParam("email", entity.email);
                             DBHelper.AddParam("username", entity.username);
                             DBHelper.AddParam("password", entity.password);
-                            DBHelper.AddParam("create_date", entity.create_date);
                             DBHelper.AddParam("modify_date", entity.modify_date);
                             DBHelper.AddParam("is_active", entity.is_active);
                             DBHelper.AddParam("is_delete", entity.is_delete);
