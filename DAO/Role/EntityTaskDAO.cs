@@ -89,6 +89,10 @@ namespace DAO.Role
             return entityTaskEntity;
         }
 
+
+
+
+
         public List<EntityTaskEntity> GetDataByGroupID(int id)
         {
             List<EntityTaskEntity> entityTaskEntities = new List<EntityTaskEntity>();
@@ -103,6 +107,40 @@ namespace DAO.Role
                         DBHelper.AddParam("group_id", id);
 
                         entityTaskEntities = DBHelper.SelectStoreProcedure<EntityTaskEntity>("select_task_by_group_id").ToList();
+
+
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                    finally
+                    {
+                        DBHelper.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return entityTaskEntities;
+        }
+
+        public List<EntityTaskEntity> GetDataTaskIsActiveByGroupID(int id)
+        {
+            List<EntityTaskEntity> entityTaskEntities = new List<EntityTaskEntity>();
+            try
+            {
+                using (DBHelper.CreateConnection())
+                {
+                    try
+                    {
+                        DBHelper.OpenConnection();
+                        DBHelper.CreateParameters();
+                        DBHelper.AddParam("group_id", id);
+
+                        entityTaskEntities = DBHelper.SelectStoreProcedure<EntityTaskEntity>("select_task_by_group_id_is_active").ToList();
 
 
                     }

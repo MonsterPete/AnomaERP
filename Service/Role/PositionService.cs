@@ -46,6 +46,12 @@ namespace Service.Role
             return positionDAO.GetDataPositionByGroupID(Group_id);
         }
 
+        public List<PositionEntity> GetDataPositionIsActiveByGroupID(int Group_id)
+        {
+            PositionDAO positionDAO = new PositionDAO();
+            return positionDAO.GetDataPositionIsActiveByGroupID(Group_id);
+        }
+
         public int InsertDataMore(List<PositionEntity> positionEntities)
         {
             PositionDAO positionDAO = new PositionDAO();

@@ -57,6 +57,8 @@ namespace DAO.Role
             throw new NotImplementedException();
         }
 
+      
+
         public PositionEntity GetDataByID(long id)
         {
             PositionEntity positionEntity = new PositionEntity();
@@ -107,6 +109,41 @@ namespace DAO.Role
                         DBHelper.AddParam("group_id", Group_id);
 
                         positionEntities = DBHelper.SelectStoreProcedure<PositionEntity>("select_position_by_group_id").ToList();
+
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                    finally
+                    {
+                        DBHelper.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return positionEntities;
+        }
+
+        public List<PositionEntity> GetDataPositionIsActiveByGroupID(int group_id)
+        {
+            List<PositionEntity> positionEntities = new List<PositionEntity>();
+
+
+            try
+            {
+                using (DBHelper.CreateConnection())
+                {
+                    try
+                    {
+                        DBHelper.OpenConnection();
+                        DBHelper.CreateParameters();
+                        DBHelper.AddParam("group_id", group_id);
+
+                        positionEntities = DBHelper.SelectStoreProcedure<PositionEntity>("select_position_by_group_id_is_active").ToList();
 
                     }
                     catch (Exception ex)

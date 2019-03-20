@@ -19,10 +19,10 @@ namespace AnomaERP.BackOffice.Role.RoleSetup
             {
                 Session["ConfigRolePosition"] = null;
                 PositionService positionService = new PositionService();
-                List<PositionEntity> positionEntities = positionService.GetDataPositionByGroupID(int.Parse(Request.QueryString["group_id"].ToString()));
+                List<PositionEntity> positionEntities = positionService.GetDataPositionIsActiveByGroupID(int.Parse(Request.QueryString["group_id"].ToString()));
                 setDataToRptPosition(positionEntities);
                 EntityTaskService entityTaskService = new EntityTaskService();
-                setDataToRptTask(entityTaskService.GetDataByGroupID(int.Parse(Request.QueryString["group_id"].ToString())));
+                setDataToRptTask(entityTaskService.GetDataTaskIsActiveByGroupID(int.Parse(Request.QueryString["group_id"].ToString())));
 
                 foreach (var item in positionEntities)
                 {
