@@ -23,5 +23,7 @@ namespace Entity
         public DateTime modify_date { get; set; }
         public Boolean is_active { get; set; }
         public Boolean is_delete { get; set; }
+
+        public Boolean? is_active_search { get; set; }
     }
 }

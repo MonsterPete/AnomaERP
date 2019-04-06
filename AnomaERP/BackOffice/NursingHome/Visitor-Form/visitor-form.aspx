@@ -20,6 +20,7 @@
             <div class="card mb-3">
 
                 <asp:Label ID="lblVisitorID" runat="server" Text="" Visible="false"></asp:Label>
+                <asp:Label ID="lblVisitorComID" runat="server" Text="" Visible="false"></asp:Label>                
                 <asp:Label ID="lblBranchID" runat="server" Text="" Visible="false"></asp:Label>
 
                 <h4 class="card-header with-elements">
@@ -105,6 +106,66 @@
                                         <label class="form-label form-label-sm text-uppercase">อาการลูกค้า</label>
                                         <%--<textarea class="form-control form-control-sm" rows="3" placeholder="อาการลูกค้า"></textarea>--%>
                                         <asp:TextBox ID="txtSymptom" runat="server" TextMode="MultiLine" CssClass="form-control form-control-sm" placeholder="อาการลูกค้า"></asp:TextBox>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="mb-0" />
+                            <div class="row">
+                                <div class="col-lg-12 col-xl-12">
+                                    <h5 class="mt-4"><strong>ช่องทางการได้รับข่าวสาร</strong></h5>
+                                </div>
+
+                                <div class="col-lg-6 col-xl-6">
+                                    <div class="row">
+                                        <div class="col-lg-3 col-xl-3">
+                                            <label class="custom-control custom-checkbox">
+                                                <input type="checkbox" id="is_facebook" runat="server" class="custom-control-input">
+                                                <span class="custom-control-label">Facebook</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-lg-3 col-xl-3">
+                                            <label class="custom-control custom-checkbox">
+                                                <input type="checkbox" id="is_magazine" runat="server" class="custom-control-input">
+                                                <span class="custom-control-label">นิตยสาร</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-lg-4 col-xl-4">
+                                            <label class="custom-control custom-checkbox">
+                                                <input type="checkbox" id="is_advertise" runat="server" class="custom-control-input">
+                                                <span class="custom-control-label">โฆษณาบนเว็บไซต์</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-3 col-xl-3">
+                                            <label class="custom-control custom-checkbox">
+                                                <input type="checkbox" id="is_youtube" runat="server" class="custom-control-input">
+                                                <span class="custom-control-label">Youtube</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-lg-3 col-xl-3">
+                                            <label class="custom-control custom-checkbox">
+                                                <input type="checkbox" id="is_biilboard" runat="server" class="custom-control-input">
+                                                <span class="custom-control-label">ป้ายโฆษณา</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-lg-4 col-xl-4">
+                                            <label class="custom-control custom-checkbox">
+                                                <input type="checkbox" id="is_recommend" runat="server" class="custom-control-input">
+                                                <span class="custom-control-label">ได้รับการแนะนำ</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-3 col-xl-3">
+                                            <label class="custom-control custom-checkbox">
+                                                <input type="checkbox" id="is_other" runat="server" class="custom-control-input" >
+                                                <span class="custom-control-label">อื่นๆ</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-lg-7 col-xl-7">
+                                            <asp:TextBox ID="txtComment" TextMode="MultiLine"  CssClass="form-control form-control-sm" Rows ="3" runat="server" placeholder="อื่นๆ"></asp:TextBox>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

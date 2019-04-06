@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using Entity;
 using Service.Entity;
 using Service.Branch;
-
+using System.IO;
 
 namespace AnomaERP.BackOffice.Entity
 {
@@ -35,7 +35,7 @@ namespace AnomaERP.BackOffice.Entity
         {
             int success = 0;
 
-            EntityEntity entityEntity = new EntityEntity();           
+            EntityEntity entityEntity = new EntityEntity();
             EntityService entityService = new EntityService();
 
             BranchService branchService = new BranchService();
@@ -70,10 +70,9 @@ namespace AnomaERP.BackOffice.Entity
                 return;
             }
 
-
             entityEntity.entity_id = int.Parse(lblentityID.Text);
             entityEntity.entity_name = txtEntityName.Text;
-            entityEntity.logo = fileImage.FileName;
+            entityEntity.logo = lblimage.Text;
             entityEntity.address = txtAddress.Text;
             entityEntity.register_address = txtRegisAddress.Text;
             entityEntity.tax_id = txtTaxID.Text;
@@ -87,8 +86,16 @@ namespace AnomaERP.BackOffice.Entity
             entityEntity.is_active = true;
             entityEntity.is_delete = false;
 
-            success = entityService.InsertData(entityEntity);  
-            if(success > 0)
+            if (int.Parse(lblentityID.Text) > 0)
+            {
+                success = entityService.InsertData(entityEntity);
+            }
+            else
+            {
+                success = entityService.UpdateData(entityEntity);
+            }
+
+            if (success > 0)
             {
                 Response.Redirect("/BackOffice/Entity-Management/Entity/Entity-list.aspx");
             }
@@ -96,13 +103,14 @@ namespace AnomaERP.BackOffice.Entity
 
         public void SetDataToUI(int entity_id)
         {
+            lblimage.Visible = true;
             EntityService entityService = new EntityService();
             EntityEntity entityEntity = new EntityEntity();
 
             entityEntity = entityService.GetDataEntityByID(entity_id);
-           
+
             txtEntityName.Text = entityEntity.entity_name;
-            //fileImage.FileName = entityEntity.logo;
+            lblimage.Text = entityEntity.logo;
             txtAddress.Text = entityEntity.address;
             txtRegisAddress.Text = entityEntity.register_address;
             txtTaxID.Text = entityEntity.tax_id;
@@ -111,7 +119,28 @@ namespace AnomaERP.BackOffice.Entity
             txtEmail.Text = entityEntity.email;
             txtUserName.Text = entityEntity.username;
             txtPassword.Text = entityEntity.password;
-         
+
+        }
+
+        protected void btnupload_Click(object sender, EventArgs e)
+        {
+            AlertFileSize.Visible = false;
+            AlertFileName.Visible = false;
+
+            var fileSize = fileImage.FileBytes.Length;
+            var allowSize = 1 * 1024 * 1024;
+            if (int.Parse(fileSize.ToString()) > allowSize)
+            {
+                AlertFileSize.Visible = true;
+                return;
+            }
+
+            if (Path.GetExtension(fileImage.FileName) != ".png" && Path.GetExtension(fileImage.FileName) != ".jpg")
+            {
+                AlertFileName.Visible = true;
+                return;
+            }
+            lblimage.Text = fileImage.FileName;
         }
     }
 }

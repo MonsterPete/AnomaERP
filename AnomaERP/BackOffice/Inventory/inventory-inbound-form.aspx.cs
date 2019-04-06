@@ -24,7 +24,7 @@ namespace AnomaERP.BackOffice.Inventory
                 gDatastore = new List<InventoryEntity>();
 
                 //***Set Branch
-                lblBranchID.Text = "1"; //Suma fix for Test
+                lblBranchID.Text = "1"; //Waiting fix for Test
                 if (Request.QueryString["branch_ID"] != null)
                 {
                     if (int.Parse(Request.QueryString["branch_ID"]) > 0)
@@ -47,7 +47,7 @@ namespace AnomaERP.BackOffice.Inventory
                 }
 
                 //***Set CreateBy
-                lblCreateByID.Text = "1"; //Suma fix for Test
+                lblCreateByID.Text = "1"; //Waiting fix for Test
                 if (Request.QueryString["create_by_ID"] != null)
                 {
                     if (int.Parse(Request.QueryString["create_by_ID"]) > 0)
@@ -249,12 +249,12 @@ namespace AnomaERP.BackOffice.Inventory
                 }
                 else
                 {
-                    //Suma Alert DuplicateData
+                    //Waiting Alert DuplicateData
                 }
             }
             else
             {
-                //Suma Alert !isValid
+                //Waiting Alert !isValid
             }
         }
 
@@ -280,7 +280,7 @@ namespace AnomaERP.BackOffice.Inventory
             }
             else
             {
-                //Suma Alert No Update Data
+                //Waiting Alert No Update Data
             }
         }
 

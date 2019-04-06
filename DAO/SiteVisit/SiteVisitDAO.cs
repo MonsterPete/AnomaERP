@@ -129,6 +129,20 @@ namespace DAO.SiteVisit
                             DBHelper.ExecuteStoreProcedure("insert_site_visit");
                             visitor_id = DBHelper.GetParamOut<Int32>("visitor_id");
 
+
+                            DBHelper.CreateParameters();
+                            DBHelper.AddParamOut("site_visite_communication_id", entity.visitor_id);
+                            DBHelper.AddParam("visitor_id", visitor_id);
+                            DBHelper.AddParam("is_facebook", entity.is_facebook);
+                            DBHelper.AddParam("is_magazine", entity.is_magazine);
+                            DBHelper.AddParam("is_advertise", entity.is_advertise);
+                            DBHelper.AddParam("is_youtube", entity.is_youtube);
+                            DBHelper.AddParam("is_biilboard", entity.is_biilboard);
+                            DBHelper.AddParam("is_recommend", entity.is_recommend);
+                            DBHelper.AddParam("is_other", entity.is_other);
+                            DBHelper.AddParam("comment_other", entity.comment_other);
+                            DBHelper.ExecuteStoreProcedure("insert_site_visite_communication");
+
                             DBHelper.CommitTransaction();
                             result = visitor_id;
                         }
@@ -176,9 +190,30 @@ namespace DAO.SiteVisit
                             DBHelper.AddParam("price_listed", entity.price_listed);
                             DBHelper.AddParam("symptom", entity.symptom);
                             DBHelper.AddParam("reservation", entity.reservation);
-
                             DBHelper.ExecuteStoreProcedure("update_site_visit");
                             result = entity.visitor_id;
+
+                            DBHelper.CreateParameters();
+                            DBHelper.AddParam("site_visite_communication_id", entity.site_visite_communication_id);
+                            DBHelper.AddParam("visitor_id", entity.visitor_id);
+                            DBHelper.AddParam("is_facebook", entity.is_facebook);
+                            DBHelper.AddParam("is_magazine", entity.is_magazine);
+                            DBHelper.AddParam("is_advertise", entity.is_advertise);
+                            DBHelper.AddParam("is_youtube", entity.is_youtube);
+                            DBHelper.AddParam("is_biilboard", entity.is_biilboard);
+                            DBHelper.AddParam("is_recommend", entity.is_recommend);
+                            DBHelper.AddParam("is_other", entity.is_other);
+                            DBHelper.AddParam("comment_other", entity.comment_other);
+
+                            if (entity.site_visite_communication_id > 0)
+                            {
+                                DBHelper.ExecuteStoreProcedure("update_site_visite_communication");
+                            }
+                            else
+                            {
+                                DBHelper.ExecuteStoreProcedure("insert_site_visite_communication");
+                            }
+                            
                             DBHelper.CommitTransaction();
                         }
                     }

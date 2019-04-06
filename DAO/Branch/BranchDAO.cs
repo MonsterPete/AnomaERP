@@ -37,7 +37,7 @@ namespace DAO.Branch
 
                         DBHelper.AddParam("Search", branchEntity.branch_name);
                        DBHelper.AddParam("entity_id", branchEntity.entity_id);
-
+                        DBHelper.AddParam("is_active", branchEntity.is_active_search);
 
                         branchEntities = DBHelper.SelectStoreProcedure<BranchEntity>("select_branch_by_condition").ToList();
                     }
@@ -92,7 +92,35 @@ namespace DAO.Branch
             return branchEntities;
         }
 
-       
+        public List<BuildingTypeEntity> GetDataBuildingTypeAll()
+        {
+            List<BuildingTypeEntity> buildingTypeEntities = null;
+
+            try
+            {
+                using (DBHelper.CreateConnection())
+                {
+                    try
+                    {
+                        DBHelper.OpenConnection();
+                        buildingTypeEntities = DBHelper.SelectStoreProcedure<BuildingTypeEntity>("select_building_type").ToList();
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                    finally
+                    {
+                        DBHelper.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return buildingTypeEntities;
+        }
 
         public List<BranchEntity> GetDataByCondition(BranchEntity entity, int Index)
         {
@@ -155,6 +183,7 @@ namespace DAO.Branch
                                 DBHelper.AddParam("prefix", branchEntity.prefix);
                                 DBHelper.AddParam("phone", branchEntity.phone);
                                 DBHelper.AddParam("email", branchEntity.email);
+                                DBHelper.AddParam("building_type_id", branchEntity.building_type_id);
                                 DBHelper.AddParam("usage_area", branchEntity.usage_area);
                                 DBHelper.AddParam("rental_price", branchEntity.rental_price);
                                 DBHelper.AddParam("username", branchEntity.username);
@@ -213,6 +242,7 @@ namespace DAO.Branch
                             DBHelper.AddParam("prefix", branchEntity.prefix);
                             DBHelper.AddParam("phone", branchEntity.phone);
                             DBHelper.AddParam("email", branchEntity.email);
+                            DBHelper.AddParam("building_type_id", branchEntity.building_type_id);
                             DBHelper.AddParam("usage_area", branchEntity.usage_area);
                             DBHelper.AddParam("rental_price", branchEntity.rental_price);
                             DBHelper.AddParam("username", branchEntity.username);
