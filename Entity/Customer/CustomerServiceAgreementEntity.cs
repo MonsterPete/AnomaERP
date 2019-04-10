@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Entity
 {
-    public class Customer_service_agreementEntity
+    public class CustomerServiceAgreementEntity
     {
         public Int32 Customer_service_agreement_id { get; set; }
         public Int32 Customer_id { get; set; }

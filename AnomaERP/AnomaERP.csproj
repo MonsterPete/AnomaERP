@@ -473,6 +473,7 @@
     <Content Include="BackOffice\Bed-Management\Bed\bed-delete-accessory.aspx" />
     <Content Include="BackOffice\Bed-Management\Bed\bed-entity.aspx" />
     <Content Include="BackOffice\Bed-Management\Job\job-assign.aspx" />
+    <Content Include="BackOffice\Customer\customer-information.aspx" />
     <Content Include="BackOffice\Entity-Management\Branch\branch-create.aspx" />
     <Content Include="BackOffice\Entity-Management\Branch\branch-create.html" />
     <Content Include="BackOffice\Entity-Management\Branch\branch-list.aspx" />
@@ -542,6 +543,13 @@
     </Compile>
     <Compile Include="BackOffice\Bed-Management\Job\job-assign.aspx.designer.cs">
       <DependentUpon>job-assign.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BackOffice\Customer\customer-information.aspx.cs">
+      <DependentUpon>customer-information.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackOffice\Customer\customer-information.aspx.designer.cs">
+      <DependentUpon>customer-information.aspx</DependentUpon>
     </Compile>
     <Compile Include="BackOffice\Entity-Management\Branch\branch-create.aspx.cs">
       <DependentUpon>branch-create.aspx</DependentUpon>
