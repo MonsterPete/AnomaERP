@@ -111,8 +111,8 @@ namespace AnomaERP.BackOffice.NursingHome
             CustomerService customerService = new CustomerService();
             CustomerEntity customerEntity = new CustomerEntity();
 
-            customerEntity.customer_RelativeEntity = new Customer_relativeEntity();
-            customerEntity.customer_Service_AgreementEntity = new Customer_service_agreementEntity();
+            customerEntity.customer_RelativeEntity = new CustomerRelativeEntity();
+            customerEntity.customer_Service_AgreementEntity = new CustomerServiceAgreementEntity();
 
             DateFormat dateFormat = new DateFormat();  
             customerEntity.customer_id = int.Parse(lblCustomerID.Text);
