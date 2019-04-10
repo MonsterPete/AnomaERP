@@ -6,6 +6,7 @@ namespace Entity
 {
     public class RiskAssessmentEntity
     {
+        public Int32 customer_risk_assessment_id { get; set; }
         public Int32 customer_id { get; set; }
 
         public Int32 risk_assessment_id { get; set; }

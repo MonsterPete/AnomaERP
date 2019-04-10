@@ -7,6 +7,7 @@ namespace Entity
     public class PersonalFactorsEntity
     {
         public Int32 customer_id { get; set; }
+        public Int32 customer_personal_factors_id { get; set; }
 
         public Int32 personal_factors_id { get; set; }
         public String personal_factors_name { get; set; }
