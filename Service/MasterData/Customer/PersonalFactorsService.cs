@@ -1,4 +1,5 @@
-﻿using Entity;
+﻿using DAO;
+using Entity;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,7 +15,8 @@ namespace Service
 
         public List<PersonalFactorsEntity> GetDataByCondition(PersonalFactorsEntity entity)
         {
-            throw new NotImplementedException();
+            PersonalFactorsDAO personalFactorsDAO = new PersonalFactorsDAO();
+            return personalFactorsDAO.GetDataByCondition(entity);
         }
 
         public List<PersonalFactorsEntity> GetDataByCondition(PersonalFactorsEntity entity, int index)

@@ -1,4 +1,5 @@
-﻿using Entity;
+﻿using DAO;
+using Entity;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,7 +15,8 @@ namespace Service
 
         public List<RedFlagEntity> GetDataByCondition(RedFlagEntity entity)
         {
-            throw new NotImplementedException();
+            RedFlagDAO redFlagDAO = new RedFlagDAO();
+            return redFlagDAO.GetDataByCondition(entity);
         }
 
         public List<RedFlagEntity> GetDataByCondition(RedFlagEntity entity, int index)

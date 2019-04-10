@@ -16,5 +16,6 @@ namespace Entity
         public Boolean is_delete { get; set; }
         
         public Int32 customer_id { get; set; }
+        public Int32 customer_congenital_disease_id { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Entity;
+﻿using DAO;
+using Entity;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,7 +15,8 @@ namespace Service
 
         public List<CongenitalDiseaseEntity> GetDataByCondition(CongenitalDiseaseEntity entity)
         {
-            throw new NotImplementedException();
+            CongenitalDiseaseDAO congenitalDiseaseDAO = new CongenitalDiseaseDAO();
+            return congenitalDiseaseDAO.GetDataByCondition(entity);
         }
 
         public List<CongenitalDiseaseEntity> GetDataByCondition(CongenitalDiseaseEntity entity, int index)
