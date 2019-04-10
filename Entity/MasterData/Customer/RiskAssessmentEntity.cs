@@ -6,6 +6,8 @@ namespace Entity
 {
     public class RiskAssessmentEntity
     {
+        public Int32 customer_id { get; set; }
+
         public Int32 risk_assessment_id { get; set; }
         public String risk_assessment_name { get; set; }
         public DateTime created_date { get; set; }
