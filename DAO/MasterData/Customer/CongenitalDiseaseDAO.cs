@@ -1,12 +1,20 @@
-﻿using Entity;
+﻿using Definitions;
+using Entity;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace DAO
 {
     public class CongenitalDiseaseDAO : IDAORepository<CongenitalDiseaseEntity>
     {
+        DBHelper DBHelper = null;
+        public CongenitalDiseaseDAO()
+        {
+            DBHelper = new DBHelper();
+        }
+
         public List<CongenitalDiseaseEntity> GetDataAll()
         {
             throw new NotImplementedException();
@@ -14,7 +22,34 @@ namespace DAO
 
         public List<CongenitalDiseaseEntity> GetDataByCondition(CongenitalDiseaseEntity entity)
         {
-            throw new NotImplementedException();
+            List<CongenitalDiseaseEntity> entityList = null;
+
+            try
+            {
+                using (DBHelper.CreateConnection())
+                {
+                    try
+                    {
+                        DBHelper.OpenConnection();
+                        DBHelper.CreateParameters();
+                        DBHelper.AddParam("customer_id", entity.customer_id);
+                        entityList = DBHelper.SelectStoreProcedure<CongenitalDiseaseEntity>("select_master_congenital_disease_by_condition").ToList();
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                    finally
+                    {
+                        DBHelper.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return entityList;
         }
 
         public List<CongenitalDiseaseEntity> GetDataByCondition(CongenitalDiseaseEntity entity, int Index)

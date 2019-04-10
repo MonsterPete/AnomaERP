@@ -1,4 +1,5 @@
-﻿using Entity;
+﻿using DAO;
+using Entity;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,7 +15,8 @@ namespace Service
 
         public List<RiskAssessmentEntity> GetDataByCondition(RiskAssessmentEntity entity)
         {
-            throw new NotImplementedException();
+            RiskAssessmentDAO riskAssessmentDAO = new RiskAssessmentDAO();
+            return riskAssessmentDAO.GetDataByCondition(entity);
         }
 
         public List<RiskAssessmentEntity> GetDataByCondition(RiskAssessmentEntity entity, int index)

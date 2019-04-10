@@ -6,6 +6,8 @@ namespace Entity
 {
     public class RedFlagEntity
     {
+        public Int32 customer_id { get; set; }
+
         public Int32 red_flag_id { get; set; }
         public String red_flag_name { get; set; }
         public DateTime created_date { get; set; }
