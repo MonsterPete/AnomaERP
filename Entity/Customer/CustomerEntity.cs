@@ -24,8 +24,8 @@ namespace Entity
         public Int32 modify_by { get; set; }
 
 
-        public Customer_relativeEntity customer_RelativeEntity { get; set; }
-        public Customer_service_agreementEntity customer_Service_AgreementEntity { get; set; }
+        public CustomerRelativeEntity customer_RelativeEntity { get; set; }
+        public CustomerServiceAgreementEntity customer_Service_AgreementEntity { get; set; }
         public String branch_name { get; set; }
     }
 }

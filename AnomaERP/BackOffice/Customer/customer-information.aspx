@@ -324,14 +324,13 @@
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <label class="form-label form-label-sm">วันเดือนปีที่รับ</label>
-                                            <input type="text" class="form-control form-control-sm" placeholder="DD/MM/YYYY">
+                                            <asp:TextBox ID="txtDateInformationRecieve" CssClass="form-control form-control-sm" runat="server" TextMode="Date"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <label class="form-label form-label-sm">เวลา</label>
-                                            <input type="time" class="form-control form-control-sm"
-                                                placeholder="ความสัมพันธ์กับผู้ป่วย">
+                                            <asp:TextBox ID="txtTimeInformationRecieve" CssClass="form-control form-control-sm" runat="server" TextMode="Time"></asp:TextBox>
                                         </div>
                                     </div>
                                 </div>
@@ -344,7 +343,7 @@
                                             <div class="col-sm-2">
                                                 <div class="form-group">
                                                     <label class="custom-control custom-radio">
-                                                        <input name="custom-radio-3" type="radio" class="custom-control-input" checked="">
+                                                        <asp:RadioButton ID="rbtnServiceBy1" CssClass="custom-control-input" runat="server" />
                                                         <span class="custom-control-label">ญาตินำส่งเอง</span>
                                                     </label>
                                                 </div>
@@ -352,19 +351,19 @@
                                             <div class="col-sm-5">
                                                 <div class="form-group">
                                                     <label class="custom-control custom-radio mb-1">
-                                                        <input name="custom-radio-3" type="radio" class="custom-control-input" checked="">
+                                                        <asp:RadioButton ID="rbtnServiceBy2" CssClass="custom-control-input" runat="server" />
                                                         <span class="custom-control-label">รถพยาบาลไปรับจาก</span>
                                                     </label>
-                                                    <input type="text" class="form-control form-control-sm w-100" placeholder="">
+                                                    <asp:TextBox ID="txtServiceBy2" CssClass="form-control form-control-sm w-100" runat="server"></asp:TextBox>
                                                 </div>
                                             </div>
                                             <div class="col-sm-5">
                                                 <div class="form-group form-inline">
                                                     <label class="custom-control custom-radio mb-1">
-                                                        <input name="custom-radio-3" type="radio" class="custom-control-input" checked="">
+                                                        <asp:RadioButton ID="rbtnServiceBy3" CssClass="custom-control-input" runat="server" />
                                                         <span class="custom-control-label">อื่นๆ</span>
                                                     </label>
-                                                    <input type="text" class="form-control form-control-sm w-100" placeholder="">
+                                                    <asp:TextBox ID="txtServiceBy3" CssClass="form-control form-control-sm w-100" runat="server"></asp:TextBox>
                                                 </div>
                                             </div>
                                         </div>
@@ -376,8 +375,7 @@
                                             <label
                                                 class="form-label form-label-sm text-uppercase">
                                                 เอกสารสำคัญ/ความต้องการสำคัญ<span class="text-danger">*</span></label>
-                                            <textarea class="form-control form-control-sm" rows="3"
-                                                placeholder="ข้อความ"></textarea>
+                                            <asp:TextBox ID="txtImportantDoc" CssClass="form-control form-control-sm " placeholder="เอกสารสำคัญ/ความต้องการสำคัญ" TextMode="MultiLine" Rows="5" runat="server"></asp:TextBox>
                                         </div>
                                     </div>
                                 </div>
@@ -390,6 +388,7 @@
                                             <div class="col-sm-3">
                                                 <div class="form-group mr-3">
                                                     <label class="custom-control custom-checkbox">
+                                                        <asp:CheckBoxList ID="chk1" runat="server"></asp:CheckBoxList>
                                                         <input type="checkbox" class="custom-control-input">
                                                         <span class="custom-control-label">ไม่มี</span>
                                                     </label>
@@ -416,92 +415,6 @@
                                                     <label class="custom-control custom-checkbox">
                                                         <input type="checkbox" class="custom-control-input">
                                                         <span class="custom-control-label">CHD</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                                <div class="form-group mr-3">
-                                                    <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input">
-                                                        <span class="custom-control-label">Chest Pain</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <div class="form-group mr-3">
-                                                    <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input">
-                                                        <span class="custom-control-label">Stroke</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <div class="form-group mr-3">
-                                                    <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input">
-                                                        <span class="custom-control-label">Migraine</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <div class="form-group mr-3">
-                                                    <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input">
-                                                        <span class="custom-control-label">Asthma</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                                <div class="form-group mr-3">
-                                                    <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input">
-                                                        <span class="custom-control-label">TB</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <div class="form-group mr-3">
-                                                    <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input">
-                                                        <span class="custom-control-label">Gout</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <div class="form-group mr-3">
-                                                    <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input">
-                                                        <span class="custom-control-label">Viral Hepatitist</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <div class="form-group mr-3">
-                                                    <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input">
-                                                        <span class="custom-control-label">Convulsion</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                                <div class="form-group mr-3">
-                                                    <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input">
-                                                        <span class="custom-control-label">Rheumatoid</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <div class="form-group mr-3">
-                                                    <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input">
-                                                        <span class="custom-control-label">Renal Failure</span>
                                                     </label>
                                                 </div>
                                             </div>

@@ -64,8 +64,8 @@ namespace DAO.Customer
         public CustomerEntity GetDataByID(long customer_id)
         {
             CustomerEntity customerEntity = new CustomerEntity();
-            Customer_relativeEntity customer_RelativeEntity = new Customer_relativeEntity();
-            Customer_service_agreementEntity customer_Service_AgreementEntity = new Customer_service_agreementEntity();
+            CustomerRelativeEntity customer_RelativeEntity = new CustomerRelativeEntity();
+            CustomerServiceAgreementEntity customer_Service_AgreementEntity = new CustomerServiceAgreementEntity();
 
             try
             {
@@ -77,8 +77,8 @@ namespace DAO.Customer
                         DBHelper.CreateParameters();
                         DBHelper.AddParam("customer_id", customer_id);
                         customerEntity = DBHelper.SelectStoreProcedureFirst<CustomerEntity>("select_customer_by_id");
-                        customer_RelativeEntity = DBHelper.SelectStoreProcedureFirst<Customer_relativeEntity>("select_customer_by_id");
-                        customer_Service_AgreementEntity = DBHelper.SelectStoreProcedureFirst<Customer_service_agreementEntity>("select_customer_by_id");
+                        customer_RelativeEntity = DBHelper.SelectStoreProcedureFirst<CustomerRelativeEntity>("select_customer_by_id");
+                        customer_Service_AgreementEntity = DBHelper.SelectStoreProcedureFirst<CustomerServiceAgreementEntity>("select_customer_by_id");
 
                         if (customer_RelativeEntity != null)
                         {
