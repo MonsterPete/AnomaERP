@@ -13,6 +13,7 @@
         </h4>
 
         <!-- Register Form -->
+        <asp:Label ID="lblCustomerID" runat="server" Visible="false"></asp:Label>
         <div class="row">
             <div class="col-sm-12">
                 <div class="card mb-3 p-4">
@@ -343,7 +344,7 @@
                                             <div class="col-sm-2">
                                                 <div class="form-group">
                                                     <label class="custom-control custom-radio">
-                                                        <asp:RadioButton ID="rbtnServiceBy1" CssClass="custom-control-input" runat="server" />
+                                                        <asp:RadioButton ID="rbtnServiceBy1" GroupName="ServiceBy" CssClass="custom-control-input" runat="server" />
                                                         <span class="custom-control-label">ญาตินำส่งเอง</span>
                                                     </label>
                                                 </div>
@@ -351,8 +352,9 @@
                                             <div class="col-sm-5">
                                                 <div class="form-group">
                                                     <label class="custom-control custom-radio mb-1">
-                                                        <asp:RadioButton ID="rbtnServiceBy2" CssClass="custom-control-input" runat="server" />
-                                                        <span class="custom-control-label">รถพยาบาลไปรับจาก</span>
+                                                        <%--custom-control-input--%>
+                                                        <asp:RadioButton ID="rbtnServiceBy2" GroupName="ServiceBy" CssClass="custom-control-input" runat="server" />
+                                                        <span class="custom-control-label">ไปรับจาก</span>
                                                     </label>
                                                     <asp:TextBox ID="txtServiceBy2" CssClass="form-control form-control-sm w-100" runat="server"></asp:TextBox>
                                                 </div>
@@ -360,7 +362,7 @@
                                             <div class="col-sm-5">
                                                 <div class="form-group form-inline">
                                                     <label class="custom-control custom-radio mb-1">
-                                                        <asp:RadioButton ID="rbtnServiceBy3" CssClass="custom-control-input" runat="server" />
+                                                        <asp:RadioButton ID="rbtnServiceBy3" GroupName="ServiceBy" CssClass="custom-control-input" runat="server" />
                                                         <span class="custom-control-label">อื่นๆ</span>
                                                     </label>
                                                     <asp:TextBox ID="txtServiceBy3" CssClass="form-control form-control-sm w-100" runat="server"></asp:TextBox>
@@ -388,33 +390,7 @@
                                             <div class="col-sm-3">
                                                 <div class="form-group mr-3">
                                                     <label class="custom-control custom-checkbox">
-                                                        <asp:CheckBoxList ID="chk1" runat="server"></asp:CheckBoxList>
-                                                        <input type="checkbox" class="custom-control-input">
-                                                        <span class="custom-control-label">ไม่มี</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <div class="form-group mr-3">
-                                                    <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input">
-                                                        <span class="custom-control-label">HT</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <div class="form-group mr-3">
-                                                    <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input">
-                                                        <span class="custom-control-label">DM</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <div class="form-group mr-3">
-                                                    <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input">
-                                                        <span class="custom-control-label">CHD</span>
+                                                        <asp:CheckBoxList ID="chkCongenitalDisease" runat="server"></asp:CheckBoxList>
                                                     </label>
                                                 </div>
                                             </div>
@@ -430,100 +406,7 @@
                                             <div class="col-sm-3">
                                                 <div class="form-group">
                                                     <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input">
-                                                        <span class="custom-control-label">ไม่มี</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <div class="form-group">
-                                                    <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input">
-                                                        <span class="custom-control-label">Cauda equina syndrome</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <div class="form-group">
-                                                    <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input">
-                                                        <span class="custom-control-label">ชาบริเวณ Saddle</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <div class="form-group">
-                                                    <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input">
-                                                        <span class="custom-control-label">กระดูกหักที่ไม่ได้รักษา</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                                <div class="form-group">
-                                                    <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input">
-                                                        <span class="custom-control-label">มีไข้</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <div class="form-group">
-                                                    <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input">
-                                                        <span class="custom-control-label">กลั้นปัสสาวะ/อุจจาระไม่ได้</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <div class="form-group">
-                                                    <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input">
-                                                        <span class="custom-control-label">มีประวัติเป็นมะเร็ง</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <div class="form-group">
-                                                    <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input">
-                                                        <span class="custom-control-label">มีประวัติเนื้องอก</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                                <div class="form-group">
-                                                    <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input">
-                                                        <span class="custom-control-label">มีอายุมากกว่า 50 ปี</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <div class="form-group">
-                                                    <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input">
-                                                        <span class="custom-control-label">ปวดตอนกลางคืน</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <div class="form-group">
-                                                    <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input">
-                                                        <span class="custom-control-label">มีภาวะบาดเจ็บอย่างรุนแรง</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <div class="form-group">
-                                                    <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input">
-                                                        <span class="custom-control-label">น้ำหนักลดโดยไม่รู้สาเหตุ</span>
+                                                        <asp:CheckBoxList ID="chkRedFlag" CssClass="custom-control-input" runat="server"></asp:CheckBoxList>
                                                     </label>
                                                 </div>
                                             </div>
@@ -539,32 +422,7 @@
                                             <div class="col-sm-3">
                                                 <div class="form-group mr-3">
                                                     <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input">
-                                                        <span class="custom-control-label">Burn</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <div class="form-group mr-3">
-                                                    <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input">
-                                                        <span class="custom-control-label">Fall</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <div class="form-group mr-3">
-                                                    <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input">
-                                                        <span class="custom-control-label">Pregnant</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <div class="form-group mr-3">
-                                                    <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input">
-                                                        <span class="custom-control-label">Fracture</span>
+                                                        <asp:CheckBoxList ID="chkRiskAssessment" CssClass="custom-control-input" runat="server"></asp:CheckBoxList>
                                                     </label>
                                                 </div>
                                             </div>
@@ -581,32 +439,7 @@
                                             <div class="col-sm-3">
                                                 <div class="form-group mr-3">
                                                     <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input">
-                                                        <span class="custom-control-label">สูบบุหรี่</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <div class="form-group mr-3">
-                                                    <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input">
-                                                        <span class="custom-control-label">ดื่มสุรา</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <div class="form-group mr-3">
-                                                    <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input">
-                                                        <span class="custom-control-label">มีความเสี่ยง</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <div class="form-group mr-3">
-                                                    <label class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input">
-                                                        <span class="custom-control-label">มีความเครียด/กังวล</span>
+                                                        <asp:CheckBoxList ID="chkPersonalFactors" CssClass="custom-control-input" runat="server"></asp:CheckBoxList>
                                                     </label>
                                                 </div>
                                             </div>
@@ -619,7 +452,7 @@
                                             <label class="form-label form-label-sm text-uppercase">
                                                 ประวัติการเจ็บป่วยปัจจุบัน
                                                                 :</label>
-                                            <textarea class="form-control form-control-sm" rows="3" placeholder=""></textarea>
+                                            <asp:TextBox ID="txtCurrentIllness" CssClass="form-control form-control-sm " placeholder="ประวัติการเจ็บป่วยปัจจุบัน" TextMode="MultiLine" Rows="5" runat="server"></asp:TextBox>
                                         </div>
                                     </div>
                                 </div>
@@ -629,7 +462,7 @@
                                             <label class="form-label form-label-sm text-uppercase">
                                                 ประวัติการเจ็บป่วยในอดีต
                                                                 :</label>
-                                            <textarea class="form-control form-control-sm" rows="3" placeholder=""></textarea>
+                                            <asp:TextBox ID="txtHistoryIllness" CssClass="form-control form-control-sm " placeholder="ประวัติการเจ็บป่วยในอดีต" TextMode="MultiLine" Rows="5" runat="server"></asp:TextBox>
                                         </div>
                                     </div>
                                 </div>
@@ -637,7 +470,7 @@
                                     <div class="col-sm-12">
                                         <div class="form-group">
                                             <label class="form-label form-label-sm text-uppercase">การวินิจฉัยของแพทย์ :</label>
-                                            <textarea class="form-control form-control-sm" rows="3" placeholder=""></textarea>
+                                            <asp:TextBox ID="txtDiagnosis" CssClass="form-control form-control-sm " placeholder="การวินิจฉัยของแพทย์" TextMode="MultiLine" Rows="5" runat="server"></asp:TextBox>
                                         </div>
                                     </div>
                                 </div>
@@ -647,7 +480,7 @@
                                             <label class="form-label form-label-sm text-uppercase">
                                                 การรักษาที่เคยได้รับจากแพทย์
                                                                 :</label>
-                                            <textarea class="form-control form-control-sm" rows="3" placeholder=""></textarea>
+                                            <asp:TextBox ID="txtTreatment" CssClass="form-control form-control-sm " placeholder="เคยได้รับจากแพทย์" TextMode="MultiLine" Rows="5" runat="server"></asp:TextBox>
                                         </div>
                                     </div>
                                 </div>
@@ -658,7 +491,7 @@
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <label class="custom-control custom-radio">
-                                                <input name="custom-radio-3" type="radio" class="custom-control-input" checked="">
+                                                <asp:RadioButton ID="rbtnTreatment1" GroupName="Treatment" CssClass="custom-control-input" runat="server" />
                                                 <span class="custom-control-label">ไม่มี</span>
                                             </label>
                                         </div>
@@ -666,10 +499,10 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label class="custom-control custom-radio mb-1">
-                                                <input name="custom-radio-3" type="radio" class="custom-control-input" checked="">
+                                                <asp:RadioButton ID="rbtnTreatment2" GroupName="Treatment" CssClass="custom-control-input" runat="server" />
                                                 <span class="custom-control-label">มี</span>
                                             </label>
-                                            <input type="text" class="form-control form-control-sm w-100" placeholder="">
+                                            <asp:TextBox ID="txtTreatmentComment" CssClass="form-control form-control-sm " placeholder="ข้อมูลการผ่าตัดที่เคยได้รับ" runat="server"></asp:TextBox>
                                         </div>
                                     </div>
                                 </div>
@@ -682,25 +515,25 @@
                                             <div class="col-sm-3">
                                                 <div class="form-group">
                                                     <label class="form-label form-label-sm">Vital Sign :</label>
-                                                    <input type="tel" class="form-control form-control-sm" placeholder="T/C">
+                                                    <asp:TextBox ID="txtT_C" CssClass="form-control form-control-sm " placeholder="T/C" runat="server"></asp:TextBox>
                                                 </div>
                                             </div>
                                             <div class="col-sm-3">
                                                 <label class="form-label form-label-sm"></label>
                                                 <div class="form-group">
-                                                    <input type="tel" class="form-control form-control-sm" placeholder="P/Min">
+                                                    <asp:TextBox ID="txtP_Min" CssClass="form-control form-control-sm " placeholder="P/Min" runat="server"></asp:TextBox>
                                                 </div>
                                             </div>
                                             <div class="col-sm-3">
                                                 <label class="form-label form-label-sm"></label>
                                                 <div class="form-group">
-                                                    <input type="tel" class="form-control form-control-sm" placeholder="R/Min">
+                                                    <asp:TextBox ID="txtR_Min" CssClass="form-control form-control-sm " placeholder="R/Min" runat="server"></asp:TextBox>
                                                 </div>
                                             </div>
                                             <div class="col-sm-3">
                                                 <label class="form-label form-label-sm"></label>
                                                 <div class="form-group">
-                                                    <input type="tel" class="form-control form-control-sm" placeholder="BP/mmHg">
+                                                    <asp:TextBox ID="txtBP_mmHg" CssClass="form-control form-control-sm " placeholder="BP/mmHg" runat="server"></asp:TextBox>
                                                 </div>
                                             </div>
                                         </div>
@@ -708,25 +541,25 @@
                                             <div class="col-sm-3">
                                                 <label class="form-label form-label-sm"></label>
                                                 <div class="form-group">
-                                                    <input type="tel" class="form-control form-control-sm" placeholder="O2Sat/%">
+                                                    <asp:TextBox ID="txtO2Sat_Percent" CssClass="form-control form-control-sm " placeholder="O2Sat/%" runat="server"></asp:TextBox>
                                                 </div>
                                             </div>
                                             <div class="col-sm-3">
                                                 <label class="form-label form-label-sm"></label>
                                                 <div class="form-group">
-                                                    <input type="tel" class="form-control form-control-sm" placeholder="BW/kg">
+                                                    <asp:TextBox ID="txtBW_kg" CssClass="form-control form-control-sm " placeholder="BW/kg" runat="server"></asp:TextBox>
                                                 </div>
                                             </div>
                                             <div class="col-sm-3">
                                                 <label class="form-label form-label-sm"></label>
                                                 <div class="form-group">
-                                                    <input type="tel" class="form-control form-control-sm" placeholder="HT/Cm">
+                                                    <asp:TextBox ID="txtHT_Cm" CssClass="form-control form-control-sm " placeholder="HT/Cm" runat="server"></asp:TextBox>
                                                 </div>
                                             </div>
                                             <div class="col-sm-3">
                                                 <label class="form-label form-label-sm"></label>
                                                 <div class="form-group">
-                                                    <input type="tel" class="form-control form-control-sm" placeholder="BMI/Index">
+                                                    <asp:TextBox ID="txtBMI_Index" CssClass="form-control form-control-sm " placeholder="BMI/Index" runat="server"></asp:TextBox>
                                                 </div>
                                             </div>
                                         </div>
