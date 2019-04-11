@@ -351,6 +351,7 @@ namespace DAO.Customer
                             DBHelper.AddParam("lastname", entity.lastname);
                             DBHelper.AddParam("id_card", entity.id_card);
                             DBHelper.AddParam("general_information_upload", entity.general_information_upload);
+                            DBHelper.AddParam("DOB", entity.DOB);
                             DBHelper.AddParam("age", entity.age);
                             DBHelper.AddParam("gender", entity.gender);
                             DBHelper.AddParam("martial_status", entity.martial_status);
@@ -367,14 +368,12 @@ namespace DAO.Customer
                             DBHelper.AddParam("treatment_has_received", entity.treatment_has_received);
                             DBHelper.AddParam("is_surgery", entity.is_surgery);
                             DBHelper.AddParam("surgery_comment", entity.surgery_comment);
-                            DBHelper.AddParam("contract_end", entity.contract_end);
+                            DBHelper.AddParam("contract_end", null);
                             DBHelper.AddParam("is_have_bed", entity.is_have_bed);
                             DBHelper.AddParam("is_admit", entity.is_admit);
                             DBHelper.AddParam("is_delete", entity.is_delete);
                             DBHelper.AddParam("create_date", entity.create_date);
                             DBHelper.AddParam("create_by", entity.create_by);
-                            DBHelper.AddParam("modify_date", entity.modify_date);
-                            DBHelper.AddParam("modify_by", entity.modify_by);
 
                             DBHelper.ExecuteStoreProcedure("insert_customer");
                             customer_id = DBHelper.GetParamOut<Int32>("customer_id");
@@ -462,6 +461,7 @@ namespace DAO.Customer
                                 foreach (CustomerCongenitalDiseaseEntity index in entity.customerCongenitalDiseaseEntities)
                                 {
                                     DBHelper.CreateParameters();
+                                    DBHelper.AddParamOut("customer_congenital_disease_id", 0);
                                     DBHelper.AddParam("customer_id", customer_id);
                                     DBHelper.AddParam("congenital_disease_id",
                                         index.congenital_disease_id);
@@ -469,10 +469,6 @@ namespace DAO.Customer
                                         index.created_date);
                                     DBHelper.AddParam("create_by",
                                         index.created_by);
-                                    DBHelper.AddParam("modify_date",
-                                        index.modified_date);
-                                    DBHelper.AddParam("modify_by",
-                                        index.modified_by);
                                     DBHelper.AddParam("is_active",
                                         true);
                                     DBHelper.AddParam("is_delete",
@@ -487,17 +483,14 @@ namespace DAO.Customer
                                 foreach (CustomerPersonalFactorsEntity index in entity.customerPersonalFactorsEntities)
                                 {
                                     DBHelper.CreateParameters();
+                                    DBHelper.AddParamOut("customer_personal_factors_id", 0);
                                     DBHelper.AddParam("customer_id", customer_id);
                                     DBHelper.AddParam("personal_factors_id",
                                         index.personal_factors_id);
-                                    DBHelper.AddParam("create_date",
+                                    DBHelper.AddParam("created_date",
                                         index.created_date);
-                                    DBHelper.AddParam("create_by",
+                                    DBHelper.AddParam("created_by",
                                         index.created_by);
-                                    DBHelper.AddParam("modify_date",
-                                        index.modified_date);
-                                    DBHelper.AddParam("modify_by",
-                                        index.modified_by);
                                     DBHelper.AddParam("is_active",
                                         true);
                                     DBHelper.AddParam("is_delete",
@@ -510,19 +503,16 @@ namespace DAO.Customer
                             if (entity.customerRedFlagEntities.Count > 0)
                             {
                                 foreach (CustomerRedFlagEntity index in entity.customerRedFlagEntities)
-                                {
+                                {  
                                     DBHelper.CreateParameters();
+                                    DBHelper.AddParamOut("customer_red_flag_id", 0);
                                     DBHelper.AddParam("customer_id", customer_id);
                                     DBHelper.AddParam("red_flag_id",
                                         index.red_flag_id);
-                                    DBHelper.AddParam("create_date",
+                                    DBHelper.AddParam("created_date",
                                         index.created_date);
-                                    DBHelper.AddParam("create_by",
+                                    DBHelper.AddParam("created_by",
                                         index.created_by);
-                                    DBHelper.AddParam("modify_date",
-                                        index.modified_date);
-                                    DBHelper.AddParam("modify_by",
-                                        index.modified_by);
                                     DBHelper.AddParam("is_active",
                                         true);
                                     DBHelper.AddParam("is_delete",
@@ -537,17 +527,14 @@ namespace DAO.Customer
                                 foreach (CustomerRiskAssessmentEntity index in entity.customerRiskAssessmentEntities)
                                 {
                                     DBHelper.CreateParameters();
+                                    DBHelper.AddParamOut("customer_risk_assessment_id", 0);
                                     DBHelper.AddParam("customer_id", customer_id);
                                     DBHelper.AddParam("risk_assessment_id",
                                         index.risk_assessment_id);
-                                    DBHelper.AddParam("create_date",
+                                    DBHelper.AddParam("created_date",
                                         index.created_date);
-                                    DBHelper.AddParam("create_by",
+                                    DBHelper.AddParam("created_by",
                                         index.created_by);
-                                    DBHelper.AddParam("modify_date",
-                                        index.modified_date);
-                                    DBHelper.AddParam("modify_by",
-                                        index.modified_by);
                                     DBHelper.AddParam("is_active",
                                         true);
                                     DBHelper.AddParam("is_delete",

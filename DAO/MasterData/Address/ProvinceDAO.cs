@@ -1,15 +1,49 @@
-﻿using Entity;
+﻿using Definitions;
+using Entity;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace DAO
 {
     public class ProvinceDAO : IDAORepository<ProvinceEntity>
     {
+        DBHelper DBHelper = null;
+
+        public ProvinceDAO()
+        {
+            DBHelper = new DBHelper();
+        }
+
         public List<ProvinceEntity> GetDataAll()
         {
-            throw new NotImplementedException();
+            List<ProvinceEntity> provinceEntities = null;
+
+            try
+            {
+                using (DBHelper.CreateConnection())
+                {
+                    try
+                    {
+                        DBHelper.OpenConnection();
+                        provinceEntities = DBHelper.SelectStoreProcedure<ProvinceEntity>("select_all_province").ToList();
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                    finally
+                    {
+                        DBHelper.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return provinceEntities;
         }
 
         public List<ProvinceEntity> GetDataByCondition(ProvinceEntity entity)

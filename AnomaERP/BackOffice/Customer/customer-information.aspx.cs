@@ -21,19 +21,15 @@ namespace AnomaERP.BackOffice.Customer
                 lblCustomerRelativeID.Text = "0";
                 lblCustomerInformationRecieveID.Text = "0";
                 lblCustomerVitalSignID.Text = "0";
-                //SetDDLProvince();
-                //SetDDLDistinct(int.Parse(ddlProvince.SelectedValue));
-                //SetDDLSubDistinct(int.Parse(ddlDistrict.SelectedValue));
+                SetDDLProvince();
+                if (Request.QueryString["customer_id"] != null)
+                {
+                    if (int.Parse(Request.QueryString["customer_id"]) > 0)
+                    {
+                        lblCustomerID.Text = Request.QueryString["customer_id"].ToString();
 
-                //if (Request.QueryString["customer_id"] != null)
-                //{
-
-                //    if (int.Parse(Request.QueryString["customer_id"]) > 0)
-                //    {
-                //        lblCustomerID.Text = Request.QueryString["customer_id"].ToString();
-
-                //    }
-                //}
+                    }
+                }
                 GetDataToUI(int.Parse(lblCustomerID.Text));
             }
         }
@@ -134,6 +130,7 @@ namespace AnomaERP.BackOffice.Customer
             SetDataToUIRiskAssessment(riskAssessmentEntities);
             SetDataToUIPersonalFactors(personalFactorsEntities);
 
+            txtCreatedDate.Text = DateTime.Now.ToString();
             if (customer_id > 0)
             {
                 CustomerService customerService = new CustomerService();
@@ -247,7 +244,7 @@ namespace AnomaERP.BackOffice.Customer
         public void SetDataToUICustomer(CustomerEntity customerEntity)
         {
             txtHN.Text = "";
-            txtCreatedDate.Text = DateTime.Now.ToString();
+            txtCreatedDate.Text = customerEntity.create_date.ToString("MM/dd/yyyy");
             txtFirstName.Text = customerEntity.firstname;
             txtLastName.Text = customerEntity.lastname;
             txtTaxId.Text = customerEntity.id_card;
@@ -260,7 +257,9 @@ namespace AnomaERP.BackOffice.Customer
             }
             txtAddress.Text = customerEntity.address;
             ddlProvince.SelectedValue = customerEntity.province.ToString();
+            SetDDLDistinct(int.Parse(ddlProvince.SelectedValue));
             ddlDistrict.SelectedValue = customerEntity.district.ToString();
+            SetDDLSubDistinct(int.Parse(ddlDistrict.SelectedValue));
             ddlSubDisctrict.SelectedValue = customerEntity.sub_district.ToString();
             txtZipCode.Text = customerEntity.zipcode;
             txtPhone.Text = customerEntity.tel;
@@ -327,7 +326,7 @@ namespace AnomaERP.BackOffice.Customer
             if (customerEntity.customer_Vital_SignEntity != null)
             {
                 lblCustomerVitalSignID.Text = customerEntity.customer_Vital_SignEntity.customer_vital_sign_id.ToString();
-                txtT_C.Text = customerEntity.customer_Vital_SignEntity.t_c.ToString("N2");
+                txtT_C.Text = customerEntity.customer_Vital_SignEntity.t_c.ToString();
                 txtP_Min.Text = customerEntity.customer_Vital_SignEntity.p_min.ToString("N2");
                 txtR_Min.Text = customerEntity.customer_Vital_SignEntity.r_min.ToString("N2");
                 txtBP_mmHg.Text = customerEntity.customer_Vital_SignEntity.bp_mmhg.ToString("N2");
@@ -349,22 +348,21 @@ namespace AnomaERP.BackOffice.Customer
                 Label lblCongenitalDiseaseName = (Label)rptchkCongenitalDisease.Items[i].FindControl("lblCongenitalDiseaseName");
                 HtmlInputCheckBox isCheckCongenitalDisease = (HtmlInputCheckBox)rptchkCongenitalDisease.Items[i].FindControl("isCheckCongenitalDisease");
 
-                bool check = false;
                 if (isCheckCongenitalDisease.Checked == true)
                 {
-                    check = true;
+                    customerCongenitalDiseaseEntities.Add(new CustomerCongenitalDiseaseEntity
+                    {
+                        customer_congenital_disease_id = int.Parse(lblCustomerCongenitalDiseaseID.Text),
+                        congenital_disease_id = int.Parse(lblCongenitalDiseaseID.Text),
+                        congenital_disease_name = lblCongenitalDiseaseName.Text,
+                        customer_id = int.Parse(lblCustomerID.Text),
+                        created_date = DateTime.Now,
+                        created_by = Master.branchEntity.branch_id,
+                        modified_by = Master.branchEntity.branch_id,
+                        modified_date = DateTime.Now,
+                        is_check = true
+                    });
                 }
-
-                customerCongenitalDiseaseEntities.Add(new CustomerCongenitalDiseaseEntity
-                {
-                    customer_congenital_disease_id = int.Parse(lblCustomerCongenitalDiseaseID.Text),
-                    congenital_disease_id = int.Parse(lblCongenitalDiseaseID.Text),
-                    congenital_disease_name = lblCongenitalDiseaseName.Text,
-                    customer_id = int.Parse(lblCustomerID.Text),
-                    modified_by = 1,
-                    modified_date = DateTime.Now,
-                    is_check = check
-                });
             }
             return customerCongenitalDiseaseEntities;
         }
@@ -380,21 +378,20 @@ namespace AnomaERP.BackOffice.Customer
                 Label lblRedFlagName = (Label)rptchkRedFlag.Items[i].FindControl("lblRedFlagName");
                 HtmlInputCheckBox isRedFlag = (HtmlInputCheckBox)rptchkRedFlag.Items[i].FindControl("isRedFlag");
 
-                bool check = false;
                 if (isRedFlag.Checked == true)
                 {
-                    check = true;
+                    customerRedFlagEntities.Add(new CustomerRedFlagEntity
+                    {
+                        customer_red_flag_id = int.Parse(lblCustomerRedFlagID.Text),
+                        red_flag_id = int.Parse(lblRedFlagID.Text),
+                        customer_id = int.Parse(lblCustomerID.Text),
+                        created_date = DateTime.Now,
+                        created_by = Master.branchEntity.branch_id,
+                        modified_by = Master.branchEntity.branch_id,
+                        modified_date = DateTime.Now,
+                        is_check = true
+                    });
                 }
-
-                customerRedFlagEntities.Add(new CustomerRedFlagEntity
-                {
-                    customer_red_flag_id = int.Parse(lblCustomerRedFlagID.Text),
-                    red_flag_id = int.Parse(lblRedFlagID.Text),
-                    customer_id = int.Parse(lblCustomerID.Text),
-                    modified_by = 1,
-                    modified_date = DateTime.Now,
-                    is_check = check
-                });
             }
             return customerRedFlagEntities;
         }
@@ -410,21 +407,20 @@ namespace AnomaERP.BackOffice.Customer
                 Label lblRiskAssessmentName = (Label)rptRiskAssessment.Items[i].FindControl("lblRiskAssessmentName");
                 HtmlInputCheckBox isRiskAssessment = (HtmlInputCheckBox)rptRiskAssessment.Items[i].FindControl("isRiskAssessment");
 
-                bool check = false;
                 if (isRiskAssessment.Checked == true)
                 {
-                    check = true;
-                }
-
-                customerRiskAssessmentEntities.Add(new CustomerRiskAssessmentEntity
-                {
-                    customer_risk_assessment_id = int.Parse(lblCustomerRiskAssessmentID.Text),
-                    risk_assessment_id = int.Parse(lblRiskAssessmentID.Text),
-                    customer_id = int.Parse(lblCustomerID.Text),
-                    modified_by = 1,
-                    modified_date = DateTime.Now,
-                    is_check = check
-                });
+                    customerRiskAssessmentEntities.Add(new CustomerRiskAssessmentEntity
+                    {
+                        customer_risk_assessment_id = int.Parse(lblCustomerRiskAssessmentID.Text),
+                        risk_assessment_id = int.Parse(lblRiskAssessmentID.Text),
+                        customer_id = int.Parse(lblCustomerID.Text),
+                        created_date = DateTime.Now,
+                        created_by = Master.branchEntity.branch_id,
+                        modified_by = Master.branchEntity.branch_id,
+                        modified_date = DateTime.Now,
+                        is_check = true
+                    });
+                } 
             }
             return customerRiskAssessmentEntities;
         }
@@ -440,21 +436,20 @@ namespace AnomaERP.BackOffice.Customer
                 Label lblPersonalFactorsName = (Label)rptPersonalFactors.Items[i].FindControl("lblPersonalFactorsName");
                 HtmlInputCheckBox isPersonalFactors = (HtmlInputCheckBox)rptPersonalFactors.Items[i].FindControl("isPersonalFactors");
 
-                bool check = false;
                 if (isPersonalFactors.Checked == true)
                 {
-                    check = true;
+                    customerPersonalFactorsEntities.Add(new CustomerPersonalFactorsEntity
+                    {
+                        customer_personal_factors_id = int.Parse(lblCustomerPersonalFactorsID.Text),
+                        personal_factors_id = int.Parse(lblPersonalFactorsID.Text),
+                        customer_id = int.Parse(lblCustomerID.Text),
+                        created_date = DateTime.Now,
+                        created_by = Master.branchEntity.branch_id,
+                        modified_by = Master.branchEntity.branch_id,
+                        modified_date = DateTime.Now,
+                        is_check = true
+                    });
                 }
-
-                customerPersonalFactorsEntities.Add(new CustomerPersonalFactorsEntity
-                {
-                    customer_personal_factors_id = int.Parse(lblCustomerPersonalFactorsID.Text),
-                    personal_factors_id = int.Parse(lblPersonalFactorsID.Text),
-                    customer_id = int.Parse(lblCustomerID.Text),
-                    modified_by = 1,
-                    modified_date = DateTime.Now,
-                    is_check = check
-                });
             }
             return customerPersonalFactorsEntities;
         }
@@ -467,6 +462,7 @@ namespace AnomaERP.BackOffice.Customer
             List<CustomerRiskAssessmentEntity> customerRiskAssessmentEntities = new List<CustomerRiskAssessmentEntity>();
             List<CustomerPersonalFactorsEntity> customerPersonalFactorsEntities = new List<CustomerPersonalFactorsEntity>();
 
+            customerEntity.branch_id = Master.branchEntity.branch_id;
             txtHN.Text = "";
             customerEntity.create_date = DateTime.Parse(txtCreatedDate.Text);
             customerEntity.firstname = txtFirstName.Text;
@@ -504,7 +500,7 @@ namespace AnomaERP.BackOffice.Customer
             customerRelativeEntity.customer_relative_phone_1 = txtRelationTel1.Text;
             customerRelativeEntity.customer_relative_emergency_tel_1 = txtRelationTelEmergency1.Text;
             customerRelativeEntity.customer_relation_line_id_1 = txtRelationLine1.Text;
-            customerRelativeEntity.customer_relation_facebook_1 =  txtRelationFacebook1.Text;
+            customerRelativeEntity.customer_relation_facebook_1 = txtRelationFacebook1.Text;
             customerRelativeEntity.customer_relation_email_1 = txtRelationEmail1.Text;
             customerRelativeEntity.customer_relation_address_1 = txtRelationAddress1.Text;
             customerRelativeEntity.customer_relative_name_2 = txtRelationName2.Text;
@@ -519,7 +515,7 @@ namespace AnomaERP.BackOffice.Customer
             Customer_information_recieveEntity customer_Information_RecieveEntity = new Customer_information_recieveEntity();
             customer_Information_RecieveEntity.customer_information_recieve_id = int.Parse(lblCustomerInformationRecieveID.Text);
             customer_Information_RecieveEntity.customer_information_recieve_date = DateTime.Parse(txtDateInformationRecieve.Text);
-            
+
             if (rbtnServiceBy1.Checked == true)
             {
                 customer_Information_RecieveEntity.customer_information_recieve_service_by = 1;
@@ -670,16 +666,16 @@ namespace AnomaERP.BackOffice.Customer
             CustomerService customerService = new CustomerService();
 
             customerEntity = getDataFromUI();
-            if (int.Parse(lblCustomerID.Text) > 0 )
+            if (int.Parse(lblCustomerID.Text) > 0)
             {
                 //success = customerService.UpdateCustomer(customerEntity);
             }
             else
-            {      
+            {
                 success = customerService.InsertCustomerRegister(customerEntity);
             }
 
-            if (success > 0 )
+            if (success > 0)
             {
                 Response.Redirect("/BackOffice/Customer/customer-list.aspx");
             }
