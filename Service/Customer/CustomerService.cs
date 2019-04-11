@@ -47,5 +47,10 @@ namespace Service.Customer
             CustomerDAO customerDAO = new CustomerDAO();
             return customerDAO.GetDDLCustomerForAssginBed(branchId);
         }
+        
+        public Boolean InsertDataCustomer(CustomerEntity customerEntity)
+        {
+            return true;
+        }
     }
 }
