@@ -9,6 +9,7 @@ namespace Entity
     {
         public Int32 customer_id { get; set; }
         public Int32 branch_id { get; set; }
+        public String HN_no { get; set; }
         public String fullname { get; set; }
         public String firstname { get; set; }
         public String lastname { get; set; }
