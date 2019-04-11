@@ -48,19 +48,10 @@ namespace Service.Customer
             return customerDAO.GetDDLCustomerForAssginBed(branchId);
         }
         
-        public Boolean InsertDataCustomer(CustomerEntity customerEntity)
+        public int InsertCustomerRegister(CustomerEntity customerEntity)
         {
-            return true;
-        }
-
-        public int InsertCustomer(CustomerEntity customerEntity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int UpdateCustomer(CustomerEntity customerEntity)
-        {
-            throw new NotImplementedException();
+            CustomerDAO customerDAO = new CustomerDAO();
+            return customerDAO.InsertCustomerRegister(customerEntity);
         }
     }
 }
