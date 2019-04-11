@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DAO
 {
-    public class SubDistrictService : IDAORepository<SubDistrictEntity>
+    public class SubDistrictDAO : IDAORepository<SubDistrictEntity>
     {
         public List<SubDistrictEntity> GetDataAll()
         {
@@ -33,6 +33,11 @@ namespace DAO
         }
 
         public int UpdateData(SubDistrictEntity entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<SubDistrictEntity> GetDataByDistrictID(int district_id)
         {
             throw new NotImplementedException();
         }

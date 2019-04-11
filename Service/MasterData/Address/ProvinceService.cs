@@ -2,14 +2,16 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using DAO;
 
-namespace Service.MasterData.Address
+namespace Service
 {
     public class ProvinceService : IServiceRepository<ProvinceEntity>
     {
         public List<ProvinceEntity> GetDataAll()
         {
-            throw new NotImplementedException();
+            ProvinceDAO provinceDAO = new ProvinceDAO();
+            return provinceDAO.GetDataAll();
         }
 
         public List<ProvinceEntity> GetDataByCondition(ProvinceEntity entity)

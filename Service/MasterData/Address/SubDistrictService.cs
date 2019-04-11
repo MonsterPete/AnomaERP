@@ -2,8 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using DAO;
 
-namespace Service.MasterData.Address
+namespace Service
 {
     public class SubDistrictService : IServiceRepository<SubDistrictEntity>
     {
@@ -35,6 +36,12 @@ namespace Service.MasterData.Address
         public int UpdateData(SubDistrictEntity entity)
         {
             throw new NotImplementedException();
+        }
+
+        public List<SubDistrictEntity> GetDataByDistrictID(int district_id)
+        {
+            SubDistrictDAO subDistrictDAO = new SubDistrictDAO();
+            return subDistrictDAO.GetDataByDistrictID(district_id);
         }
     }
 }

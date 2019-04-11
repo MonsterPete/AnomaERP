@@ -17,7 +17,14 @@ namespace AnomaERP.BackOffice.Customer
         {
             if (!IsPostBack)
             {
-                lblCustomerID.Text = "1";
+                lblCustomerID.Text = "0";
+                lblCustomerRelativeID.Text = "0";
+                lblCustomerInformationRecieveID.Text = "0";
+                lblCustomerVitalSignID.Text = "0";
+                //SetDDLProvince();
+                //SetDDLDistinct(int.Parse(ddlProvince.SelectedValue));
+                //SetDDLSubDistinct(int.Parse(ddlDistrict.SelectedValue));
+
                 //if (Request.QueryString["customer_id"] != null)
                 //{
 
@@ -29,6 +36,71 @@ namespace AnomaERP.BackOffice.Customer
                 //}
                 GetDataToUI(int.Parse(lblCustomerID.Text));
             }
+        }
+
+        protected void ddlProvince_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SetDDLDistinct(int.Parse(ddlProvince.SelectedValue));
+        }
+
+        protected void ddlDistrict_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SetDDLSubDistinct(int.Parse(ddlDistrict.SelectedValue));
+        }
+
+        public void SetDDLProvince()
+        {
+            List<ProvinceEntity> provinceEntities = new List<ProvinceEntity>();
+            ProvinceService provinceService = new ProvinceService();
+
+            provinceEntities = provinceService.GetDataAll();
+            provinceEntities.Insert(0, new ProvinceEntity
+            {
+                province_id = 0,
+                province_name = "-select-"
+            });
+
+            ddlProvince.DataSource = provinceEntities;
+            ddlProvince.DataTextField = "province_name";
+            ddlProvince.DataValueField = "province_id";
+            ddlProvince.DataBind();
+        }
+
+        public void SetDDLDistinct(int province_id)
+        {
+            List<DistrictEntity> districtEntities = new List<DistrictEntity>();
+            DistrictService districtService = new DistrictService();
+
+            districtEntities = districtService.GetDataByProvinceID(province_id);
+
+            districtEntities.Insert(0, new DistrictEntity
+            {
+                district_id = 0,
+                district_name = "-select-"
+            });
+
+            ddlDistrict.DataSource = districtEntities;
+            ddlDistrict.DataTextField = "district_name";
+            ddlDistrict.DataValueField = "district_id";
+            ddlDistrict.DataBind();
+        }
+
+        public void SetDDLSubDistinct(int district_id)
+        {
+            List<SubDistrictEntity> subDistrictEntities = new List<SubDistrictEntity>();
+            SubDistrictService subDistrictService = new SubDistrictService();
+
+            subDistrictEntities = subDistrictService.GetDataByDistrictID(district_id);
+            subDistrictEntities.Insert(0, new SubDistrictEntity
+            {
+                sub_district_id = 0,
+                sub_district_name = "-select-"
+            });
+
+            ddlSubDisctrict.DataSource = subDistrictEntities;
+            ddlSubDisctrict.DataTextField = "sub_district_name";
+            ddlSubDisctrict.DataValueField = "sub_district_id";
+            ddlSubDisctrict.DataBind();
         }
 
         public void GetDataToUI(int customer_id)
@@ -182,7 +254,10 @@ namespace AnomaERP.BackOffice.Customer
             txtDOB.Text = customerEntity.DOB.ToString();
             txtAge.Text = customerEntity.age.ToString();
             ddlSex.SelectedValue = customerEntity.gender;
-            ddlMartialStatus.SelectedValue = customerEntity.martial_status.ToString();
+            if (customerEntity.martial_status != null)
+            {
+                ddlMartialStatus.SelectedValue = customerEntity.martial_status.ToString();
+            }
             txtAddress.Text = customerEntity.address;
             ddlProvince.SelectedValue = customerEntity.province.ToString();
             ddlDistrict.SelectedValue = customerEntity.district.ToString();
@@ -191,7 +266,7 @@ namespace AnomaERP.BackOffice.Customer
             txtPhone.Text = customerEntity.tel;
             ddlNewFrom.SelectedValue = customerEntity.information_channel;
 
-            customerEntity.customer_RelativeEntity = new CustomerRelativeEntity();
+            lblCustomerRelativeID.Text = customerEntity.customer_RelativeEntity.customer_relative_id.ToString(); ;
             txtRelationName1.Text = customerEntity.customer_RelativeEntity.customer_relative_name_1;
             txtRelation1.Text = customerEntity.customer_RelativeEntity.customer_relation_1;
             txtRelationTel1.Text = customerEntity.customer_RelativeEntity.customer_relative_phone_1;
@@ -212,6 +287,7 @@ namespace AnomaERP.BackOffice.Customer
 
             if (customerEntity.customer_Information_RecieveEntity != null)
             {
+                lblCustomerInformationRecieveID.Text = customerEntity.customer_Information_RecieveEntity.customer_information_recieve_id.ToString();
                 if (customerEntity.customer_Information_RecieveEntity.customer_information_recieve_date != null)
                 {
                     txtDateInformationRecieve.Text = customerEntity.customer_Information_RecieveEntity.customer_information_recieve_date.ToString();
@@ -250,6 +326,7 @@ namespace AnomaERP.BackOffice.Customer
 
             if (customerEntity.customer_Vital_SignEntity != null)
             {
+                lblCustomerVitalSignID.Text = customerEntity.customer_Vital_SignEntity.customer_vital_sign_id.ToString();
                 txtT_C.Text = customerEntity.customer_Vital_SignEntity.t_c.ToString("N2");
                 txtP_Min.Text = customerEntity.customer_Vital_SignEntity.p_min.ToString("N2");
                 txtR_Min.Text = customerEntity.customer_Vital_SignEntity.r_min.ToString("N2");
@@ -392,28 +469,89 @@ namespace AnomaERP.BackOffice.Customer
 
             txtHN.Text = "";
             customerEntity.create_date = DateTime.Parse(txtCreatedDate.Text);
-            customerEntity.firstname = txtFirstName.Text; 
+            customerEntity.firstname = txtFirstName.Text;
             customerEntity.lastname = txtLastName.Text;
             customerEntity.id_card = txtTaxId.Text;
             customerEntity.DOB = DateTime.Parse(txtDOB.Text);
             customerEntity.age = int.Parse(txtAge.Text);
             customerEntity.gender = ddlSex.SelectedValue;
             customerEntity.martial_status = ddlMartialStatus.SelectedValue;
-            //txtAddress.Text = customerEntity.address;
-            //ddlProvince.SelectedValue = customerEntity.province.ToString();
-            //ddlDistrict.SelectedValue = customerEntity.district.ToString();
-            //ddlSubDisctrict.SelectedValue = customerEntity.sub_district.ToString();
-            //txtZipCode.Text = customerEntity.zipcode;
-            //txtPhone.Text = customerEntity.tel;
-            //ddlNewFrom.SelectedValue = customerEntity.information_channel;
+            customerEntity.address = txtAddress.Text;
+            customerEntity.province = int.Parse(ddlProvince.SelectedValue);
+            customerEntity.district = int.Parse(ddlDistrict.SelectedValue); ;
+            customerEntity.sub_district = int.Parse(ddlSubDisctrict.SelectedValue);
+            customerEntity.zipcode = txtZipCode.Text;
+            customerEntity.tel = txtPhone.Text;
+            customerEntity.information_channel = ddlNewFrom.SelectedValue;
+            customerEntity.current_illness = txtCurrentIllness.Text;
+            customerEntity.current_illness_history = txtHistoryIllness.Text;
+            customerEntity.doctor_diagnosis = txtDiagnosis.Text;
+            customerEntity.treatment_has_received = txtTreatment.Text;
+            if (rbtnTreatment1.Checked == true)
+            {
+                customerEntity.is_surgery = false;
+            }
+            else
+            {
+                customerEntity.is_surgery = true;
+                customerEntity.surgery_comment = txtTreatment.Text;
+            }
 
+            CustomerRelativeEntity customerRelativeEntity = new CustomerRelativeEntity();
+            customerRelativeEntity.customer_relative_id = int.Parse(lblCustomerRelativeID.Text);
+            customerRelativeEntity.customer_relative_name_1 = txtRelationName1.Text;
+            customerRelativeEntity.customer_relation_1 = txtRelation1.Text;
+            customerRelativeEntity.customer_relative_phone_1 = txtRelationTel1.Text;
+            customerRelativeEntity.customer_relative_emergency_tel_1 = txtRelationTelEmergency1.Text;
+            customerRelativeEntity.customer_relation_line_id_1 = txtRelationLine1.Text;
+            customerRelativeEntity.customer_relation_facebook_1 =  txtRelationFacebook1.Text;
+            customerRelativeEntity.customer_relation_email_1 = txtRelationEmail1.Text;
+            customerRelativeEntity.customer_relation_address_1 = txtRelationAddress1.Text;
+            customerRelativeEntity.customer_relative_name_2 = txtRelationName2.Text;
+            customerRelativeEntity.customer_relation_2 = txtRelation2.Text;
+            customerRelativeEntity.customer_relative_phone_2 = txtRelationTel2.Text;
+            customerRelativeEntity.customer_relative_emergency_tel_2 = txtRelationTelEmergency2.Text;
+            customerRelativeEntity.customer_relation_line_id_2 = txtRelationLine2.Text;
+            customerRelativeEntity.customer_relation_facebook_2 = txtRelationFacebook2.Text;
+            customerRelativeEntity.customer_relation_email_2 = txtRelationEmail2.Text;
+            customerRelativeEntity.customer_relation_address_2 = txtRelationAddress2.Text;
 
+            Customer_information_recieveEntity customer_Information_RecieveEntity = new Customer_information_recieveEntity();
+            customer_Information_RecieveEntity.customer_information_recieve_id = int.Parse(lblCustomerInformationRecieveID.Text);
+            customer_Information_RecieveEntity.customer_information_recieve_date = DateTime.Parse(txtDateInformationRecieve.Text);
+            
+            if (rbtnServiceBy1.Checked == true)
+            {
+                customer_Information_RecieveEntity.customer_information_recieve_service_by = 1;
+            }
+            else if (rbtnServiceBy1.Checked == true)
+            {
+                customer_Information_RecieveEntity.customer_information_recieve_service_by = 2;
+            }
+            else if (rbtnServiceBy1.Checked == true)
+            {
+                customer_Information_RecieveEntity.customer_information_recieve_service_by = 3;
+            }
+            customer_Information_RecieveEntity.important_documents = txtImportantDoc.Text;
+
+            Customer_vital_signEntity customer_Vital_SignEntity = new Customer_vital_signEntity();
+            customer_Vital_SignEntity.customer_vital_sign_id = int.Parse(lblCustomerVitalSignID.Text);
+            customer_Vital_SignEntity.t_c = decimal.Parse(txtT_C.Text);
+            customer_Vital_SignEntity.p_min = decimal.Parse(txtP_Min.Text);
+            customer_Vital_SignEntity.r_min = decimal.Parse(txtR_Min.Text);
+            customer_Vital_SignEntity.bp_mmhg = decimal.Parse(txtBP_mmHg.Text);
+            customer_Vital_SignEntity.o2sat_percent = decimal.Parse(txtO2Sat_Percent.Text);
+            customer_Vital_SignEntity.ht_cm = decimal.Parse(txtHT_Cm.Text);
+            customer_Vital_SignEntity.bm_index = decimal.Parse(txtBMI_Index.Text);
 
             customerCongenitalDiseaseEntities = GetChkListCongenitalDisease();
             customerRedFlagEntities = GetChkListRedFlag();
             customerRiskAssessmentEntities = GetChkListRiskAssessment();
             customerPersonalFactorsEntities = GetChkListPersonalFactor();
 
+            customerEntity.customer_RelativeEntity = customerRelativeEntity;
+            customerEntity.customer_Information_RecieveEntity = customer_Information_RecieveEntity;
+            customerEntity.customer_Vital_SignEntity = customer_Vital_SignEntity;
             customerEntity.customerCongenitalDiseaseEntities = customerCongenitalDiseaseEntities;
             customerEntity.customerRedFlagEntities = customerRedFlagEntities;
             customerEntity.customerRiskAssessmentEntities = customerRiskAssessmentEntities;
@@ -424,13 +562,135 @@ namespace AnomaERP.BackOffice.Customer
 
         protected void lbnSave_Click(object sender, EventArgs e)
         {
-           
+
+            if (string.IsNullOrEmpty(txtFirstName.Text) && string.IsNullOrEmpty(txtLastName.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณากรอกชื่อ หรือนามสกุล (Name-Surname)');", true);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtTaxId.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณากรอกเลขที่บัตรประชาชน (ID Card)');", true);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtDOB.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณากรอกวันเดือนปีเกิด (DOB)');", true);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtAge.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณากรอกอายุ (Age)');", true);
+                return;
+            }
+
+            if (ddlSex.SelectedValue == "0")
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาเลือกเพศ (Sex)');", true);
+                return;
+            }
+
+            if (ddlMartialStatus.SelectedValue == "0")
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาเลือกสถานภาพ (Martial Status)');", true);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtAddress.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาระบุที่อยู่ปัจจุบัน (Address)');", true);
+                return;
+            }
+
+            if (ddlProvince.SelectedValue == "0")
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาเลือกจังหวัด (Province)');", true);
+                return;
+            }
+
+            if (ddlDistrict.SelectedValue == "0")
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาเลือกอำเภอ/เขต (District)');", true);
+                return;
+            }
+
+            if (ddlSubDisctrict.SelectedValue == "0")
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาเลือกตำบล/แขวง (Sub-Disctrict)');", true);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtZipCode.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาระบุรหัสไปรษณีย์ (Zip Code)');", true);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtPhone.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาระบุเบอร์โทรศัพท์ (Telephone No.)');", true);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtRelationName1.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาระบุชื่อ-นามสกุลญาติคนที่ 1 (Name-Surname)');", true);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtRelation1.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาระบุความสัมพันธ์กับผู้ป่วยญาติคนที่ 1(Relationship)');", true);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtRelationName2.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาระบุความสัมพันธ์กับผู้ป่วยญาติคนที่ 2(Relationship)');", true);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtRelation2.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาระบุเบอร์โทรศัพท์ (Telephone No.)');", true);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtImportantDoc.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาเอกสารสำคัญ/ความต้องการสำคัญ');", true);
+                return;
+            }
+
+            int success = 0;
+            CustomerEntity customerEntity = new CustomerEntity();
+            CustomerService customerService = new CustomerService();
+
+            customerEntity = getDataFromUI();
+            if (int.Parse(lblCustomerID.Text) > 0 )
+            {
+                success = customerService.InsertData(customerEntity);
+            }
+            else
+            {
+                success = customerService.UpdateData(customerEntity);
+            }
+
+            if (success > 0 )
+            {
+                Response.Redirect("/BackOffice/Customer/customer-list.aspx");
+            }
+
         }
 
         protected void lbnPrint_Click(object sender, EventArgs e)
         {
 
         }
+
 
     }
 }

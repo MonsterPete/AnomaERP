@@ -22,6 +22,33 @@ namespace AnomaERP.BackOffice.Customer {
         protected global::System.Web.UI.WebControls.Label lblCustomerID;
         
         /// <summary>
+        /// lblCustomerInformationRecieveID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCustomerInformationRecieveID;
+        
+        /// <summary>
+        /// lblCustomerRelativeID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCustomerRelativeID;
+        
+        /// <summary>
+        /// lblCustomerVitalSignID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCustomerVitalSignID;
+        
+        /// <summary>
         /// txtHN control.
         /// </summary>
         /// <remarks>
