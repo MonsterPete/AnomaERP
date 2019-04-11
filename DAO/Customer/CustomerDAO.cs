@@ -145,11 +145,11 @@ namespace DAO.Customer
                             customer_id = DBHelper.GetParamOut<Int32>("customer_id");
 
                             DBHelper.CreateParameters();
-                            DBHelper.AddParamOut("customer_relative_id", entity.customer_RelativeEntity.Customer_relative_id);
+                            DBHelper.AddParamOut("customer_relative_id", entity.customer_RelativeEntity.customer_relative_id);
                             DBHelper.AddParam("customer_id", customer_id);
-                            DBHelper.AddParam("customer_relative_name", entity.customer_RelativeEntity.Customer_relative_name);
-                            DBHelper.AddParam("customer_relative_phone", entity.customer_RelativeEntity.Customer_relative_phone);
-                            DBHelper.AddParam("customer_relation", entity.customer_RelativeEntity.Customer_relation);
+                            DBHelper.AddParam("customer_relative_name", entity.customer_RelativeEntity.customer_relative_name_1);
+                            DBHelper.AddParam("customer_relative_phone", entity.customer_RelativeEntity.customer_relative_phone_1);
+                            DBHelper.AddParam("customer_relation", entity.customer_RelativeEntity.customer_relation_1);
                             DBHelper.ExecuteStoreProcedure("insert_customer_relative");
 
 
@@ -222,24 +222,24 @@ namespace DAO.Customer
                             DBHelper.ExecuteStoreProcedure("update_customer");
                             result = DBHelper.GetParamOut<Int32>("success_row");
 
-                            if (entity.customer_RelativeEntity.Customer_relative_id > 0)
+                            if (entity.customer_RelativeEntity.customer_relative_id > 0)
                             {
                                 DBHelper.CreateParameters();
-                                DBHelper.AddParam("customer_relative_id", entity.customer_RelativeEntity.Customer_relative_id);
+                                DBHelper.AddParam("customer_relative_id", entity.customer_RelativeEntity.customer_relative_id);
                                 DBHelper.AddParam("customer_id", entity.customer_id);
-                                DBHelper.AddParam("customer_relative_name", entity.customer_RelativeEntity.Customer_relative_name);
-                                DBHelper.AddParam("customer_relative_phone", entity.customer_RelativeEntity.Customer_relative_phone);
-                                DBHelper.AddParam("customer_relation", entity.customer_RelativeEntity.Customer_relation);
+                                DBHelper.AddParam("customer_relative_name", entity.customer_RelativeEntity.customer_relative_name_1);
+                                DBHelper.AddParam("customer_relative_phone", entity.customer_RelativeEntity.customer_relative_phone_1);
+                                DBHelper.AddParam("customer_relation", entity.customer_RelativeEntity.customer_relation_1);
                                 DBHelper.ExecuteStoreProcedure("update_customer_relative");
                             }
                             else
                             {
                                 DBHelper.CreateParameters();
-                                DBHelper.AddParamOut("customer_relative_id", entity.customer_RelativeEntity.Customer_relative_id);
+                                DBHelper.AddParamOut("customer_relative_id", entity.customer_RelativeEntity.customer_relative_id);
                                 DBHelper.AddParam("customer_id", entity.customer_id);
-                                DBHelper.AddParam("customer_relative_name", entity.customer_RelativeEntity.Customer_relative_name);
-                                DBHelper.AddParam("customer_relative_phone", entity.customer_RelativeEntity.Customer_relative_phone);
-                                DBHelper.AddParam("customer_relation", entity.customer_RelativeEntity.Customer_relation);
+                                DBHelper.AddParam("customer_relative_name", entity.customer_RelativeEntity.customer_relative_name_1);
+                                DBHelper.AddParam("customer_relative_phone", entity.customer_RelativeEntity.customer_relative_phone_1);
+                                DBHelper.AddParam("customer_relation", entity.customer_RelativeEntity.customer_relation_1);
                                 DBHelper.ExecuteStoreProcedure("insert_customer_relative");
                             }
 

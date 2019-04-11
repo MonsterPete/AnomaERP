@@ -301,13 +301,13 @@ namespace AnomaERP.BackOffice.Customer {
         protected global::System.Web.UI.WebControls.TextBox txtRelationEmail2;
         
         /// <summary>
-        /// txtRelationAddress control.
+        /// txtRelationAddress2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRelationAddress;
+        protected global::System.Web.UI.WebControls.TextBox txtRelationAddress2;
         
         /// <summary>
         /// txtDateInformationRecieve control.
@@ -334,7 +334,7 @@ namespace AnomaERP.BackOffice.Customer {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbtnServiceBy1;
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton rbtnServiceBy1;
         
         /// <summary>
         /// rbtnServiceBy2 control.
@@ -343,7 +343,7 @@ namespace AnomaERP.BackOffice.Customer {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbtnServiceBy2;
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton rbtnServiceBy2;
         
         /// <summary>
         /// txtServiceBy2 control.
@@ -361,7 +361,7 @@ namespace AnomaERP.BackOffice.Customer {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbtnServiceBy3;
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton rbtnServiceBy3;
         
         /// <summary>
         /// txtServiceBy3 control.
@@ -382,40 +382,40 @@ namespace AnomaERP.BackOffice.Customer {
         protected global::System.Web.UI.WebControls.TextBox txtImportantDoc;
         
         /// <summary>
-        /// chkCongenitalDisease control.
+        /// rptchkCongenitalDisease control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList chkCongenitalDisease;
+        protected global::System.Web.UI.WebControls.Repeater rptchkCongenitalDisease;
         
         /// <summary>
-        /// chkRedFlag control.
+        /// rptchkRedFlag control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList chkRedFlag;
+        protected global::System.Web.UI.WebControls.Repeater rptchkRedFlag;
         
         /// <summary>
-        /// chkRiskAssessment control.
+        /// rptRiskAssessment control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList chkRiskAssessment;
+        protected global::System.Web.UI.WebControls.Repeater rptRiskAssessment;
         
         /// <summary>
-        /// chkPersonalFactors control.
+        /// rptPersonalFactors control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList chkPersonalFactors;
+        protected global::System.Web.UI.WebControls.Repeater rptPersonalFactors;
         
         /// <summary>
         /// txtCurrentIllness control.
@@ -460,7 +460,7 @@ namespace AnomaERP.BackOffice.Customer {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbtnTreatment1;
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton rbtnTreatment1;
         
         /// <summary>
         /// rbtnTreatment2 control.
@@ -469,7 +469,7 @@ namespace AnomaERP.BackOffice.Customer {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbtnTreatment2;
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton rbtnTreatment2;
         
         /// <summary>
         /// txtTreatmentComment control.
@@ -551,5 +551,23 @@ namespace AnomaERP.BackOffice.Customer {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBMI_Index;
+        
+        /// <summary>
+        /// lbnSave control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbnSave;
+        
+        /// <summary>
+        /// lbnPrint control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbnPrint;
     }
 }

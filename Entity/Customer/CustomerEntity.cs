@@ -24,7 +24,7 @@ namespace Entity
         public DateTime modify_date { get; set; }
         public Int32 modify_by { get; set; }
         public Int32 age { get; set; }
-        public Boolean martial_status { get; set; }
+        public String martial_status { get; set; }
         public String address { get; set; }
         public Int32 sub_district { get; set; }
         public Int32 district { get; set; }
