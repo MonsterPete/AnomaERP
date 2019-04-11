@@ -15,5 +15,7 @@ namespace Entity
         public Int32 modified_by { get; set; }
         public Boolean is_active { get; set; }
         public Boolean is_delete { get; set; }
+
+        public Boolean is_check { get; set; }
     }
 }

@@ -65,10 +65,10 @@ namespace AnomaERP.BackOffice.NursingHome
                 txtDOB.Text = customerEntity.DOB.ToString("yyyy-MM-dd");
             }
 
-            lblCustomer_relative_ID.Text = customerEntity.customer_RelativeEntity.Customer_relative_id.ToString();
-            txtRelativecustomer.Text = customerEntity.customer_RelativeEntity.Customer_relative_name;
-            txtPhone.Text = customerEntity.customer_RelativeEntity.Customer_relative_phone;
-            txtrelationCustomer.Text = customerEntity.customer_RelativeEntity.Customer_relation;
+            lblCustomer_relative_ID.Text = customerEntity.customer_RelativeEntity.customer_relative_id.ToString();
+            txtRelativecustomer.Text = customerEntity.customer_RelativeEntity.customer_relative_name_1;
+            txtPhone.Text = customerEntity.customer_RelativeEntity.customer_relative_phone_1;
+            txtrelationCustomer.Text = customerEntity.customer_RelativeEntity.customer_relation_1;
 
             lblCustomer_service_agreement_ID.Text = customerEntity.customer_Service_AgreementEntity.Customer_service_agreement_id.ToString();
             txtMonthyCost.Text = customerEntity.customer_Service_AgreementEntity.Month_service_cost.ToString("#,##0");
@@ -128,10 +128,10 @@ namespace AnomaERP.BackOffice.NursingHome
             customerEntity.modify_by = Master.branchEntity.branch_id;
             customerEntity.modify_date = dateFormat.EngFormatDateToSQL(DateTime.Now);
 
-            customerEntity.customer_RelativeEntity.Customer_relative_id = int.Parse(lblCustomer_relative_ID.Text);
-            customerEntity.customer_RelativeEntity.Customer_relative_name = txtRelativecustomer.Text;
-            customerEntity.customer_RelativeEntity.Customer_relative_phone = txtPhone.Text;
-            customerEntity.customer_RelativeEntity.Customer_relation = txtrelationCustomer.Text;
+            customerEntity.customer_RelativeEntity.customer_relative_id = int.Parse(lblCustomer_relative_ID.Text);
+            customerEntity.customer_RelativeEntity.customer_relative_name_1 = txtRelativecustomer.Text;
+            customerEntity.customer_RelativeEntity.customer_relative_phone_1 = txtPhone.Text;
+            customerEntity.customer_RelativeEntity.customer_relation_1 = txtrelationCustomer.Text;
 
             customerEntity.customer_Service_AgreementEntity.Customer_service_agreement_id = int.Parse(lblCustomer_service_agreement_ID.Text);
             customerEntity.customer_Service_AgreementEntity.Month_service_cost = Decimal.Parse(txtMonthyCost.Text);

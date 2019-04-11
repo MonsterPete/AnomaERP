@@ -41,7 +41,7 @@ namespace AnomaERP.BackOffice.NursingHome
             lblSymtom.Text = "";
             if (customerEntity.customer_RelativeEntity != null)
             {
-                lblPhone.Text = customerEntity.customer_RelativeEntity.Customer_relative_phone;
+                lblPhone.Text = customerEntity.customer_RelativeEntity.customer_relative_phone_1;
             }
            
             lbnEdit.CommandName = "Edit";
