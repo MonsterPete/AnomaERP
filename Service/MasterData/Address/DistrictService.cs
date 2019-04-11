@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using DAO;
 
 namespace Service
 {
@@ -35,6 +36,12 @@ namespace Service
         public int UpdateData(DistrictEntity entity)
         {
             throw new NotImplementedException();
+        }
+
+        public List<DistrictEntity> GetDataByProvinceID(int province_id)
+        {
+            DistrictDAO districtDAO = new DistrictDAO();
+            return districtDAO.GetDataByProvinceID(province_id);
         }
     }
 }

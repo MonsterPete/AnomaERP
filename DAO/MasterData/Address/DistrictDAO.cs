@@ -36,5 +36,10 @@ namespace DAO
         {
             throw new NotImplementedException();
         }
+
+        public List<DistrictEntity> GetDataByProvinceID(int province_id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
