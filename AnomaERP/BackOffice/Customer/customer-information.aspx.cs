@@ -672,11 +672,11 @@ namespace AnomaERP.BackOffice.Customer
             customerEntity = getDataFromUI();
             if (int.Parse(lblCustomerID.Text) > 0 )
             {
-                success = customerService.InsertData(customerEntity);
+                success = customerService.InsertCustomer(customerEntity);
             }
             else
             {
-                success = customerService.UpdateData(customerEntity);
+                success = customerService.UpdateCustomer(customerEntity);
             }
 
             if (success > 0 )

@@ -61,7 +61,7 @@
                                                 <label class="form-label form-label-sm">
                                                     ชื่อ
                                                                     (Firstname)<span class="text-danger">*</span></label>
-                                                <asp:TextBox ID="txtFirstName" placeholder="=ชื่อ" CssClass="form-control form-control-sm" runat="server"></asp:TextBox>
+                                                <asp:TextBox ID="txtFirstName" placeholder="ชื่อ" CssClass="form-control form-control-sm" runat="server"></asp:TextBox>
                                             </div>
                                         </div>
                                         <div class="col-sm-4">

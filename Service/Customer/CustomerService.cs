@@ -52,5 +52,15 @@ namespace Service.Customer
         {
             return true;
         }
+
+        public int InsertCustomer(CustomerEntity customerEntity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int UpdateCustomer(CustomerEntity customerEntity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
