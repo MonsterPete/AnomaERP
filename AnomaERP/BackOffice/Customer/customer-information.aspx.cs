@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
+using Definitions;
 using Entity;
 using Service;
 using Service.Customer;
@@ -248,7 +249,7 @@ namespace AnomaERP.BackOffice.Customer
             txtFirstName.Text = customerEntity.firstname;
             txtLastName.Text = customerEntity.lastname;
             txtTaxId.Text = customerEntity.id_card;
-            txtDOB.Text = customerEntity.DOB.ToString();
+            txtDOB.Text = customerEntity.DOB.ToString("yyyy-MM-dd");
             txtAge.Text = customerEntity.age.ToString();
             ddlSex.SelectedValue = customerEntity.gender;
             if (customerEntity.martial_status != null)
@@ -289,8 +290,8 @@ namespace AnomaERP.BackOffice.Customer
                 lblCustomerInformationRecieveID.Text = customerEntity.customer_Information_RecieveEntity.customer_information_recieve_id.ToString();
                 if (customerEntity.customer_Information_RecieveEntity.customer_information_recieve_date != null)
                 {
-                    txtDateInformationRecieve.Text = customerEntity.customer_Information_RecieveEntity.customer_information_recieve_date.ToString();
-                    txtTimeInformationRecieve.Text = customerEntity.customer_Information_RecieveEntity.customer_information_recieve_date.ToLongTimeString();
+                    txtDateInformationRecieve.Text = customerEntity.customer_Information_RecieveEntity.customer_information_recieve_date.ToString("yyyy-MM-dd");
+                    //txtTimeInformationRecieve.Text = customerEntity.customer_Information_RecieveEntity.customer_information_recieve_date.ToLongTimeString();
                 }
 
                 if (customerEntity.customer_Information_RecieveEntity.customer_information_recieve_service_by == 1)
@@ -420,7 +421,7 @@ namespace AnomaERP.BackOffice.Customer
                         modified_date = DateTime.Now,
                         is_check = true
                     });
-                } 
+                }
             }
             return customerRiskAssessmentEntities;
         }
@@ -456,6 +457,7 @@ namespace AnomaERP.BackOffice.Customer
 
         public CustomerEntity getDataFromUI()
         {
+            DateFormat dateFormat = new DateFormat();
             CustomerEntity customerEntity = new CustomerEntity();
             List<CustomerCongenitalDiseaseEntity> customerCongenitalDiseaseEntities = new List<CustomerCongenitalDiseaseEntity>();
             List<CustomerRedFlagEntity> customerRedFlagEntities = new List<CustomerRedFlagEntity>();
@@ -464,11 +466,11 @@ namespace AnomaERP.BackOffice.Customer
 
             customerEntity.branch_id = Master.branchEntity.branch_id;
             txtHN.Text = "";
-            customerEntity.create_date = DateTime.Parse(txtCreatedDate.Text);
+            customerEntity.create_date = dateFormat.EngFormatDateToSQL(DateTime.Parse(txtCreatedDate.Text));
             customerEntity.firstname = txtFirstName.Text;
             customerEntity.lastname = txtLastName.Text;
             customerEntity.id_card = txtTaxId.Text;
-            customerEntity.DOB = DateTime.Parse(txtDOB.Text);
+            customerEntity.DOB = dateFormat.EngFormatDateToSQL(DateTime.Parse(txtDOB.Text));
             customerEntity.age = int.Parse(txtAge.Text);
             customerEntity.gender = ddlSex.SelectedValue;
             customerEntity.martial_status = ddlMartialStatus.SelectedValue;
@@ -492,6 +494,7 @@ namespace AnomaERP.BackOffice.Customer
                 customerEntity.is_surgery = true;
                 customerEntity.surgery_comment = txtTreatment.Text;
             }
+            customerEntity.is_active = true;
 
             CustomerRelativeEntity customerRelativeEntity = new CustomerRelativeEntity();
             customerRelativeEntity.customer_relative_id = int.Parse(lblCustomerRelativeID.Text);
@@ -514,7 +517,7 @@ namespace AnomaERP.BackOffice.Customer
 
             Customer_information_recieveEntity customer_Information_RecieveEntity = new Customer_information_recieveEntity();
             customer_Information_RecieveEntity.customer_information_recieve_id = int.Parse(lblCustomerInformationRecieveID.Text);
-            customer_Information_RecieveEntity.customer_information_recieve_date = DateTime.Parse(txtDateInformationRecieve.Text);
+            customer_Information_RecieveEntity.customer_information_recieve_date = dateFormat.EngFormatDateToSQL(DateTime.Parse(txtDateInformationRecieve.Text));
 
             if (rbtnServiceBy1.Checked == true)
             {

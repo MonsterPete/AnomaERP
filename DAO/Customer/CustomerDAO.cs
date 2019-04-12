@@ -372,6 +372,7 @@ namespace DAO.Customer
                             DBHelper.AddParam("is_have_bed", entity.is_have_bed);
                             DBHelper.AddParam("is_admit", entity.is_admit);
                             DBHelper.AddParam("is_delete", entity.is_delete);
+                            DBHelper.AddParam("is_active", entity.is_active);
                             DBHelper.AddParam("create_date", entity.create_date);
                             DBHelper.AddParam("create_by", entity.create_by);
 
@@ -443,13 +444,13 @@ namespace DAO.Customer
                             DBHelper.CreateParameters();
                             DBHelper.AddParamOut("customer_information_recieve_id", 0);
                             DBHelper.AddParam("customer_id", customer_id);
-                            DBHelper.AddParam("customer_information_recieve_date", 
+                            DBHelper.AddParam("customer_information_recieve_date",
                                 entity.customer_Information_RecieveEntity.customer_information_recieve_date);
-                            DBHelper.AddParam("customer_information_recieve_service_by", 
+                            DBHelper.AddParam("customer_information_recieve_service_by",
                                 entity.customer_Information_RecieveEntity.customer_information_recieve_service_by);
-                            DBHelper.AddParam("other", 
+                            DBHelper.AddParam("other",
                                 entity.customer_Information_RecieveEntity.other);
-                            DBHelper.AddParam("important_documents", 
+                            DBHelper.AddParam("important_documents",
                                 entity.customer_Information_RecieveEntity.important_documents);
 
                             DBHelper.ExecuteStoreProcedure("insert_customer_information_recieve");
@@ -503,7 +504,7 @@ namespace DAO.Customer
                             if (entity.customerRedFlagEntities.Count > 0)
                             {
                                 foreach (CustomerRedFlagEntity index in entity.customerRedFlagEntities)
-                                {  
+                                {
                                     DBHelper.CreateParameters();
                                     DBHelper.AddParamOut("customer_red_flag_id", 0);
                                     DBHelper.AddParam("customer_id", customer_id);
@@ -563,6 +564,41 @@ namespace DAO.Customer
                 throw ex;
             }
             return result;
+        }
+
+        public List<CustomerEntity> GetCustomerRegistationByCondition(CustomerEntity entity)
+        {
+            List<CustomerEntity> customerEntities = null;
+
+            try
+            {
+                using (DBHelper.CreateConnection())
+                {
+                    try
+                    {
+                        DBHelper.OpenConnection();
+                        DBHelper.CreateParameters();
+                        DBHelper.AddParam("Search", entity.firstname.Replace(" ", ""));
+                        DBHelper.AddParam("branch_id", entity.branch_id);
+                        DBHelper.AddParam("is_active", entity.is_active);
+
+                        customerEntities = DBHelper.SelectStoreProcedure<CustomerEntity>("select_customer_registation__by_condition").ToList();
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                    finally
+                    {
+                        DBHelper.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return customerEntities;
         }
     }
 }

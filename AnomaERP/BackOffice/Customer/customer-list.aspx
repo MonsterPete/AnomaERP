@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masterpage.Master" AutoEventWireup="true" CodeBehind="customer-list.aspx.cs" Inherits="AnomaERP.BackOffice.Customer.customer_list" %>
 
+<%@ MasterType VirtualPath="~/Masterpage.Master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="FromPlaceHolder" runat="server">
     <div class="container-fluid flex-grow-1 container-p-y">
 
@@ -15,7 +16,7 @@
 
         <div class="row">
             <div class="col-lg-12">
-                <a href="customer-information.html" class="btn btn-success mb-3 mr-2"><i class="fas fa-plus-circle mr-2"></i>New Registration Form</a>
+                <a href="/BackOffice/Customer/customer-information.aspx/customer_id=0" class="btn btn-success mb-3 mr-2"><i class="fas fa-plus-circle mr-2"></i>New Registration Form</a>
             </div>
         </div>
 
@@ -30,23 +31,24 @@
                         <div class="row">
                             <div class="col-lg-3 col-xl-3 mb-2">
                                 <div class="form-group">
-                                    <label class="form-label form-label-sm text-uppercase">Search</label>
-                                    <input type="text" class="form-control form-control-sm" placeholder="HN, Customer Name, Tel No., ID Card">
+                                    <label class="form-label form-label-sm text-uppercase">Search</label>">
+                                    <asp:TextBox ID="txtSearch" runat="server" class="form-control form-control-sm" placeholder="HN, Customer Name, Tel No., ID Card"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="col-lg-3 col-xl-3 mb-2">
                                 <div class="form-group">
                                     <label class="form-label form-label-sm text-uppercase">Status</label>
-                                    <select class="form-control form-control-sm">
-                                        <option>Active</option>
-                                        <option>Inactive</option>
-                                    </select>
+                                    <asp:DropDownList ID="ddlStatus" runat="server" CssClass="form-control form-control-sm">
+                                        <asp:ListItem Text="--Select--" Value=""></asp:ListItem>
+                                        <asp:ListItem Text="Active" Value="true"></asp:ListItem>
+                                        <asp:ListItem Text="InActive" Value="false"></asp:ListItem>
+                                    </asp:DropDownList>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="card-footer">
-                        <a href="#" class="btn btn-primary">Search</a>
+                        <asp:Button ID="btnSearch" runat="server" CssClass="btn btn-primary" Text="Search" OnClick="btnSearch_Click" />
                     </div>
                 </div>
             </div>
@@ -78,74 +80,29 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr class="odd gradeX text-center">
-                                                        <td>620100001</td>
-                                                        <td>นางสาว สุกัญญา เพียบพร้อม</td>
-                                                        <td>062-123-3112</td>
-                                                        <td>1100100300113</td>
-                                                        <td>Active</td>
-                                                        <td class="text-center pr-0">
-                                                            <div class="btn-group btn-group-sm">
-                                                                <a href="#" class="btn btn-primary rounded mr-2">
-                                                                    <i class="far fa-eye mr-1"></i>View
-                                                                                </a>
-                                                                <a href="#" class="btn btn-danger rounded mr-2">
-                                                                    <i class="fas fa-portrait mr-1"></i>Visitor Type
-                                                                                </a>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr class="odd gradeX text-center">
-                                                        <td>620100001</td>
-                                                        <td>นางสาว สุกัญญา เพียบพร้อม</td>
-                                                        <td>062-123-3112</td>
-                                                        <td>1100100300113</td>
-                                                        <td>Active</td>
-                                                        <td class="text-center pr-0">
-                                                            <div class="btn-group btn-group-sm">
-                                                                <a href="#" class="btn btn-primary rounded mr-2">
-                                                                    <i class="far fa-eye mr-1"></i>View
-                                                                                </a>
-                                                                <a href="#" class="btn btn-danger rounded mr-2">
-                                                                    <i class="fas fa-portrait mr-1"></i>Visitor Type
-                                                                                </a>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr class="odd gradeX text-center">
-                                                        <td>620100001</td>
-                                                        <td>นางสาว สุกัญญา เพียบพร้อม</td>
-                                                        <td>062-123-3112</td>
-                                                        <td>1100100300113</td>
-                                                        <td>Active</td>
-                                                        <td class="text-center pr-0">
-                                                            <div class="btn-group btn-group-sm">
-                                                                <a href="#" class="btn btn-primary rounded mr-2">
-                                                                    <i class="far fa-eye mr-1"></i>View
-                                                                                </a>
-                                                                <a href="#" class="btn btn-danger rounded mr-2">
-                                                                    <i class="fas fa-portrait mr-1"></i>Visitor Type
-                                                                                </a>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr class="odd gradeX text-center">
-                                                        <td>620100001</td>
-                                                        <td>นางสาว สุกัญญา เพียบพร้อม</td>
-                                                        <td>062-123-3112</td>
-                                                        <td>1100100300113</td>
-                                                        <td>Active</td>
-                                                        <td class="text-center pr-0">
-                                                            <div class="btn-group btn-group-sm">
-                                                                <a href="#" class="btn btn-primary rounded mr-2">
-                                                                    <i class="far fa-eye mr-1"></i>View
-                                                                                </a>
-                                                                <a href="#" class="btn btn-danger rounded mr-2">
-                                                                    <i class="fas fa-portrait mr-1"></i>Visitor Type
-                                                                                </a>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
+                                                    <asp:Repeater ID="rptCustomerList" runat="server" OnItemDataBound="rptCustomerList_ItemDataBound" OnItemCommand="rptCustomerList_ItemCommand">
+                                                        <ItemTemplate>
+                                                            <tr class="odd gradeX text-center">
+                                                                <td>
+                                                                    <asp:Label ID="lblCustomerID" Visible="false" runat="server"></asp:Label>
+                                                                    <asp:Label ID="lblHnNo" runat="server"></asp:Label></td>
+                                                                <td class="text-left">
+                                                                    <asp:Label ID="lblCustomerName" runat="server"></asp:Label></td>
+                                                                <td class="text-left">
+                                                                    <asp:Label ID="lblPhoneNo" runat="server"></asp:Label></td>
+                                                                <td class="text-left">
+                                                                    <asp:Label ID="lblIdCard" runat="server"></asp:Label></td>
+                                                                <td>
+                                                                    <asp:Label ID="lblStatus" runat="server"></asp:Label></td>
+                                                                <td class="text-center pr-0">
+                                                                    <div class="btn-group btn-group-sm">
+                                                                        <asp:LinkButton ID="lbnEdit" runat="server" CssClass="btn btn-primary rounded mr-2">  <i class="far fa-eye mr-1"></i>View</asp:LinkButton>
+                                                                        <asp:LinkButton ID="lbnVisitor" runat="server" CssClass="btn btn-danger rounded mr-2">  <i class="fas fa-portrait mr-1"></i>Visitor Type</asp:LinkButton>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </ItemTemplate>
+                                                    </asp:Repeater>
                                                 </tbody>
                                             </table>
                                         </div>

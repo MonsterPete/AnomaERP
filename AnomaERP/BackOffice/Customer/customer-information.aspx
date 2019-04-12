@@ -334,7 +334,7 @@
                                                     <asp:TextBox ID="txtDateInformationRecieve" CssClass="form-control form-control-sm" runat="server" TextMode="Date"></asp:TextBox>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-3">
+                                            <div class="col-sm-3" style="display:none">
                                                 <div class="form-group">
                                                     <label class="form-label form-label-sm">เวลา</label>
                                                     <asp:TextBox ID="txtTimeInformationRecieve" CssClass="form-control form-control-sm" runat="server" TextMode="Time"></asp:TextBox>

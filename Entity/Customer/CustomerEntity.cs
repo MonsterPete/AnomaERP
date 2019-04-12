@@ -41,6 +41,7 @@ namespace Entity
         public String surgery_comment { get; set; }
         public Boolean is_admit { get; set; }
         public Boolean is_delete { get; set; }
+        public Boolean? is_active { get; set; }
 
         public String branch_name { get; set; }
         public Customer_information_recieveEntity customer_Information_RecieveEntity { get; set; }
