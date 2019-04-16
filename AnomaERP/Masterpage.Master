@@ -112,6 +112,12 @@
                     <!-- Links -->
 
                     <ul class="sidenav-inner py-1">
+                        <li class="sidenav-item" runat="server" id="CustomerRegistor" visible="true">
+                            <a href="/BackOffice/Customer/customer-list.aspx" class="sidenav-link">
+                                <i class="sidenav-icon ion ion-ios-folder"></i>
+                                <div>Customer</div>
+                            </a>
+                            </li>
                         <li class="sidenav-item" runat="server" id="MenuNH" visible="false">
                             <a href="javascript:void(0)" class="sidenav-link sidenav-toggle">
                                 <i class="sidenav-icon ion ion-ios-folder"></i>

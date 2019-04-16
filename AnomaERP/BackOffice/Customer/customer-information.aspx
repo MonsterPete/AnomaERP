@@ -607,7 +607,7 @@
                                     <div class="card-footer">
                                         <%--                                        <asp:UpdatePanel runat="server">
                                             <ContentTemplate>--%>
-                                        <a href="/BackOffice/Entity-Management/Branch/branch-list.aspx" class="btn btn-lg btn-secondary">Back</a>
+                                        <a href="/BackOffice/Customer/customer-list.aspx" class="btn btn-lg btn-secondary">Back</a>
                                         <asp:LinkButton ID="lbnSave" runat="server" class="btn btn-lg btn-success" OnClick="lbnSave_Click">Save</asp:LinkButton>
                                         <asp:LinkButton ID="lbnPrint" runat="server" class="btn btn-lg btn-primary print-hidden" OnClick="lbnPrint_Click">Print</asp:LinkButton>
                                         <%--                                          </ContentTemplate>

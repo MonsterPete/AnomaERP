@@ -95,6 +95,9 @@ namespace AnomaERP.BackOffice.Customer
             if (e.CommandName == "Edit")
             {
                 Response.Redirect("/BackOffice/Customer/customer-information.aspx?customer_id=" + e.CommandArgument);
+            }else if (e.CommandName == "Visitor")
+            {
+                Response.Redirect("/BackOffice/Customer/customer-visitor.aspx?customer_id=" + e.CommandArgument);
             }
         }
     }

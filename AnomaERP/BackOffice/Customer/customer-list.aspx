@@ -31,7 +31,7 @@
                         <div class="row">
                             <div class="col-lg-3 col-xl-3 mb-2">
                                 <div class="form-group">
-                                    <label class="form-label form-label-sm text-uppercase">Search</label>">
+                                    <label class="form-label form-label-sm text-uppercase">Search</label>
                                     <asp:TextBox ID="txtSearch" runat="server" class="form-control form-control-sm" placeholder="HN, Customer Name, Tel No., ID Card"></asp:TextBox>
                                 </div>
                             </div>

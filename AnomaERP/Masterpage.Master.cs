@@ -65,10 +65,10 @@ namespace AnomaERP
             {
                 if (Session["BranchEntity"] != null)
                 {
-                    MenuNH.Visible = true;
-                    MenuNA.Visible = true;
-                    MenuBM.Visible = true;
-                    MenuIN.Visible = true;
+                    //MenuNH.Visible = true;
+                    //MenuNA.Visible = true;
+                    //MenuBM.Visible = true;
+                    //MenuIN.Visible = true;
                     lblUsername.Text = branchEntity.branch_name;
                 }
                 else if (Session["EntityEntity"] != null)

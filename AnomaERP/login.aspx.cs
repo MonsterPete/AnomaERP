@@ -48,7 +48,7 @@ namespace AnomaERP
                         branchEntity.password = user_LoginEntity.password;
 
                         Session["BranchEntity"] = branchEntity;
-                        Response.Redirect("/BackOffice/NursingHome/Visitor-Form/index.aspx");
+                        Response.Redirect("/BackOffice/Customer/customer-list.aspx");
                     }
                     else if (user_LoginEntity.Role.ToLower() == "entity")
                     {
