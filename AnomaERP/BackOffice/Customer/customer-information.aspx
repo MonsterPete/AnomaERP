@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Masterpage.Master" AutoEventWireup="true" CodeBehind="customer-information.aspx.cs" Inherits="AnomaERP.BackOffice.Customer.customer_information" %>
+
 <%@ MasterType VirtualPath="~/Masterpage.Master" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="FromPlaceHolder" runat="server">
@@ -88,13 +89,13 @@
                                                         <label class="form-label form-label-sm">
                                                             วันเดือนปีเกิด
                                                                     (DOB)<span class="text-danger">*</span></label>
-                                                        <asp:TextBox ID="txtDOB" TextMode="Date" CssClass="form-control form-control-sm" runat="server"></asp:TextBox>
+                                                        <asp:TextBox ID="txtDOB" TextMode="Date" OnTextChanged="txtDOB_TextChanged" CssClass="form-control form-control-sm" AutoPostBack="true" runat="server"></asp:TextBox>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <div class="form-group">
                                                         <label class="form-label form-label-sm">อายุ (Age)<span class="text-danger">*</span></label>
-                                                        <asp:TextBox ID="txtAge" placeholder="อายุ" CssClass="form-control form-control-sm" TextMode="Number" runat="server"></asp:TextBox>
+                                                        <asp:TextBox ID="txtAge" placeholder="อายุ" CssClass="form-control form-control-sm" Enabled="false" runat="server"></asp:TextBox>
                                                     </div>
                                                 </div>
                                             </div>
@@ -330,11 +331,11 @@
                                         <div class="row mb-3">
                                             <div class="col-sm-3">
                                                 <div class="form-group">
-                                                    <label class="form-label form-label-sm">วันเดือนปีที่รับ</label>
+                                                    <label class="form-label form-label-sm">วันเดือนปีที่รับ<span class="text-danger">*</span></label>
                                                     <asp:TextBox ID="txtDateInformationRecieve" CssClass="form-control form-control-sm" runat="server" TextMode="Date"></asp:TextBox>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-3" style="display:none">
+                                            <div class="col-sm-3" style="display: none">
                                                 <div class="form-group">
                                                     <label class="form-label form-label-sm">เวลา</label>
                                                     <asp:TextBox ID="txtTimeInformationRecieve" CssClass="form-control form-control-sm" runat="server" TextMode="Time"></asp:TextBox>
@@ -350,7 +351,7 @@
                                                     <div class="col-sm-2">
                                                         <div class="form-group">
                                                             <label class="custom-control custom-radio">
-                                                                <input name="custom-radio-3" type="radio" runat="server" id="rbtnServiceBy1" class="custom-control-input" checked="">
+                                                                <input name="custom-radio-3" type="radio" runat="server" id="rbtnServiceBy1" class="custom-control-input">
                                                                 <span class="custom-control-label">ญาตินำส่งเอง</span>
                                                             </label>
                                                         </div>
@@ -359,7 +360,7 @@
                                                         <div class="form-group">
                                                             <label class="custom-control custom-radio mb-1">
                                                                 <%--custom-control-input--%>
-                                                                <input name="custom-radio-3" type="radio" runat="server" id="rbtnServiceBy2" class="custom-control-input" checked="">
+                                                                <input name="custom-radio-3" type="radio" runat="server" id="rbtnServiceBy2" class="custom-control-input">
                                                                 <span class="custom-control-label">ไปรับจาก</span>
                                                             </label>
                                                             <asp:TextBox ID="txtServiceBy2" placeholder="ไปรับจาก" CssClass="form-control form-control-sm w-100" runat="server"></asp:TextBox>
@@ -368,7 +369,7 @@
                                                     <div class="col-sm-5">
                                                         <div class="form-group form-inline">
                                                             <label class="custom-control custom-radio mb-1">
-                                                                <input name="custom-radio-3" type="radio" runat="server" id="rbtnServiceBy3" class="custom-control-input" checked="">
+                                                                <input name="custom-radio-3" type="radio" runat="server" id="rbtnServiceBy3" class="custom-control-input">
                                                                 <span class="custom-control-label">อื่นๆ</span>
                                                             </label>
                                                             <asp:TextBox ID="txtServiceBy3" placeholder="อื่นๆ" CssClass="form-control form-control-sm w-100" runat="server"></asp:TextBox>
@@ -605,13 +606,9 @@
                                         </div>
                                     </div>
                                     <div class="card-footer">
-                                        <%--                                        <asp:UpdatePanel runat="server">
-                                            <ContentTemplate>--%>
                                         <a href="/BackOffice/Customer/customer-list.aspx" class="btn btn-lg btn-secondary">Back</a>
                                         <asp:LinkButton ID="lbnSave" runat="server" class="btn btn-lg btn-success" OnClick="lbnSave_Click">Save</asp:LinkButton>
-                                        <asp:LinkButton ID="lbnPrint" runat="server" class="btn btn-lg btn-primary print-hidden" OnClick="lbnPrint_Click">Print</asp:LinkButton>
-                                        <%--                                          </ContentTemplate>
-                                        </asp:UpdatePanel>--%>
+                                        <asp:LinkButton ID="lbnPrint" runat="server" style="display:none" class="btn btn-lg btn-primary print-hidden" OnClick="lbnPrint_Click">Print</asp:LinkButton>
                                     </div>
                                 </div>
                             </div>

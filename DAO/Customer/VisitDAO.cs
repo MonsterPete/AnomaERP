@@ -1,4 +1,5 @@
 ﻿using Definitions;
+using Entity;
 using Entity.Customer;
 using System;
 using System.Collections.Generic;
@@ -71,6 +72,38 @@ namespace DAO.Customer
             throw new NotImplementedException();
         }
 
+        public List<Visit_fileEntity> GetDataVisitFileByVisitorID(int visit_id)
+        {
+            List<Visit_fileEntity> visit_FileEntities = null;
+
+            try
+            {
+                using (DBHelper.CreateConnection())
+                {
+                    try
+                    {
+                        DBHelper.OpenConnection();
+                        DBHelper.CreateParameters();
+                        DBHelper.AddParam("visit_id", visit_id);
+                        visit_FileEntities = DBHelper.SelectStoreProcedure<Visit_fileEntity>("select_visit_file_by_visit_id").ToList();
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                    finally
+                    {
+                        DBHelper.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return visit_FileEntities;
+        }
+
         public int InsertData(VisitEntity entity)
         {
             Int32 visit_id = 0;
@@ -120,6 +153,91 @@ namespace DAO.Customer
         public int UpdateData(VisitEntity entity)
         {
             throw new NotImplementedException();
+        }
+
+        public int InsertVisitFile(Visit_fileEntity visit_FileEntity)
+        {
+            Int32 visit_file_id = 0;
+            int result = 0;
+
+            try
+            {
+                using (DBHelper.CreateConnection())
+                {
+                    try
+                    {
+                        DBHelper.OpenConnection();
+                        using (DBHelper.BeginTransaction())
+                        {
+                            DBHelper.CreateParameters();
+                            DBHelper.AddParamOut("visit_file_id", visit_FileEntity.visit_file_id);
+                            DBHelper.AddParam("visit_id", visit_FileEntity.visit_id);
+                            DBHelper.AddParam("file_name", visit_FileEntity.file_name);
+                            DBHelper.AddParam("url", visit_FileEntity.url);
+                            DBHelper.AddParam("created_date", visit_FileEntity.created_date);
+                            DBHelper.AddParam("created_by", visit_FileEntity.created_by);
+                            DBHelper.AddParam("is_active", visit_FileEntity.is_active);
+                            DBHelper.AddParam("is_delete", visit_FileEntity.is_delete);
+                            DBHelper.ExecuteStoreProcedure("insert_visit_file");
+                            visit_file_id = DBHelper.GetParamOut<Int32>("visit_file_id");
+                            DBHelper.CommitTransaction();
+                            result = visit_file_id;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                    finally
+                    {
+                        DBHelper.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return result;
+        }
+
+        public int DeleteVisitFile(Visit_fileEntity visit_FileEntity)
+        {
+            int result = 0;
+
+            try
+            {
+                using (DBHelper.CreateConnection())
+                {
+                    try
+                    {
+                        DBHelper.OpenConnection();
+                        using (DBHelper.BeginTransaction())
+                        {
+                            DBHelper.CreateParameters();
+                            DBHelper.AddParam("visit_file_id", visit_FileEntity.visit_file_id);
+                            DBHelper.AddParam("is_delete", visit_FileEntity.is_delete);
+                            DBHelper.AddParamOut("success_row", result);
+                            DBHelper.ExecuteStoreProcedure("update_visit_file");
+                            DBHelper.CommitTransaction();
+                            result = DBHelper.GetParamOut<Int32>("success_row");    
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                    finally
+                    {
+                        DBHelper.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return result;
         }
     }
 }

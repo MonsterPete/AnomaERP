@@ -36,6 +36,12 @@ namespace Service.Customer
             return customerDAO.GetCustomerRegistationByCondition(customerEntity);
         }
 
+        public CustomerEntity GetCustomerRegistationByID(long id)
+        {
+            CustomerDAO customerDAO = new CustomerDAO();
+            return customerDAO.GetCustomerRegistationByID(id);
+        }
+
         public int InsertData(CustomerEntity entity)
         {
             CustomerDAO customerDAO = new CustomerDAO();

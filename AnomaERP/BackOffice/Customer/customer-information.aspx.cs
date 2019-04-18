@@ -23,6 +23,7 @@ namespace AnomaERP.BackOffice.Customer
                 lblCustomerInformationRecieveID.Text = "0";
                 lblCustomerVitalSignID.Text = "0";
                 SetDDLProvince();
+                SetTextbox();
                 if (Request.QueryString["customer_id"] != null)
                 {
                     if (int.Parse(Request.QueryString["customer_id"]) > 0)
@@ -137,7 +138,7 @@ namespace AnomaERP.BackOffice.Customer
                 CustomerService customerService = new CustomerService();
                 CustomerEntity customerEntity = new CustomerEntity();
                 customerEntity.customer_id = customer_id;
-                customerEntity = customerService.GetDataByID(customer_id);
+                customerEntity = customerService.GetCustomerRegistationByID(customer_id);
                 SetDataToUICustomer(customerEntity);
             }
         }
@@ -244,7 +245,7 @@ namespace AnomaERP.BackOffice.Customer
 
         public void SetDataToUICustomer(CustomerEntity customerEntity)
         {
-            txtHN.Text = "";
+            txtHN.Text = customerEntity.HN_no;
             txtCreatedDate.Text = customerEntity.create_date.ToString("MM/dd/yyyy");
             txtFirstName.Text = customerEntity.firstname;
             txtLastName.Text = customerEntity.lastname;
@@ -540,6 +541,7 @@ namespace AnomaERP.BackOffice.Customer
             customer_Vital_SignEntity.r_min = decimal.Parse(txtR_Min.Text);
             customer_Vital_SignEntity.bp_mmhg = decimal.Parse(txtBP_mmHg.Text);
             customer_Vital_SignEntity.o2sat_percent = decimal.Parse(txtO2Sat_Percent.Text);
+            customer_Vital_SignEntity.bw_kg = decimal.Parse(txtBW_kg.Text);
             customer_Vital_SignEntity.ht_cm = decimal.Parse(txtHT_Cm.Text);
             customer_Vital_SignEntity.bm_index = decimal.Parse(txtBMI_Index.Text);
 
@@ -646,6 +648,12 @@ namespace AnomaERP.BackOffice.Customer
                 return;
             }
 
+            if (string.IsNullOrEmpty(txtRelationAddress1.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาระบุที่อยู่ญาติคนที่ 1(Address Relation 1)');", true);
+                return;
+            }
+
             if (string.IsNullOrEmpty(txtRelationName2.Text))
             {
                 ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาระบุความสัมพันธ์กับผู้ป่วยญาติคนที่ 2(Relationship)');", true);
@@ -657,6 +665,19 @@ namespace AnomaERP.BackOffice.Customer
                 ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาระบุเบอร์โทรศัพท์ (Telephone No.)');", true);
                 return;
             }
+
+            if (string.IsNullOrEmpty(txtRelationAddress2.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาระบุที่อยู่ญาติคนที่ 2(Address Relation 2)');", true);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtDateInformationRecieve.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณากรอกวันเดือนปีที่รับ');", true);
+                return;
+            }
+
 
             if (string.IsNullOrEmpty(txtImportantDoc.Text))
             {
@@ -690,6 +711,27 @@ namespace AnomaERP.BackOffice.Customer
 
         }
 
+        protected void SetTextbox()
+        {
+            txtT_C.Text = "0";
+            txtP_Min.Text = "0";
+            txtR_Min.Text = "0";
+            txtBP_mmHg.Text = "0";
+            txtO2Sat_Percent.Text = "0";
+            txtBW_kg.Text = "0";
+            txtHT_Cm.Text = "0";
+            txtBMI_Index.Text = "0";
+        }
 
+        protected void txtDOB_TextChanged(object sender, EventArgs e)
+        {
+            var today = DateTime.Today;
+            var birthdate = DateTime.Parse(txtDOB.Text);
+            // Calculate the age.
+            var age = today.Year - birthdate.Year;
+            // Go back to the year the person was born in case of a leap year
+            if (birthdate > today.AddYears(-age)) age--;
+            txtAge.Text = age.ToString();
+        }
     }
 }

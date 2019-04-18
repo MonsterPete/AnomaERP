@@ -56,6 +56,8 @@ namespace DAO.Customer
             return customerEntities;
         }
 
+       
+
         public List<CustomerEntity> GetDataByCondition(CustomerEntity entity, int Index)
         {
             throw new NotImplementedException();
@@ -327,6 +329,71 @@ namespace DAO.Customer
             return customerEntities;
         }
 
+        public CustomerEntity GetCustomerRegistationByID(long customer_id)
+        {
+            CustomerEntity customerEntity = new CustomerEntity();            
+            Customer_information_recieveEntity customer_Information_RecieveEntity = new Customer_information_recieveEntity();
+            CustomerRelativeEntity customer_RelativeEntity = new CustomerRelativeEntity();
+            Customer_vital_signEntity customer_Vital_SignEntity = new Customer_vital_signEntity();
+
+            try
+            {
+                using (DBHelper.CreateConnection())
+                {
+                    try
+                    {
+                        DBHelper.OpenConnection();
+                        DBHelper.CreateParameters();
+                        DBHelper.AddParam("customer_id", customer_id);
+                        customerEntity = DBHelper.SelectStoreProcedureFirst<CustomerEntity>("select_customer_by_id");
+                        customer_Information_RecieveEntity = DBHelper.SelectStoreProcedureFirst<Customer_information_recieveEntity>("select_customer_information_recieve_by_customer_id");
+                        customer_RelativeEntity = DBHelper.SelectStoreProcedureFirst<CustomerRelativeEntity>("select_customer_relative_by_customer_id");
+                        customer_Vital_SignEntity = DBHelper.SelectStoreProcedureFirst<Customer_vital_signEntity>("select_customer_vital_sign_by_customer_id");
+
+                        if (customer_Information_RecieveEntity != null)
+                        {
+                            customerEntity.customer_Information_RecieveEntity = customer_Information_RecieveEntity;
+                        }
+                        else
+                        {
+                            customerEntity.customer_Information_RecieveEntity = null;
+                        }
+
+                        if (customer_RelativeEntity != null)
+                        {
+                            customerEntity.customer_RelativeEntity = customer_RelativeEntity;
+                        }
+                        else
+                        {
+                            customerEntity.customer_RelativeEntity = null;
+                        }
+
+                        if (customer_Vital_SignEntity != null)
+                        {
+                            customerEntity.customer_Vital_SignEntity = customer_Vital_SignEntity;
+                        }
+                        else
+                        {
+                            customerEntity.customer_Vital_SignEntity = null;
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                    finally
+                    {
+                        DBHelper.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return customerEntity;
+        }
 
         public int InsertCustomerRegister(CustomerEntity entity)
         {

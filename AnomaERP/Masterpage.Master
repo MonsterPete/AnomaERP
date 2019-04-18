@@ -415,9 +415,7 @@
     <script src="/assets/vendor/libs/bootstrap-sweetalert/bootstrap-sweetalert.js"></script>
     <script src="/assets/js/ui_lightbox.js"></script>
 
-
-
-        <script type="text/javascript">
+    <script type="text/javascript">
         function showProgress() {
             document.getElementById('<%= UpdateProgress1.ClientID  %>').style.display = "block";
         }

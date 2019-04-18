@@ -3,6 +3,7 @@ using Entity.Customer;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Entity;
 
 namespace Service.Customer
 {
@@ -43,6 +44,24 @@ namespace Service.Customer
         public int UpdateData(VisitEntity entity)
         {
             throw new NotImplementedException();
+        }
+
+        public List<Visit_fileEntity> GetDataVisitFileByVisitorID(int visit_id)
+        {
+            VisitDAO visitDAO = new VisitDAO();
+            return visitDAO.GetDataVisitFileByVisitorID(visit_id);
+        }
+
+        public int InsertVisitFile(Visit_fileEntity visit_FileEntity)
+        {
+            VisitDAO visitDAO = new VisitDAO();
+            return visitDAO.InsertVisitFile(visit_FileEntity);
+        }
+
+        public int DeleteVisitFile(Visit_fileEntity visit_FileEntity)
+        {
+            VisitDAO visitDAO = new VisitDAO();
+            return visitDAO.DeleteVisitFile(visit_FileEntity);
         }
     }
 }
