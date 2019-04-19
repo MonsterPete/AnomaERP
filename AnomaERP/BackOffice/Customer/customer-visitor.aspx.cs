@@ -78,7 +78,7 @@ namespace AnomaERP.BackOffice.Customer
 
             lblVisitorCode.Text = visitEntity.visit_code;
             lblDate.Text = visitEntity.create_date.ToString("dd-MM-yyyy");
-            lblTime.Text = visitEntity.create_date.ToString("HH-mm");
+            lblTime.Text = visitEntity.create_date.ToString("hh:mm:tt");
             if (visitEntity.visit_type == 3)
             {
                 rptAN.Checked = true;
