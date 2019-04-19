@@ -72,7 +72,8 @@ namespace AnomaERP.BackOffice.Customer
             lblCustomerName.Text = customerEntity.firstname + ' ' + customerEntity.lastname;
             if (!string.IsNullOrEmpty(customerEntity.tel))
             {
-                lblPhoneNo.Text = Convert.ToInt64(customerEntity.tel).ToString("###-###-####");
+                Double Phone = double.Parse(customerEntity.tel);
+                lblPhoneNo.Text = string.Format("{0:0##-###-####}", Phone);
             }          
             lblIdCard.Text = customerEntity.id_card;
             if (customerEntity.is_active == true)

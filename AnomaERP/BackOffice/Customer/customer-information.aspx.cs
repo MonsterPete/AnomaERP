@@ -23,6 +23,8 @@ namespace AnomaERP.BackOffice.Customer
                 lblCustomerInformationRecieveID.Text = "0";
                 lblCustomerVitalSignID.Text = "0";
                 SetDDLProvince();
+                SetDDLDistinct(int.Parse(ddlProvince.SelectedValue));
+                SetDDLSubDistinct(int.Parse(ddlDistrict.SelectedValue));
                 SetTextbox();
                 if (Request.QueryString["customer_id"] != null)
                 {
@@ -132,7 +134,11 @@ namespace AnomaERP.BackOffice.Customer
             SetDataToUIRiskAssessment(riskAssessmentEntities);
             SetDataToUIPersonalFactors(personalFactorsEntities);
 
-            txtCreatedDate.Text = DateTime.Now.ToString();
+            DateFormat dateFormat = new DateFormat();
+            txtCreatedDate.Text = dateFormat.ThaiFormatDate(DateTime.Now);
+            txtCreatedTime.Text = dateFormat.ThaiFormatTime(DateTime.Now);
+            txtCreatedDateOrigin.Text = DateTime.Now.ToString();
+            
             if (customer_id > 0)
             {
                 CustomerService customerService = new CustomerService();
@@ -245,8 +251,11 @@ namespace AnomaERP.BackOffice.Customer
 
         public void SetDataToUICustomer(CustomerEntity customerEntity)
         {
+            DateFormat dateFormat = new DateFormat();
             txtHN.Text = customerEntity.HN_no;
-            txtCreatedDate.Text = customerEntity.create_date.ToString("MM/dd/yyyy");
+            txtCreatedDate.Text = dateFormat.ThaiFormatDate(customerEntity.create_date);
+            txtCreatedTime.Text = dateFormat.ThaiFormatTime(customerEntity.create_date);
+            txtCreatedDateOrigin.Text = customerEntity.create_date.ToString();
             txtFirstName.Text = customerEntity.firstname;
             txtLastName.Text = customerEntity.lastname;
             txtTaxId.Text = customerEntity.id_card;
@@ -289,11 +298,11 @@ namespace AnomaERP.BackOffice.Customer
             if (customerEntity.customer_Information_RecieveEntity != null)
             {
                 lblCustomerInformationRecieveID.Text = customerEntity.customer_Information_RecieveEntity.customer_information_recieve_id.ToString();
-                if (customerEntity.customer_Information_RecieveEntity.customer_information_recieve_date != null)
-                {
-                    txtDateInformationRecieve.Text = customerEntity.customer_Information_RecieveEntity.customer_information_recieve_date.ToString("yyyy-MM-dd");
-                    //txtTimeInformationRecieve.Text = customerEntity.customer_Information_RecieveEntity.customer_information_recieve_date.ToLongTimeString();
-                }
+                //if (customerEntity.customer_Information_RecieveEntity.customer_information_recieve_date != null)
+                //{
+                //    txtDateInformationRecieve.Text = customerEntity.customer_Information_RecieveEntity.customer_information_recieve_date.ToString("yyyy-MM-dd");
+                //    //txtTimeInformationRecieve.Text = customerEntity.customer_Information_RecieveEntity.customer_information_recieve_date.ToLongTimeString();
+                //}
 
                 if (customerEntity.customer_Information_RecieveEntity.customer_information_recieve_service_by == 1)
                 {
@@ -336,6 +345,11 @@ namespace AnomaERP.BackOffice.Customer
                 txtBW_kg.Text = customerEntity.customer_Vital_SignEntity.bw_kg.ToString("N2");
                 txtHT_Cm.Text = customerEntity.customer_Vital_SignEntity.ht_cm.ToString("N2");
                 txtBMI_Index.Text = customerEntity.customer_Vital_SignEntity.bm_index.ToString("N2");
+            }
+
+            if (customerEntity.is_active == true)
+            {
+                isActive.Checked = true;
             }
         }
 
@@ -467,7 +481,7 @@ namespace AnomaERP.BackOffice.Customer
 
             customerEntity.branch_id = Master.branchEntity.branch_id;
             txtHN.Text = "";
-            customerEntity.create_date = dateFormat.EngFormatDateToSQL(DateTime.Parse(txtCreatedDate.Text));
+            customerEntity.create_date = dateFormat.EngFormatDateToSQL(DateTime.Parse(txtCreatedDateOrigin.Text));
             customerEntity.firstname = txtFirstName.Text;
             customerEntity.lastname = txtLastName.Text;
             customerEntity.id_card = txtTaxId.Text;
@@ -490,12 +504,16 @@ namespace AnomaERP.BackOffice.Customer
             {
                 customerEntity.is_surgery = false;
             }
-            else
+            else if (rbtnTreatment2.Checked == true)
             {
                 customerEntity.is_surgery = true;
                 customerEntity.surgery_comment = txtTreatment.Text;
             }
-            customerEntity.is_active = true;
+
+            if (isActive.Checked == true)
+            {
+                customerEntity.is_active = true;
+            }
 
             CustomerRelativeEntity customerRelativeEntity = new CustomerRelativeEntity();
             customerRelativeEntity.customer_relative_id = int.Parse(lblCustomerRelativeID.Text);
@@ -518,7 +536,7 @@ namespace AnomaERP.BackOffice.Customer
 
             Customer_information_recieveEntity customer_Information_RecieveEntity = new Customer_information_recieveEntity();
             customer_Information_RecieveEntity.customer_information_recieve_id = int.Parse(lblCustomerInformationRecieveID.Text);
-            customer_Information_RecieveEntity.customer_information_recieve_date = dateFormat.EngFormatDateToSQL(DateTime.Parse(txtDateInformationRecieve.Text));
+            //customer_Information_RecieveEntity.customer_information_recieve_date = dateFormat.EngFormatDateToSQL(DateTime.Parse(txtDateInformationRecieve.Text));
 
             if (rbtnServiceBy1.Checked == true)
             {
@@ -564,7 +582,7 @@ namespace AnomaERP.BackOffice.Customer
         protected void lbnSave_Click(object sender, EventArgs e)
         {
 
-            if (string.IsNullOrEmpty(txtFirstName.Text) && string.IsNullOrEmpty(txtLastName.Text))
+            if (string.IsNullOrEmpty(txtFirstName.Text) || string.IsNullOrEmpty(txtLastName.Text))
             {
                 ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณากรอกชื่อ หรือนามสกุล (Name-Surname)');", true);
                 return;
@@ -600,45 +618,9 @@ namespace AnomaERP.BackOffice.Customer
                 return;
             }
 
-            if (string.IsNullOrEmpty(txtAddress.Text))
-            {
-                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาระบุที่อยู่ปัจจุบัน (Address)');", true);
-                return;
-            }
-
-            if (ddlProvince.SelectedValue == "0")
-            {
-                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาเลือกจังหวัด (Province)');", true);
-                return;
-            }
-
-            if (ddlDistrict.SelectedValue == "0")
-            {
-                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาเลือกอำเภอ/เขต (District)');", true);
-                return;
-            }
-
-            if (ddlSubDisctrict.SelectedValue == "0")
-            {
-                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาเลือกตำบล/แขวง (Sub-Disctrict)');", true);
-                return;
-            }
-
-            if (string.IsNullOrEmpty(txtZipCode.Text))
-            {
-                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาระบุรหัสไปรษณีย์ (Zip Code)');", true);
-                return;
-            }
-
-            if (string.IsNullOrEmpty(txtPhone.Text))
-            {
-                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาระบุเบอร์โทรศัพท์ (Telephone No.)');", true);
-                return;
-            }
-
             if (string.IsNullOrEmpty(txtRelationName1.Text))
             {
-                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาระบุชื่อ-นามสกุลญาติคนที่ 1 (Name-Surname)');", true);
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาระบุ ชื่อ-นามสกุล ผู้ให้ข้อมูลและติดต่อกรณีฉุกเฉิน (Name-Surname1)');", true);
                 return;
             }
 
@@ -648,36 +630,17 @@ namespace AnomaERP.BackOffice.Customer
                 return;
             }
 
+            if (string.IsNullOrEmpty(txtRelationTel1.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาระบุเบอร์โทรศัพท์กรณีฉุกเฉิน1 (Emergency No. 1)');", true);
+                return;
+            }
+
             if (string.IsNullOrEmpty(txtRelationAddress1.Text))
             {
                 ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาระบุที่อยู่ญาติคนที่ 1(Address Relation 1)');", true);
                 return;
             }
-
-            if (string.IsNullOrEmpty(txtRelationName2.Text))
-            {
-                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาระบุความสัมพันธ์กับผู้ป่วยญาติคนที่ 2(Relationship)');", true);
-                return;
-            }
-
-            if (string.IsNullOrEmpty(txtRelation2.Text))
-            {
-                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาระบุเบอร์โทรศัพท์ (Telephone No.)');", true);
-                return;
-            }
-
-            if (string.IsNullOrEmpty(txtRelationAddress2.Text))
-            {
-                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาระบุที่อยู่ญาติคนที่ 2(Address Relation 2)');", true);
-                return;
-            }
-
-            if (string.IsNullOrEmpty(txtDateInformationRecieve.Text))
-            {
-                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณากรอกวันเดือนปีที่รับ');", true);
-                return;
-            }
-
 
             if (string.IsNullOrEmpty(txtImportantDoc.Text))
             {
@@ -725,13 +688,20 @@ namespace AnomaERP.BackOffice.Customer
 
         protected void txtDOB_TextChanged(object sender, EventArgs e)
         {
-            var today = DateTime.Today;
-            var birthdate = DateTime.Parse(txtDOB.Text);
-            // Calculate the age.
-            var age = today.Year - birthdate.Year;
-            // Go back to the year the person was born in case of a leap year
-            if (birthdate > today.AddYears(-age)) age--;
-            txtAge.Text = age.ToString();
+            txtAge.Text = "0";
+            if (!string.IsNullOrEmpty(txtDOB.Text))
+            {
+                var today = DateTime.Today;
+                var birthdate = DateTime.Parse(txtDOB.Text);
+                // Calculate the age.
+                var age = today.Year - birthdate.Year;
+                if (age < 0)
+                {
+                    ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาระบุวันเดือนปีเกิดให้ถูกต้อง');", true);
+                    return;
+                }
+                txtAge.Text = age.ToString();
+            }
         }
     }
 }

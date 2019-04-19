@@ -511,8 +511,7 @@ namespace DAO.Customer
                             DBHelper.CreateParameters();
                             DBHelper.AddParamOut("customer_information_recieve_id", 0);
                             DBHelper.AddParam("customer_id", customer_id);
-                            DBHelper.AddParam("customer_information_recieve_date",
-                                entity.customer_Information_RecieveEntity.customer_information_recieve_date);
+                            DBHelper.AddParam("customer_information_recieve_date", null); 
                             DBHelper.AddParam("customer_information_recieve_service_by",
                                 entity.customer_Information_RecieveEntity.customer_information_recieve_service_by);
                             DBHelper.AddParam("other",

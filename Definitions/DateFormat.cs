@@ -32,6 +32,14 @@ namespace Definitions
             return dateThai.ToString("dd MMM yyyy HH:mm:ss", _cultureTHInfo);
         }
 
+        public string ThaiFormatTime(DateTime dateTime)
+        {
+            //*** Thai Format
+            System.Globalization.CultureInfo _cultureTHInfo = new System.Globalization.CultureInfo("th-TH");
+            DateTime dateThai = Convert.ToDateTime(dateTime, _cultureTHInfo);
+            return dateThai.ToString("HH:mm:ss", _cultureTHInfo);
+        }
+
         public string EngFormatDateTime(DateTime dateTime)
         {
             //*** Eng Format

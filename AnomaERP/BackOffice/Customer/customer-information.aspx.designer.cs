@@ -67,6 +67,24 @@ namespace AnomaERP.BackOffice.Customer {
         protected global::System.Web.UI.WebControls.TextBox txtCreatedDate;
         
         /// <summary>
+        /// txtCreatedDateOrigin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCreatedDateOrigin;
+        
+        /// <summary>
+        /// txtCreatedTime control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCreatedTime;
+        
+        /// <summary>
         /// txtFirstName control.
         /// </summary>
         /// <remarks>
@@ -229,6 +247,15 @@ namespace AnomaERP.BackOffice.Customer {
         protected global::System.Web.UI.WebControls.TextBox txtRelationTelEmergency1;
         
         /// <summary>
+        /// txtRelationAddress1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtRelationAddress1;
+        
+        /// <summary>
         /// txtRelationLine1 control.
         /// </summary>
         /// <remarks>
@@ -254,15 +281,6 @@ namespace AnomaERP.BackOffice.Customer {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtRelationEmail1;
-        
-        /// <summary>
-        /// txtRelationAddress1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRelationAddress1;
         
         /// <summary>
         /// txtRelationName2 control.
@@ -301,6 +319,15 @@ namespace AnomaERP.BackOffice.Customer {
         protected global::System.Web.UI.WebControls.TextBox txtRelationTelEmergency2;
         
         /// <summary>
+        /// txtRelationAddress2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtRelationAddress2;
+        
+        /// <summary>
         /// txtRelationLine2 control.
         /// </summary>
         /// <remarks>
@@ -326,15 +353,6 @@ namespace AnomaERP.BackOffice.Customer {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtRelationEmail2;
-        
-        /// <summary>
-        /// txtRelationAddress2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRelationAddress2;
         
         /// <summary>
         /// txtDateInformationRecieve control.
@@ -578,6 +596,24 @@ namespace AnomaERP.BackOffice.Customer {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBMI_Index;
+        
+        /// <summary>
+        /// isActive control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox isActive;
+        
+        /// <summary>
+        /// lblRiskAssessmentName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblRiskAssessmentName;
         
         /// <summary>
         /// lbnSave control.
