@@ -65,5 +65,11 @@ namespace Service.Customer
             CustomerDAO customerDAO = new CustomerDAO();
             return customerDAO.InsertCustomerRegister(customerEntity);
         }
+
+        public int UpdateCustomerRegister(CustomerEntity customerEntity)
+        {
+            CustomerDAO customerDAO = new CustomerDAO();
+            return customerDAO.UpdateCustomerRegister(customerEntity);
+        }
     }
 }

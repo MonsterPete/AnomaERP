@@ -33,6 +33,7 @@ namespace Entity
         public String zipcode { get; set; }
         public String tel { get; set; }
         public String information_channel { get; set; }
+        public String information_channel_comment { get; set; }
         public String current_illness { get; set; }
         public String current_illness_history { get; set; }
         public String doctor_diagnosis { get; set; }

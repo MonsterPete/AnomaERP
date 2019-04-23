@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -138,7 +139,7 @@ namespace AnomaERP.BackOffice.Customer
             txtCreatedDate.Text = dateFormat.ThaiFormatDate(DateTime.Now);
             txtCreatedTime.Text = dateFormat.ThaiFormatTime(DateTime.Now);
             txtCreatedDateOrigin.Text = DateTime.Now.ToString();
-            
+
             if (customer_id > 0)
             {
                 CustomerService customerService = new CustomerService();
@@ -259,7 +260,8 @@ namespace AnomaERP.BackOffice.Customer
             txtFirstName.Text = customerEntity.firstname;
             txtLastName.Text = customerEntity.lastname;
             txtTaxId.Text = customerEntity.id_card;
-            txtDOB.Text = customerEntity.DOB.ToString("yyyy-MM-dd");
+            var DOB = customerEntity.DOB.AddYears(543);
+            txtDOB.Text = DOB.ToString("dd/MM/yyyy");
             txtAge.Text = customerEntity.age.ToString();
             ddlSex.SelectedValue = customerEntity.gender;
             if (customerEntity.martial_status != null)
@@ -275,6 +277,10 @@ namespace AnomaERP.BackOffice.Customer
             txtZipCode.Text = customerEntity.zipcode;
             txtPhone.Text = customerEntity.tel;
             ddlNewFrom.SelectedValue = customerEntity.information_channel;
+            if (customerEntity.information_channel.ToLower() == "other")
+            {
+                txtNewFormOther.Text = customerEntity.information_channel_comment;
+            }
 
             lblCustomerRelativeID.Text = customerEntity.customer_RelativeEntity.customer_relative_id.ToString(); ;
             txtRelationName1.Text = customerEntity.customer_RelativeEntity.customer_relative_name_1;
@@ -311,10 +317,12 @@ namespace AnomaERP.BackOffice.Customer
                 else if (customerEntity.customer_Information_RecieveEntity.customer_information_recieve_service_by == 2)
                 {
                     rbtnServiceBy2.Attributes.Add("Checked", "true");
+                    txtServiceBy2.Text = customerEntity.customer_Information_RecieveEntity.other;
                 }
                 else if (customerEntity.customer_Information_RecieveEntity.customer_information_recieve_service_by == 3)
                 {
                     rbtnServiceBy3.Attributes.Add("Checked", "true");
+                    txtServiceBy3.Text = customerEntity.customer_Information_RecieveEntity.other;
                 }
                 txtImportantDoc.Text = customerEntity.customer_Information_RecieveEntity.important_documents;
             }
@@ -331,7 +339,7 @@ namespace AnomaERP.BackOffice.Customer
             else
             {
                 rbtnTreatment2.Attributes.Add("Checked", "true");
-                txtTreatment.Text = customerEntity.surgery_comment;
+                txtTreatmentComment.Text = customerEntity.surgery_comment;
             }
 
             if (customerEntity.customer_Vital_SignEntity != null)
@@ -478,14 +486,17 @@ namespace AnomaERP.BackOffice.Customer
             List<CustomerRedFlagEntity> customerRedFlagEntities = new List<CustomerRedFlagEntity>();
             List<CustomerRiskAssessmentEntity> customerRiskAssessmentEntities = new List<CustomerRiskAssessmentEntity>();
             List<CustomerPersonalFactorsEntity> customerPersonalFactorsEntities = new List<CustomerPersonalFactorsEntity>();
-
+            customerEntity.customer_id = int.Parse(lblCustomerID.Text);
             customerEntity.branch_id = Master.branchEntity.branch_id;
             txtHN.Text = "";
             customerEntity.create_date = dateFormat.EngFormatDateToSQL(DateTime.Parse(txtCreatedDateOrigin.Text));
             customerEntity.firstname = txtFirstName.Text;
             customerEntity.lastname = txtLastName.Text;
             customerEntity.id_card = txtTaxId.Text;
-            customerEntity.DOB = dateFormat.EngFormatDateToSQL(DateTime.Parse(txtDOB.Text));
+            DateTime date = DateTime.ParseExact(txtDOB.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            var thaiyear = -543;
+            date = date.AddYears(thaiyear);
+            customerEntity.DOB = dateFormat.EngFormatDateToSQL(date);
             customerEntity.age = int.Parse(txtAge.Text);
             customerEntity.gender = ddlSex.SelectedValue;
             customerEntity.martial_status = ddlMartialStatus.SelectedValue;
@@ -496,10 +507,17 @@ namespace AnomaERP.BackOffice.Customer
             customerEntity.zipcode = txtZipCode.Text;
             customerEntity.tel = txtPhone.Text;
             customerEntity.information_channel = ddlNewFrom.SelectedValue;
+            if (ddlNewFrom.SelectedValue.ToLower() == "other")
+            {
+                customerEntity.information_channel_comment = txtNewFormOther.Text;
+            }
             customerEntity.current_illness = txtCurrentIllness.Text;
             customerEntity.current_illness_history = txtHistoryIllness.Text;
             customerEntity.doctor_diagnosis = txtDiagnosis.Text;
             customerEntity.treatment_has_received = txtTreatment.Text;
+            customerEntity.modify_date = dateFormat.EngFormatDateToSQL(DateTime.Now);
+            customerEntity.modify_by = Master.branchEntity.branch_id;
+            customerEntity.create_by = Master.branchEntity.branch_id;
             if (rbtnTreatment1.Checked == true)
             {
                 customerEntity.is_surgery = false;
@@ -507,7 +525,7 @@ namespace AnomaERP.BackOffice.Customer
             else if (rbtnTreatment2.Checked == true)
             {
                 customerEntity.is_surgery = true;
-                customerEntity.surgery_comment = txtTreatment.Text;
+                customerEntity.surgery_comment = txtTreatmentComment.Text;
             }
 
             if (isActive.Checked == true)
@@ -542,13 +560,15 @@ namespace AnomaERP.BackOffice.Customer
             {
                 customer_Information_RecieveEntity.customer_information_recieve_service_by = 1;
             }
-            else if (rbtnServiceBy1.Checked == true)
+            else if (rbtnServiceBy2.Checked == true)
             {
                 customer_Information_RecieveEntity.customer_information_recieve_service_by = 2;
+                customer_Information_RecieveEntity.other = txtServiceBy2.Text;
             }
-            else if (rbtnServiceBy1.Checked == true)
+            else if (rbtnServiceBy3.Checked == true)
             {
                 customer_Information_RecieveEntity.customer_information_recieve_service_by = 3;
+                customer_Information_RecieveEntity.other = txtServiceBy3.Text;
             }
             customer_Information_RecieveEntity.important_documents = txtImportantDoc.Text;
 
@@ -606,6 +626,12 @@ namespace AnomaERP.BackOffice.Customer
                 return;
             }
 
+            if (string.IsNullOrEmpty(txtPhone.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณากรอก เบอร์โทรศัพท์ (Telephone No.)');", true);
+                return;
+            }
+
             if (ddlSex.SelectedValue == "0")
             {
                 ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาเลือกเพศ (Sex)');", true);
@@ -655,7 +681,7 @@ namespace AnomaERP.BackOffice.Customer
             customerEntity = getDataFromUI();
             if (int.Parse(lblCustomerID.Text) > 0)
             {
-                //success = customerService.UpdateCustomer(customerEntity);
+                success = customerService.UpdateCustomerRegister(customerEntity);
             }
             else
             {
@@ -684,24 +710,6 @@ namespace AnomaERP.BackOffice.Customer
             txtBW_kg.Text = "0";
             txtHT_Cm.Text = "0";
             txtBMI_Index.Text = "0";
-        }
-
-        protected void txtDOB_TextChanged(object sender, EventArgs e)
-        {
-            txtAge.Text = "0";
-            if (!string.IsNullOrEmpty(txtDOB.Text))
-            {
-                var today = DateTime.Today;
-                var birthdate = DateTime.Parse(txtDOB.Text);
-                // Calculate the age.
-                var age = today.Year - birthdate.Year;
-                if (age < 0)
-                {
-                    ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาระบุวันเดือนปีเกิดให้ถูกต้อง');", true);
-                    return;
-                }
-                txtAge.Text = age.ToString();
-            }
         }
     }
 }

@@ -2,6 +2,19 @@
 
 <%@ MasterType VirtualPath="~/Masterpage.Master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="FromPlaceHolder" runat="server">
+    <script>
+        $(document).ready(function () {
+            SetTable();
+        });
+        function SetTable() {
+            $('#inquiryTech').dataTable({
+                deferRender: true,
+                order: [[0, "desc"]],
+                iDisplayLength: 50
+            });
+        }
+
+    </script>
     <div class="container-fluid flex-grow-1 container-p-y">
 
         <h4 class="font-weight-bold py-3 mb-2">Customer Management
@@ -10,7 +23,7 @@
                 <small class="font-weight-normal text-uppercase">
                     <a href="#" class="mr-1">Customer Management</a>/
                                     Customer List
-                                </small>
+                </small>
             </div>
         </h4>
 
@@ -68,7 +81,7 @@
                                 <div class="row">
                                     <div class="col-lg-12 col-xl-12 mb-2">
                                         <div class="card-datatable table-responsive">
-                                            <table class="datatables-demo table table-striped table-hover table-bordered">
+                                            <table id="inquiryTech" class="datatables-demo table table-striped table-hover table-bordered">
                                                 <thead class="thead-dark">
                                                     <tr class="text-center">
                                                         <th class="tbw-5">"Hospital No (HN)</th>
