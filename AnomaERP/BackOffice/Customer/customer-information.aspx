@@ -18,14 +18,17 @@
             var dob = txtdate;
             var year = Number(dob.substr(6, 4));
             var today = new Date();
-            year = year - 543;
 
-            var age = today.getFullYear() - year;
-            if (age < 0) {
-                openModalWaring('กรุณาระบุวันเดือนปีเกิดให้ถูกต้อง');
-                age = 0;
+            if (dob != "") {
+                year = year - 543;
+                var age = today.getFullYear() - year;
+                if (age < 0) {
+                    openModalWaring('กรุณาระบุวันเดือนปีเกิดให้ถูกต้อง');
+                    age = 0;
+                }
+                var txtage = $("input[key=age]").val(age);
             }
-            var txtage = $("input[key=age]").val(age);
+
         }
 
         function setModalPicker() {
