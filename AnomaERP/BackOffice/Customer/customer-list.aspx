@@ -84,7 +84,8 @@
                                             <table id="inquiryTech" class="datatables-demo table table-striped table-hover table-bordered">
                                                 <thead class="thead-dark">
                                                     <tr class="text-center">
-                                                        <th class="tbw-5">"Kin No.(KN)<h>
+                                                        <th class="tbw-5">Kin No.(KN)</th>
+                                                        <th class="tbw-5">Customer Name</th>
                                                         <th class="tbw-9" style="width: 15%;">Phone No.</th>
                                                         <th>ID Card</th>
                                                         <th>Status</th>
