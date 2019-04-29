@@ -90,9 +90,9 @@
                             <div class="row justify-content-center w-100 flex-nowrap">
                                 <div class="col-sm-6">
                                     <div class="form-group row justify-content-center">
-                                        <label for="staticEmail" class="col-sm-2 col-form-label text-right">HN No:</label>
+                                        <label for="staticEmail" class="col-sm-2 col-form-label text-right">Kin No.(KN)</label>
                                         <div class="col-sm-4">
-                                            <asp:TextBox ID="txtHN" CssClass="form-control form-control-sm" placeholder="เลข HN" Enabled="false" runat="server"></asp:TextBox>
+                                            <asp:TextBox ID="txtHN" CssClass="form-control form-control-sm" placeholder="Kin No.(KN)" Enabled="false" runat="server"></asp:TextBox>
                                         </div>
                                     </div>
                                 </div>
@@ -143,7 +143,7 @@
                                                 <div class="form-group">
                                                     <label class="form-label form-label-sm">
                                                         เลขที่บัตรประชาชน (ID
-                                                                    Card)<span class="text-danger">*</span></label>
+                                                                    Card)</label>
                                                     <asp:TextBox ID="txtTaxId" placeholder="เลขที่บัตรประชาชน" CssClass="form-control form-control-sm" runat="server"></asp:TextBox>
                                                 </div>
                                             </div>
@@ -392,26 +392,92 @@
                                     </div>
                                     <div class="row page-break">
                                         <div class="col-lg-12 col-xl-12">
-                                            <h5 class="mt-4"><strong><u>ข้อมูลแรกรับ (ซักประวัติ)</u></strong></h5>
+                                            <h5 class="mt-4"><strong><u>อาการสำคัญ / ความต้องการสำคัญ</u></strong></h5>
                                         </div>
                                     </div>
                                     <div class="row mb-3">
-                                        <div class="col-sm-3" style="display: none">
+                                        <div class="col-sm-12">
                                             <div class="form-group">
-                                                <label class="form-label form-label-sm">วันเดือนปีที่รับ<span class="text-danger">*</span></label>
-                                                <asp:TextBox ID="txtDateInformationRecieve" CssClass="form-control form-control-sm" runat="server" TextMode="Date"></asp:TextBox>
+                                                <label
+                                                    class="form-label form-label-sm text-uppercase">
+                                                    อาการสำคัญ / ความต้องการสำคัญ<span class="text-danger">*</span></label>
+                                                <asp:TextBox ID="txtImportantDoc" CssClass="form-control form-control-sm " placeholder="อาการสำคัญ /ความต้องการสำคัญ" TextMode="MultiLine" Rows="5" runat="server"></asp:TextBox>
                                             </div>
                                         </div>
-                                        <div class="col-sm-3" style="display: none">
-                                            <div class="form-group">
-                                                <label class="form-label form-label-sm">เวลา</label>
-                                                <asp:TextBox ID="txtTimeInformationRecieve" CssClass="form-control form-control-sm" runat="server" TextMode="Time"></asp:TextBox>
+                                    </div>
+                                    <div class="row f-12 mb-2">
+                                        <div class="col-lg-12 col-xl-12">
+                                            <h5 class="mt-4"><strong><u>โรคประจำตัว</u></strong></h5>
+                                        </div>
+                                        <div class="col-sm-12 flex-wrap">
+                                            <div class="row">
+                                                <asp:Repeater ID="rptchkCongenitalDisease" runat="server" OnItemDataBound="rptchkCongenitalDisease_ItemDataBound">
+                                                    <ItemTemplate>
+                                                        <div class="col-sm-3">
+                                                            <div class="form-group">
+                                                                <label class="custom-control custom-checkbox">
+                                                                    <asp:Label ID="lblCustomerCongenitalDiseaseID" runat="server" Visible="false"></asp:Label>
+                                                                    <asp:Label ID="lblCongenitalDiseaseID" runat="server" Visible="false"></asp:Label>
+                                                                    <input type="checkbox" id="isCheckCongenitalDisease" runat="server" class="custom-control-input">
+                                                                    <span class="custom-control-label">
+                                                                        <asp:Label ID="lblCongenitalDiseaseName" runat="server"></asp:Label></span>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </ItemTemplate>
+                                                </asp:Repeater>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row f-12 mb-3">
                                         <div class="col-lg-12 col-xl-12">
-                                            <h5 class="f-12 font-weight-normal">ผู้รับบริการมาโดย :</h5>
+                                            <h5 class="mt-4"><strong><u>ปัจจัยส่วนบุคคลส่งผลต่อความเจ็บป่วย</u></strong></h5>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <div class="row">
+                                                <asp:Repeater ID="rptPersonalFactors" runat="server" OnItemDataBound="rptPersonalFactors_ItemDataBound">
+                                                    <ItemTemplate>
+                                                        <div class="col-sm-3">
+                                                            <div class="form-group">
+                                                                <label class="custom-control custom-checkbox">
+                                                                    <asp:Label ID="lblCustomerPersonalFactorsID" runat="server" Visible="false"></asp:Label>
+                                                                    <asp:Label ID="lblPersonalFactorsID" runat="server" Visible="false"></asp:Label>
+                                                                    <input type="checkbox" id="isPersonalFactors" runat="server" class="custom-control-input">
+                                                                    <span class="custom-control-label">
+                                                                        <asp:Label ID="lblPersonalFactorsName" runat="server"></asp:Label></span>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </ItemTemplate>
+                                                </asp:Repeater>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row f-12">
+                                        <div class="col-lg-12 col-xl-12">
+                                            <h5 class="mt-4"><strong><u>เคยได้รับการผ่าตัด</u></strong></h5>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="form-group">
+                                                <label class="custom-control custom-radio">
+                                                    <input name="custom-radio-1" type="radio" runat="server" id="rbtnTreatment1" class="custom-control-input">
+                                                    <span class="custom-control-label">ไม่มี</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-10">
+                                            <div class="form-group">
+                                                <label class="custom-control custom-radio mb-1">
+                                                    <input name="custom-radio-1" type="radio" runat="server" id="rbtnTreatment2" class="custom-control-input">
+                                                    <span class="custom-control-label">มี</span>
+                                                </label>
+                                                <asp:TextBox ID="txtTreatmentComment" CssClass="form-control form-control-sm " placeholder="ข้อมูลการผ่าตัดที่เคยได้รับ" runat="server"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row f-12 mb-3">
+                                        <div class="col-lg-12 col-xl-12">
+                                            <h5 class="mt-4"><strong><u>ผู้รับบริการมาโดย</u></strong></h5>
                                         </div>
                                         <div class="col-sm-12">
                                             <div class="row">
@@ -442,173 +508,6 @@
                                                         <asp:TextBox ID="txtServiceBy3" placeholder="อื่นๆ" CssClass="form-control form-control-sm w-100" runat="server"></asp:TextBox>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <div class="col-sm-12">
-                                            <div class="form-group">
-                                                <label
-                                                    class="form-label form-label-sm text-uppercase">
-                                                    อาการสำคัญ / ความต้องการสำคัญ<span class="text-danger">*</span></label>
-                                                <asp:TextBox ID="txtImportantDoc" CssClass="form-control form-control-sm " placeholder="อาการสำคัญ /ความต้องการสำคัญ" TextMode="MultiLine" Rows="5" runat="server"></asp:TextBox>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row f-12 mb-2">
-                                        <div class="col-sm-12">
-                                            <h5 class="f-12 font-weight-normal">โรคประจำตัว :</h5>
-                                        </div>
-                                        <div class="col-sm-12 flex-wrap">
-                                            <div class="row">
-                                                <asp:Repeater ID="rptchkCongenitalDisease" runat="server" OnItemDataBound="rptchkCongenitalDisease_ItemDataBound">
-                                                    <ItemTemplate>
-                                                        <div class="col-sm-3">
-                                                            <div class="form-group">
-                                                                <label class="custom-control custom-checkbox">
-                                                                    <asp:Label ID="lblCustomerCongenitalDiseaseID" runat="server" Visible="false"></asp:Label>
-                                                                    <asp:Label ID="lblCongenitalDiseaseID" runat="server" Visible="false"></asp:Label>
-                                                                    <input type="checkbox" id="isCheckCongenitalDisease" runat="server" class="custom-control-input">
-                                                                    <span class="custom-control-label">
-                                                                        <asp:Label ID="lblCongenitalDiseaseName" runat="server"></asp:Label></span>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                    </ItemTemplate>
-                                                </asp:Repeater>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row f-12 mb-2">
-                                        <div class="col-sm-12">
-                                            <h5 class="f-12 font-weight-normal">Red Flag :</h5>
-                                        </div>
-                                        <div class="col-sm-12 flex-wrap">
-                                            <div class="row">
-                                                <asp:Repeater ID="rptchkRedFlag" runat="server" OnItemDataBound="rptchkRedFlag_ItemDataBound">
-                                                    <ItemTemplate>
-                                                        <div class="col-sm-3">
-                                                            <div class="form-group">
-                                                                <label class="custom-control custom-checkbox">
-                                                                    <asp:Label ID="lblCustomerRedFlagID" runat="server" Visible="false"></asp:Label>
-                                                                    <asp:Label ID="lblRedFlagID" runat="server" Visible="false"></asp:Label>
-                                                                    <input type="checkbox" id="isRedFlag" runat="server" class="custom-control-input">
-                                                                    <span class="custom-control-label">
-                                                                        <asp:Label ID="lblRedFlagName" runat="server"></asp:Label></span>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                    </ItemTemplate>
-                                                </asp:Repeater>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row f-12 mb-2">
-                                        <div class="col-sm-12">
-                                            <h5 class="f-12 font-weight-normal">ประเมินความเสี่ยง :</h5>
-                                        </div>
-                                        <div class="col-sm-12">
-                                            <div class="row">
-                                                <asp:Repeater ID="rptRiskAssessment" runat="server" OnItemDataBound="rptRiskAssessment_ItemDataBound">
-                                                    <ItemTemplate>
-                                                        <div class="col-sm-3">
-                                                            <div class="form-group">
-                                                                <label class="custom-control custom-checkbox">
-                                                                    <asp:Label ID="lblCustomerRiskAssessmentID" runat="server" Visible="false"></asp:Label>
-                                                                    <asp:Label ID="lblRiskAssessmentID" runat="server" Visible="false"></asp:Label>
-                                                                    <input type="checkbox" id="isRiskAssessment" runat="server" class="custom-control-input">
-                                                                    <span class="custom-control-label">
-                                                                        <asp:Label ID="lblRiskAssessmentName" runat="server"></asp:Label></span>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                    </ItemTemplate>
-                                                </asp:Repeater>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row f-12 mb-3">
-                                        <div class="col-sm-12">
-                                            <h5 class="f-12 font-weight-normal">ปัจจัยส่วนบุคคลส่งผลต่อความเจ็บป่วย
-                                                            :</h5>
-                                        </div>
-                                        <div class="col-sm-12">
-                                            <div class="row">
-                                                <asp:Repeater ID="rptPersonalFactors" runat="server" OnItemDataBound="rptPersonalFactors_ItemDataBound">
-                                                    <ItemTemplate>
-                                                        <div class="col-sm-3">
-                                                            <div class="form-group">
-                                                                <label class="custom-control custom-checkbox">
-                                                                    <asp:Label ID="lblCustomerPersonalFactorsID" runat="server" Visible="false"></asp:Label>
-                                                                    <asp:Label ID="lblPersonalFactorsID" runat="server" Visible="false"></asp:Label>
-                                                                    <input type="checkbox" id="isPersonalFactors" runat="server" class="custom-control-input">
-                                                                    <span class="custom-control-label">
-                                                                        <asp:Label ID="lblPersonalFactorsName" runat="server"></asp:Label></span>
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                    </ItemTemplate>
-                                                </asp:Repeater>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <div class="form-group">
-                                                <label class="form-label form-label-sm text-uppercase">
-                                                    ประวัติการเจ็บป่วยปัจจุบัน
-                                                                :</label>
-                                                <asp:TextBox ID="txtCurrentIllness" CssClass="form-control form-control-sm " placeholder="ประวัติการเจ็บป่วยปัจจุบัน" TextMode="MultiLine" Rows="5" runat="server"></asp:TextBox>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <div class="form-group">
-                                                <label class="form-label form-label-sm text-uppercase">
-                                                    ประวัติการเจ็บป่วยในอดีต
-                                                                :</label>
-                                                <asp:TextBox ID="txtHistoryIllness" CssClass="form-control form-control-sm " placeholder="ประวัติการเจ็บป่วยในอดีต" TextMode="MultiLine" Rows="5" runat="server"></asp:TextBox>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <div class="form-group">
-                                                <label class="form-label form-label-sm text-uppercase">การวินิจฉัยของแพทย์ :</label>
-                                                <asp:TextBox ID="txtDiagnosis" CssClass="form-control form-control-sm " placeholder="การวินิจฉัยของแพทย์" TextMode="MultiLine" Rows="5" runat="server"></asp:TextBox>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-2">
-                                        <div class="col-sm-12">
-                                            <div class="form-group">
-                                                <label class="form-label form-label-sm text-uppercase">
-                                                    การรักษาที่เคยได้รับจากแพทย์
-                                                                :</label>
-                                                <asp:TextBox ID="txtTreatment" CssClass="form-control form-control-sm " placeholder="เคยได้รับจากแพทย์" TextMode="MultiLine" Rows="5" runat="server"></asp:TextBox>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row f-12">
-                                        <div class="col-lg-12 col-xl-12">
-                                            <h5 class="f-12 font-weight-normal">เคยได้รับการผ่าตัด :</h5>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <div class="form-group">
-                                                <label class="custom-control custom-radio">
-                                                    <input name="custom-radio-1" type="radio" runat="server" id="rbtnTreatment1" class="custom-control-input">
-                                                    <span class="custom-control-label">ไม่มี</span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label class="custom-control custom-radio mb-1">
-                                                    <input name="custom-radio-1" type="radio" runat="server" id="rbtnTreatment2" class="custom-control-input">
-                                                    <span class="custom-control-label">มี</span>
-                                                </label>
-                                                <asp:TextBox ID="txtTreatmentComment" CssClass="form-control form-control-sm " placeholder="ข้อมูลการผ่าตัดที่เคยได้รับ" runat="server"></asp:TextBox>
                                             </div>
                                         </div>
                                     </div>
@@ -744,6 +643,110 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <%--ตัดออกจากแบบฟอร์ม--%>
+                                <div class="row f-12 mb-2" style="display: none">
+                                    <div class="col-sm-12">
+                                        <h5 class="f-12 font-weight-normal">Red Flag :</h5>
+                                    </div>
+                                    <div class="col-sm-12 flex-wrap">
+                                        <div class="row">
+                                            <asp:Repeater ID="rptchkRedFlag" runat="server" OnItemDataBound="rptchkRedFlag_ItemDataBound">
+                                                <ItemTemplate>
+                                                    <div class="col-sm-3">
+                                                        <div class="form-group">
+                                                            <label class="custom-control custom-checkbox">
+                                                                <asp:Label ID="lblCustomerRedFlagID" runat="server" Visible="false"></asp:Label>
+                                                                <asp:Label ID="lblRedFlagID" runat="server" Visible="false"></asp:Label>
+                                                                <input type="checkbox" id="isRedFlag" runat="server" class="custom-control-input">
+                                                                <span class="custom-control-label">
+                                                                    <asp:Label ID="lblRedFlagName" runat="server"></asp:Label></span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </ItemTemplate>
+                                            </asp:Repeater>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row f-12 mb-2" style="display: none">
+                                    <div class="col-sm-12">
+                                        <h5 class="f-12 font-weight-normal">ประเมินความเสี่ยง :</h5>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="row">
+                                            <asp:Repeater ID="rptRiskAssessment" runat="server" OnItemDataBound="rptRiskAssessment_ItemDataBound">
+                                                <ItemTemplate>
+                                                    <div class="col-sm-3">
+                                                        <div class="form-group">
+                                                            <label class="custom-control custom-checkbox">
+                                                                <asp:Label ID="lblCustomerRiskAssessmentID" runat="server" Visible="false"></asp:Label>
+                                                                <asp:Label ID="lblRiskAssessmentID" runat="server" Visible="false"></asp:Label>
+                                                                <input type="checkbox" id="isRiskAssessment" runat="server" class="custom-control-input">
+                                                                <span class="custom-control-label">
+                                                                    <asp:Label ID="lblRiskAssessmentName" runat="server"></asp:Label></span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </ItemTemplate>
+                                            </asp:Repeater>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3" style="display: none">
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label class="form-label form-label-sm">วันเดือนปีที่รับ<span class="text-danger">*</span></label>
+                                            <asp:TextBox ID="txtDateInformationRecieve" CssClass="form-control form-control-sm" runat="server" TextMode="Date"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label class="form-label form-label-sm">เวลา</label>
+                                            <asp:TextBox ID="txtTimeInformationRecieve" CssClass="form-control form-control-sm" runat="server" TextMode="Time"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" style="display: none">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label form-label-sm text-uppercase">
+                                                ประวัติการเจ็บป่วยปัจจุบัน
+                                                                :</label>
+                                            <asp:TextBox ID="txtCurrentIllness" CssClass="form-control form-control-sm " placeholder="ประวัติการเจ็บป่วยปัจจุบัน" TextMode="MultiLine" Rows="5" runat="server"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" style="display: none">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label form-label-sm text-uppercase">
+                                                ประวัติการเจ็บป่วยในอดีต
+                                                                :</label>
+                                            <asp:TextBox ID="txtHistoryIllness" CssClass="form-control form-control-sm " placeholder="ประวัติการเจ็บป่วยในอดีต" TextMode="MultiLine" Rows="5" runat="server"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" style="display: none">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label form-label-sm text-uppercase">การวินิจฉัยของแพทย์ :</label>
+                                            <asp:TextBox ID="txtDiagnosis" CssClass="form-control form-control-sm " placeholder="การวินิจฉัยของแพทย์" TextMode="MultiLine" Rows="5" runat="server"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-2" style="display: none">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label form-label-sm text-uppercase">
+                                                การรักษาที่เคยได้รับจากแพทย์
+                                                                :</label>
+                                            <asp:TextBox ID="txtTreatment" CssClass="form-control form-control-sm " placeholder="เคยได้รับจากแพทย์" TextMode="MultiLine" Rows="5" runat="server"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                </div>
+                                <%--ตัดออกจากแบบฟอร์ม--%>
+
                                 <div class="card-footer">
                                     <a href="/BackOffice/Customer/customer-list.aspx" class="btn btn-lg btn-secondary">Back</a>
                                     <asp:LinkButton ID="lbnSave" runat="server" class="btn btn-lg btn-success" OnClick="lbnSave_Click">Save</asp:LinkButton>

@@ -532,6 +532,10 @@ namespace AnomaERP.BackOffice.Customer
             {
                 customerEntity.is_active = true;
             }
+            else
+            {
+                customerEntity.is_active = false;
+            }
 
             CustomerRelativeEntity customerRelativeEntity = new CustomerRelativeEntity();
             customerRelativeEntity.customer_relative_id = int.Parse(lblCustomerRelativeID.Text);
@@ -608,12 +612,7 @@ namespace AnomaERP.BackOffice.Customer
                 return;
             }
 
-            if (string.IsNullOrEmpty(txtTaxId.Text))
-            {
-                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณากรอกเลขที่บัตรประชาชน (ID Card)');", true);
-                return;
-            }
-
+            
             if (string.IsNullOrEmpty(txtDOB.Text))
             {
                 ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณากรอกวันเดือนปีเกิด (DOB)');", true);
@@ -629,6 +628,13 @@ namespace AnomaERP.BackOffice.Customer
             if (string.IsNullOrEmpty(txtPhone.Text))
             {
                 ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณากรอก เบอร์โทรศัพท์ (Telephone No.)');", true);
+                return;
+            }
+            var isNumeric = new Boolean();
+            isNumeric = int.TryParse(txtPhone.Text, out int n);
+            if (isNumeric == false)
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณากรอกเบอร์โทรศัพท์เป็นตัวเลขเท่านั้น');", true);
                 return;
             }
 

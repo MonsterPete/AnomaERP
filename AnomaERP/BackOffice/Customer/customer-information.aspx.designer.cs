@@ -364,22 +364,58 @@ namespace AnomaERP.BackOffice.Customer {
         protected global::System.Web.UI.WebControls.TextBox txtRelationEmail2;
         
         /// <summary>
-        /// txtDateInformationRecieve control.
+        /// txtImportantDoc control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDateInformationRecieve;
+        protected global::System.Web.UI.WebControls.TextBox txtImportantDoc;
         
         /// <summary>
-        /// txtTimeInformationRecieve control.
+        /// rptchkCongenitalDisease control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTimeInformationRecieve;
+        protected global::System.Web.UI.WebControls.Repeater rptchkCongenitalDisease;
+        
+        /// <summary>
+        /// rptPersonalFactors control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptPersonalFactors;
+        
+        /// <summary>
+        /// rbtnTreatment1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton rbtnTreatment1;
+        
+        /// <summary>
+        /// rbtnTreatment2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton rbtnTreatment2;
+        
+        /// <summary>
+        /// txtTreatmentComment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtTreatmentComment;
         
         /// <summary>
         /// rbtnServiceBy1 control.
@@ -425,114 +461,6 @@ namespace AnomaERP.BackOffice.Customer {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtServiceBy3;
-        
-        /// <summary>
-        /// txtImportantDoc control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtImportantDoc;
-        
-        /// <summary>
-        /// rptchkCongenitalDisease control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptchkCongenitalDisease;
-        
-        /// <summary>
-        /// rptchkRedFlag control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptchkRedFlag;
-        
-        /// <summary>
-        /// rptRiskAssessment control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptRiskAssessment;
-        
-        /// <summary>
-        /// rptPersonalFactors control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptPersonalFactors;
-        
-        /// <summary>
-        /// txtCurrentIllness control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCurrentIllness;
-        
-        /// <summary>
-        /// txtHistoryIllness control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtHistoryIllness;
-        
-        /// <summary>
-        /// txtDiagnosis control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDiagnosis;
-        
-        /// <summary>
-        /// txtTreatment control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTreatment;
-        
-        /// <summary>
-        /// rbtnTreatment1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton rbtnTreatment1;
-        
-        /// <summary>
-        /// rbtnTreatment2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton rbtnTreatment2;
-        
-        /// <summary>
-        /// txtTreatmentComment control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTreatmentComment;
         
         /// <summary>
         /// txtT_C control.
@@ -623,6 +551,78 @@ namespace AnomaERP.BackOffice.Customer {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblRiskAssessmentName;
+        
+        /// <summary>
+        /// rptchkRedFlag control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptchkRedFlag;
+        
+        /// <summary>
+        /// rptRiskAssessment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptRiskAssessment;
+        
+        /// <summary>
+        /// txtDateInformationRecieve control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDateInformationRecieve;
+        
+        /// <summary>
+        /// txtTimeInformationRecieve control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtTimeInformationRecieve;
+        
+        /// <summary>
+        /// txtCurrentIllness control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCurrentIllness;
+        
+        /// <summary>
+        /// txtHistoryIllness control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtHistoryIllness;
+        
+        /// <summary>
+        /// txtDiagnosis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDiagnosis;
+        
+        /// <summary>
+        /// txtTreatment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtTreatment;
         
         /// <summary>
         /// lbnSave control.
