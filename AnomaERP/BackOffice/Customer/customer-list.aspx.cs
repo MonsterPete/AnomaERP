@@ -33,7 +33,7 @@ namespace AnomaERP.BackOffice.Customer
         {
             CustomerEntity customerEntity = new CustomerEntity();
 
-            customerEntity.firstname = txtSearch.Text;
+            customerEntity.firstname = txtSearch.Text.Trim().Replace("-","");
             customerEntity.branch_id = Master.branchEntity.branch_id;
 
             if (ddlStatus.SelectedValue != "")

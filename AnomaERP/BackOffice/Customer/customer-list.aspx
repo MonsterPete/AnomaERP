@@ -3,6 +3,7 @@
 <%@ MasterType VirtualPath="~/Masterpage.Master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="FromPlaceHolder" runat="server">
     <script>
+
         $(document).ready(function () {
             SetTable();
         });
@@ -45,7 +46,7 @@
                             <div class="col-lg-3 col-xl-3 mb-2">
                                 <div class="form-group">
                                     <label class="form-label form-label-sm text-uppercase">Search</label>
-                                    <asp:TextBox ID="txtSearch" runat="server" class="form-control form-control-sm" placeholder="HN, Customer Name, Tel No., ID Card"></asp:TextBox>
+                                    <asp:TextBox ID="txtSearch" runat="server" class="form-control form-control-sm" placeholder="KN, Customer Name, Phone No., ID Card"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="col-lg-3 col-xl-3 mb-2">
@@ -85,7 +86,7 @@
                                                 <thead class="thead-dark">
                                                     <tr class="text-center">
                                                         <th class="tbw-5">Kin No.(KN)</th>
-                                                        <th class="tbw-5">Customer Name</th>
+                                                        <th class="tbw-19">Customer Name</th>
                                                         <th class="tbw-9" style="width: 15%;">Phone No.</th>
                                                         <th>ID Card</th>
                                                         <th>Status</th>

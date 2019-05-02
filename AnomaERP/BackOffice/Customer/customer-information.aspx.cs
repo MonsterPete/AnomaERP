@@ -679,7 +679,28 @@ namespace AnomaERP.BackOffice.Customer
                 ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาเอกสารสำคัญ/ความต้องการสำคัญ');", true);
                 return;
             }
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "none", "<script>$('#myModal').modal('show');</script>", false);
+        }
 
+        protected void lbnPrint_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void SetTextbox()
+        {
+            txtT_C.Text = "0";
+            txtP_Min.Text = "0";
+            txtR_Min.Text = "0";
+            txtBP_mmHg.Text = "0";
+            txtO2Sat_Percent.Text = "0";
+            txtBW_kg.Text = "0";
+            txtHT_Cm.Text = "0";
+            txtBMI_Index.Text = "0";
+        }
+
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
             int success = 0;
             CustomerEntity customerEntity = new CustomerEntity();
             CustomerService customerService = new CustomerService();
@@ -699,23 +720,6 @@ namespace AnomaERP.BackOffice.Customer
                 Response.Redirect("/BackOffice/Customer/customer-list.aspx");
             }
 
-        }
-
-        protected void lbnPrint_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void SetTextbox()
-        {
-            txtT_C.Text = "0";
-            txtP_Min.Text = "0";
-            txtR_Min.Text = "0";
-            txtBP_mmHg.Text = "0";
-            txtO2Sat_Percent.Text = "0";
-            txtBW_kg.Text = "0";
-            txtHT_Cm.Text = "0";
-            txtBMI_Index.Text = "0";
         }
     }
 }

@@ -32,7 +32,6 @@
         }
 
         function setModalPicker() {
-
             $('.datepicker').keypress(function (e) {
                 e.preventDefault();
             });
@@ -55,6 +54,15 @@
                 document.getElementById("<%= txtNewFormOther.ClientID %>").style.display = "none";
             }
         }
+
+        var pr = Sys.WebForms.PageRequestManager.getInstance();
+        if (pr != null) {
+            pr.add_endRequest(function (sender, e) {
+                if (sender._postBackSettings.panelsToUpdate != null) {
+                    setModalPicker();
+                }
+            });
+        };
     </script>
 
     <div class="container-fluid flex-grow-1 container-p-y">
@@ -237,7 +245,7 @@
                                                     <label class="form-label form-label-sm">
                                                         เบอร์โทรศัพท์
                                                                     (Telephone No.)<span class="text-danger">*</span></label>
-                                                    <asp:TextBox ID="txtPhone" placeholder="เบอร์โทรศัพท์" CssClass="form-control form-control-sm" runat="server"></asp:TextBox>
+                                                    <asp:TextBox ID="txtPhone" placeholder="xxxxxxxxxx" MaxLength="10" CssClass="form-control form-control-sm" runat="server"></asp:TextBox>
                                                 </div>
                                             </div>
                                             <div class="col-sm-4">
@@ -761,4 +769,36 @@
     </asp:UpdatePanel>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ModalPlaceHolder" runat="server">
+    <script>
+        function openModalSuccess() {
+            swal({
+                title: '',
+                text: 'ทำรายการสำเร็จ',
+                type: "success",
+                confirmButtonClass: "btn-success",
+            });
+        }
+    </script>
+
+        <%--Hide--%>
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: white;">
+                    <div style="text-align: left">
+                        <asp:Label ID="lblTitle" class="modal-title" runat="server" Text="ยืนยันการบัทึก" ForeColor="Gray" />
+                    </div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <asp:Label ID="lblMessage" Text="ท่านต้องการบันทึกข้อมูลหรือไม่ ?" runat="server" />
+                </div>
+                <div class="modal-footer">
+                    <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="btnSubmit_Click" CssClass="btn btn-sm btn-success" />
+                    <button type="button" class="btn btn-sm btn-primary" data-dismiss="modal">CLOSE</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </asp:Content>
