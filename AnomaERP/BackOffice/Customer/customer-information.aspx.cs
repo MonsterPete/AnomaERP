@@ -618,6 +618,15 @@ namespace AnomaERP.BackOffice.Customer
                 ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณากรอกวันเดือนปีเกิด (DOB)');", true);
                 return;
             }
+            var year = -543;
+            var DOB = DateTime.ParseExact(txtDOB.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            var today = DateTime.Now;
+            DOB = DOB.AddYears(year);
+            if (DOB > today)
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('วันเดือนปีเกิดมากกว่าวันปัจจุบัน กรุณากรอกใหม่อีกครั้ง');", true);
+                return;
+            }
 
             if (string.IsNullOrEmpty(txtAge.Text))
             {
