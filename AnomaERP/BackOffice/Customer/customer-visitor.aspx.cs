@@ -76,9 +76,10 @@ namespace AnomaERP.BackOffice.Customer
             LinkButton lbnUpload = (LinkButton)e.Item.FindControl("lbnUpload");
             LinkButton lbnPrint = (LinkButton)e.Item.FindControl("lbnPrint");
 
-            lblVisitorCode.Text = visitEntity.visit_code;
+            DateFormat dateFormat = new DateFormat();
             lblDate.Text = visitEntity.create_date.ToString("dd-MM-yyyy");
-            lblTime.Text = visitEntity.create_date.ToString("hh:mm:tt");
+            lblTime.Text = dateFormat.ThaiFormatTime(visitEntity.create_date);
+            lblVisitorCode.Text = visitEntity.visit_code;
             if (visitEntity.visit_type == 3)
             {
                 rptAN.Checked = true;
