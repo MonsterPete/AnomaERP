@@ -15,7 +15,7 @@
         };
     </script>
 
-    <asp:UpdatePanel runat="server">
+    <asp:updatepanel runat="server">
         <ContentTemplate>
             <div class="container-fluid flex-grow-1 container-p-y">
 
@@ -133,7 +133,7 @@
                                                                                 <asp:LinkButton ID="lbnUpload" runat="server" ClientIDMode="AutoID" class="btn btn-warning rounded mr-2">
                                                                     <i class="fas fa-upload mr-1"></i>Upload
                                                                                 </asp:LinkButton>
-                                                                                <asp:LinkButton ID="lbnPrint" runat="server" ClientIDMode="AutoID" class="btn btn-dark rounded mr-2" Style="display: none">
+                                                                                <asp:LinkButton ID="lbnPrint" runat="server" ClientIDMode="AutoID" class="btn btn-dark rounded mr-2" >
                                                                     <i class="fas fa-print mr-1"></i>Print
                                                                                 </asp:LinkButton>
                                                                             </div>
@@ -185,26 +185,30 @@
 
             </div>
         </ContentTemplate>
-    </asp:UpdatePanel>
+    </asp:updatepanel>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ModalPlaceHolder" runat="server">
-    <asp:Label ID="lblVistorID" runat="server" Visible="false"></asp:Label>
+    <script>
+        function RefreshPage() {
+            window.location.reload();
+        }
+    </script>
+    <asp:label id="lblVistorID" runat="server" visible="false"></asp:label>
     <!-- MODAL Print -->
     <div class="modal fade" id="print" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
         aria-hidden="true">
-
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel1">Print Document</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" onclick="RefreshPage();" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <asp:UpdatePanel runat="server">
+                    <asp:updatepanel runat="server">
                         <ContentTemplate>
-                            <table class="table table-bordered">
+                            <table class="table table-bordered table-responsive-modal">
                                 <thead class="thead-dark text-center">
                                     <tr>
                                         <th scope="col">Document Name</th>
@@ -234,10 +238,10 @@
                                 </tbody>
                             </table>
                         </ContentTemplate>
-                    </asp:UpdatePanel>
+                    </asp:updatepanel>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" onclick="RefreshPage();" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
@@ -249,12 +253,12 @@
         aria-hidden="true">
 
 
-        <asp:UpdatePanel runat="server">
+        <asp:updatepanel runat="server">
              <Triggers>
                 <asp:PostBackTrigger ControlID="btnUpload" />
             </Triggers>
             <ContentTemplate>
-                <div class="modal-dialog" role="document">
+                <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel1">Upload Document</h5>
@@ -268,7 +272,7 @@
                                 <asp:Button ID="btnUpload" runat="server" autopostback="true" OnClick="btnUpload_Click" Style="display: none" />
                             </div>
 
-                            <table class="table table-bordered">
+                            <table class="table table-bordered table-responsive-modal">
                                 <thead class="thead-dark text-center">
                                     <tr>
                                         <th scope="col">Document Name</th>
@@ -302,8 +306,8 @@
                         </div>
                     </div>
                 </div>
-                </div>
-            </ContentTemplate>         
+    </div>
+    </ContentTemplate>         
         </asp:UpdatePanel>
 
         <script type="text/javascript" lang="javascript">    
