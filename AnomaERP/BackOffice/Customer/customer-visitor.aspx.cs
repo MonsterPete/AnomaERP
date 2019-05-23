@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
@@ -74,7 +75,6 @@ namespace AnomaERP.BackOffice.Customer
             HtmlInputRadioButton rptAN = (HtmlInputRadioButton)e.Item.FindControl("rptAN");
             HtmlInputRadioButton rptVN = (HtmlInputRadioButton)e.Item.FindControl("rptVN");
             LinkButton lbnUpload = (LinkButton)e.Item.FindControl("lbnUpload");
-            LinkButton lbnPrint = (LinkButton)e.Item.FindControl("lbnPrint");
 
             DateFormat dateFormat = new DateFormat();
             lblDate.Text = visitEntity.create_date.ToString("dd-MM-yyyy");
@@ -92,9 +92,7 @@ namespace AnomaERP.BackOffice.Customer
             rptVN.Disabled = true;
 
             lbnUpload.CommandName = "Upload";
-            lbnPrint.CommandName = "Print";
             lbnUpload.CommandArgument = visitEntity.visit_id.ToString();
-            lbnPrint.CommandArgument = visitEntity.visit_id.ToString();
         }
 
         protected void rptCustomerList_ItemCommand(object source, RepeaterCommandEventArgs e)
@@ -104,12 +102,6 @@ namespace AnomaERP.BackOffice.Customer
                 lblVistorID.Text = e.CommandArgument.ToString();
                 getDataVisitFileUpload(int.Parse(lblVistorID.Text));
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "none", "<script>$('#upload').modal('show');</script>", false);
-            }
-            else if (e.CommandName == "Print")
-            {
-                lblVistorID.Text = e.CommandArgument.ToString();
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "none", "<script>$('#print').modal('show');</script>", false);
-                getDataVisitFilePrint(int.Parse(lblVistorID.Text));
             }
         }
 
@@ -130,17 +122,28 @@ namespace AnomaERP.BackOffice.Customer
             Visit_fileEntity visit_FileEntity = (Visit_fileEntity)e.Item.DataItem;
 
             Label lblSiteVisiteFileID = (Label)e.Item.FindControl("lblSiteVisiteFileID");
+            Label lblSiteVisiteFileURL = (Label)e.Item.FindControl("lblSiteVisiteFileURL");
             Label lblSiteVisiteFileName = (Label)e.Item.FindControl("lblSiteVisiteFileName");
+            LinkButton lbnView = (LinkButton)e.Item.FindControl("lbnView");
+            LinkButton lbnPrint = (LinkButton)e.Item.FindControl("lbnPrint");
             LinkButton lbnDelete = (LinkButton)e.Item.FindControl("lbnDelete");
 
-            lblSiteVisiteFileID.Text = visit_FileEntity.visit_file_id.ToString(); ;
+            lblSiteVisiteFileID.Text = visit_FileEntity.visit_file_id.ToString();
+            lblSiteVisiteFileURL.Text = visit_FileEntity.url.ToString();
             lblSiteVisiteFileName.Text = visit_FileEntity.file_name.ToString();
             lbnDelete.CommandName = "Delete";
             lbnDelete.CommandArgument = visit_FileEntity.visit_file_id.ToString();
+            lbnView.CommandName = "View";
+            lbnView.CommandArgument = visit_FileEntity.visit_file_id.ToString();
+            lbnPrint.CommandName = "Dowload";
+            lbnPrint.CommandArgument = visit_FileEntity.visit_file_id.ToString();
         }
 
         protected void rptUpload_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
+            Label lblSiteVisiteFileURL = (Label)e.Item.FindControl("lblSiteVisiteFileURL");
+            Label lblSiteVisiteFileName = (Label)e.Item.FindControl("lblSiteVisiteFileName");
+
             if (e.CommandName == "Delete")
             {
                 Visit_fileEntity visit_FileEntity = new Visit_fileEntity();
@@ -153,6 +156,14 @@ namespace AnomaERP.BackOffice.Customer
                     e.Item.Visible = false;
                 }
             }
+            else if (e.CommandName == "Dowload")
+            {
+                Response.Redirect(lblSiteVisiteFileURL.Text);
+            }
+            else if (e.CommandName == "View")
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "ShowCustomerRefImage('" + lblSiteVisiteFileURL.Text + "');", true);
+            }
         }
 
         protected void btnUpload_Click(object sender, EventArgs e)
@@ -160,7 +171,7 @@ namespace AnomaERP.BackOffice.Customer
             try
             {
                 Visit_fileEntity visit_FileEntity = new Visit_fileEntity();
-                if (FileUpload.HasFile)
+                if (FileUpload.HasFiles && (Path.GetExtension(FileUpload.FileName.ToLower()) == ".jpg" || Path.GetExtension(FileUpload.FileName.ToLower()) == ".png"))
                 {
                     AzureBlobEntity azureBlobEntity = new AzureBlobEntity();
                     AzureBlobHelper azureBlobHelper = new AzureBlobHelper();
@@ -199,6 +210,10 @@ namespace AnomaERP.BackOffice.Customer
                         //ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "none", "<script>$('#upload').modal('show');</script>", false);
                     }
                 }
+                else
+                {
+
+                }
             }
             catch (Exception ex)
             {
@@ -207,41 +222,5 @@ namespace AnomaERP.BackOffice.Customer
         }
         #endregion
 
-        #region Print
-
-        private void getDataVisitFilePrint(int visit_id)
-        {
-            List<Visit_fileEntity> visit_FileEntities = new List<Visit_fileEntity>();
-            VisitService visitService = new VisitService();
-            visit_FileEntities = visitService.GetDataVisitFileByVisitorID(int.Parse(lblVistorID.Text));
-            rptPrint.DataSource = visit_FileEntities;
-            rptPrint.DataBind();
-        }
-
-        protected void rptPrint_ItemDataBound(object sender, RepeaterItemEventArgs e)
-        {
-            Visit_fileEntity visit_FileEntity = (Visit_fileEntity)e.Item.DataItem;
-
-            Label lblSiteVisiteFileID = (Label)e.Item.FindControl("lblSiteVisiteFileID");
-            Label lblSiteVisiteFileURL = (Label)e.Item.FindControl("lblSiteVisiteFileURL");
-            Label lblSiteVisiteFileName = (Label)e.Item.FindControl("lblSiteVisiteFileName");
-            LinkButton lbnPrint = (LinkButton)e.Item.FindControl("lbnPrint");
-
-            lblSiteVisiteFileID.Text = visit_FileEntity.visit_file_id.ToString();
-            lblSiteVisiteFileURL.Text = visit_FileEntity.url.ToString();
-            lblSiteVisiteFileName.Text = visit_FileEntity.file_name.ToString();
-            lbnPrint.CommandName = "Print";
-            lbnPrint.CommandArgument = visit_FileEntity.visit_file_id.ToString();
-        }
-
-        protected void rptPrint_ItemCommand(object source, RepeaterCommandEventArgs e)
-        {
-            Label lblSiteVisiteFileURL = (Label)e.Item.FindControl("lblSiteVisiteFileURL");
-            if (e.CommandName == "Print")
-            {
-                Response.Redirect(lblSiteVisiteFileURL.Text);
-            }
-        }
-        #endregion
     }
 }

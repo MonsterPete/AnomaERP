@@ -15,7 +15,7 @@
         };
     </script>
 
-    <asp:updatepanel runat="server">
+    <asp:UpdatePanel runat="server">
         <ContentTemplate>
             <div class="container-fluid flex-grow-1 container-p-y">
 
@@ -75,7 +75,6 @@
                     </div>
                 </div>
                 <!-- / Statistics -->
-
                 <div class="row">
                     <div class="col-md-12 col-lg-12">
                         <!-- Sale stats -->
@@ -133,7 +132,7 @@
                                                                                 <asp:LinkButton ID="lbnUpload" runat="server" ClientIDMode="AutoID" class="btn btn-warning rounded mr-2">
                                                                     <i class="fas fa-upload mr-1"></i>Upload
                                                                                 </asp:LinkButton>
-                                                                                <asp:LinkButton ID="lbnPrint" runat="server" ClientIDMode="AutoID" class="btn btn-dark rounded mr-2" >
+                                                                                <asp:LinkButton ID="lbnPrint" runat="server" ClientIDMode="AutoID" class="btn btn-dark rounded mr-2" Style="display: none">
                                                                     <i class="fas fa-print mr-1"></i>Print
                                                                                 </asp:LinkButton>
                                                                             </div>
@@ -185,7 +184,7 @@
 
             </div>
         </ContentTemplate>
-    </asp:updatepanel>
+    </asp:UpdatePanel>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ModalPlaceHolder" runat="server">
     <script>
@@ -193,68 +192,12 @@
             window.location.reload();
         }
     </script>
-    <asp:label id="lblVistorID" runat="server" visible="false"></asp:label>
-    <!-- MODAL Print -->
-    <div class="modal fade" id="print" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel1">Print Document</h5>
-                    <button type="button" class="close" onclick="RefreshPage();" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <asp:updatepanel runat="server">
-                        <ContentTemplate>
-                            <table class="table table-bordered table-responsive-modal">
-                                <thead class="thead-dark text-center">
-                                    <tr>
-                                        <th scope="col">Document Name</th>
-                                        <th scope="col">Tools</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="text-center upload-modal">
-
-                                    <asp:Repeater ID="rptPrint" runat="server" OnItemDataBound="rptPrint_ItemDataBound" OnItemCommand="rptPrint_ItemCommand">
-                                        <ItemTemplate>
-                                            <tr class="odd gradeX text-center">
-                                                <td>
-                                                    <asp:Label ID="lblSiteVisiteFileID" runat="server" Visible="false" Text="Label"></asp:Label>
-                                                    <asp:Label ID="lblSiteVisiteFileURL" runat="server" Visible="false" Text="Label"></asp:Label>
-                                                    <asp:Label ID="lblSiteVisiteFileName" runat="server" Text="Label"></asp:Label>
-                                                </td>
-                                                <td class="text-center pr-0">
-                                                    <div class="btn-group btn-group-sm">
-                                                        <asp:LinkButton ID="lbnPrint" runat="server" ClientIDMode="AutoID" target="_blank" class="btn btn-dark rounded mr-2">
-                                                                    <i class="fas fa-print mr-1"></i>PRINT
-                                                        </asp:LinkButton>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </ItemTemplate>
-                                    </asp:Repeater>
-                                </tbody>
-                            </table>
-                        </ContentTemplate>
-                    </asp:updatepanel>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" onclick="RefreshPage();" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
+    <asp:Label ID="lblVistorID" runat="server" Visible="false"></asp:Label>
     <!-- MODAL Upload -->
     <div class="modal fade" id="upload" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
         aria-hidden="true">
-
-
-        <asp:updatepanel runat="server">
-             <Triggers>
+        <asp:UpdatePanel runat="server">
+            <Triggers>
                 <asp:PostBackTrigger ControlID="btnUpload" />
             </Triggers>
             <ContentTemplate>
@@ -262,7 +205,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel1">Upload Document</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <button type="button" class="close" onclick="RefreshPage();" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
@@ -270,8 +213,8 @@
                             <div class="text-center mb-4">
                                 <asp:FileUpload ID="FileUpload" CssClass="upload-custom" runat="server" onchange="btnUpload()" />
                                 <asp:Button ID="btnUpload" runat="server" autopostback="true" OnClick="btnUpload_Click" Style="display: none" />
+                                <asp:Label ID="lblWarning" runat="server" style="color:red">กรุณาระบุไฟล์เป็น .jpg หรือ .png เท่านั้น</asp:Label>
                             </div>
-
                             <table class="table table-bordered table-responsive-modal">
                                 <thead class="thead-dark text-center">
                                     <tr>
@@ -285,10 +228,17 @@
                                             <tr class="odd gradeX text-center">
                                                 <td>
                                                     <asp:Label ID="lblSiteVisiteFileID" runat="server" Visible="false" Text="Label"></asp:Label>
+                                                    <asp:Label ID="lblSiteVisiteFileURL" runat="server" Visible="false" Text="Label"></asp:Label>
                                                     <asp:Label ID="lblSiteVisiteFileName" runat="server" Text="Label"></asp:Label>
                                                 </td>
                                                 <td class="text-center pr-0">
                                                     <div class="btn-group btn-group-sm">
+                                                        <asp:LinkButton ID="lbnView" runat="server" CssClass="btn btn-primary rounded mr-2">  
+                                                            <i class="far fa-eye mr-1"></i>View
+                                                        </asp:LinkButton>
+                                                        <asp:LinkButton ID="lbnPrint" runat="server" ClientIDMode="AutoID" class="btn btn-dark rounded mr-2">
+                                                                    <i class="fas fa-print mr-1"></i>Dowload
+                                                        </asp:LinkButton>
                                                         <asp:LinkButton ID="lbnDelete" runat="server" ClientIDMode="AutoID" class="btn btn-danger rounded mr-2">
                                                                     <i class="fas fa-trash mr-1"></i>DELETE
                                                         </asp:LinkButton>
@@ -299,15 +249,14 @@
                                     </asp:Repeater>
                                 </tbody>
                             </table>
-
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary" onclick="RefreshPage();" data-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>
-    </div>
-    </ContentTemplate>         
+                </div>
+            </ContentTemplate>
         </asp:UpdatePanel>
 
         <script type="text/javascript" lang="javascript">    
@@ -319,6 +268,28 @@
             function btnUpload() {
                 var btn = document.getElementById('<%= btnUpload.ClientID %>');
                 btn.click();
+            }
+
+            function ShowCustomerRefImage(url) {
+                var image = new Image();
+
+                image.align = 'center';
+                image.style = '-webkit-user-select: none; margin: 12% auto; display: grid; max-width: 65%; max-height: 100vh; overflow: hidden; transform: rotate(90deg); object-fit: cover;';
+                image.src = url;
+
+                var meta = document.createElement('meta');
+                meta.setAttribute('name', 'viewport');
+                meta.content = "width=device-width, minimum-scale=0.1";
+
+                var title = document.createElement('title');
+                title.innerHTML = "DOC_Visitor_picItemBeforeRepair";
+
+                var w = window.open("");
+                w.document.head.appendChild(meta);
+                w.document.head.appendChild(title);
+                w.document.body.appendChild(image);
+                w.document.body.setAttribute("style", "margin: 0px; background: #0e0e0e;")
+                //w.document.writeln(image.outerHTML);
             }
         </script>
 </asp:Content>

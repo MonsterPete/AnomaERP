@@ -780,13 +780,13 @@
         }
     </script>
 
-        <%--Hide--%>
+    <%--Hide--%>
     <div class="modal fade" id="myModal">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header" style="background-color: white;">
                     <div style="text-align: left">
-                        <asp:Label ID="lblTitle" class="modal-title" runat="server" Text="ยืนยันการบัทึก" ForeColor="Gray" />
+                        <asp:Label ID="lblTitle" class="modal-title" runat="server" Text="ยืนยันการบันทึก" ForeColor="Gray" />
                     </div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span></button>
