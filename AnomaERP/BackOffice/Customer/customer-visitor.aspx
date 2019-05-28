@@ -189,9 +189,10 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ModalPlaceHolder" runat="server">
     <script>
         function RefreshPage() {
-            window.location.reload();
+            window.top.location = window.top.location
         }
     </script>
+    <asp:Label ID="lblVistorfileID" runat="server" Visible="false"></asp:Label>
     <asp:Label ID="lblVistorID" runat="server" Visible="false"></asp:Label>
     <!-- MODAL Upload -->
     <div class="modal fade" id="upload" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
@@ -201,7 +202,7 @@
                 <asp:PostBackTrigger ControlID="btnUpload" />
             </Triggers>
             <ContentTemplate>
-                <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel1">Upload Document</h5>
@@ -211,9 +212,9 @@
                         </div>
                         <div class="modal-body">
                             <div class="text-center mb-4">
-                                <asp:FileUpload ID="FileUpload" CssClass="upload-custom" runat="server" onchange="btnUpload()" />
+                                <asp:FileUpload ID="FileUpload" Multiple="Multiple" CssClass="upload-custom" runat="server" onchange="btnUpload()" />
                                 <asp:Button ID="btnUpload" runat="server" autopostback="true" OnClick="btnUpload_Click" Style="display: none" />
-                                <asp:Label ID="lblWarning" runat="server" style="color:red">กรุณาระบุไฟล์เป็น .jpg หรือ .png เท่านั้น</asp:Label>
+                                <asp:Label ID="lblWarning" runat="server" Style="color: red">กรุณาระบุไฟล์เป็น .jpg หรือ .png เท่านั้น</asp:Label>
                             </div>
                             <table class="table table-bordered table-responsive-modal">
                                 <thead class="thead-dark text-center">
@@ -258,6 +259,32 @@
                 </div>
             </ContentTemplate>
         </asp:UpdatePanel>
+
+        <!-- Add Page -->
+
+        <div class="modal fade" id="PageDelete"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="exampleModalCenterTitle">DELETE</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Do you want delete ?
+                    </div>
+                    <div class="modal-footer">
+                        <asp:UpdatePanel runat="server">
+                            <ContentTemplate>
+                                <asp:LinkButton ID="lbnclose2" CssClass="btn btn-secondary" data-dismiss="modal" runat="server">No</asp:LinkButton>
+                                <asp:LinkButton ID="lbnDeleteYes" CssClass="btn btn-primary" OnClick="lbnDeleteYes_Click" runat="server">Yes</asp:LinkButton>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <script type="text/javascript" lang="javascript">    
 

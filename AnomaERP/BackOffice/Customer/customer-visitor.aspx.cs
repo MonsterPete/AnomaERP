@@ -146,15 +146,9 @@ namespace AnomaERP.BackOffice.Customer
 
             if (e.CommandName == "Delete")
             {
-                Visit_fileEntity visit_FileEntity = new Visit_fileEntity();
-                VisitService visitService = new VisitService();
-                visit_FileEntity.visit_file_id = int.Parse(e.CommandArgument.ToString());
-                visit_FileEntity.is_delete = true;
-                int success = visitService.DeleteVisitFile(visit_FileEntity);
-                if (success > 0)
-                {
-                    e.Item.Visible = false;
-                }
+                lblVistorfileID.Text = e.CommandArgument.ToString();
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "none", "<script>$('#PageDelete').modal('show');</script>", false);
+                //e.Item.Visible = false;
             }
             else if (e.CommandName == "Dowload")
             {
@@ -166,53 +160,82 @@ namespace AnomaERP.BackOffice.Customer
             }
         }
 
+        protected void lbnDeleteYes_Click(object sender, EventArgs e)
+        {
+            Visit_fileEntity visit_FileEntity = new Visit_fileEntity();
+            VisitService visitService = new VisitService();
+            visit_FileEntity.visit_file_id = int.Parse(lblVistorfileID.Text);
+            visit_FileEntity.is_delete = true;
+            int success = visitService.DeleteVisitFile(visit_FileEntity);
+
+            if (success > 0)
+            {
+                getDataVisitFileUpload(int.Parse(lblVistorID.Text));
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "none", "<script>$('#PageDelete').modal('hide');</script>", false);
+            }
+        }
+
         protected void btnUpload_Click(object sender, EventArgs e)
         {
+            int success = 0;
+            int result = 0;
+            AzureBlobEntity azureBlobEntity = new AzureBlobEntity();
+            AzureBlobHelper azureBlobHelper = new AzureBlobHelper();
+
             try
             {
                 Visit_fileEntity visit_FileEntity = new Visit_fileEntity();
-                if (FileUpload.HasFiles && (Path.GetExtension(FileUpload.FileName.ToLower()) == ".jpg" || Path.GetExtension(FileUpload.FileName.ToLower()) == ".png"))
+                if (FileUpload.HasFiles)
                 {
-                    AzureBlobEntity azureBlobEntity = new AzureBlobEntity();
-                    AzureBlobHelper azureBlobHelper = new AzureBlobHelper();
-
-                    String url = String.Empty;
-                    String fileName = "";
-                    String getImgType = Path.GetExtension(FileUpload.FileName).ToLower();
-                    String hours = DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss");
-                    fileName = "DOC_Visitor" + '_' + FileUpload.FileName + hours + getImgType;
-
-                    azureBlobEntity.Stream = FileUpload.PostedFile.InputStream;
-                    azureBlobEntity.ContainerName = "anoma-container";
-                    azureBlobEntity.ConnectionString = Accesskeys.anomastorage;
-
-                    azureBlobEntity.FileName = fileName;
-                    url = azureBlobHelper.UploadFile(azureBlobEntity);
-
-                    visit_FileEntity.visit_file_id = 0;
-                    visit_FileEntity.visit_id = int.Parse(lblVistorID.Text);
-                    visit_FileEntity.file_name = fileName;
-                    visit_FileEntity.url = url;
-                    visit_FileEntity.created_date = DateTime.Now;
-                    visit_FileEntity.created_by = Master.branchEntity.branch_id;
-                    visit_FileEntity.modified_date = DateTime.Now;
-                    visit_FileEntity.modified_by = Master.branchEntity.branch_id;
-                    visit_FileEntity.is_active = true;
-                    visit_FileEntity.is_delete = false;
-
-                    VisitService visitService = new VisitService();
-                    int success = visitService.InsertVisitFile(visit_FileEntity);
-                    if (success > 0)
+                    foreach (HttpPostedFile postfiles in FileUpload.PostedFiles)
                     {
-                        ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาระบุข้อมูลให้ครบถ้วน');", true);
-                        return;
-                        //getDataVisitFileUpload(int.Parse(lblVistorID.Text));
-                        //ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "none", "<script>$('#upload').modal('show');</script>", false);
-                    }
-                }
-                else
-                {
+                        if ((Path.GetExtension(postfiles.FileName.ToLower()) == ".jpg"
+                            || Path.GetExtension(postfiles.FileName.ToLower()) == ".jpeg"
+                            || Path.GetExtension(postfiles.FileName.ToLower()) == ".png"))
+                        {
+                            String url = String.Empty;
+                            String fileName = "";
+                            String getImgType = Path.GetExtension(postfiles.FileName).ToLower();
+                            String hours = DateTime.Now.ToString("dd-MM-yyyy HH:mm:ss");
+                            fileName = postfiles.FileName;
+                            int index = postfiles.FileName.IndexOf(getImgType);
+                            fileName = "DOC_Visitor" + '_' + fileName.Substring(0, index) + '_' + hours + getImgType;
 
+                            azureBlobEntity.Stream = postfiles.InputStream;
+                            azureBlobEntity.ContainerName = "anoma-container";
+                            azureBlobEntity.ConnectionString = Accesskeys.anomastorage;
+
+                            azureBlobEntity.FileName = fileName;
+                            url = azureBlobHelper.UploadFile(azureBlobEntity);
+
+                            visit_FileEntity.visit_file_id = 0;
+                            visit_FileEntity.visit_id = int.Parse(lblVistorID.Text);
+                            visit_FileEntity.file_name = fileName;
+                            visit_FileEntity.url = url;
+                            visit_FileEntity.created_date = DateTime.Now;
+                            visit_FileEntity.created_by = Master.branchEntity.branch_id;
+                            visit_FileEntity.modified_date = DateTime.Now;
+                            visit_FileEntity.modified_by = Master.branchEntity.branch_id;
+                            visit_FileEntity.is_active = true;
+                            visit_FileEntity.is_delete = false;
+
+                            VisitService visitService = new VisitService();
+                            success = visitService.InsertVisitFile(visit_FileEntity);
+                            if (success > 0)
+                            {
+                                result += 1;
+                            }
+                        }
+                        else
+                        {
+                            ScriptManager.RegisterClientScriptBlock(this, typeof(Page), "test", "alert('กรุณาระบุไฟล์เป็น .jpg หรือ .png เท่านั้น');", true);
+                            return;
+                        }
+                    }
+                    if (result > 0)
+                    {
+                        ScriptManager.RegisterClientScriptBlock(this, typeof(Page), "test", "alert('อัพโหลด " + result + " ไฟล์สำเร็จ');", true);
+                    }
                 }
             }
             catch (Exception ex)
@@ -221,6 +244,5 @@ namespace AnomaERP.BackOffice.Customer
             }
         }
         #endregion
-
     }
 }

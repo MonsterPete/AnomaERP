@@ -94,6 +94,15 @@ namespace AnomaERP.BackOffice.Customer {
         protected global::System.Web.UI.WebControls.LinkButton lbnSave;
         
         /// <summary>
+        /// lblVistorfileID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblVistorfileID;
+        
+        /// <summary>
         /// lblVistorID control.
         /// </summary>
         /// <remarks>
@@ -137,6 +146,24 @@ namespace AnomaERP.BackOffice.Customer {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater rptUpload;
+        
+        /// <summary>
+        /// lbnclose2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbnclose2;
+        
+        /// <summary>
+        /// lbnDeleteYes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbnDeleteYes;
         
         /// <summary>
         /// Master property.
