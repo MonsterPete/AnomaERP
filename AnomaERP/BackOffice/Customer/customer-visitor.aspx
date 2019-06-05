@@ -301,7 +301,8 @@
                 var image = new Image();
 
                 image.align = 'center';
-                image.style = '-webkit-user-select: none; margin: 12% auto; display: grid; max-width: 65%; max-height: 100vh; overflow: hidden; transform: rotate(90deg); object-fit: cover;';
+                image.style = '-webkit-user-select: none; margin: 12% auto; display: grid; max-width: 65%; max-height: 100vh; overflow: hidden; object-fit: cover;';
+                //transform: rotate(90deg);
                 image.src = url;
 
                 var meta = document.createElement('meta');
