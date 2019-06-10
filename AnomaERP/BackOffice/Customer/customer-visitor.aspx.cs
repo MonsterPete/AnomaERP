@@ -77,7 +77,7 @@ namespace AnomaERP.BackOffice.Customer
             LinkButton lbnUpload = (LinkButton)e.Item.FindControl("lbnUpload");
 
             DateFormat dateFormat = new DateFormat();
-            lblDate.Text = visitEntity.create_date.ToString("dd-MM-yyyy");
+            lblDate.Text = visitEntity.create_date.AddYears(543).ToString("dd-MM-yyyy");
             lblTime.Text = dateFormat.ThaiFormatTime(visitEntity.create_date);
             lblVisitorCode.Text = visitEntity.visit_code;
             if (visitEntity.visit_type == 3)
@@ -111,10 +111,13 @@ namespace AnomaERP.BackOffice.Customer
             List<Visit_fileEntity> visit_FileEntities = new List<Visit_fileEntity>();
             VisitService visitService = new VisitService();
             visit_FileEntities = visitService.GetDataVisitFileByVisitorID(int.Parse(lblVistorID.Text));
-            rptUpload.DataSource = visit_FileEntities;
-            rptUpload.DataBind();
-            //rptPrint.DataSource = visit_FileEntities;
-            //rptPrint.DataBind();
+            NoData.Visible = true;
+            if (visit_FileEntities.Count > 0)
+            {
+                rptUpload.DataSource = visit_FileEntities;
+                rptUpload.DataBind();
+                NoData.Visible = false;
+            }
         }
 
         protected void rptUpload_ItemDataBound(object sender, RepeaterItemEventArgs e)

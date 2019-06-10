@@ -249,7 +249,11 @@
                                         </ItemTemplate>
                                     </asp:Repeater>
                                 </tbody>
+
                             </table>
+                            <div class="text-center" id="NoData" runat="server">
+                                No data available in table
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" onclick="RefreshPage();" data-dismiss="modal">Close</button>
@@ -262,7 +266,7 @@
 
         <!-- Add Page -->
 
-        <div class="modal fade" id="PageDelete"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal fade" id="PageDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -272,7 +276,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        Do you want delete ?
+                        Do you want to delete ?
                     </div>
                     <div class="modal-footer">
                         <asp:UpdatePanel runat="server">
