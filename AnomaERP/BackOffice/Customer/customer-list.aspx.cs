@@ -33,7 +33,7 @@ namespace AnomaERP.BackOffice.Customer
         {
             CustomerEntity customerEntity = new CustomerEntity();
 
-            customerEntity.firstname = txtSearch.Text.Trim().Replace("-","");
+            customerEntity.firstname = txtSearch.Text.Trim().Replace("-", "");
             customerEntity.branch_id = Master.branchEntity.branch_id;
 
             if (ddlStatus.SelectedValue != "")
@@ -56,7 +56,7 @@ namespace AnomaERP.BackOffice.Customer
 
         protected void rptCustomerList_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
-             CustomerEntity customerEntity = (CustomerEntity)e.Item.DataItem;
+            CustomerEntity customerEntity = (CustomerEntity)e.Item.DataItem;
 
             Label lblCustomerID = (Label)e.Item.FindControl("lblCustomerID");
             Label lblHnNo = (Label)e.Item.FindControl("lblHnNo");
@@ -70,11 +70,7 @@ namespace AnomaERP.BackOffice.Customer
             lblCustomerID.Text = customerEntity.customer_id.ToString();
             lblHnNo.Text = customerEntity.HN_no;
             lblCustomerName.Text = customerEntity.firstname + ' ' + customerEntity.lastname;
-            if (!string.IsNullOrEmpty(customerEntity.tel))
-            {
-                Double Phone = double.Parse(customerEntity.tel);
-                lblPhoneNo.Text = string.Format("{0:0##-###-####}", Phone);
-            }          
+            lblPhoneNo.Text = customerEntity.tel;
             lblIdCard.Text = customerEntity.id_card;
             if (customerEntity.is_active == true)
             {
@@ -96,7 +92,8 @@ namespace AnomaERP.BackOffice.Customer
             if (e.CommandName == "Edit")
             {
                 Response.Redirect("/BackOffice/Customer/customer-information.aspx?customer_id=" + e.CommandArgument);
-            }else if (e.CommandName == "Visitor")
+            }
+            else if (e.CommandName == "Visitor")
             {
                 Response.Redirect("/BackOffice/Customer/customer-visitor.aspx?customer_id=" + e.CommandArgument);
             }

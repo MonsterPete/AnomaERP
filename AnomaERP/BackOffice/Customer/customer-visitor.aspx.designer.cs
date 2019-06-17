@@ -148,15 +148,6 @@ namespace AnomaERP.BackOffice.Customer {
         protected global::System.Web.UI.WebControls.Repeater rptUpload;
         
         /// <summary>
-        /// NoData control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl NoData;
-        
-        /// <summary>
         /// lbnclose2 control.
         /// </summary>
         /// <remarks>

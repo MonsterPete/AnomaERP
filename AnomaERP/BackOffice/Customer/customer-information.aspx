@@ -245,7 +245,7 @@
                                                     <label class="form-label form-label-sm">
                                                         เบอร์โทรศัพท์
                                                                     (Telephone No.)<span class="text-danger">*</span></label>
-                                                    <asp:TextBox ID="txtPhone" placeholder="xxxxxxxxxx" MaxLength="10" CssClass="form-control form-control-sm" runat="server"></asp:TextBox>
+                                                    <asp:TextBox ID="txtPhone" MaxLength="10" CssClass="form-control form-control-sm" runat="server"></asp:TextBox>
                                                 </div>
                                             </div>
                                             <div class="col-sm-4">

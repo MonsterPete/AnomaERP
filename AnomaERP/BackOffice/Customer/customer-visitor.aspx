@@ -187,10 +187,29 @@
     </asp:UpdatePanel>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ModalPlaceHolder" runat="server">
+    <style>
+        div.dataTables_wrapper [class*="col-md-"] {
+            display: none;
+        }
+    </style>
     <script>
         function RefreshPage() {
             window.top.location = window.top.location
         }
+
+
+        $(document).ready(function () {
+            SetTable();
+        });
+        function SetTable() {
+            $('#visitfile').dataTable({
+                deferRender: true,
+                order: [[0, "desc"]],
+                iDisplayLength: 50,
+                bFilter: false, bInfo: false
+            });
+        }
+
     </script>
     <asp:Label ID="lblVistorfileID" runat="server" Visible="false"></asp:Label>
     <asp:Label ID="lblVistorID" runat="server" Visible="false"></asp:Label>
@@ -216,7 +235,7 @@
                                 <asp:Button ID="btnUpload" runat="server" autopostback="true" OnClick="btnUpload_Click" Style="display: none" />
                                 <asp:Label ID="lblWarning" runat="server" Style="color: red">กรุณาระบุไฟล์เป็น .jpg หรือ .png เท่านั้น</asp:Label>
                             </div>
-                            <table class="table table-bordered table-responsive-modal">
+                            <table id="visitfile" class="datatables-demo table table-striped table-hover table-bordered">
                                 <thead class="thead-dark text-center">
                                     <tr>
                                         <th scope="col">Document Name</th>
@@ -251,9 +270,9 @@
                                 </tbody>
 
                             </table>
-                            <div class="text-center" id="NoData" runat="server">
+                            <%--                            <div class="text-center" id="NoData" runat="server">
                                 No data available in table
-                            </div>
+                            </div>--%>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" onclick="RefreshPage();" data-dismiss="modal">Close</button>

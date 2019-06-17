@@ -30,7 +30,7 @@ namespace AnomaERP.BackOffice.Customer
                 lblHNCode.Text = customerEntity.HN_no;
                 lblIdCard.Text = customerEntity.id_card;
                 lblPhone.Text = customerEntity.tel;
-                lblShowDate.Text = DateTime.Now.ToString("dd-MM-yyyy");
+                lblShowDate.Text = DateTime.Now.AddYears(543).ToString("dd-MM-yyyy");
                 setDataToRpt();
             }
         }
@@ -111,13 +111,13 @@ namespace AnomaERP.BackOffice.Customer
             List<Visit_fileEntity> visit_FileEntities = new List<Visit_fileEntity>();
             VisitService visitService = new VisitService();
             visit_FileEntities = visitService.GetDataVisitFileByVisitorID(int.Parse(lblVistorID.Text));
-            NoData.Visible = true;
-            if (visit_FileEntities.Count > 0)
-            {
+            //NoData.Visible = true;
+            //if (visit_FileEntities.Count > 0)
+            //{
                 rptUpload.DataSource = visit_FileEntities;
                 rptUpload.DataBind();
-                NoData.Visible = false;
-            }
+            //    NoData.Visible = false;
+            //}
         }
 
         protected void rptUpload_ItemDataBound(object sender, RepeaterItemEventArgs e)
