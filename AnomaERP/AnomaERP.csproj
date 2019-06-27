@@ -581,6 +581,7 @@
     <Content Include="BackOffice\Customer\customer-information.aspx" />
     <Content Include="BackOffice\Customer\customer-list.aspx" />
     <Content Include="BackOffice\Customer\customer-visitor.aspx" />
+    <Content Include="BackOffice\Customer\ShowPDF.aspx" />
     <Content Include="BackOffice\Entity-Management\Branch\branch-create.aspx" />
     <Content Include="BackOffice\Entity-Management\Branch\branch-create.html" />
     <Content Include="BackOffice\Entity-Management\Branch\branch-list.aspx" />
@@ -671,6 +672,13 @@
     </Compile>
     <Compile Include="BackOffice\Customer\customer-visitor.aspx.designer.cs">
       <DependentUpon>customer-visitor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BackOffice\Customer\ShowPDF.aspx.cs">
+      <DependentUpon>ShowPDF.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackOffice\Customer\ShowPDF.aspx.designer.cs">
+      <DependentUpon>ShowPDF.aspx</DependentUpon>
     </Compile>
     <Compile Include="BackOffice\Entity-Management\Branch\branch-create.aspx.cs">
       <DependentUpon>branch-create.aspx</DependentUpon>

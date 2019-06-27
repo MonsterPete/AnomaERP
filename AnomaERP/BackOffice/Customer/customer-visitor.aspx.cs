@@ -159,7 +159,10 @@ namespace AnomaERP.BackOffice.Customer
             }
             else if (e.CommandName == "View")
             {
-                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "ShowCustomerRefImage('" + lblSiteVisiteFileURL.Text + "');", true);
+                Session["PdfUrl"] = null;
+                Session["PdfUrl"] = lblSiteVisiteFileURL.Text;
+
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "ShowPDF();", true);
             }
         }
 
@@ -192,9 +195,7 @@ namespace AnomaERP.BackOffice.Customer
                 {
                     foreach (HttpPostedFile postfiles in FileUpload.PostedFiles)
                     {
-                        if ((Path.GetExtension(postfiles.FileName.ToLower()) == ".jpg"
-                            || Path.GetExtension(postfiles.FileName.ToLower()) == ".jpeg"
-                            || Path.GetExtension(postfiles.FileName.ToLower()) == ".png"))
+                        if (Path.GetExtension(postfiles.FileName.ToLower()) == ".pdf")
                         {
                             String url = String.Empty;
                             String fileName = "";
@@ -231,7 +232,7 @@ namespace AnomaERP.BackOffice.Customer
                         }
                         else
                         {
-                            ScriptManager.RegisterClientScriptBlock(this, typeof(Page), "test", "alert('กรุณาระบุไฟล์เป็น .jpg หรือ .png เท่านั้น');", true);
+                            ScriptManager.RegisterClientScriptBlock(this, typeof(Page), "test", "alert('กรุณาระบุไฟล์เป็น .pdf');", true);
                             return;
                         }
                     }

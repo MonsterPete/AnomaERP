@@ -233,7 +233,7 @@
                             <div class="text-center mb-4">
                                 <asp:FileUpload ID="FileUpload" Multiple="Multiple" CssClass="upload-custom" runat="server" onchange="btnUpload()" />
                                 <asp:Button ID="btnUpload" runat="server" autopostback="true" OnClick="btnUpload_Click" Style="display: none" />
-                                <asp:Label ID="lblWarning" runat="server" Style="color: red">กรุณาระบุไฟล์เป็น .jpg หรือ .png เท่านั้น</asp:Label>
+                                <asp:Label ID="lblWarning" runat="server" Style="color: red">กรุณาระบุไฟล์เป็น PDF เท่านั้น</asp:Label>
                             </div>
                             <table id="visitfile" class="datatables-demo table table-striped table-hover table-bordered">
                                 <thead class="thead-dark text-center">
@@ -253,7 +253,7 @@
                                                 </td>
                                                 <td class="text-center pr-0">
                                                     <div class="btn-group btn-group-sm">
-                                                        <asp:LinkButton ID="lbnView" runat="server" CssClass="btn btn-primary rounded mr-2">  
+                                                        <asp:LinkButton ID="lbnView" runat="server" CssClass="btn btn-primary rounded mr-2" target="_blank">  
                                                             <i class="far fa-eye mr-1"></i>View
                                                         </asp:LinkButton>
                                                         <asp:LinkButton ID="lbnPrint" runat="server" ClientIDMode="AutoID" class="btn btn-dark rounded mr-2">
@@ -320,27 +320,32 @@
                 btn.click();
             }
 
-            function ShowCustomerRefImage(url) {
-                var image = new Image();
+            //function ShowCustomerRefImage(url) {
+            //    var image = new Image();
 
-                image.align = 'center';
-                image.style = '-webkit-user-select: none; margin: 12% auto; display: grid; max-width: 65%; max-height: 100vh; overflow: hidden; object-fit: cover;';
-                //transform: rotate(90deg);
-                image.src = url;
+            //    image.align = 'center';
+            //    image.style = '-webkit-user-select: none; margin: 12% auto; display: grid; max-width: 65%; max-height: 100vh; overflow: hidden; object-fit: cover;';
+            //    //transform: rotate(90deg);
+            //    image.src = url;
 
-                var meta = document.createElement('meta');
-                meta.setAttribute('name', 'viewport');
-                meta.content = "width=device-width, minimum-scale=0.1";
+            //    var meta = document.createElement('meta');
+            //    meta.setAttribute('name', 'viewport');
+            //    meta.content = "width=device-width, minimum-scale=0.1";
 
-                var title = document.createElement('title');
-                title.innerHTML = "DOC_Visitor_picItemBeforeRepair";
+            //    var title = document.createElement('title');
+            //    title.innerHTML = "DOC_Visitor_picItemBeforeRepair";
 
-                var w = window.open("");
-                w.document.head.appendChild(meta);
-                w.document.head.appendChild(title);
-                w.document.body.appendChild(image);
-                w.document.body.setAttribute("style", "margin: 0px; background: #0e0e0e;")
-                //w.document.writeln(image.outerHTML);
+            //    var w = window.open("");
+            //    w.document.head.appendChild(meta);
+            //    w.document.head.appendChild(title);
+            //    w.document.body.appendChild(image);
+            //    w.document.body.setAttribute("style", "margin: 0px; background: #0e0e0e;")
+            //    //w.document.writeln(image.outerHTML);
+            //}
+
+
+            function ShowPDF() {
+                window.open('/BackOffice/Customer/ShowPDF.aspx');
             }
         </script>
 </asp:Content>
