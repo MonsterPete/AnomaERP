@@ -67,6 +67,24 @@ namespace AnomaERP.BackOffice.Customer {
         protected global::System.Web.UI.WebControls.Label lblShowDate;
         
         /// <summary>
+        /// txtAppointmentTimeHour control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtAppointmentTimeHour;
+        
+        /// <summary>
+        /// txtAppointmentTimeMinute control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtAppointmentTimeMinute;
+        
+        /// <summary>
         /// AN control.
         /// </summary>
         /// <remarks>

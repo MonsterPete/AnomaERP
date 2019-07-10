@@ -13,6 +13,40 @@
                 }
             });
         };
+
+        $(document).ready(function setformatime() {
+            $('#txtAppointmentTime').timepicker({ timeFormat: 'HH:mm' });
+        });
+
+        function checkNumHour(txt) {
+            if (txt.value != "") {
+
+                num = parseInt(txt.value);
+                if (isNaN(num)) {
+                    txt.value = "";
+                }
+                else {
+                    if (num > 23) {
+                        txt.value = "";
+                    }
+                }
+            }
+        }
+
+        function checkNumMiniute(txt) {
+            if (txt.value != "") {
+
+                num = parseInt(txt.value);
+                if (isNaN(num)) {
+                    txt.value = "";
+                }
+                else {
+                    if (num > 59) {
+                        txt.value = "";
+                    }
+                }
+            }
+        }
     </script>
 
     <asp:UpdatePanel runat="server">
@@ -93,9 +127,11 @@
                                                             <tr class="text-center custom">
                                                                 <th class="tbw-19">Visitor Code</th>
                                                                 <th class="tbw-19">Visitor Date</th>
+                                                                <th class="tbw-19">Appointment Time</th>
                                                                 <th class="tbw-19">Visitor Time</th>
                                                                 <th>Visitor Type</th>
                                                                 <th class="tbw-9">Tools</th>
+                                                                <th class="tbw-9">Appointment Tools</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -107,6 +143,9 @@
                                                                         </td>
                                                                         <td>
                                                                             <asp:Label ID="lblDate" runat="server" Text="Label"></asp:Label>
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:Label ID="lblAppointmentTime" runat="server"></asp:Label>
                                                                         </td>
                                                                         <td>
                                                                             <asp:Label ID="lblTime" runat="server" Text="Label"></asp:Label>
@@ -132,8 +171,13 @@
                                                                                 <asp:LinkButton ID="lbnUpload" runat="server" ClientIDMode="AutoID" class="btn btn-warning rounded mr-2">
                                                                     <i class="fas fa-upload mr-1"></i>Upload
                                                                                 </asp:LinkButton>
-                                                                                <asp:LinkButton ID="lbnPrint" runat="server" ClientIDMode="AutoID" class="btn btn-dark rounded mr-2" Style="display: none">
-                                                                    <i class="fas fa-print mr-1"></i>Print
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="text-center pr-0">
+                                                                            <div class="btn-group btn-group-sm">
+                                                                                <asp:LinkButton ID="lbnConfirm" runat="server" ClientIDMode="AutoID" CssClass="btn btn-success rounded mr-2" Text="Confirm">
+                                                                                </asp:LinkButton>
+                                                                                <asp:LinkButton ID="lbnCancle" runat="server" ClientIDMode="AutoID" CssClass="btn btn-danger rounded mr-2" Text="Cancle">
                                                                                 </asp:LinkButton>
                                                                             </div>
                                                                         </td>
@@ -142,8 +186,18 @@
                                                             </asp:Repeater>
                                                             <tr class="odd gradeX text-center">
                                                                 <td></td>
-                                                                <td colspan="2">
+                                                                <td>
                                                                     <asp:Label ID="lblShowDate" runat="server" Text="date"></asp:Label></td>
+                                                                <td class="text-center pr-0">
+                                                                    <div class="form-group row justify-content-around mb-0">
+                                                                        <div class="row">
+                                                                            <asp:TextBox ID="txtAppointmentTimeHour" runat="server" CssClass="form-control text-center" Width="50px" MaxLength="2" onchange="javascript: checkNumHour(this);" ClientIDMode="AutoID" placeholder="hh"></asp:TextBox>
+                                                                            :
+                                                                            <asp:TextBox ID="txtAppointmentTimeMinute" runat="server" CssClass="form-control text-center" Width="50px" MaxLength="2" onchange="javascript: checkNumMiniute(this);" ClientIDMode="AutoID" placeholder="mm"></asp:TextBox>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td></td>
                                                                 <td>
                                                                     <div class="form-group row justify-content-around mb-0">
                                                                         <div>
@@ -160,7 +214,7 @@
                                                                         </div>
                                                                     </div>
                                                                 </td>
-                                                                <td class="text-center pr-0">
+                                                                <td colspan="2" class="text-center pr-0">
                                                                     <div class="btn-group btn-group-sm">
                                                                         <asp:LinkButton ID="lbnSave" runat="server" OnClick="lbnSave_Click" class="btn btn-primary rounded mr-2">
                                                                     <i class="fas fa-save mr-1"></i>Save
@@ -181,7 +235,6 @@
                         <!-- / Sale stats -->
                     </div>
                 </div>
-
             </div>
         </ContentTemplate>
     </asp:UpdatePanel>

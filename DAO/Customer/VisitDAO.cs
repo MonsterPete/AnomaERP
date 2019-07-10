@@ -122,8 +122,10 @@ namespace DAO.Customer
                             DBHelper.AddParamOut("visit_id", entity.visit_id);
                             DBHelper.AddParam("customer_id", entity.customer_id);
                             DBHelper.AddParam("visit_code", entity.visit_code);
-                            DBHelper.AddParam("visit_type", entity.visit_type);
-                            DBHelper.AddParam("create_date", DateTime.Now);
+                            DBHelper.AddParam("visit_type", entity.visit_type);                        
+                            DBHelper.AddParam("appointment_time", entity.appointment_time);
+                            DBHelper.AddParam("create_date", entity.create_date);
+                            DBHelper.AddParam("create_by", entity.create_by);
                             DBHelper.AddParam("running_number_id", entity.running_number_id);
                             DBHelper.AddParam("branch_id", entity.branch_id);
                             DBHelper.ExecuteStoreProcedure("insert_visit");
@@ -152,7 +154,45 @@ namespace DAO.Customer
 
         public int UpdateData(VisitEntity entity)
         {
-            throw new NotImplementedException();
+            int result = 0;
+
+            try
+            {
+                using (DBHelper.CreateConnection())
+                {
+                    try
+                    {
+                        DBHelper.OpenConnection();
+                        using (DBHelper.BeginTransaction())
+                        {
+                            DBHelper.CreateParameters();
+                            DBHelper.AddParam("visit_id", entity.visit_id);
+                            DBHelper.AddParam("visit_time", entity.visit_time);
+                            DBHelper.AddParam("is_appointment", entity.is_appointment);
+                            DBHelper.AddParam("modify_date", entity.modify_date);
+                            DBHelper.AddParam("modify_by", entity.modify_by);
+                            DBHelper.AddParamOut("success_row", result);
+                            DBHelper.ExecuteStoreProcedure("update_visit");
+                            result = DBHelper.GetParamOut<Int32>("success_row");
+
+                            DBHelper.CommitTransaction();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                    finally
+                    {
+                        DBHelper.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return result;
         }
 
         public int InsertVisitFile(Visit_fileEntity visit_FileEntity)

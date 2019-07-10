@@ -44,6 +44,100 @@ namespace AnomaERP.BackOffice.Customer
             rptCustomerList.DataBind();
         }
 
+        protected void rptCustomerList_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            VisitEntity visitEntity = (VisitEntity)e.Item.DataItem;
+
+            Label lblVisitorCode = (Label)e.Item.FindControl("lblVisitorCode");
+            Label lblDate = (Label)e.Item.FindControl("lblDate");
+            Label lblTime = (Label)e.Item.FindControl("lblTime");
+            Label lblAppointmentTime = (Label)e.Item.FindControl("lblAppointmentTime");
+            HtmlInputRadioButton rptAN = (HtmlInputRadioButton)e.Item.FindControl("rptAN");
+            HtmlInputRadioButton rptVN = (HtmlInputRadioButton)e.Item.FindControl("rptVN");
+            LinkButton lbnUpload = (LinkButton)e.Item.FindControl("lbnUpload");
+            LinkButton lbnConfirm = (LinkButton)e.Item.FindControl("lbnConfirm");
+            LinkButton lbnCancle = (LinkButton)e.Item.FindControl("lbnCancle");
+
+            DateFormat dateFormat = new DateFormat();
+            lblDate.Text = visitEntity.create_date.AddYears(543).ToString("dd-MM-yyyy");
+            lblTime.Text = visitEntity.visit_time.ToString();
+            lblAppointmentTime.Text = visitEntity.appointment_time.ToString();
+            lblVisitorCode.Text = visitEntity.visit_code;
+            if (visitEntity.visit_type == 3)
+            {
+                rptAN.Checked = true;
+            }
+            else
+            {
+                rptVN.Checked = true;
+            }
+            rptAN.Disabled = true;
+            rptVN.Disabled = true;
+
+            if (visitEntity.is_appointment != null)
+            {
+                lbnConfirm.Enabled = false;
+                lbnConfirm.Attributes.Add("Style", "cursor: not-allowed");
+                lbnCancle.Enabled = false;
+                lbnCancle.Attributes.Add("Style", "cursor: not-allowed");
+            }
+
+            lbnUpload.CommandName = "Upload";
+            lbnUpload.CommandArgument = visitEntity.visit_id.ToString();
+
+            lbnConfirm.CommandName = "Confirm";
+            lbnConfirm.CommandArgument = visitEntity.visit_id.ToString();
+
+            lbnCancle.CommandName = "Cancle";
+            lbnCancle.CommandArgument = visitEntity.visit_id.ToString();
+        }
+
+        protected void rptCustomerList_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            VisitEntity visitEntity = new VisitEntity();
+            DateFormat dateFormat = new DateFormat();
+
+            if (e.CommandName == "Upload")
+            {
+                lblVistorID.Text = e.CommandArgument.ToString();
+                getDataVisitFileUpload(int.Parse(lblVistorID.Text));
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "none", "<script>$('#upload').modal('show');</script>", false);
+            }
+
+            if (e.CommandName == "Confirm")
+            {
+                lblVistorID.Text = e.CommandArgument.ToString();
+                visitEntity.visit_id = int.Parse(lblVistorID.Text);
+                visitEntity.visit_time = TimeSpan.Parse(dateFormat.ThaiFormatTime(DateTime.Now));
+                visitEntity.is_appointment = true;
+
+                if (updateVisit(visitEntity) > 0)
+                {
+                    setDataToRpt();
+                }              
+            }
+
+            if (e.CommandName == "Cancle")
+            {
+                lblVistorID.Text = e.CommandArgument.ToString();
+                visitEntity.visit_id = int.Parse(lblVistorID.Text);
+                visitEntity.is_appointment = false;
+
+                if (updateVisit(visitEntity) > 0)
+                {
+                    setDataToRpt();
+                }
+            }
+        }
+
+        protected int updateVisit(VisitEntity visitEntity)
+        {
+            VisitService visitService = new VisitService();
+            visitEntity.modify_date = DateTime.Now;
+            visitEntity.modify_by = Master.branchEntity.branch_id;
+            return visitService.UpdateData(visitEntity);
+        }
+
         protected void lbnSave_Click(object sender, EventArgs e)
         {
             VisitEntity visitEntity = new VisitEntity();
@@ -61,48 +155,26 @@ namespace AnomaERP.BackOffice.Customer
                 visitEntity.visit_type = 4;
             }
 
+            if (string.IsNullOrEmpty(txtAppointmentTimeHour.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาระบุเวลา(ชั่วโมง)');", true);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtAppointmentTimeMinute.Text))
+            {
+                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาระบุเวลา(นาที)');", true);
+                return;
+            }
+
+            string Time = "";
+            Time = txtAppointmentTimeHour.Text + ":" + txtAppointmentTimeMinute.Text + ":00";
+            visitEntity.appointment_time = TimeSpan.Parse(Time);
+            visitEntity.create_date = DateTime.Now;
+            visitEntity.create_by = Master.branchEntity.branch_id;
+
             visitService.InsertData(visitEntity);
             setDataToRpt();
-        }
-
-        protected void rptCustomerList_ItemDataBound(object sender, RepeaterItemEventArgs e)
-        {
-            VisitEntity visitEntity = (VisitEntity)e.Item.DataItem;
-
-            Label lblVisitorCode = (Label)e.Item.FindControl("lblVisitorCode");
-            Label lblDate = (Label)e.Item.FindControl("lblDate");
-            Label lblTime = (Label)e.Item.FindControl("lblTime");
-            HtmlInputRadioButton rptAN = (HtmlInputRadioButton)e.Item.FindControl("rptAN");
-            HtmlInputRadioButton rptVN = (HtmlInputRadioButton)e.Item.FindControl("rptVN");
-            LinkButton lbnUpload = (LinkButton)e.Item.FindControl("lbnUpload");
-
-            DateFormat dateFormat = new DateFormat();
-            lblDate.Text = visitEntity.create_date.AddYears(543).ToString("dd-MM-yyyy");
-            lblTime.Text = dateFormat.ThaiFormatTime(visitEntity.create_date);
-            lblVisitorCode.Text = visitEntity.visit_code;
-            if (visitEntity.visit_type == 3)
-            {
-                rptAN.Checked = true;
-            }
-            else
-            {
-                rptVN.Checked = true;
-            }
-            rptAN.Disabled = true;
-            rptVN.Disabled = true;
-
-            lbnUpload.CommandName = "Upload";
-            lbnUpload.CommandArgument = visitEntity.visit_id.ToString();
-        }
-
-        protected void rptCustomerList_ItemCommand(object source, RepeaterCommandEventArgs e)
-        {
-            if (e.CommandName == "Upload")
-            {
-                lblVistorID.Text = e.CommandArgument.ToString();
-                getDataVisitFileUpload(int.Parse(lblVistorID.Text));
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "none", "<script>$('#upload').modal('show');</script>", false);
-            }
         }
 
         #region Upload

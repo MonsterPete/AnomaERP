@@ -43,7 +43,8 @@ namespace Service.Customer
 
         public int UpdateData(VisitEntity entity)
         {
-            throw new NotImplementedException();
+            VisitDAO visitDAO = new VisitDAO();
+            return visitDAO.UpdateData(entity);
         }
 
         public List<Visit_fileEntity> GetDataVisitFileByVisitorID(int visit_id)
