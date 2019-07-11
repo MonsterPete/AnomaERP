@@ -125,11 +125,11 @@
                                                     <table class="table table-hover table-bordered">
                                                         <thead class="thead-dark">
                                                             <tr class="text-center custom">
-                                                                <th class="tbw-19">Visitor Code</th>
-                                                                <th class="tbw-19">Visitor Date</th>
-                                                                <th class="tbw-19">Appointment Time</th>
-                                                                <th class="tbw-19">Visitor Time</th>
-                                                                <th>Visitor Type</th>
+                                                                <th class="tbw-10">Visitor Code</th>
+                                                                <th class="tbw-10">Visitor Date</th>
+                                                                <th class="tbw-10">Appointment Time</th>
+                                                                <th class="tbw-10">Visitor Time</th>
+                                                                <th class="tbw-10">Visitor Type</th>
                                                                 <th class="tbw-9">Tools</th>
                                                                 <th class="tbw-9">Appointment Tools</th>
                                                             </tr>

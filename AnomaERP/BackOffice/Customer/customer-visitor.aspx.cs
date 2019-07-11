@@ -60,7 +60,12 @@ namespace AnomaERP.BackOffice.Customer
 
             DateFormat dateFormat = new DateFormat();
             lblDate.Text = visitEntity.create_date.AddYears(543).ToString("dd-MM-yyyy");
-            lblTime.Text = visitEntity.visit_time.ToString();
+            lblTime.Text = "-";
+            if (visitEntity.is_appointment == true)
+            {
+                lblTime.Text = visitEntity.visit_time.ToString();
+            } 
+
             lblAppointmentTime.Text = visitEntity.appointment_time.ToString();
             lblVisitorCode.Text = visitEntity.visit_code;
             if (visitEntity.visit_type == 3)
