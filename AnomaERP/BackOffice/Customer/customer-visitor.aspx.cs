@@ -64,9 +64,14 @@ namespace AnomaERP.BackOffice.Customer
             if (visitEntity.is_appointment == true)
             {
                 lblTime.Text = visitEntity.visit_time.ToString();
-            } 
+            }
 
-            lblAppointmentTime.Text = visitEntity.appointment_time.ToString();
+            lblAppointmentTime.Text = "-";
+            if (visitEntity.appointment_time.ToString() != "00:00:00")
+            {
+                lblAppointmentTime.Text = visitEntity.appointment_time.ToString();
+            }
+
             lblVisitorCode.Text = visitEntity.visit_code;
             if (visitEntity.visit_type == 3)
             {
@@ -81,8 +86,11 @@ namespace AnomaERP.BackOffice.Customer
 
             if (visitEntity.is_appointment != null)
             {
+                lbnConfirm.CssClass = "btn btn-secondary rounded mr-2";
                 lbnConfirm.Enabled = false;
                 lbnConfirm.Attributes.Add("Style", "cursor: not-allowed");
+
+                lbnCancle.CssClass = "btn btn-secondary rounded mr-2";
                 lbnCancle.Enabled = false;
                 lbnCancle.Attributes.Add("Style", "cursor: not-allowed");
             }
@@ -119,7 +127,7 @@ namespace AnomaERP.BackOffice.Customer
                 if (updateVisit(visitEntity) > 0)
                 {
                     setDataToRpt();
-                }              
+                }
             }
 
             if (e.CommandName == "Cancle")
@@ -145,6 +153,7 @@ namespace AnomaERP.BackOffice.Customer
 
         protected void lbnSave_Click(object sender, EventArgs e)
         {
+            DateFormat dateFormat = new DateFormat();
             VisitEntity visitEntity = new VisitEntity();
             VisitService visitService = new VisitService();
             visitEntity.customer_id = int.Parse(Request.QueryString["customer_id"].ToString());
@@ -160,25 +169,41 @@ namespace AnomaERP.BackOffice.Customer
                 visitEntity.visit_type = 4;
             }
 
-            if (string.IsNullOrEmpty(txtAppointmentTimeHour.Text))
-            {
-                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาระบุเวลา(ชั่วโมง)');", true);
-                return;
-            }
-
-            if (string.IsNullOrEmpty(txtAppointmentTimeMinute.Text))
-            {
-                ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาระบุเวลา(นาที)');", true);
-                return;
-            }
-
             string Time = "";
-            Time = txtAppointmentTimeHour.Text + ":" + txtAppointmentTimeMinute.Text + ":00";
+            if (string.IsNullOrEmpty(txtAppointmentTimeHour.Text) && string.IsNullOrEmpty(txtAppointmentTimeMinute.Text))
+            {
+                Time = "00:00:00";
+            }
+            else
+            {
+                if (string.IsNullOrEmpty(txtAppointmentTimeHour.Text))
+                {
+                    ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาระบุเวลา(ชั่วโมง)');", true);
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(txtAppointmentTimeMinute.Text))
+                {
+                    ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaring('กรุณาระบุเวลา(นาที)');", true);
+                    return;
+                }
+                Time = txtAppointmentTimeHour.Text + ":" + txtAppointmentTimeMinute.Text + ":00"; 
+            }
             visitEntity.appointment_time = TimeSpan.Parse(Time);
             visitEntity.create_date = DateTime.Now;
             visitEntity.create_by = Master.branchEntity.branch_id;
 
-            visitService.InsertData(visitEntity);
+            lblVistorID.Text =  visitService.InsertData(visitEntity).ToString();
+
+            if (string.IsNullOrEmpty(txtAppointmentTimeHour.Text) && string.IsNullOrEmpty(txtAppointmentTimeMinute.Text))
+            {
+                visitEntity.visit_id = int.Parse(lblVistorID.Text);
+                visitEntity.visit_time = TimeSpan.Parse(dateFormat.ThaiFormatTime(DateTime.Now));
+                visitEntity.is_appointment = true;
+
+                updateVisit(visitEntity);
+            }
+
             setDataToRpt();
         }
 
@@ -191,8 +216,8 @@ namespace AnomaERP.BackOffice.Customer
             //NoData.Visible = true;
             //if (visit_FileEntities.Count > 0)
             //{
-                rptUpload.DataSource = visit_FileEntities;
-                rptUpload.DataBind();
+            rptUpload.DataSource = visit_FileEntities;
+            rptUpload.DataBind();
             //    NoData.Visible = false;
             //}
         }

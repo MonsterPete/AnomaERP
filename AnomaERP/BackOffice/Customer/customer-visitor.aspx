@@ -125,7 +125,7 @@
                                                     <table class="table table-hover table-bordered">
                                                         <thead class="thead-dark">
                                                             <tr class="text-center custom">
-                                                                <th class="tbw-10">Visitor Code</th>
+                                                                <th class="tbw-10">Visitor Number</th>
                                                                 <th class="tbw-10">Visitor Date</th>
                                                                 <th class="tbw-10">Appointment Time</th>
                                                                 <th class="tbw-10">Visitor Time</th>
