@@ -112,8 +112,8 @@
                     <!-- Links -->
 
                     <ul class="sidenav-inner py-1">
-                        <li class="sidenav-item" runat="server" id="CustomerRegistor" visible="true">
-                            <a href="/BackOffice/Customer/customer-list.aspx" class="sidenav-link">
+                        <li class="sidenav-item" runat="server" id="CustomerRegistor" visible="false" >
+                            <a href="/BackOffice/Customer/customer-list.aspx" class="sidenav-link" >
                                 <i class="sidenav-icon ion ion-ios-folder"></i>
                                 <div>Customer</div>
                             </a>
@@ -362,6 +362,20 @@
                     type: "warning",
                     confirmButtonClass: "btn-warning",
                 });
+            }
+
+             function openModalWaringToLocation(msg,location) {
+                swal({
+                    title: '',
+                    text: msg,
+                    type: "warning",
+                    confirmButtonClass: "btn-warning",
+                },
+                    function (isConfirm) {
+                        if (isConfirm) {
+                            window.location = location;
+                        }
+                    });
             }
 
             function openModalSuccessToLocation(location) {

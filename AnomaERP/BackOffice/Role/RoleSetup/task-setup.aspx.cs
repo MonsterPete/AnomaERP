@@ -17,8 +17,15 @@ namespace AnomaERP.BackOffice.Role.RoleSetup
         {
             if (!IsPostBack)
             {
-                setDataToDDLGroupName();
-                SetDataToUI(int.Parse(ddlGroupName.SelectedValue));
+                if (GetdataGroupName().Count > 0 )
+                {
+                    setDataToDDLGroupName();
+                    SetDataToUI(int.Parse(ddlGroupName.SelectedValue));
+                }
+                else
+                {
+                    ScriptManager.RegisterClientScriptBlock(this.Page, this.GetType(), "Script1", "openModalWaringToLocation('กรุณาสร้าง Postition ก่อน','/BackOffice/Role/RoleSetup/position-list.aspx');", true);
+                }
             }
         }
 
@@ -43,12 +50,20 @@ namespace AnomaERP.BackOffice.Role.RoleSetup
             rptTask.DataBind();
         }
 
-        private void setDataToDDLGroupName()
+        public List<PositionGroupEntity> GetdataGroupName()
         {
             List<PositionGroupEntity> positionGroupEntities = new List<PositionGroupEntity>();
             PositionGroupService positionGroupService = new PositionGroupService();
-
             positionGroupEntities = positionGroupService.GetDataAll();
+
+            return positionGroupEntities;
+        }
+
+        private void setDataToDDLGroupName()
+        {
+            List<PositionGroupEntity> positionGroupEntities = new List<PositionGroupEntity>();
+            positionGroupEntities = GetdataGroupName();
+
             ddlGroupName.DataSource = positionGroupEntities;
             ddlGroupName.DataTextField = "group_name";
             ddlGroupName.DataValueField = "group_id";
