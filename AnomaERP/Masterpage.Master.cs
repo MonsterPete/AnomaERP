@@ -73,6 +73,7 @@ namespace AnomaERP
                 }
                 else if (Session["EntityEntity"] != null)
                 {
+                    CustomerRegistor.Visible = false;
                     MenuEM.Visible = true;
                     MenuRP.Visible = true;
                     MenuNA.Visible = true;

@@ -71,5 +71,29 @@ namespace Service.Customer
             CustomerDAO customerDAO = new CustomerDAO();
             return customerDAO.UpdateCustomerRegister(customerEntity);
         }
+
+        public ProgressNoteEntity GetDataProgressNote(int visit_id)
+        {
+            CustomerDAO customerDAO = new CustomerDAO();
+            return customerDAO.GetDataProgressNote(visit_id);
+        }
+
+        public int UpdateProgressNote(ProgressNoteEntity progressNoteEntity)
+        {
+            CustomerDAO customerDAO = new CustomerDAO();
+            return customerDAO.UpdateProgressNote(progressNoteEntity);
+        }
+
+        public int InsertProgressNote(ProgressNoteEntity progressNoteEntity)
+        {
+            CustomerDAO customerDAO = new CustomerDAO();
+            return customerDAO.InsertProgressNote(progressNoteEntity);
+        }
+
+        public int UpdateCustomerStatus(CustomerEntity customerEntity)
+        {
+            CustomerDAO customerDAO = new CustomerDAO();
+            return customerDAO.UpdateCustomerStatus(customerEntity);
+        }
     }
 }

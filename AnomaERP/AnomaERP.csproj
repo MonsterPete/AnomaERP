@@ -580,6 +580,7 @@
     <Content Include="BackOffice\Bed-Management\Job\job-assign.aspx" />
     <Content Include="BackOffice\Customer\customer-information.aspx" />
     <Content Include="BackOffice\Customer\customer-list.aspx" />
+    <Content Include="BackOffice\Customer\customer-progression-note.aspx" />
     <Content Include="BackOffice\Customer\customer-visitor.aspx" />
     <Content Include="BackOffice\Customer\ShowPDF.aspx" />
     <Content Include="BackOffice\Entity-Management\Branch\branch-create.aspx" />
@@ -665,6 +666,13 @@
     </Compile>
     <Compile Include="BackOffice\Customer\customer-list.aspx.designer.cs">
       <DependentUpon>customer-list.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BackOffice\Customer\customer-progression-note.aspx.cs">
+      <DependentUpon>customer-progression-note.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackOffice\Customer\customer-progression-note.aspx.designer.cs">
+      <DependentUpon>customer-progression-note.aspx</DependentUpon>
     </Compile>
     <Compile Include="BackOffice\Customer\customer-visitor.aspx.cs">
       <DependentUpon>customer-visitor.aspx</DependentUpon>

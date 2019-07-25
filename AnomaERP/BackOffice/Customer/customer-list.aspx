@@ -69,70 +69,95 @@
         </div>
         <!-- / Statistics -->
 
-        <div class="row">
-            <div class="col-md-12 col-lg-12">
-                <!-- Sale stats -->
-                <div class="card">
-                    <!-- <h6 class="card-header">
+        <asp:UpdatePanel runat="server">
+            <ContentTemplate>
+                <div class="row">
+                    <div class="col-md-12 col-lg-12">
+                        <!-- Sale stats -->
+                        <div class="card">
+                            <!-- <h6 class="card-header">
                                         Customers
                                     </h6> -->
-                    <div class="row no-gutters row-bordered">
-                        <div class="col-md-12 col-lg-12 col-xl-12">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-lg-12 col-xl-12 mb-2">
-                                        <div class="card-datatable table-responsive">
-                                            <table id="inquiryTech" class="datatables-demo table table-striped table-hover table-bordered">
-                                                <thead class="thead-dark">
-                                                    <tr class="text-center">
-                                                        <th class="tbw-5">Kin No.(KN)</th>
-                                                        <th class="tbw-19">Customer Name</th>
-                                                        <th class="tbw-9" style="width: 15%;">Phone No.</th>
-                                                        <th>ID Card</th>
-                                                        <th>Status</th>
-                                                        <th class="tbw-9">Tools</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <asp:Repeater ID="rptCustomerList" runat="server" OnItemDataBound="rptCustomerList_ItemDataBound" OnItemCommand="rptCustomerList_ItemCommand">
-                                                        <ItemTemplate>
-                                                            <tr class="odd gradeX text-center">
-                                                                <td>
-                                                                    <asp:Label ID="lblCustomerID" Visible="false" runat="server"></asp:Label>
-                                                                    <asp:Label ID="lblHnNo" runat="server"></asp:Label></td>
-                                                                <td class="text-left">
-                                                                    <asp:Label ID="lblCustomerName" runat="server"></asp:Label></td>
-                                                                <td class="text-left">
-                                                                    <asp:Label ID="lblPhoneNo" runat="server"></asp:Label></td>
-                                                                <td class="text-left">
-                                                                    <asp:Label ID="lblIdCard" runat="server"></asp:Label></td>
-                                                                <td>
-                                                                    <asp:Label ID="lblStatus" runat="server"></asp:Label></td>
-                                                                <td class="text-center pr-0">
-                                                                    <div class="btn-group btn-group-sm">
-                                                                        <asp:LinkButton ID="lbnEdit" runat="server" CssClass="btn btn-primary rounded mr-2">  <i class="far fa-eye mr-1"></i>View</asp:LinkButton>
-                                                                        <asp:LinkButton ID="lbnVisitor" runat="server" CssClass="btn btn-danger rounded mr-2">  <i class="fas fa-portrait mr-1"></i>Visitor Type</asp:LinkButton>
-                                                                    </div>
-                                                                </td>
+                            <div class="row no-gutters row-bordered">
+                                <div class="col-md-12 col-lg-12 col-xl-12">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-xl-12 mb-2">
+                                                <div class="card-datatable table-responsive">
+                                                    <table id="inquiryTech" class="datatables-demo table table-striped table-hover table-bordered">
+                                                        <thead class="thead-dark">
+                                                            <tr class="text-center">
+                                                                <th class="tbw-5">Kin No.(KN)</th>
+                                                                <th class="tbw-19">Customer Name</th>
+                                                                <th class="tbw-9" style="width: 15%;">Phone No.</th>
+                                                                <th>ID Card</th>
+                                                                <th>Status</th>
+                                                                <th class="tbw-9">Tools</th>
                                                             </tr>
-                                                        </ItemTemplate>
-                                                    </asp:Repeater>
-                                                </tbody>
-                                            </table>
+                                                        </thead>
+                                                        <tbody>
+                                                            <asp:Repeater ID="rptCustomerList" runat="server" OnItemDataBound="rptCustomerList_ItemDataBound" OnItemCommand="rptCustomerList_ItemCommand">
+                                                                <ItemTemplate>
+                                                                    <tr class="odd gradeX text-center">
+                                                                        <td>
+                                                                            <asp:Label ID="lblCustomerID" Visible="false" runat="server"></asp:Label>
+                                                                            <asp:Label ID="lblHnNo" runat="server"></asp:Label></td>
+                                                                        <td class="text-left">
+                                                                            <asp:Label ID="lblCustomerName" runat="server"></asp:Label></td>
+                                                                        <td class="text-left">
+                                                                            <asp:Label ID="lblPhoneNo" runat="server"></asp:Label></td>
+                                                                        <td class="text-left">
+                                                                            <asp:Label ID="lblIdCard" runat="server"></asp:Label></td>
+                                                                        <td>
+                                                                            <asp:LinkButton ID="lblStatus" runat="server"></asp:LinkButton>
+                                                                        </td>
+                                                                        <td class="text-center pr-0">
+                                                                            <div class="btn-group btn-group-sm">
+                                                                                <asp:LinkButton ID="lbnEdit" runat="server" CssClass="btn btn-primary rounded mr-2">  <i class="far fa-eye mr-1"></i>View</asp:LinkButton>
+                                                                                <asp:LinkButton ID="lbnVisitor" runat="server" CssClass="btn btn-danger rounded mr-2">  <i class="fas fa-portrait mr-1"></i>Visitor Type</asp:LinkButton>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                </ItemTemplate>
+                                                            </asp:Repeater>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
 
+                        </div>
+                        <!-- / Sale stats -->
+                    </div>
                 </div>
-                <!-- / Sale stats -->
-            </div>
-        </div>
+            </ContentTemplate>
+        </asp:UpdatePanel>
 
     </div>
     <!-- / Content -->
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ModalPlaceHolder" runat="server">
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: white;">
+                    <div style="text-align: left">
+                        <asp:Label ID="lblTitle" class="modal-title" runat="server" Text="เปลี่ยนสถานะ" ForeColor="Gray" />
+                    </div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <asp:Label ID="lblMessage" Text="ท่านต้องการเปลี่ยนสถานะข้อมูลหรือไม่ ?" runat="server" />
+                </div>
+                <div class="modal-footer">
+                    <asp:Button ID="btnSubmit" runat="server" Text="ยืนยัน" OnClick="btnSubmit_Click" CssClass="btn btn-sm btn-success" />
+                    <button type="button" class="btn btn-sm btn-primary" data-dismiss="modal">ยกเลิก</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </asp:Content>

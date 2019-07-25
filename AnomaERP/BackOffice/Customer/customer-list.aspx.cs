@@ -63,7 +63,7 @@ namespace AnomaERP.BackOffice.Customer
             Label lblCustomerName = (Label)e.Item.FindControl("lblCustomerName");
             Label lblPhoneNo = (Label)e.Item.FindControl("lblPhoneNo");
             Label lblIdCard = (Label)e.Item.FindControl("lblIdCard");
-            Label lblStatus = (Label)e.Item.FindControl("lblStatus");
+            LinkButton lblStatus = (LinkButton)e.Item.FindControl("lblStatus");
             LinkButton lbnEdit = (LinkButton)e.Item.FindControl("lbnEdit");
             LinkButton lbnVisitor = (LinkButton)e.Item.FindControl("lbnVisitor");
 
@@ -72,6 +72,7 @@ namespace AnomaERP.BackOffice.Customer
             lblCustomerName.Text = customerEntity.firstname + ' ' + customerEntity.lastname;
             lblPhoneNo.Text = customerEntity.tel;
             lblIdCard.Text = customerEntity.id_card;
+
             if (customerEntity.is_active == true)
             {
                 lblStatus.Text = "Active";
@@ -80,6 +81,9 @@ namespace AnomaERP.BackOffice.Customer
             {
                 lblStatus.Text = "InActive";
             }
+
+            lblStatus.CommandArgument = customerEntity.customer_id.ToString();
+            lblStatus.CommandName = "status";
 
             lbnEdit.CommandArgument = customerEntity.customer_id.ToString();
             lbnEdit.CommandName = "Edit";
@@ -96,6 +100,39 @@ namespace AnomaERP.BackOffice.Customer
             else if (e.CommandName == "Visitor")
             {
                 Response.Redirect("/BackOffice/Customer/customer-visitor.aspx?customer_id=" + e.CommandArgument);
+            }
+
+            LinkButton lblStatus = (LinkButton)e.Item.FindControl("lblStatus");
+            CustomerEntity customerEntity = new CustomerEntity();
+            CustomerService customerService = new CustomerService();
+            customerEntity.customer_id = int.Parse(e.CommandArgument.ToString());
+
+            if (e.CommandName == "status")
+            {
+                Session["customerEntity"] = null;
+                if (lblStatus.Text == "Active")
+                {
+                    customerEntity.is_active = false;
+                }
+                else
+                {
+                    customerEntity.is_active = true;
+                }
+
+                Session["customerEntity"] = customerEntity;
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "none", "<script>$('#myModal').modal('show');</script>", false);
+            }
+        }
+
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+            CustomerEntity customerEntity = new CustomerEntity();
+            CustomerService customerService = new CustomerService();
+
+            customerEntity = (CustomerEntity)Session["customerEntity"];
+            if (customerService.UpdateCustomerStatus(customerEntity) > 0)
+            {
+                setDataToUI(setCondition());
             }
         }
     }

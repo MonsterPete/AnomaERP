@@ -56,7 +56,7 @@ namespace DAO.Customer
             return customerEntities;
         }
 
-       
+
 
         public List<CustomerEntity> GetDataByCondition(CustomerEntity entity, int Index)
         {
@@ -117,8 +117,6 @@ namespace DAO.Customer
             }
             return customerEntity;
         }
-
-        
 
         public int InsertData(CustomerEntity entity)
         {
@@ -333,7 +331,7 @@ namespace DAO.Customer
 
         public CustomerEntity GetCustomerRegistationByID(long customer_id)
         {
-            CustomerEntity customerEntity = new CustomerEntity();            
+            CustomerEntity customerEntity = new CustomerEntity();
             Customer_information_recieveEntity customer_Information_RecieveEntity = new Customer_information_recieveEntity();
             CustomerRelativeEntity customer_RelativeEntity = new CustomerRelativeEntity();
             Customer_vital_signEntity customer_Vital_SignEntity = new Customer_vital_signEntity();
@@ -514,7 +512,7 @@ namespace DAO.Customer
                             DBHelper.CreateParameters();
                             DBHelper.AddParamOut("customer_information_recieve_id", 0);
                             DBHelper.AddParam("customer_id", customer_id);
-                            DBHelper.AddParam("customer_information_recieve_date", null); 
+                            DBHelper.AddParam("customer_information_recieve_date", null);
                             DBHelper.AddParam("customer_information_recieve_service_by",
                                 entity.customer_Information_RecieveEntity.customer_information_recieve_service_by);
                             DBHelper.AddParam("other",
@@ -636,7 +634,7 @@ namespace DAO.Customer
         }
 
         public int UpdateCustomerRegister(CustomerEntity entity)
-        {      
+        {
             int result = 0;
 
             try
@@ -772,21 +770,21 @@ namespace DAO.Customer
 
                                 foreach (CustomerCongenitalDiseaseEntity index in entity.customerCongenitalDiseaseEntities)
                                 {
-                                        DBHelper.CreateParameters();
-                                        DBHelper.AddParamOut("customer_congenital_disease_id", 0);
-                                        DBHelper.AddParam("customer_id", entity.customer_id);
-                                        DBHelper.AddParam("congenital_disease_id",
-                                            index.congenital_disease_id);
-                                        DBHelper.AddParam("create_date",
-                                            index.created_date);
-                                        DBHelper.AddParam("create_by",
-                                            index.created_by);
-                                        DBHelper.AddParam("is_active",
-                                            true);
-                                        DBHelper.AddParam("is_delete",
-                                            false);
+                                    DBHelper.CreateParameters();
+                                    DBHelper.AddParamOut("customer_congenital_disease_id", 0);
+                                    DBHelper.AddParam("customer_id", entity.customer_id);
+                                    DBHelper.AddParam("congenital_disease_id",
+                                        index.congenital_disease_id);
+                                    DBHelper.AddParam("create_date",
+                                        index.created_date);
+                                    DBHelper.AddParam("create_by",
+                                        index.created_by);
+                                    DBHelper.AddParam("is_active",
+                                        true);
+                                    DBHelper.AddParam("is_delete",
+                                        false);
 
-                                        DBHelper.ExecuteStoreProcedure("insert_customer_congenital_disease");                                 
+                                    DBHelper.ExecuteStoreProcedure("insert_customer_congenital_disease");
                                 }
                             }
 
@@ -798,21 +796,21 @@ namespace DAO.Customer
 
                                 foreach (CustomerPersonalFactorsEntity index in entity.customerPersonalFactorsEntities)
                                 {
-                                        DBHelper.CreateParameters();
-                                        DBHelper.AddParamOut("customer_personal_factors_id", 0);
-                                        DBHelper.AddParam("customer_id", entity.customer_id);
-                                        DBHelper.AddParam("personal_factors_id",
-                                            index.personal_factors_id);
-                                        DBHelper.AddParam("created_date",
-                                            index.created_date);
-                                        DBHelper.AddParam("created_by",
-                                            index.created_by);
-                                        DBHelper.AddParam("is_active",
-                                            true);
-                                        DBHelper.AddParam("is_delete",
-                                            false);
+                                    DBHelper.CreateParameters();
+                                    DBHelper.AddParamOut("customer_personal_factors_id", 0);
+                                    DBHelper.AddParam("customer_id", entity.customer_id);
+                                    DBHelper.AddParam("personal_factors_id",
+                                        index.personal_factors_id);
+                                    DBHelper.AddParam("created_date",
+                                        index.created_date);
+                                    DBHelper.AddParam("created_by",
+                                        index.created_by);
+                                    DBHelper.AddParam("is_active",
+                                        true);
+                                    DBHelper.AddParam("is_delete",
+                                        false);
 
-                                        DBHelper.ExecuteStoreProcedure("insert_customer_personal_factors");                           
+                                    DBHelper.ExecuteStoreProcedure("insert_customer_personal_factors");
                                 }
                             }
 
@@ -824,21 +822,21 @@ namespace DAO.Customer
 
                                 foreach (CustomerRedFlagEntity index in entity.customerRedFlagEntities)
                                 {
-                                        DBHelper.CreateParameters();
-                                        DBHelper.AddParamOut("customer_red_flag_id", 0);
-                                        DBHelper.AddParam("customer_id", entity.customer_id);
-                                        DBHelper.AddParam("red_flag_id",
-                                            index.red_flag_id);
-                                        DBHelper.AddParam("created_date",
-                                            index.created_date);
-                                        DBHelper.AddParam("created_by",
-                                            index.created_by);
-                                        DBHelper.AddParam("is_active",
-                                            true);
-                                        DBHelper.AddParam("is_delete",
-                                            false);
+                                    DBHelper.CreateParameters();
+                                    DBHelper.AddParamOut("customer_red_flag_id", 0);
+                                    DBHelper.AddParam("customer_id", entity.customer_id);
+                                    DBHelper.AddParam("red_flag_id",
+                                        index.red_flag_id);
+                                    DBHelper.AddParam("created_date",
+                                        index.created_date);
+                                    DBHelper.AddParam("created_by",
+                                        index.created_by);
+                                    DBHelper.AddParam("is_active",
+                                        true);
+                                    DBHelper.AddParam("is_delete",
+                                        false);
 
-                                        DBHelper.ExecuteStoreProcedure("insert_customer_red_flag");                                   
+                                    DBHelper.ExecuteStoreProcedure("insert_customer_red_flag");
                                 }
                             }
 
@@ -850,21 +848,21 @@ namespace DAO.Customer
 
                                 foreach (CustomerRiskAssessmentEntity index in entity.customerRiskAssessmentEntities)
                                 {
-                                        DBHelper.CreateParameters();
-                                        DBHelper.AddParamOut("customer_risk_assessment_id", 0);
-                                        DBHelper.AddParam("customer_id", entity.customer_id);
-                                        DBHelper.AddParam("risk_assessment_id",
-                                            index.risk_assessment_id);
-                                        DBHelper.AddParam("created_date",
-                                            index.created_date);
-                                        DBHelper.AddParam("created_by",
-                                            index.created_by);
-                                        DBHelper.AddParam("is_active",
-                                            true);
-                                        DBHelper.AddParam("is_delete",
-                                            false);
+                                    DBHelper.CreateParameters();
+                                    DBHelper.AddParamOut("customer_risk_assessment_id", 0);
+                                    DBHelper.AddParam("customer_id", entity.customer_id);
+                                    DBHelper.AddParam("risk_assessment_id",
+                                        index.risk_assessment_id);
+                                    DBHelper.AddParam("created_date",
+                                        index.created_date);
+                                    DBHelper.AddParam("created_by",
+                                        index.created_by);
+                                    DBHelper.AddParam("is_active",
+                                        true);
+                                    DBHelper.AddParam("is_delete",
+                                        false);
 
-                                        DBHelper.ExecuteStoreProcedure("insert_customer_risk_assessment");    
+                                    DBHelper.ExecuteStoreProcedure("insert_customer_risk_assessment");
                                 }
                             }
 
@@ -921,6 +919,188 @@ namespace DAO.Customer
                 throw ex;
             }
             return customerEntities;
+        }
+
+        public ProgressNoteEntity GetDataProgressNote(int visit_id)
+        {
+            ProgressNoteEntity customer_Vital_SignEntity = new ProgressNoteEntity();
+
+            try
+            {
+                using (DBHelper.CreateConnection())
+                {
+                    try
+                    {
+                        DBHelper.OpenConnection();
+                        DBHelper.CreateParameters();
+                        DBHelper.AddParam("visit_id", visit_id);
+
+                        customer_Vital_SignEntity = DBHelper.SelectStoreProcedureFirst<ProgressNoteEntity>("select_customer_progress_note_by_visit_id");
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                    finally
+                    {
+                        DBHelper.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return customer_Vital_SignEntity;
+        }
+
+        public int InsertProgressNote(ProgressNoteEntity progressNoteEntity)
+        {
+            int result = 0;
+
+            try
+            {
+                using (DBHelper.CreateConnection())
+                {
+                    try
+                    {
+                        DBHelper.OpenConnection();
+                        using (DBHelper.BeginTransaction())
+                        {
+
+                            #region Customer Vital Sign
+
+                            DBHelper.CreateParameters();
+                            DBHelper.AddParamOut("progress_note_id", progressNoteEntity.progress_note_id);
+                            DBHelper.AddParam("visit_id", progressNoteEntity.visit_id);
+                            DBHelper.AddParam("t_c", progressNoteEntity.t_c);
+                            DBHelper.AddParam("p_min", progressNoteEntity.p_min);
+                            DBHelper.AddParam("r_min", progressNoteEntity.r_min);
+                            DBHelper.AddParam("bp_mmhg", progressNoteEntity.bp_mmhg);
+                            DBHelper.AddParam("o2sat_percent", progressNoteEntity.o2sat_percent);
+                            DBHelper.AddParam("bw_kg", progressNoteEntity.bw_kg);
+                            DBHelper.AddParam("ht_cm", progressNoteEntity.ht_cm);
+                            DBHelper.AddParam("bm_index", progressNoteEntity.bm_index);
+                            DBHelper.AddParam("description", progressNoteEntity.Description);
+                            DBHelper.ExecuteStoreProcedure("insert_visit_customer_progress_note");
+                            result = DBHelper.GetParamOut<Int32>("progress_note_id");
+
+                            #endregion
+
+                            DBHelper.CommitTransaction();
+  
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                    finally
+                    {
+                        DBHelper.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return result;
+        }
+
+        public int UpdateProgressNote(ProgressNoteEntity progressNoteEntity)
+        {
+            int result = 0;
+
+            try
+            {
+                using (DBHelper.CreateConnection())
+                {
+                    try
+                    {
+                        DBHelper.OpenConnection();
+                        using (DBHelper.BeginTransaction())
+                        {
+
+                            #region Customer Vital Sign
+
+                            DBHelper.CreateParameters();
+                            DBHelper.AddParamOut("success_row", result);
+                            DBHelper.AddParam("progress_note_id", progressNoteEntity.progress_note_id);
+                            DBHelper.AddParam("visit_id", progressNoteEntity.visit_id);
+                            DBHelper.AddParam("t_c", progressNoteEntity.t_c);
+                            DBHelper.AddParam("p_min", progressNoteEntity.p_min);
+                            DBHelper.AddParam("r_min", progressNoteEntity.r_min);
+                            DBHelper.AddParam("bp_mmhg", progressNoteEntity.bp_mmhg);
+                            DBHelper.AddParam("o2sat_percent", progressNoteEntity.o2sat_percent);
+                            DBHelper.AddParam("bw_kg", progressNoteEntity.bw_kg);
+                            DBHelper.AddParam("ht_cm", progressNoteEntity.ht_cm);
+                            DBHelper.AddParam("bm_index", progressNoteEntity.bm_index);
+                            DBHelper.AddParam("description", progressNoteEntity.Description);
+                            DBHelper.ExecuteStoreProcedure("update_visit_customer_progress_note");
+                            result = DBHelper.GetParamOut<Int32>("success_row");
+
+                            #endregion
+
+                            DBHelper.CommitTransaction(); 
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                    finally
+                    {
+                        DBHelper.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return result;
+        }
+
+
+        public int UpdateCustomerStatus(CustomerEntity customerEntity)
+        {
+            int result = 0;
+
+            try
+            {
+                using (DBHelper.CreateConnection())
+                {
+                    try
+                    {
+                        DBHelper.OpenConnection();
+                        using (DBHelper.BeginTransaction())
+                        {
+                            DBHelper.CreateParameters();
+                            DBHelper.AddParamOut("success_row", result);
+                            DBHelper.AddParam("customer_id", customerEntity.customer_id);
+                            DBHelper.AddParam("is_active", customerEntity.is_active);
+                            DBHelper.ExecuteStoreProcedure("update_customer_status");
+                            result = DBHelper.GetParamOut<Int32>("success_row");
+
+                            DBHelper.CommitTransaction();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                    finally
+                    {
+                        DBHelper.CloseConnection();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return result;
         }
     }
 }

@@ -139,7 +139,7 @@
                                                                 <ItemTemplate>
                                                                     <tr class="odd gradeX text-center">
                                                                         <td>
-                                                                            <asp:Label ID="lblVisitorCode" runat="server" Text="Label"></asp:Label>
+                                                                            <asp:LinkButton ID="lbnVisitorCode" runat="server" ></asp:LinkButton>
                                                                         </td>
                                                                         <td>
                                                                             <asp:Label ID="lblDate" runat="server" Text="Label"></asp:Label>

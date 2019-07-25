@@ -48,7 +48,7 @@ namespace AnomaERP.BackOffice.Customer
         {
             VisitEntity visitEntity = (VisitEntity)e.Item.DataItem;
 
-            Label lblVisitorCode = (Label)e.Item.FindControl("lblVisitorCode");
+            LinkButton lbnVisitorCode = (LinkButton)e.Item.FindControl("lbnVisitorCode");
             Label lblDate = (Label)e.Item.FindControl("lblDate");
             Label lblTime = (Label)e.Item.FindControl("lblTime");
             Label lblAppointmentTime = (Label)e.Item.FindControl("lblAppointmentTime");
@@ -72,7 +72,8 @@ namespace AnomaERP.BackOffice.Customer
                 lblAppointmentTime.Text = visitEntity.appointment_time.ToString();
             }
 
-            lblVisitorCode.Text = visitEntity.visit_code;
+            lbnVisitorCode.Text = visitEntity.visit_code;
+            
             if (visitEntity.visit_type == 3)
             {
                 rptAN.Checked = true;
@@ -103,6 +104,9 @@ namespace AnomaERP.BackOffice.Customer
 
             lbnCancle.CommandName = "Cancle";
             lbnCancle.CommandArgument = visitEntity.visit_id.ToString();
+
+            lbnVisitorCode.CommandName = "ProgressNote";
+            lbnVisitorCode.CommandArgument = visitEntity.visit_id.ToString();
         }
 
         protected void rptCustomerList_ItemCommand(object source, RepeaterCommandEventArgs e)
@@ -140,6 +144,13 @@ namespace AnomaERP.BackOffice.Customer
                 {
                     setDataToRpt();
                 }
+            }
+
+            if (e.CommandName == "ProgressNote")
+            {
+                string visit_id = e.CommandArgument.ToString();
+                string customer_id = Request.QueryString["customer_id"].ToString();
+                Response.Redirect("/BackOffice/Customer/customer-progression-note.aspx?customer_id=" + customer_id + "&&visit_id=" + visit_id, false);
             }
         }
 
